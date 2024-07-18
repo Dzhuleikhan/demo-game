@@ -22,8 +22,7 @@ function showModal() {
   if (gameWrapper.classList.contains("fullscreen")) {
     gameWrapper.classList.remove("fullscreen");
   }
-  overlay.classList.remove("hidden");
-  overlay.classList.add("grid");
+  overlay.classList.add("is-open");
   document.body.style.overflow = "hidden";
 }
 
