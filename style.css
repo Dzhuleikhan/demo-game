@@ -32,6 +32,6 @@
   min-height: 100%;
 }
 
-/* .sidebar {
-  transition: width 0.4s;
-} */
+.overlay.is-open {
+  display: grid;
+}
