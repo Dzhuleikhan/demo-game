@@ -10,7 +10,7 @@
 
 @layer components {
   .container {
-    @apply max-w-[1389px]
+    @apply max-w-[1188px]
   }
 }
 
