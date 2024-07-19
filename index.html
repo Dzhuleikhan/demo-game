@@ -9,7 +9,7 @@
   <body class="overscroll-none">
     <div class="wrapper min-h-screen w-full">
       <header
-        class="relative z-[5] border-b border-[#272F50] bg-[#1A2039] px-6 py-[7px] shadow-shadow mobile:px-3"
+        class="border-borderColor relative z-[5] border-b bg-[#1A2039] px-6 py-[7px] shadow-shadow mobile:px-3"
       >
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-3">
@@ -41,7 +41,7 @@
           <div class="flex items-center gap-3">
             <div class="flex items-center gap-3">
               <button
-                class="rounded-lg border border-[#272F50] bg-[#1d2442] px-6 py-2 text-sm font-bold leading-[186%] text-white transition-all hover:border-white active:scale-[0.98] active:opacity-90 mobile:px-3"
+                class="border-borderColor rounded-lg border bg-[#1d2442] px-6 py-2 text-sm font-bold leading-[186%] text-white transition-all hover:border-white active:scale-[0.98] active:opacity-90 mobile:px-3"
               >
                 Sign In
               </button>
@@ -53,7 +53,7 @@
             </div>
             <div class="header-lang-box relative">
               <button
-                class="header-lang-btn flex h-9 w-9 items-center justify-center rounded-lg bg-[#1d2442] transition-all hover:bg-[#272F50]"
+                class="header-lang-btn hover:bg-borderColor flex h-9 w-9 items-center justify-center rounded-lg bg-[#1d2442] transition-all"
               >
                 <img
                   width="20"
@@ -67,7 +67,7 @@
               >
                 <li>
                   <a
-                    class="flex h-9 w-9 items-center justify-center bg-[#1d2442] transition-all hover:bg-[#272F50]"
+                    class="hover:bg-borderColor flex h-9 w-9 items-center justify-center bg-[#1d2442] transition-all"
                     href="#"
                     ><img
                       width="20"
@@ -78,7 +78,7 @@
                 </li>
                 <li>
                   <a
-                    class="flex h-9 w-9 items-center justify-center bg-[#1d2442] transition-all hover:bg-[#272F50]"
+                    class="hover:bg-borderColor flex h-9 w-9 items-center justify-center bg-[#1d2442] transition-all"
                     href="#"
                     ><img
                       width="20"
@@ -89,7 +89,7 @@
                 </li>
                 <li>
                   <a
-                    class="flex h-9 w-9 items-center justify-center bg-[#1d2442] transition-all hover:bg-[#272F50]"
+                    class="hover:bg-borderColor flex h-9 w-9 items-center justify-center bg-[#1d2442] transition-all"
                     href="#"
                     ><img
                       width="20"
@@ -100,7 +100,7 @@
                 </li>
                 <li>
                   <a
-                    class="flex h-9 w-9 items-center justify-center bg-[#1d2442] transition-all hover:bg-[#272F50]"
+                    class="hover:bg-borderColor flex h-9 w-9 items-center justify-center bg-[#1d2442] transition-all"
                     href="#"
                     ><img
                       width="20"
@@ -115,9 +115,11 @@
         </div>
       </header>
       <main class="grid grid-cols-[auto_1fr]">
-        <aside class="sidemenu is-open h-[calc(100dvh - 59px)] bg-window1">
-          <div class="m-3 w-[195px]">
-            <ul class="">
+        <aside
+          class="sidemenu is-open h-[calc(100dvh - 59px)] bg-window1 overflow-y-auto"
+        >
+          <div class="m-3 w-[195px] space-y-3">
+            <ul>
               <li>
                 <a
                   href="#"
@@ -246,10 +248,302 @@
                 Sign Up
               </button>
               <button
-                class="w-full rounded-lg border border-[#272F50] bg-[#1d2442] px-6 py-2 text-sm font-bold leading-[186%] text-white transition-all hover:border-white active:scale-[0.98] active:opacity-90 mobile:px-3"
+                class="border-borderColor w-full rounded-lg border bg-[#1d2442] px-6 py-2 text-sm font-bold leading-[186%] text-white transition-all hover:border-white active:scale-[0.98] active:opacity-90 mobile:px-3"
               >
                 Sign In
               </button>
+            </div>
+            <!-- Language -->
+            <div
+              class="sidegame-acc overflow-hidden rounded-lg text-sm font-semibold leading-[136%]"
+            >
+              <button
+                class="sidegame-btn disabled:hover:bg-background2 bg-background2 hover:bg-window2 grid w-full grid-cols-[auto_1fr_auto] items-center gap-2 rounded-lg px-3 py-[13px] transition-all disabled:opacity-40"
+              >
+                <img src="./img/eng-flag.svg" alt="English" />
+                <span class="text-left">English</span>
+                <svg
+                  class="sidegame-btn-arrow"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 14 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M6.99966 8.47213L2.56566 4.03913C2.41555 3.88902 2.21195 3.80469 1.99966 3.80469C1.78737 3.80469 1.58378 3.88902 1.43366 4.03913C1.28355 4.18925 1.19922 4.39284 1.19922 4.60513C1.19922 4.81742 1.28355 5.02102 1.43366 5.17113L6.08066 9.81713C6.32444 10.0608 6.655 10.1977 6.99966 10.1977C7.34433 10.1977 7.67489 10.0608 7.91866 9.81713L12.5657 5.17113C12.7158 5.02102 12.8001 4.81742 12.8001 4.60513C12.8001 4.39284 12.7158 4.18925 12.5657 4.03913C12.4156 3.88902 12.212 3.80469 11.9997 3.80469C11.7874 3.80469 11.5838 3.88902 11.4337 4.03913L6.99966 8.47213Z"
+                    fill="#A9AABF"
+                  />
+                </svg>
+              </button>
+              <ul class="sidegame-list border-borderColor border-t">
+                <li>
+                  <a
+                    href="#"
+                    class="bg-background2 hover:bg-window2 flex items-center gap-2 px-3 py-[13px] transition-all"
+                    ><img src="./img/ru-flag.svg" alt="Ru flag" />Russian</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="bg-background2 hover:bg-window2 flex items-center gap-2 px-3 py-[13px] transition-all"
+                    ><img src="./img/fr-flag.svg" alt="FR flag" />French</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="bg-background2 hover:bg-window2 flex items-center gap-2 px-3 py-[13px] transition-all"
+                    ><img src="./img/es-flag.svg" alt="Es flag" />Espanol</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <!-- Games links -->
+            <div class="grid grid-cols-1 gap-3">
+              <div
+                class="sidegame-acc overflow-hidden rounded-lg text-sm font-semibold leading-[136%]"
+              >
+                <button
+                  class="sidegame-btn disabled:hover:bg-background2 bg-background2 hover:bg-window2 grid w-full grid-cols-[auto_1fr_auto] items-center gap-2 rounded-lg px-3 py-[13px] transition-all disabled:opacity-40"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M13.8233 4.32542L13.8717 4.36292L13.9367 4.42458L13.9967 4.49458L14.0075 4.50958C14.1348 4.68416 14.1892 4.90144 14.1592 5.11542L14.1408 5.20792L14.1158 5.28458C13.2908 7.55542 13.5608 9.58292 14.6817 11.7063C15.3043 11.8036 15.8865 12.0755 16.3609 12.4903C16.8353 12.9051 17.1824 13.4459 17.3619 14.05C17.5414 14.6541 17.546 15.2967 17.3752 15.9032C17.2043 16.5098 16.865 17.0555 16.3966 17.4771C15.9282 17.8987 15.3499 18.1789 14.7288 18.2852C14.1076 18.3914 13.4691 18.3194 12.8872 18.0775C12.3053 17.8357 11.8039 17.4338 11.4411 16.9185C11.0783 16.4032 10.869 15.7956 10.8375 15.1663L10.8333 14.9996L10.8375 14.8329C10.8694 14.1973 11.0825 13.584 11.4516 13.0656C11.8208 12.5471 12.3306 12.1451 12.9208 11.9071C12.1317 10.2154 11.8025 8.51958 12.0442 6.73458C11.9058 6.79875 11.7675 6.85958 11.6283 6.91625L11.7067 6.86292C9.8375 8.08792 8.74667 9.36625 8.39 10.6712C8.91337 11.0352 9.33534 11.5265 9.61604 12.0988C9.89675 12.6711 10.0269 13.3056 9.99427 13.9422C9.96162 14.5788 9.76723 15.1966 9.42945 15.7372C9.09167 16.2778 8.62166 16.7234 8.0638 17.0318C7.50595 17.3403 6.87867 17.5015 6.24122 17.5001C5.60376 17.4988 4.97718 17.3349 4.42064 17.0241C3.8641 16.7133 3.39599 16.2657 3.06051 15.7237C2.72504 15.1816 2.53327 14.563 2.50333 13.9262L2.5 13.7496L2.50417 13.5729C2.52894 13.0462 2.66451 12.5307 2.90203 12.0599C3.13955 11.5891 3.47368 11.1738 3.88261 10.8409C4.29153 10.508 4.76606 10.2651 5.27522 10.128C5.78438 9.99096 6.31672 9.96281 6.8375 10.0454C7.11417 9.15125 7.625 8.29875 8.3625 7.48792C6.8675 7.40792 5.37417 6.85542 3.9 5.83292L3.67667 5.67458L3.63417 5.64125L3.59583 5.60792L3.55917 5.57125L3.52583 5.53292L3.4925 5.49125L3.46583 5.45208L3.43667 5.40208L3.3925 5.31042L3.36083 5.21375L3.34167 5.11625L3.3375 5.08125L3.33333 4.98292L3.34167 4.88458L3.36083 4.78708L3.3925 4.69125L3.4175 4.63625L3.43667 4.59875L3.46583 4.54875L3.4925 4.51042L3.52583 4.46792L3.55917 4.42958L3.59583 4.39292L3.63417 4.35958L3.67583 4.32625C7.02417 1.89125 10.4758 1.89042 13.8233 4.32542Z"
+                      fill="#F0F0F0"
+                    />
+                  </svg>
+                  <span class="text-left">Casino</span>
+                  <svg
+                    class="sidegame-btn-arrow"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M6.99966 8.47213L2.56566 4.03913C2.41555 3.88902 2.21195 3.80469 1.99966 3.80469C1.78737 3.80469 1.58378 3.88902 1.43366 4.03913C1.28355 4.18925 1.19922 4.39284 1.19922 4.60513C1.19922 4.81742 1.28355 5.02102 1.43366 5.17113L6.08066 9.81713C6.32444 10.0608 6.655 10.1977 6.99966 10.1977C7.34433 10.1977 7.67489 10.0608 7.91866 9.81713L12.5657 5.17113C12.7158 5.02102 12.8001 4.81742 12.8001 4.60513C12.8001 4.39284 12.7158 4.18925 12.5657 4.03913C12.4156 3.88902 12.212 3.80469 11.9997 3.80469C11.7874 3.80469 11.5838 3.88902 11.4337 4.03913L6.99966 8.47213Z"
+                      fill="#A9AABF"
+                    />
+                  </svg>
+                </button>
+                <ul class="sidegame-list border-borderColor border-t">
+                  <li>
+                    <a
+                      href="#"
+                      class="bg-background2 hover:bg-window2 block px-3 py-[13px] transition-all"
+                      >All Games</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="bg-background2 hover:bg-window2 block px-3 py-[13px] transition-all"
+                      >Originals</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="bg-background2 hover:bg-window2 block px-3 py-[13px] transition-all"
+                      >Slots</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="bg-background2 hover:bg-window2 block px-3 py-[13px] transition-all"
+                      >Table Games</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="bg-background2 hover:bg-window2 block px-3 py-[13px] transition-all"
+                      >Roulette</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="bg-background2 hover:bg-window2 block px-3 py-[13px] transition-all"
+                      >Blackjack</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="bg-background2 hover:bg-window2 block px-3 py-[13px] transition-all"
+                      >Baccarat</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div
+                class="sidegame-acc overflow-hidden rounded-lg text-sm font-semibold leading-[136%]"
+              >
+                <button
+                  class="sidegame-btn disabled:hover:bg-background2 bg-background2 hover:bg-window2 grid w-full grid-cols-[auto_1fr_auto] items-center gap-2 rounded-lg px-3 py-[13px] transition-all disabled:opacity-40"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M10 2C12.121 1.99943 14.1553 2.84138 15.6556 4.34064C17.1559 5.8399 17.9992 7.87369 18 9.99467C17.9997 11.045 17.7926 12.0849 17.3904 13.0552C16.9882 14.0254 16.3988 14.9069 15.656 15.6494C14.9131 16.3919 14.0313 16.9807 13.0608 17.3824C12.0904 17.7841 11.0503 17.9907 10 17.9904C8.60693 17.9904 6.896 17.6405 5.67573 16.9803L2.69973 17.9637C2.60575 17.9946 2.50504 17.9987 2.40886 17.9756C2.31267 17.9525 2.22481 17.9031 2.15509 17.8329C2.08537 17.7628 2.03653 17.6746 2.01404 17.5783C1.99155 17.4819 1.99629 17.3813 2.02773 17.2875L3.01547 14.3317C2.29867 13.0805 2 11.4453 2 9.99467C2.00085 7.87369 2.84414 5.8399 4.34441 4.34064C5.84467 2.84138 7.87902 1.99943 10 2ZM13.482 11.1914L9.53693 13.7575C8.6571 14.3298 7.5 13.6906 7.5 12.6323V7.5C7.5 6.44167 8.6571 5.80246 9.53693 6.37476L13.482 8.9409C14.2915 9.46746 14.2915 10.6648 13.482 11.1914Z"
+                      fill="#F0F0F0"
+                    />
+                  </svg>
+                  <span class="text-left">Live Casino</span>
+                  <svg
+                    class="sidegame-btn-arrow"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M6.99966 8.47213L2.56566 4.03913C2.41555 3.88902 2.21195 3.80469 1.99966 3.80469C1.78737 3.80469 1.58378 3.88902 1.43366 4.03913C1.28355 4.18925 1.19922 4.39284 1.19922 4.60513C1.19922 4.81742 1.28355 5.02102 1.43366 5.17113L6.08066 9.81713C6.32444 10.0608 6.655 10.1977 6.99966 10.1977C7.34433 10.1977 7.67489 10.0608 7.91866 9.81713L12.5657 5.17113C12.7158 5.02102 12.8001 4.81742 12.8001 4.60513C12.8001 4.39284 12.7158 4.18925 12.5657 4.03913C12.4156 3.88902 12.212 3.80469 11.9997 3.80469C11.7874 3.80469 11.5838 3.88902 11.4337 4.03913L6.99966 8.47213Z"
+                      fill="#A9AABF"
+                    />
+                  </svg>
+                </button>
+                <ul class="sidegame-list border-borderColor border-t">
+                  <li>
+                    <a
+                      href="#"
+                      class="bg-background2 hover:bg-window2 block px-3 py-[13px] transition-all"
+                      >Live Lobby</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="bg-background2 hover:bg-window2 block px-3 py-[13px] transition-all"
+                      >Live Game Shows</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="bg-background2 hover:bg-window2 block px-3 py-[13px] transition-all"
+                      >Live Roulette</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="bg-background2 hover:bg-window2 block px-3 py-[13px] transition-all"
+                      >Live Blackjack</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="bg-background2 hover:bg-window2 block px-3 py-[13px] transition-all"
+                      >Live Baccarat</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div
+                class="sidegame-acc overflow-hidden rounded-lg text-sm font-semibold leading-[136%]"
+              >
+                <button
+                  disabled
+                  class="sidegame-btn bg-background2 disabled:hover:bg-background2 hover:bg-window2 grid w-full grid-cols-[auto_1fr_auto] items-center gap-2 rounded-lg px-3 py-[13px] transition-all disabled:opacity-40"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M4.33016 15.6698C5.75939 17.0977 7.67699 17.9305 9.6961 18C9.32485 15.7765 9.98878 13.4127 11.7007 11.7007C13.4135 9.98878 15.7765 9.32485 18 9.6961C17.9262 7.74521 17.1557 5.81598 15.6698 4.33016C14.184 2.84434 12.254 2.07377 10.3039 2C10.6752 4.22351 10.0112 6.58735 8.29929 8.29929C6.58655 10.0112 4.22351 10.6752 2 10.3039C2.06882 12.3232 2.90165 14.241 4.33016 15.6698Z"
+                      fill="#F0F0F0"
+                    />
+                    <path
+                      d="M12.9466 12.9457C12.2683 13.6245 11.7681 14.4602 11.4903 15.3786C11.2126 16.2971 11.1657 17.2699 11.3541 18.2107C13.0733 17.9346 14.6616 17.1232 15.8928 15.892C17.124 14.6607 17.9355 13.0724 18.2116 11.3532C17.2707 11.1651 16.2979 11.212 15.3795 11.4898C14.4611 11.7676 13.6255 12.2677 12.9466 12.9457ZM7.0549 7.05406C7.73311 6.37529 8.23331 5.53962 8.51111 4.62118C8.78891 3.70274 8.83572 2.72993 8.6474 1.78906C6.92804 2.065 5.33957 2.87636 4.10816 4.10761C2.87676 5.33886 2.06521 6.92724 1.78906 8.64656C2.73006 8.83473 3.70296 8.78785 4.6215 8.51006C5.54005 8.23227 6.37587 7.73216 7.0549 7.05406Z"
+                      fill="#F0F0F0"
+                    />
+                  </svg>
+                  <span class="text-left">Sport</span>
+                  <svg
+                    class="sidegame-btn-arrow"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M6.99966 8.47213L2.56566 4.03913C2.41555 3.88902 2.21195 3.80469 1.99966 3.80469C1.78737 3.80469 1.58378 3.88902 1.43366 4.03913C1.28355 4.18925 1.19922 4.39284 1.19922 4.60513C1.19922 4.81742 1.28355 5.02102 1.43366 5.17113L6.08066 9.81713C6.32444 10.0608 6.655 10.1977 6.99966 10.1977C7.34433 10.1977 7.67489 10.0608 7.91866 9.81713L12.5657 5.17113C12.7158 5.02102 12.8001 4.81742 12.8001 4.60513C12.8001 4.39284 12.7158 4.18925 12.5657 4.03913C12.4156 3.88902 12.212 3.80469 11.9997 3.80469C11.7874 3.80469 11.5838 3.88902 11.4337 4.03913L6.99966 8.47213Z"
+                      fill="#A9AABF"
+                    />
+                  </svg>
+                </button>
+                <ul class="sidegame-list border-borderColor border-t">
+                  <li>
+                    <a
+                      href="#"
+                      class="bg-background2 hover:bg-window2 block px-3 py-[13px] transition-all"
+                      >Live Lobby</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="bg-background2 hover:bg-window2 block px-3 py-[13px] transition-all"
+                      >Live Game Shows</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="bg-background2 hover:bg-window2 block px-3 py-[13px] transition-all"
+                      >Live Roulette</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="bg-background2 hover:bg-window2 block px-3 py-[13px] transition-all"
+                      >Live Blackjack</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="bg-background2 hover:bg-window2 block px-3 py-[13px] transition-all"
+                      >Live Baccarat</a
+                    >
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </aside>
@@ -260,14 +554,14 @@
           >
             <div class="container lg:px-0">
               <div
-                class="game-wrapper w-full cursor-pointer overflow-hidden rounded-2xl border border-[#272f50] shadow-shadow lg:rounded-none lg:border-none"
+                class="game-wrapper border-borderColor w-full cursor-pointer overflow-hidden rounded-2xl border shadow-shadow lg:rounded-none lg:border-none"
               >
                 <div
                   class="game-wrapper-cta bg-window1 flex items-center justify-between p-4"
                 >
                   <p class="text-base font-bold text-white">Plinko by Spribe</p>
                   <button
-                    class="fullscreen-btn hover: flex h-9 w-9 items-center justify-center rounded-lg bg-[#272F50]/50 transition-all hover:bg-[#272F50]"
+                    class="fullscreen-btn hover: bg-borderColor/50 hover:bg-borderColor flex h-9 w-9 items-center justify-center rounded-lg transition-all"
                   >
                     <svg
                       width="20"

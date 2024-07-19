@@ -1,4 +1,5 @@
 import "./style.css";
 
-import "./modules/game";
 import "./modules/header";
+import "./modules/game";
+import "./modules/sidebar";

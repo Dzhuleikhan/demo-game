@@ -129,3 +129,22 @@ main {
   width: 219px;
   transition: width 0.2s ease-in-out;
 }
+
+.sidegame-btn.is-open {
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.sidegame-list {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.2s;
+  box-sizing: content-box;
+  will-change: transform;
+}
+
+.sidegame-list.is-active {
+  opacity: 1;
+  transition: all 0.2s;
+}
