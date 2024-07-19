@@ -19,6 +19,7 @@ module.exports = {
         window1: "#14182F",
         window2: "#1D2442",
         borderColor: "#272F50",
+        darkGray: "#8A95C1",
       },
       boxShadow: {
         shadow: "0 4px 4px 0 rgba(0, 0, 0, 0.25)",

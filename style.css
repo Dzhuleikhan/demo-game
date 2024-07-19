@@ -125,6 +125,20 @@ main {
   transition: width 0.2s ease-in-out;
 }
 
+.custom-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: #272f50;
+  border-radius: 8px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: #8A95C1;
+  border-radius: 8px;
+}
+
 .sidemenu.is-open {
   width: 219px;
   transition: width 0.2s ease-in-out;
