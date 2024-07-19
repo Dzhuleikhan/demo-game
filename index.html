@@ -59,46 +59,53 @@
           </div>
         </div>
       </header>
-      <main class="pt-6 lg:p-0">
-        <div class="container lg:px-0">
-          <div
-            class="game-wrapper fullscreen w-full cursor-pointer overflow-hidden rounded-2xl border border-[#272f50] shadow-shadow lg:rounded-none lg:border-none"
-          >
-            <div class="bg-black lg:p-3">
-              <iframe
-                class="min-h-[627px] w-full lg:min-h-[566px]"
-                width="1050"
-                height="627"
-                src="https://demo.spribe.io/launch/plinko?lang=pt&currency=EUR&mute=1"
-                allowfullscreen
-              ></iframe>
-            </div>
+      <main>
+        <section
+          id="game"
+          class="bg-[url('../img/frame-bg.png')] bg-cover bg-center bg-no-repeat py-6"
+        >
+          <div class="container lg:px-0">
             <div
-              class="game-wrapper-cta flex items-center justify-between bg-[#14182F] p-4"
+              class="game-wrapper fullscreen w-full cursor-pointer overflow-hidden rounded-2xl border border-[#272f50] shadow-shadow lg:rounded-none lg:border-none"
             >
-              <p class="text-base font-bold text-[#f0f0f0]">Plinko by Spribe</p>
-              <button
-                class="fullscreen-btn hover: flex h-9 w-9 items-center justify-center rounded-lg bg-[#272F50]/50 transition-all hover:bg-[#272F50]"
+              <div class="bg-black lg:p-3">
+                <iframe
+                  class="min-h-[627px] w-full lg:min-h-[566px]"
+                  width="1050"
+                  height="627"
+                  src="https://demo.spribe.io/launch/plinko?lang=pt&currency=EUR&mute=1"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <div
+                class="game-wrapper-cta flex items-center justify-between bg-[#14182F] p-4"
               >
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+                <p class="text-base font-bold text-[#f0f0f0]">
+                  Plinko by Spribe
+                </p>
+                <button
+                  class="fullscreen-btn hover: flex h-9 w-9 items-center justify-center rounded-lg bg-[#272F50]/50 transition-all hover:bg-[#272F50]"
                 >
-                  <path
-                    d="M3.33203 7.4987V4.9987C3.33203 4.55667 3.50763 4.13275 3.82019 3.82019C4.13275 3.50763 4.55667 3.33203 4.9987 3.33203H7.4987M16.6654 12.4987V14.9987C16.6654 15.4407 16.4898 15.8646 16.1772 16.1772C15.8646 16.4898 15.4407 16.6654 14.9987 16.6654H12.4987M12.4987 3.33203H14.9987C15.4407 3.33203 15.8646 3.50763 16.1772 3.82019C16.4898 4.13275 16.6654 4.55667 16.6654 4.9987V7.4987M7.4987 16.6654H4.9987C4.55667 16.6654 4.13275 16.4898 3.82019 16.1772C3.50763 15.8646 3.33203 15.4407 3.33203 14.9987V12.4987"
-                    stroke="#A9AABF"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </button>
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M3.33203 7.4987V4.9987C3.33203 4.55667 3.50763 4.13275 3.82019 3.82019C4.13275 3.50763 4.55667 3.33203 4.9987 3.33203H7.4987M16.6654 12.4987V14.9987C16.6654 15.4407 16.4898 15.8646 16.1772 16.1772C15.8646 16.4898 15.4407 16.6654 14.9987 16.6654H12.4987M12.4987 3.33203H14.9987C15.4407 3.33203 15.8646 3.50763 16.1772 3.82019C16.4898 4.13275 16.6654 4.55667 16.6654 4.9987V7.4987M7.4987 16.6654H4.9987C4.55667 16.6654 4.13275 16.4898 3.82019 16.1772C3.50763 15.8646 3.33203 15.4407 3.33203 14.9987V12.4987"
+                      stroke="#A9AABF"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
-        </div>
+        </section>
       </main>
     </div>
     <div
