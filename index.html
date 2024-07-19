@@ -2,13 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
+    <link rel="icon" type="image/svg+xml" href="./img/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Demo Game</title>
   </head>
   <body class="overscroll-none">
     <div class="wrapper min-h-screen w-full">
-      <header class="mobile:px-3 bg-[#1A2039] px-6 py-[11px]">
+      <header class="bg-[#1A2039] px-6 py-[11px] mobile:px-3">
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-3">
             <button
@@ -34,19 +34,19 @@
           <div class="flex items-center gap-3">
             <div class="flex items-center gap-3">
               <button
-                class="mobile:px-3 rounded-lg bg-[#1d2442] px-6 py-2 text-sm font-bold leading-[186%] text-[#f0f0f0]"
+                class="rounded-lg border border-[#272F50] bg-[#1d2442] px-6 py-2 text-sm font-bold leading-[186%] text-[#f0f0f0] transition-all hover:border-[#f0f0f0] active:scale-[0.98] active:opacity-90 mobile:px-3"
               >
                 Sign In
               </button>
               <button
-                class="mobile:px-3 rounded-lg bg-[#f4fd2b] px-6 py-2 text-sm font-bold leading-[186%] text-[#0f0f0f]"
+                class="rounded-lg bg-[#f4fd2b] px-6 py-2 text-sm font-bold leading-[186%] text-[#0f0f0f] transition-all hover:bg-[#f4fd2b]/90 active:scale-[0.98] active:bg-[#f4fd2b]/90 mobile:px-3"
               >
                 Sign Up
               </button>
             </div>
             <div class="mobile:hidden">
               <button
-                class="flex h-9 w-9 items-center justify-center rounded-lg bg-[#1d2442]"
+                class="flex h-9 w-9 items-center justify-center rounded-lg bg-[#1d2442] transition-all hover:bg-[#272F50]"
               >
                 <img
                   width="20"
@@ -62,7 +62,7 @@
       <main class="pt-6 lg:p-0">
         <div class="container lg:px-0">
           <div
-            class="shadow-shadow game-wrapper w-full cursor-pointer overflow-hidden rounded-2xl border border-[#272f50] lg:rounded-none lg:border-none"
+            class="game-wrapper fullscreen w-full cursor-pointer overflow-hidden rounded-2xl border border-[#272f50] shadow-shadow lg:rounded-none lg:border-none"
           >
             <div class="bg-black lg:p-3">
               <iframe
@@ -78,7 +78,7 @@
             >
               <p class="text-base font-bold text-[#f0f0f0]">Plinko by Spribe</p>
               <button
-                class="fullscreen-btn flex h-9 w-9 items-center justify-center rounded-lg bg-[#272F50]/50"
+                class="fullscreen-btn hover: flex h-9 w-9 items-center justify-center rounded-lg bg-[#272F50]/50 transition-all hover:bg-[#272F50]"
               >
                 <svg
                   width="20"
@@ -102,10 +102,10 @@
       </main>
     </div>
     <div
-      class="overlay bg-pageBg/80 fixed left-0 top-0 z-50 hidden h-dvh w-full place-items-center p-8"
+      class="overlay fixed left-0 top-0 z-50 hidden h-dvh w-full place-items-center bg-pageBg/80 p-8"
     >
       <div
-        class="shadow-shadow w-full max-w-[400px] overflow-hidden rounded-2xl bg-[#1D2442]"
+        class="modal w-full max-w-[400px] overflow-hidden rounded-2xl bg-[#1D2442] shadow-shadow"
       >
         <div class="bg-[#14182F] p-6">
           <p
@@ -127,10 +127,10 @@
           </p>
           <a
             href="#"
-            class="mt-4 inline-block rounded-2xl border-[8px] border-[#5C6176] bg-[#f4fd2b] px-8 py-3 text-base font-bold text-[#0f0f0f]"
-            >Register</a
+            class="modal-reg-btn mt-6 inline-block rounded-lg bg-[#f4fd2b] px-8 py-3 text-base font-bold text-[#0f0f0f]"
+            ><span class="relative z-[2]">Register</span></a
           >
-          <p class="mt-4 text-sm font-semibold text-[#8a95c1]">
+          <p class="mt-6 text-sm font-semibold text-[#8a95c1]">
             Already have an account?
             <a
               href="https://dev1.goldbet.io/?modal=sign-in&tabForm=email&currency=EUR"

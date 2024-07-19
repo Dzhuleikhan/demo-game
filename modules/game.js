@@ -1,3 +1,5 @@
+import gsap from "gsap";
+
 const gameWrapper = document.querySelector(".game-wrapper");
 const gameWrapperFrame = document.querySelector(".game-wrapper iframe");
 const fullScreenBtn = document.querySelector(".fullscreen-btn");
@@ -23,6 +25,11 @@ function showModal() {
     gameWrapper.classList.remove("fullscreen");
   }
   overlay.classList.add("is-open");
+  gsap.fromTo(
+    ".modal",
+    { scale: 0 },
+    { scale: 1, ease: "none", duration: 0.3 },
+  );
   document.body.style.overflow = "hidden";
 }
 
