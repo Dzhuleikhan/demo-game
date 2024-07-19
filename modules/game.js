@@ -33,14 +33,14 @@ function showModal() {
   document.body.style.overflow = "hidden";
 }
 
-window.focus();
-const frameListener = window.addEventListener("blur", () => {
-  if (document.activeElement === document.querySelector("iframe")) {
-    window.localStorage.setItem("modal", "open");
-    showModal();
-  }
-  window.removeEventListener("blur", frameListener);
-});
+// window.focus();
+// const frameListener = window.addEventListener("blur", () => {
+//   if (document.activeElement === document.querySelector("iframe")) {
+//     window.localStorage.setItem("modal", "open");
+//     showModal();
+//   }
+//   window.removeEventListener("blur", frameListener);
+// });
 
 if (localStorage.modal) {
   showModal();

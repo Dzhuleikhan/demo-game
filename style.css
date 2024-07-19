@@ -1,8 +1,37 @@
+@font-face {
+  font-family: 'Raleway';
+  src: url('../fonts/Raleway-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Raleway';
+  src: url('../fonts/Raleway-Bold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Raleway';
+  src: url('../fonts/Raleway-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+
+  html {
+    @apply font-raleway text-white
+  }
+
   body {
     @apply bg-pageBg
   }
@@ -14,6 +43,10 @@
   }
 }
 
+main {
+  height: calc(100dvh - 59px);
+}
+
 .game-wrapper.fullscreen {
   position: fixed;
   left: 0;
@@ -22,7 +55,7 @@
   max-width: 100%;
   height: 100dvh;
   display: grid;
-  grid-template-rows: 1fr auto;
+  grid-template-rows: auto 1fr;
   border-radius: 0;
   border: none;
   z-index: 10000;
@@ -51,7 +84,7 @@
   position: absolute;
   left: -150%;
   top: 0;
-  animation: shine 1s ease infinite forwards;
+  animation: shine 1.5s ease infinite forwards;
 }
 
 @keyframes btnShadow {
@@ -72,4 +105,27 @@
   100% {
     left: 150%;
   }
+}
+
+.header-lang-list {
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: top left;
+  transition: all 0.3s;
+}
+
+.header-lang-list.is-open {
+  opacity: 1;
+  transform: scaleY(1);
+  transition: all 0.3s;
+}
+
+.sidemenu {
+  width: 0;
+  transition: width 0.2s ease-in-out;
+}
+
+.sidemenu.is-open {
+  width: 219px;
+  transition: width 0.2s ease-in-out;
 }
