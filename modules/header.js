@@ -3,6 +3,13 @@ const headerLangList = document.querySelector(".header-lang-list");
 const burgerBtn = document.querySelector(".burger");
 const sideMenu = document.querySelector(".sidemenu");
 
+if (sideMenu) {
+  if (window.innerWidth <= 576) {
+    sideMenu.classList.remove("is-open");
+    document.body.classList.remove("scroll-lock");
+  }
+}
+
 if (headerLangBtn) {
   headerLangBtn.addEventListener("click", () => {
     headerLangList.classList.toggle("is-open");
