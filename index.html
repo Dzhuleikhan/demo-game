@@ -9,7 +9,7 @@
   <body class="overscroll-none">
     <div class="wrapper min-h-screen w-full">
       <header
-        class="relative z-[5] border-b border-borderColor bg-[#1A2039] px-6 py-[7px] shadow-shadow mobile:px-3"
+        class="sticky left-0 top-0 z-[5] border-b border-borderColor bg-[#1A2039] px-6 py-[7px] shadow-shadow mobile:px-3"
       >
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-3">
@@ -116,7 +116,7 @@
       </header>
       <main class="grid grid-cols-[auto_1fr] lg:grid-cols-1">
         <aside
-          class="sidemenu custom-scroll is-open h-[calc(100dvh - 59px)] overflow-y-auto overflow-x-hidden bg-window1 lg:absolute lg:-left-full lg:top-0 lg:h-full lg:w-auto lg:pt-[60px] lg:transition-all lg:duration-300"
+          class="sidemenu custom-scroll is-open sticky top-[59px] overflow-y-auto overflow-x-hidden bg-window1 lg:absolute lg:-left-full lg:top-0 lg:h-full lg:w-auto lg:pt-[60px] lg:transition-all lg:duration-300 mobile:w-full"
         >
           <div class="m-3 w-[195px] space-y-3 lg:w-auto">
             <ul>
