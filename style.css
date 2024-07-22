@@ -39,9 +39,19 @@
 
 @layer components {
   .container {
-    @apply max-w-[1188px]
+    @apply max-w-[1188px] mobile:px-3
   }
 }
+
+html {
+  font-feature-settings: 'lnum';
+  -moz-font-feature-settings: 'lnum=1';
+  -ms-font-feature-settings: 'lnum';
+  -webkit-font-feature-settings: 'lnum';
+  -o-font-feature-settings: 'lnum';
+}
+
+
 
 main {
   height: calc(100dvh - 59px);

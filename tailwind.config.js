@@ -10,6 +10,7 @@ module.exports = {
       lg: { max: "992px" },
       tbl: { max: "767px" },
       mobile: { max: "576px" },
+      sm: { max: "480px" },
     },
     extend: {
       colors: {
@@ -22,6 +23,7 @@ module.exports = {
         borderColor: "#272F50",
         darkGray: "#8A95C1",
         lightGray: "#a9aabf",
+        purple: "#8726FF",
       },
       boxShadow: {
         shadow: "0 4px 4px 0 rgba(0, 0, 0, 0.25)",
