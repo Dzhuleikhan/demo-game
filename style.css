@@ -190,6 +190,20 @@ main {
   }
 }
 
+@media (max-width: 767px) {
+  .header-lang-list {
+    opacity: 0;
+    bottom: -100%;
+    transition: 0.3s;
+  }
+
+  .header-lang-list.is-open {
+    opacity: 1;
+    bottom: 0;
+    transition: 0.3s;
+  }
+}
+
 @media (max-width: 576px) {
 
   .sidemenu.is-open {

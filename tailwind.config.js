@@ -8,6 +8,7 @@ module.exports = {
     },
     screens: {
       lg: { max: "992px" },
+      tbl: { max: "767px" },
       mobile: { max: "576px" },
     },
     extend: {
