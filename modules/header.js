@@ -4,9 +4,8 @@ const burgerBtn = document.querySelector(".burger");
 const sideMenu = document.querySelector(".sidemenu");
 
 if (sideMenu) {
-  if (window.innerWidth <= 576) {
-    sideMenu.classList.remove("is-open");
-    document.body.classList.remove("scroll-lock");
+  if (window.innerWidth >= 576) {
+    sideMenu.classList.add("is-open");
   }
 }
 
