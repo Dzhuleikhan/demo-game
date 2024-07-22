@@ -41,9 +41,17 @@ if (burgerBtn) {
   });
 }
 
-const pull = document.querySelector(".slide-down");
+var myElement = document.querySelector(".slide-down");
 
-// var hammertime = new Hammer(pull);
-// hammertime.on("pandown", function (ev) {
-//   console.log(ev);
-// });
+// create a simple instance
+// by default, it only adds horizontal recognizers
+var mc = new Hammer(myElement);
+
+// let the pan gesture support all directions.
+// this will block the vertical scrolling on a touch-device while on the element
+mc.get("pan").set({ direction: Hammer.DIRECTION_ALL });
+
+// listen to events...
+mc.on("pandown", function () {
+  headerLangList.classList.remove("is-open");
+});
