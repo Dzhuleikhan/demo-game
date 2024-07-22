@@ -47,6 +47,10 @@ main {
   height: calc(100dvh - 59px);
 }
 
+.scroll-lock {
+  overflow: hidden;
+}
+
 .game-wrapper.fullscreen {
   position: fixed;
   left: 0;

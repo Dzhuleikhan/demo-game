@@ -18,5 +18,6 @@ if (headerLangList) {
 if (burgerBtn) {
   burgerBtn.addEventListener("click", () => {
     sideMenu.classList.toggle("is-open");
+    document.body.classList.toggle("scroll-lock");
   });
 }
