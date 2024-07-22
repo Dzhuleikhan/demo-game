@@ -84,16 +84,29 @@ pull.forEach((pull) => {
   if (pull) {
     if (isMobile) {
       let touchstartY = 0;
+      let isMovingDown = false;
       pull.addEventListener("touchstart", (e) => {
         touchstartY = e.touches[0].clientY;
+        isMovingDown = false;
       });
       pull.addEventListener("touchmove", (e) => {
         const touchY = e.touches[0].clientY;
         const touchDiff = touchY - touchstartY;
-        mobileLangList.style.bottom = -touchDiff + "px";
-        if (touchDiff > 30) {
-          pull.classList.add("pulled");
-          e.preventDefault();
+        // mobileLangList.style.bottom = -touchDiff + "px";
+        // if (touchDiff > 30) {
+        //   pull.classList.add("pulled");
+        //   e.preventDefault();
+        // }
+        if (touchDiff > 0) {
+          // Check if movement is downward
+          isMovingDown = true;
+          mobileLangList.style.bottom = -touchDiff + "px";
+          if (touchDiff > 30) {
+            pull.classList.add("pulled");
+            e.preventDefault();
+          }
+        } else {
+          isMovingDown = false;
         }
       });
       document.addEventListener("touchend", (e) => {
@@ -101,6 +114,7 @@ pull.forEach((pull) => {
           pull.classList.remove("pulled");
           hideMobileLanguageMenu();
         }
+        isMovingDown = false;
       });
     }
   }
