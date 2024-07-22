@@ -1,5 +1,6 @@
 const headerLangBtn = document.querySelector(".header-lang-btn");
 const headerLangList = document.querySelector(".header-lang-list");
+const headerLangListLinks = document.querySelectorAll(".header-lang-list li a");
 const burgerBtn = document.querySelector(".burger");
 const sideMenu = document.querySelector(".sidemenu");
 const menuOverlay = document.querySelector(".menu-overlay");
@@ -14,6 +15,14 @@ if (sideMenu) {
   }
 }
 
+function closeLanguageMenu() {
+  if (window.innerWidth < 768) {
+    menuOverlay.classList.remove("is-visible");
+    document.body.classList.remove("scroll-lock");
+  }
+  headerLangList.classList.remove("is-open");
+}
+
 if (headerLangBtn) {
   headerLangBtn.addEventListener("click", () => {
     if (window.innerWidth < 768) {
@@ -26,10 +35,18 @@ if (headerLangBtn) {
 if (window.innerWidth > 768) {
   if (headerLangList) {
     headerLangList.addEventListener("pointerleave", () => {
-      headerLangList.classList.remove("is-open");
+      closeLanguageMenu();
     });
   }
 }
+
+headerLangListLinks.forEach((link) => {
+  if (link) {
+    link.addEventListener("click", () => {
+      closeLanguageMenu();
+    });
+  }
+});
 
 if (burgerBtn) {
   burgerBtn.addEventListener("click", () => {
