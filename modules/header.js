@@ -64,6 +64,7 @@ document.addEventListener("touchend", (e) => {
     pull.classList.remove("pulled");
     headerLangList.classList.remove("is-open");
     menuOverlay.classList.remove("is-visible");
+    document.body.classList.remove("scroll-lock");
     headerLangList.style.bottom = 0;
   } else {
     headerLangList.style.bottom = 0;
