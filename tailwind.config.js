@@ -21,9 +21,11 @@ module.exports = {
         window2: "#1D2442",
         borderColor: "#272F50",
         darkGray: "#8A95C1",
+        lightGray: "#a9aabf",
       },
       boxShadow: {
         shadow: "0 4px 4px 0 rgba(0, 0, 0, 0.25)",
+        shadowTop: "0 -4px 4px 0 rgba(0, 0, 0, 0.25)",
       },
       fontFamily: {
         raleway: "Raleway",

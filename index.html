@@ -5,7 +5,7 @@
     <link rel="icon" type="image/svg+xml" href="./img/favicon.svg" />
     <meta
       name="viewport"
-      content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1"
+      content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"
     />
     <title>Demo Game</title>
   </head>
@@ -66,14 +66,14 @@
                 />
               </button>
               <ul
-                class="header-lang-list tbl:rounded-b-none tbl:bg-window2 tbl:transition-all tbl:fixed tbl:left-0 tbl:-bottom-full tbl:z-[100] tbl:scale-y-100 tbl:w-full tbl:top-auto tbl:rounded-2xl absolute right-0 top-[110%] overflow-hidden rounded-lg duration-300"
+                class="header-lang-list tbl:hidden tbl:rounded-b-none tbl:bg-window2 tbl:transition-all tbl:fixed tbl:left-0 tbl:-bottom-full tbl:z-[100] tbl:scale-y-100 tbl:w-full tbl:top-auto tbl:rounded-2xl absolute right-0 top-[110%] overflow-hidden rounded-lg duration-300"
               >
                 <li
                   class="tbl:block slide-down pulldown relative mx-auto hidden h-[30px] w-[80px]"
                 ></li>
                 <li>
                   <a
-                    class="tbl:w-full tbl:h-auto tbl:justify-start tbl:py-3 tbl:px-3 flex h-9 w-9 items-center justify-center gap-2 bg-window2 text-[14px] font-semibold transition-all hover:bg-borderColor"
+                    class="tbl:w-full tbl:h-auto language-link tbl:justify-start tbl:py-3 tbl:px-3 flex h-9 w-9 items-center justify-center gap-2 bg-window2 text-[14px] font-semibold transition-all hover:bg-borderColor"
                     href="#"
                     ><img
                       width="20"
@@ -86,7 +86,7 @@
                 </li>
                 <li>
                   <a
-                    class="tbl:w-full tbl:h-auto tbl:py-3 tbl:justify-start tbl:px-3 flex h-9 w-9 items-center justify-center gap-2 bg-window2 text-[14px] font-semibold transition-all hover:bg-borderColor"
+                    class="tbl:w-full tbl:h-auto language-link tbl:py-3 tbl:justify-start tbl:px-3 flex h-9 w-9 items-center justify-center gap-2 bg-window2 text-[14px] font-semibold transition-all hover:bg-borderColor"
                     href="#"
                     ><img
                       width="20"
@@ -99,7 +99,7 @@
                 </li>
                 <li>
                   <a
-                    class="tbl:w-full tbl:h-auto tbl:py-3 tbl:justify-start tbl:px-3 flex h-9 w-9 items-center justify-center gap-2 bg-window2 text-[14px] font-semibold transition-all hover:bg-borderColor"
+                    class="tbl:w-full tbl:h-auto language-link tbl:py-3 tbl:justify-start tbl:px-3 flex h-9 w-9 items-center justify-center gap-2 bg-window2 text-[14px] font-semibold transition-all hover:bg-borderColor"
                     href="#"
                     ><img
                       width="20"
@@ -112,7 +112,7 @@
                 </li>
                 <li>
                   <a
-                    class="tbl:w-full tbl:py-3 tbl:h-auto tbl:justify-start tbl:px-3 flex h-9 w-9 items-center justify-center gap-2 bg-window2 text-[14px] font-semibold transition-all hover:bg-borderColor"
+                    class="tbl:w-full tbl:py-3 tbl:h-auto language-link tbl:justify-start tbl:px-3 flex h-9 w-9 items-center justify-center gap-2 bg-window2 text-[14px] font-semibold transition-all hover:bg-borderColor"
                     href="#"
                     ><img
                       width="20"
@@ -614,6 +614,71 @@
         </div>
       </main>
     </div>
+    <!-- Language mobile -->
+    <div
+      class="language-overlay pulldown fixed left-0 top-0 z-[500] h-screen w-full bg-pageBg/80"
+    >
+      <ul
+        class="language-mobile-list absolute bottom-0 left-0 w-full rounded-tl-2xl rounded-tr-2xl border border-borderColor bg-window2"
+      >
+        <li
+          class="tbl:block slide-down pulldown relative mx-auto hidden h-[40px] w-[80px]"
+        ></li>
+        <li>
+          <a
+            class="tbl:w-full language-link tbl:h-auto tbl:justify-start tbl:py-3 tbl:px-3 flex h-9 w-9 items-center justify-center gap-2 bg-window2 text-[14px] font-semibold transition-all hover:bg-borderColor"
+            href="#"
+            ><img
+              width="20"
+              height="20"
+              src="./img/eng-flag.svg"
+              alt="eng flag"
+            />
+            <span class="tbl:block hidden">English</span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="tbl:w-full language-link tbl:h-auto tbl:py-3 tbl:justify-start tbl:px-3 flex h-9 w-9 items-center justify-center gap-2 bg-window2 text-[14px] font-semibold transition-all hover:bg-borderColor"
+            href="#"
+            ><img
+              width="20"
+              height="20"
+              src="./img/ru-flag.svg"
+              alt="Ru flag"
+            />
+            <span class="tbl:block hidden">Russian</span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="tbl:w-full language-link tbl:h-auto tbl:py-3 tbl:justify-start tbl:px-3 flex h-9 w-9 items-center justify-center gap-2 bg-window2 text-[14px] font-semibold transition-all hover:bg-borderColor"
+            href="#"
+            ><img
+              width="20"
+              height="20"
+              src="./img/fr-flag.svg"
+              alt="FR flag"
+            />
+            <span class="tbl:block hidden">French</span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="tbl:w-full language-link tbl:py-3 tbl:h-auto tbl:justify-start tbl:px-3 flex h-9 w-9 items-center justify-center gap-2 bg-window2 text-[14px] font-semibold transition-all hover:bg-borderColor"
+            href="#"
+            ><img
+              width="20"
+              height="20"
+              src="./img/es-flag.svg"
+              alt="es flag"
+            />
+            <span class="tbl:block hidden">Espanol</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- Modal window -->
     <div
       class="overlay fixed left-0 top-0 z-50 hidden h-dvh w-full place-items-center bg-pageBg/80 p-8"
     >
@@ -653,6 +718,133 @@
           </p>
         </div>
       </div>
+    </div>
+    <!-- Bottom menu -->
+    <div
+      class="bottom-menu tbl:block shadow-shadowTop fixed bottom-0 left-0 hidden w-full rounded-tl-2xl rounded-tr-2xl border-t border-borderColor bg-[#1A2039] px-4 pb-[10px] pt-[2px]"
+    >
+      <ul class="flex justify-between">
+        <li>
+          <a
+            href="#"
+            class="text-lightGray burger relative flex min-w-[20%] flex-col items-center gap-1 text-xs font-semibold"
+          >
+            <svg
+              width="24"
+              height="25"
+              viewBox="0 0 24 25"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4 6.75659H20M4 12.7566H20M4 18.7566H20"
+                stroke="#A9AABF"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            Menu
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            class="text-lightGray relative flex min-w-[20%] flex-col items-center gap-1 text-xs font-semibold"
+          >
+            <svg
+              width="25"
+              height="25"
+              viewBox="0 0 25 25"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12.75 6.75659L16.75 12.7566L21.75 8.75659L19.75 18.7566H5.75L3.75 8.75659L8.75 12.7566L12.75 6.75659Z"
+                stroke="#A9AABF"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            VIP Club
+          </a>
+        </li>
+        <li class="flex items-end">
+          <a
+            href="#"
+            class="text-lightGray relative flex min-w-[20%] flex-col items-center gap-1 text-xs font-semibold"
+          >
+            <div
+              class="shadow-shadowTop absolute bottom-[18px] left-1/2 flex h-[42px] w-[42px] -translate-x-1/2 items-center justify-center rounded-full border-[6px] border-[#1a2039] bg-yellow"
+            >
+              <svg
+                class="h-6 w-6"
+                width="25"
+                height="25"
+                viewBox="0 0 25 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M16.5 19.7566H22.5M19.5 16.7566V22.7566M6.5 21.7566V19.7566C6.5 18.6957 6.92143 17.6783 7.67157 16.9282C8.42172 16.178 9.43913 15.7566 10.5 15.7566H14.5M8.5 7.75659C8.5 8.81746 8.92143 9.83487 9.67157 10.585C10.4217 11.3352 11.4391 11.7566 12.5 11.7566C13.5609 11.7566 14.5783 11.3352 15.3284 10.585C16.0786 9.83487 16.5 8.81746 16.5 7.75659C16.5 6.69573 16.0786 5.67831 15.3284 4.92816C14.5783 4.17802 13.5609 3.75659 12.5 3.75659C11.4391 3.75659 10.4217 4.17802 9.67157 4.92816C8.92143 5.67831 8.5 6.69573 8.5 7.75659Z"
+                  stroke="black"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            Sign Up
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            class="text-lightGray relative flex min-w-[20%] flex-col items-center gap-1 text-xs font-semibold"
+          >
+            <svg
+              width="25"
+              height="25"
+              viewBox="0 0 25 25"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12.25 8.75653V21.7565M12.25 8.75653C11.8883 7.26593 11.2654 5.9916 10.4627 5.0997C9.66003 4.2078 8.71469 3.73973 7.75 3.75654C7.08696 3.75654 6.45107 4.01993 5.98223 4.48877C5.51339 4.95761 5.25 5.5935 5.25 6.25654C5.25 6.91958 5.51339 7.55547 5.98223 8.02431C6.45107 8.49315 7.08696 8.75654 7.75 8.75654M12.25 8.75653C12.6117 7.26593 13.2346 5.9916 14.0373 5.0997C14.84 4.2078 15.7853 3.73973 16.75 3.75654C17.413 3.75654 18.0489 4.01993 18.5178 4.48877C18.9866 4.95761 19.25 5.5935 19.25 6.25654C19.25 6.91958 18.9866 7.55547 18.5178 8.02431C18.0489 8.49315 17.413 8.75654 16.75 8.75654M19.25 12.7565V19.7565C19.25 20.287 19.0393 20.7957 18.6642 21.1707C18.2891 21.5458 17.7804 21.7565 17.25 21.7565H7.25C6.71957 21.7565 6.21086 21.5458 5.83579 21.1707C5.46071 20.7957 5.25 20.287 5.25 19.7565V12.7565M3.25 9.75653C3.25 9.49131 3.35536 9.23696 3.54289 9.04942C3.73043 8.86189 3.98478 8.75653 4.25 8.75653H20.25C20.5152 8.75653 20.7696 8.86189 20.9571 9.04942C21.1446 9.23696 21.25 9.49131 21.25 9.75653V11.7565C21.25 12.0217 21.1446 12.2761 20.9571 12.4636C20.7696 12.6512 20.5152 12.7565 20.25 12.7565H4.25C3.98478 12.7565 3.73043 12.6512 3.54289 12.4636C3.35536 12.2761 3.25 12.0217 3.25 11.7565V9.75653Z"
+                stroke="#A9AABF"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            Bonuses
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            class="text-lightGray relative flex min-w-[20%] flex-col items-center gap-1 text-xs font-semibold"
+          >
+            <svg
+              width="24"
+              height="25"
+              viewBox="0 0 24 25"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M17 9.75659V7.75659C17 7.22616 16.7893 6.71745 16.4142 6.34238C16.0391 5.96731 15.5304 5.75659 15 5.75659H5C4.46957 5.75659 3.96086 5.96731 3.58579 6.34238C3.21071 6.71745 3 7.22616 3 7.75659V13.7566C3 14.287 3.21071 14.7957 3.58579 15.1708C3.96086 15.5459 4.46957 15.7566 5 15.7566H7M7 11.7566C7 11.2262 7.21071 10.7175 7.58579 10.3424C7.96086 9.96731 8.46957 9.75659 9 9.75659H19C19.5304 9.75659 20.0391 9.96731 20.4142 10.3424C20.7893 10.7175 21 11.2262 21 11.7566V17.7566C21 18.287 20.7893 18.7957 20.4142 19.1708C20.0391 19.5459 19.5304 19.7566 19 19.7566H9C8.46957 19.7566 7.96086 19.5459 7.58579 19.1708C7.21071 18.7957 7 18.287 7 17.7566V11.7566ZM12 14.7566C12 15.287 12.2107 15.7957 12.5858 16.1708C12.9609 16.5459 13.4696 16.7566 14 16.7566C14.5304 16.7566 15.0391 16.5459 15.4142 16.1708C15.7893 15.7957 16 15.287 16 14.7566C16 14.2262 15.7893 13.7175 15.4142 13.3424C15.0391 12.9673 14.5304 12.7566 14 12.7566C13.4696 12.7566 12.9609 12.9673 12.5858 13.3424C12.2107 13.7175 12 14.2262 12 14.7566Z"
+                stroke="#A9AABF"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            Deposit
+          </a>
+        </li>
+      </ul>
     </div>
     <script type="module" src="/main.js"></script>
   </body>

@@ -191,6 +191,28 @@ main {
   transform: translate(-50%, -50%);
 }
 
+.language-overlay {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+}
+
+.language-overlay .language-mobile-list {
+  bottom: -100%;
+  transition: 0.3s;
+}
+
+.language-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.3s;
+}
+
+.language-overlay.is-open .language-mobile-list {
+  bottom: 0;
+  transition: 0.3s;
+}
+
 @media (max-width: 992px) {
   .sidemenu {
     transition: all 0.3s;
