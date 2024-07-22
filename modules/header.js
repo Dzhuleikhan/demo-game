@@ -26,6 +26,7 @@ if (headerLangBtn) {
     } else {
       langMenuOverlay.classList.add("is-open");
       mobileLangList.style.bottom = 0;
+      document.body.classList.remove("scroll-lock");
     }
   });
 }
@@ -33,6 +34,7 @@ if (headerLangBtn) {
 function hideMobileLanguageMenu() {
   langMenuOverlay.classList.remove("is-open");
   mobileLangList.style.bottom = "-100%";
+  document.body.classList.remove("scroll-lock");
 }
 
 if (langMenuOverlay) {
