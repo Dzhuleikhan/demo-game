@@ -26,7 +26,7 @@ if (headerLangBtn) {
     } else {
       langMenuOverlay.classList.add("is-open");
       mobileLangList.style.bottom = 0;
-      document.body.classList.remove("scroll-lock");
+      document.body.classList.add("scroll-lock");
     }
   });
 }
