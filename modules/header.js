@@ -16,6 +16,9 @@ if (sideMenu) {
 
 if (headerLangBtn) {
   headerLangBtn.addEventListener("click", () => {
+    if (window.innerWidth < 768) {
+      menuOverlay.classList.toggle("is-visible");
+    }
     headerLangList.classList.toggle("is-open");
   });
 }
@@ -37,3 +40,10 @@ if (burgerBtn) {
     }
   });
 }
+
+const pull = document.querySelector(".slide-down");
+
+// var hammertime = new Hammer(pull);
+// hammertime.on("pandown", function (ev) {
+//   console.log(ev);
+// });

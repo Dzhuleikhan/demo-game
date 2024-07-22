@@ -41,7 +41,7 @@
           <div class="flex items-center gap-3">
             <div class="flex items-center gap-3">
               <button
-                class="rounded-lg border border-borderColor bg-[#1d2442] px-6 py-2 text-sm font-bold leading-[186%] text-white transition-all hover:border-white active:scale-[0.98] active:opacity-90 mobile:px-3"
+                class="rounded-lg border border-borderColor bg-window2 px-6 py-2 text-sm font-bold leading-[186%] text-white transition-all hover:border-white active:scale-[0.98] active:opacity-90 mobile:px-3"
               >
                 Sign In
               </button>
@@ -53,7 +53,7 @@
             </div>
             <div class="header-lang-box relative">
               <button
-                class="header-lang-btn flex h-9 w-9 items-center justify-center rounded-lg bg-[#1d2442] transition-all hover:bg-borderColor"
+                class="header-lang-btn flex h-9 w-9 items-center justify-center rounded-lg bg-window2 transition-all hover:bg-borderColor"
               >
                 <img
                   width="20"
@@ -63,51 +63,62 @@
                 />
               </button>
               <ul
-                class="header-lang-list tbl:rounded-b-none tbl:transition-all tbl:fixed tbl:left-0 tbl:-bottom-full tbl:scale-y-100 tbl:w-full tbl:top-auto absolute right-0 top-[110%] overflow-hidden rounded-lg duration-300"
+                class="header-lang-list tbl:rounded-b-none tbl:bg-window2 tbl:transition-all tbl:fixed tbl:left-0 tbl:-bottom-full tbl:z-[100] tbl:scale-y-100 tbl:w-full tbl:top-auto tbl:rounded-2xl absolute right-0 top-[110%] overflow-hidden rounded-lg duration-300"
               >
+                <li
+                  class="tbl:block slide-down relative mx-auto hidden h-[30px] w-[80px]"
+                ></li>
                 <li>
                   <a
-                    class="tbl:w-full tbl:justify-start tbl:px-3 flex h-9 w-9 items-center justify-center bg-[#1d2442] transition-all hover:bg-borderColor"
+                    class="tbl:w-full tbl:h-auto tbl:justify-start tbl:py-3 tbl:px-3 flex h-9 w-9 items-center justify-center gap-2 bg-window2 text-[14px] font-semibold transition-all hover:bg-borderColor"
                     href="#"
                     ><img
                       width="20"
                       height="20"
                       src="./img/eng-flag.svg"
                       alt="eng flag"
-                  /></a>
+                    />
+                    <span class="tbl:block hidden">English</span>
+                  </a>
                 </li>
                 <li>
                   <a
-                    class="tbl:w-full tbl:justify-start tbl:px-3 flex h-9 w-9 items-center justify-center bg-[#1d2442] transition-all hover:bg-borderColor"
+                    class="tbl:w-full tbl:h-auto tbl:py-3 tbl:justify-start tbl:px-3 flex h-9 w-9 items-center justify-center gap-2 bg-window2 text-[14px] font-semibold transition-all hover:bg-borderColor"
                     href="#"
                     ><img
                       width="20"
                       height="20"
                       src="./img/ru-flag.svg"
                       alt="Ru flag"
-                  /></a>
+                    />
+                    <span class="tbl:block hidden">Russian</span>
+                  </a>
                 </li>
                 <li>
                   <a
-                    class="tbl:w-full tbl:justify-start tbl:px-3 flex h-9 w-9 items-center justify-center bg-[#1d2442] transition-all hover:bg-borderColor"
+                    class="tbl:w-full tbl:h-auto tbl:py-3 tbl:justify-start tbl:px-3 flex h-9 w-9 items-center justify-center gap-2 bg-window2 text-[14px] font-semibold transition-all hover:bg-borderColor"
                     href="#"
                     ><img
                       width="20"
                       height="20"
                       src="./img/fr-flag.svg"
                       alt="FR flag"
-                  /></a>
+                    />
+                    <span class="tbl:block hidden">French</span>
+                  </a>
                 </li>
                 <li>
                   <a
-                    class="tbl:w-full tbl:justify-start tbl:px-3 flex h-9 w-9 items-center justify-center bg-[#1d2442] transition-all hover:bg-borderColor"
+                    class="tbl:w-full tbl:py-3 tbl:h-auto tbl:justify-start tbl:px-3 flex h-9 w-9 items-center justify-center gap-2 bg-window2 text-[14px] font-semibold transition-all hover:bg-borderColor"
                     href="#"
                     ><img
                       width="20"
                       height="20"
                       src="./img/es-flag.svg"
                       alt="es flag"
-                  /></a>
+                    />
+                    <span class="tbl:block hidden">Espanol</span>
+                  </a>
                 </li>
               </ul>
             </div>
@@ -251,7 +262,7 @@
                 Sign Up
               </button>
               <button
-                class="w-full rounded-lg border border-borderColor bg-[#1d2442] px-6 py-2 text-sm font-bold leading-[186%] text-white transition-all hover:border-white active:scale-[0.98] active:opacity-90 mobile:px-3"
+                class="w-full rounded-lg border border-borderColor bg-window2 px-6 py-2 text-sm font-bold leading-[186%] text-white transition-all hover:border-white active:scale-[0.98] active:opacity-90 mobile:px-3"
               >
                 Sign In
               </button>
@@ -602,7 +613,7 @@
       class="overlay fixed left-0 top-0 z-50 hidden h-dvh w-full place-items-center bg-pageBg/80 p-8"
     >
       <div
-        class="modal w-full max-w-[400px] overflow-hidden rounded-2xl bg-[#1D2442] shadow-shadow"
+        class="modal w-full max-w-[400px] overflow-hidden rounded-2xl bg-window2 shadow-shadow"
       >
         <div class="bg-window1 p-6">
           <p
@@ -638,6 +649,7 @@
         </div>
       </div>
     </div>
+    <script src="./pullDown.js"></script>
     <script type="module" src="/main.js"></script>
   </body>
 </html>
