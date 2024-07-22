@@ -92,11 +92,6 @@ pull.forEach((pull) => {
       pull.addEventListener("touchmove", (e) => {
         const touchY = e.touches[0].clientY;
         const touchDiff = touchY - touchstartY;
-        // mobileLangList.style.bottom = -touchDiff + "px";
-        // if (touchDiff > 30) {
-        //   pull.classList.add("pulled");
-        //   e.preventDefault();
-        // }
         if (touchDiff > 0) {
           // Check if movement is downward
           isMovingDown = true;
