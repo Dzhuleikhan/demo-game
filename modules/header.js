@@ -18,6 +18,7 @@ if (headerLangBtn) {
   headerLangBtn.addEventListener("click", () => {
     if (window.innerWidth < 768) {
       menuOverlay.classList.toggle("is-visible");
+      document.body.classList.toggle("scroll-lock");
     }
     headerLangList.classList.toggle("is-open");
   });
