@@ -22,11 +22,12 @@ if (headerLangBtn) {
     headerLangList.classList.toggle("is-open");
   });
 }
-
-if (headerLangList) {
-  headerLangList.addEventListener("pointerleave", () => {
-    headerLangList.classList.remove("is-open");
-  });
+if (window.innerWidth > 768) {
+  if (headerLangList) {
+    headerLangList.addEventListener("pointerleave", () => {
+      headerLangList.classList.remove("is-open");
+    });
+  }
 }
 
 if (burgerBtn) {
@@ -41,17 +42,29 @@ if (burgerBtn) {
   });
 }
 
-var myElement = document.querySelector(".slide-down");
+var pull = document.querySelector(".slide-down");
 
-// create a simple instance
-// by default, it only adds horizontal recognizers
-var mc = new Hammer(myElement);
-
-// let the pan gesture support all directions.
-// this will block the vertical scrolling on a touch-device while on the element
-mc.get("pan").set({ direction: Hammer.DIRECTION_ALL });
-
-// listen to events...
-mc.on("pandown", function () {
-  headerLangList.classList.remove("is-open");
+let touchstartY = 0;
+pull.addEventListener("touchstart", (e) => {
+  touchstartY = e.touches[0].clientY;
+  console.log(touchstartY);
+});
+pull.addEventListener("touchmove", (e) => {
+  const touchY = e.touches[0].clientY;
+  const touchDiff = touchY - touchstartY;
+  headerLangList.style.bottom = -touchDiff + "px";
+  if (touchDiff > 50) {
+    pull.classList.add("pulled");
+    e.preventDefault();
+  }
+});
+document.addEventListener("touchend", (e) => {
+  if (pull.classList.contains("pulled")) {
+    pull.classList.remove("pulled");
+    headerLangList.classList.remove("is-open");
+    menuOverlay.classList.remove("is-visible");
+    headerLangList.style.bottom = 0;
+  } else {
+    headerLangList.style.bottom = 0;
+  }
 });
