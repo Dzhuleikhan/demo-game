@@ -1,5 +1,5 @@
 import gsap from "gsap";
-import { countries, paymentIcons } from "../public/data";
+import { countries, countryFlags } from "../public/data";
 import horizontalLoop from "./marquee";
 
 const gameWrapper = document.querySelector(".game-wrapper");
@@ -81,15 +81,35 @@ function createPaymentIcons(country) {
   }
 }
 
+function settingGeoLocation(countryInput) {
+  let flagSet = false;
+
+  countryFlags.forEach((location) => {
+    if (location.slug.includes(countryInput)) {
+      document
+        .querySelector(".header-country-flag")
+        .setAttribute("src", `./img/flags/${countryInput}.svg`);
+      flagSet = true;
+    }
+  });
+
+  if (!flagSet) {
+    document
+      .querySelector(".header-country-flag")
+      .setAttribute("src", `./img/flags/ru.svg`);
+  }
+}
+
 async function main() {
   try {
     let locationData = await getLocation();
-    console.log(locationData.country);
+    const countryInput = locationData.country.toLowerCase();
+    console.log(countryInput);
+
+    settingGeoLocation(countryInput);
 
     countries.forEach((country) => {
       if (country.name === locationData.country) {
-        console.log(country.payments);
-
         createPaymentIcons(country);
         createPaymentIcons(country);
         createPaymentIcons(country);
