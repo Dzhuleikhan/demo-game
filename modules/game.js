@@ -67,7 +67,7 @@ async function getLocation() {
 const loop = horizontalLoop(".payments-list", {
   repeat: -1,
   paused: false,
-  speed: 1,
+  speed: 0.3,
 });
 
 function createPaymentIcons(country) {
