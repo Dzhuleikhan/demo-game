@@ -5,6 +5,16 @@ const gameWrapperFrame = document.querySelector(".game-wrapper iframe");
 const fullScreenBtn = document.querySelector(".fullscreen-btn");
 const overlay = document.querySelector(".overlay");
 
+const gameFrame = document.querySelector(".game-frame");
+const gamePreviewImg = document.querySelector(".game-preview-img");
+let gameURL = "https://demo.spribe.io/launch/plinko?lang=rucurrency=EUR&mute=1";
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (gameFrame) {
+    gameFrame.setAttribute("src", gameURL);
+  }
+});
+
 if (fullScreenBtn) {
   fullScreenBtn.addEventListener("click", () => {
     gameWrapper.classList.toggle("fullscreen");
@@ -33,14 +43,14 @@ function showModal() {
   document.body.style.overflow = "hidden";
 }
 
-// window.focus();
-// const frameListener = window.addEventListener("blur", () => {
-//   if (document.activeElement === document.querySelector("iframe")) {
-//     window.localStorage.setItem("modal", "open");
-//     showModal();
-//   }
-//   window.removeEventListener("blur", frameListener);
-// });
+window.focus();
+const frameListener = window.addEventListener("blur", () => {
+  if (document.activeElement === document.querySelector("iframe")) {
+    window.localStorage.setItem("modal", "open");
+    showModal();
+  }
+  window.removeEventListener("blur", frameListener);
+});
 
 if (localStorage.modal) {
   showModal();
