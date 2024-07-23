@@ -2,6 +2,8 @@ import gsap from "gsap";
 import { countries, countryFlags } from "../public/data";
 import horizontalLoop from "./marquee";
 
+const headerFlagGeo = document.querySelector(".header-country-flag");
+
 const gameWrapper = document.querySelector(".game-wrapper");
 const fullScreenBtn = document.querySelector(".fullscreen-btn");
 const overlay = document.querySelector(".overlay");
@@ -86,17 +88,16 @@ function settingGeoLocation(countryInput) {
 
   countryFlags.forEach((location) => {
     if (location.slug.includes(countryInput)) {
-      document
-        .querySelector(".header-country-flag")
-        .setAttribute("src", `./img/flags/${countryInput}.svg`);
+      headerFlagGeo.setAttribute("src", `./img/flags/${countryInput}.svg`);
+      headerFlagGeo.setAttribute("alt", location.name);
       flagSet = true;
+      setTimeout(() => {
+        headerFlagGeo.classList.remove("hidden");
+      }, 1000);
     }
   });
 
   if (!flagSet) {
-    document
-      .querySelector(".header-country-flag")
-      .setAttribute("src", `./img/flags/ru.svg`);
   }
 }
 
@@ -104,7 +105,6 @@ async function main() {
   try {
     let locationData = await getLocation();
     const countryInput = locationData.country.toLowerCase();
-    console.log(countryInput);
 
     settingGeoLocation(countryInput);
 
