@@ -98,6 +98,8 @@ function settingGeoLocation(countryInput) {
   });
 
   if (!flagSet) {
+    headerFlagGeo.setAttribute("src", "");
+    headerFlagGeo.setAttribute("alt", "");
   }
 }
 
