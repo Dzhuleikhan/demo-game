@@ -1,5 +1,5 @@
 import gsap from "gsap";
-import { countries, countryFlags } from "../public/data";
+import { countries, countryFlags, countryData } from "../public/data";
 import horizontalLoop from "./marquee";
 
 const headerFlagGeo = document.querySelector(".header-country-flag");
@@ -10,7 +10,7 @@ const overlay = document.querySelector(".overlay");
 
 const gameFrame = document.querySelector(".game-frame");
 const gamePreviewImg = document.querySelector(".game-preview-img");
-let gameURL = "https://demo.spribe.io/launch/plinko?lang=rucurrency=EUR&mute=1";
+let gameURL = "https://demo.spribe.io/launch/plinko?lang=nlcurrency=EUR&mute=1";
 
 document.addEventListener("DOMContentLoaded", () => {
   if (gameFrame) {
@@ -46,18 +46,18 @@ function showModal() {
   document.body.style.overflow = "hidden";
 }
 
-window.focus();
-const frameListener = window.addEventListener("blur", () => {
-  if (document.activeElement === document.querySelector("iframe")) {
-    window.localStorage.setItem("modal", "open");
-    showModal();
-  }
-  window.removeEventListener("blur", frameListener);
-});
+// window.focus();
+// const frameListener = window.addEventListener("blur", () => {
+//   if (document.activeElement === document.querySelector("iframe")) {
+//     window.localStorage.setItem("modal", "open");
+//     showModal();
+//   }
+//   window.removeEventListener("blur", frameListener);
+// });
 
-if (localStorage.modal) {
-  showModal();
-}
+// if (localStorage.modal) {
+//   showModal();
+// }
 
 async function getLocation() {
   let url = "https://ipinfo.io/json?token=d5361631d79bbd";
@@ -103,12 +103,30 @@ function settingGeoLocation(countryInput) {
   }
 }
 
+function getCountryCurrencyName(inputCountry) {
+  for (const data of countryData) {
+    if (data.countries.includes(inputCountry)) {
+      return data.countryCurrency;
+    }
+  }
+  return "USD"; // or some default value if country is not found
+}
+
 async function main() {
   try {
     let locationData = await getLocation();
     const countryInput = locationData.country.toLowerCase();
 
     settingGeoLocation(countryInput);
+
+    // Currency
+    const currencyName = getCountryCurrencyName(locationData.country);
+
+    gameURL = `https://demo.spribe.io/launch/plinko?lang=${countryInput}currency=${currencyName}&mute=1`;
+
+    if (gameFrame) {
+      gameFrame.setAttribute("src", gameURL);
+    }
 
     countries.forEach((country) => {
       if (country.name === locationData.country) {
