@@ -10,7 +10,8 @@ const overlay = document.querySelector(".overlay");
 
 const gameFrame = document.querySelector(".game-frame");
 const gamePreviewImg = document.querySelector(".game-preview-img");
-let gameURL = "https://demo.spribe.io/launch/plinko?lang=nlcurrency=EUR&mute=1";
+let gameURL =
+  "https://demo.spribe.io/launch/plinko?lang=nl&currency=EUR&mute=1";
 
 document.addEventListener("DOMContentLoaded", () => {
   if (gameFrame) {
@@ -122,7 +123,7 @@ async function main() {
     // Currency
     const currencyName = getCountryCurrencyName(locationData.country);
 
-    gameURL = `https://demo.spribe.io/launch/plinko?lang=${countryInput}currency=${currencyName}&mute=1`;
+    gameURL = `https://demo.spribe.io/launch/plinko?lang=${countryInput}&currency=${currencyName}&mute=1`;
 
     if (gameFrame) {
       gameFrame.setAttribute("src", gameURL);
