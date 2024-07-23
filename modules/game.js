@@ -9,11 +9,11 @@ const gameFrame = document.querySelector(".game-frame");
 const gamePreviewImg = document.querySelector(".game-preview-img");
 let gameURL = "https://demo.spribe.io/launch/plinko?lang=rucurrency=EUR&mute=1";
 
-document.addEventListener("DOMContentLoaded", () => {
-  if (gameFrame) {
-    gameFrame.setAttribute("src", gameURL);
-  }
-});
+// document.addEventListener("DOMContentLoaded", () => {
+//   if (gameFrame) {
+//     gameFrame.setAttribute("src", "#");
+//   }
+// });
 
 if (fullScreenBtn) {
   fullScreenBtn.addEventListener("click", () => {
