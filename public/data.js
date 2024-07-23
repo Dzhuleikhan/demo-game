@@ -1,4 +1,4 @@
-export const countries = [
+export const countriesPayments = [
   {
     name: "NL",
     payments: [
@@ -61,6 +61,7 @@ export const countryFlags = [
   { name: "Chad", slug: "td" },
   { name: "Chile", slug: "cl" },
   { name: "China", slug: "cn" },
+  { name: "Hong Kong", slug: "hk" },
   { name: "Colombia", slug: "co" },
   { name: "Comoros", slug: "km" },
   { name: "Congo (Congo-Brazzaville)", slug: "cg" },
@@ -107,12 +108,14 @@ export const countryFlags = [
   { name: "Ireland", slug: "ie" },
   { name: "Israel", slug: "il" },
   { name: "Italy", slug: "it" },
+  { name: "Ivory Coast", slug: "ci" },
   { name: "Jamaica", slug: "jm" },
   { name: "Japan", slug: "jp" },
   { name: "Jordan", slug: "jo" },
   { name: "Kazakhstan", slug: "kz" },
   { name: "Kenya", slug: "ke" },
   { name: "Kiribati", slug: "ki" },
+  { name: "Kosovo", slug: "xk" },
   { name: "Kuwait", slug: "kw" },
   { name: "Kyrgyzstan", slug: "kg" },
   { name: "Laos", slug: "la" },
@@ -124,6 +127,7 @@ export const countryFlags = [
   { name: "Liechtenstein", slug: "li" },
   { name: "Lithuania", slug: "lt" },
   { name: "Luxembourg", slug: "lu" },
+  { name: "Macau", slug: "mo" },
   { name: "Madagascar", slug: "mg" },
   { name: "Malawi", slug: "mw" },
   { name: "Malaysia", slug: "my" },
@@ -196,6 +200,7 @@ export const countryFlags = [
   { name: "Syria", slug: "sy" },
   { name: "Tajikistan", slug: "tj" },
   { name: "Tanzania", slug: "tz" },
+  { name: "Taiwan", slug: "TWN" },
   { name: "Thailand", slug: "th" },
   { name: "Timor-Leste", slug: "tl" },
   { name: "Togo", slug: "tg" },
@@ -221,7 +226,7 @@ export const countryFlags = [
   { name: "Zimbabwe", slug: "zw" },
 ];
 
-export const countryData = [
+export const countryCurrencyData = [
   {
     countries: [
       "AT",

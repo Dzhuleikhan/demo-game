@@ -74,58 +74,71 @@
                 ></li>
                 <li>
                   <a
+                    data-lang="en"
                     class="language-link flex h-9 w-9 items-center justify-center gap-2 bg-window2 text-[14px] font-semibold transition-all hover:bg-borderColor tbl:h-auto tbl:w-full tbl:justify-start tbl:px-3 tbl:py-3"
                     href="#"
                     ><img
-                      class="overflow-hidden rounded-full"
+                      class="pointer-events-none overflow-hidden rounded-full"
                       width="20"
                       height="20"
                       src="./img/flags/en.svg"
                       alt="eng flag"
                     />
-                    <span class="hidden tbl:block">English</span>
+                    <span class="pointer-events-none hidden tbl:block"
+                      >English</span
+                    >
                   </a>
                 </li>
                 <li>
                   <a
+                    data-lang="ru"
                     class="language-link flex h-9 w-9 items-center justify-center gap-2 bg-window2 text-[14px] font-semibold transition-all hover:bg-borderColor tbl:h-auto tbl:w-full tbl:justify-start tbl:px-3 tbl:py-3"
                     href="#"
                     ><img
-                      class="overflow-hidden rounded-full"
+                      class="pointer-events-none overflow-hidden rounded-full"
                       width="20"
                       height="20"
                       src="./img/flags/ru.svg"
                       alt="Ru flag"
                     />
-                    <span class="hidden tbl:block">Russian</span>
+                    <span class="pointer-events-none hidden tbl:block"
+                      >Russian</span
+                    >
                   </a>
                 </li>
                 <li>
                   <a
+                    data-lang="fr"
                     class="language-link flex h-9 w-9 items-center justify-center gap-2 bg-window2 text-[14px] font-semibold transition-all hover:bg-borderColor tbl:h-auto tbl:w-full tbl:justify-start tbl:px-3 tbl:py-3"
                     href="#"
                     ><img
-                      class="overflow-hidden rounded-full"
+                      class="pointer-events-none overflow-hidden rounded-full"
                       width="20"
                       height="20"
                       src="./img/flags/fr.svg"
                       alt="FR flag"
                     />
-                    <span class="hidden tbl:block">French</span>
+                    <span class="pointer-events-none hidden tbl:block"
+                      >French</span
+                    >
                   </a>
                 </li>
                 <li>
                   <a
+                    data-lang="es"
                     class="language-link flex h-9 w-9 items-center justify-center gap-2 bg-window2 text-[14px] font-semibold transition-all hover:bg-borderColor tbl:h-auto tbl:w-full tbl:justify-start tbl:px-3 tbl:py-3"
                     href="#"
-                    ><img
-                      class="overflow-hidden rounded-full"
+                  >
+                    <img
+                      class="pointer-events-none overflow-hidden rounded-full"
                       width="20"
                       height="20"
                       src="./img/flags/es.svg"
                       alt="es flag"
                     />
-                    <span class="hidden tbl:block">Espanol</span>
+                    <span class="pointer-events-none hidden tbl:block"
+                      >Espanol</span
+                    >
                   </a>
                 </li>
               </ul>
@@ -143,8 +156,7 @@
           <div class="m-3 w-[195px] space-y-3 lg:w-auto">
             <ul>
               <li>
-                <a
-                  href="#"
+                <button
                   class="flex items-center gap-2 rounded-lg px-3 py-[13px] text-sm font-semibold leading-[136%] transition-all hover:bg-window2"
                 >
                   <svg
@@ -171,8 +183,8 @@
                       fill="#F0F0F0"
                     />
                   </svg>
-                  Home
-                </a>
+                  <span data-translate="home">Home</span>
+                </button>
               </li>
               <li>
                 <a
@@ -280,7 +292,7 @@
               class="sidegame-acc overflow-hidden rounded-lg text-sm font-semibold leading-[136%]"
             >
               <button
-                class="sidegame-btn grid w-full grid-cols-[auto_1fr_auto] items-center gap-2 rounded-lg bg-background2 px-3 py-[13px] transition-all hover:bg-window2 disabled:opacity-40 disabled:hover:bg-background2"
+                class="sidegame-btn sidelang-btn grid w-full grid-cols-[auto_1fr_auto] items-center gap-2 rounded-lg bg-background2 px-3 py-[13px] transition-all hover:bg-window2 disabled:opacity-40 disabled:hover:bg-background2"
               >
                 <img
                   class="overflow-hidden rounded-full"
@@ -309,8 +321,9 @@
               <ul class="sidegame-list border-t border-borderColor">
                 <li>
                   <a
+                    data-lang="en"
                     href="#"
-                    class="flex items-center gap-2 bg-background2 px-3 py-[13px] transition-all hover:bg-window2"
+                    class="language-link flex items-center gap-2 bg-background2 px-3 py-[13px] transition-all hover:bg-window2"
                     ><img
                       width="20"
                       height="20"
@@ -322,41 +335,44 @@
                 </li>
                 <li>
                   <a
+                    data-lang="ru"
                     href="#"
-                    class="flex items-center gap-2 bg-background2 px-3 py-[13px] transition-all hover:bg-window2"
+                    class="language-link flex items-center gap-2 bg-background2 px-3 py-[13px] transition-all hover:bg-window2"
                     ><img
                       width="20"
                       height="20"
                       class="overflow-hidden rounded-full"
                       src="./img/flags/ru.svg"
                       alt="Ru flag"
-                    />Russian</a
+                    />Русский</a
                   >
                 </li>
                 <li>
                   <a
+                    data-lang="fr"
                     href="#"
-                    class="flex items-center gap-2 bg-background2 px-3 py-[13px] transition-all hover:bg-window2"
+                    class="language-link flex items-center gap-2 bg-background2 px-3 py-[13px] transition-all hover:bg-window2"
                     ><img
                       width="20"
                       height="20"
                       class="overflow-hidden rounded-full"
                       src="./img/flags/fr.svg"
                       alt="FR flag"
-                    />French</a
+                    />Français</a
                   >
                 </li>
                 <li>
                   <a
+                    data-lang="es"
                     href="#"
-                    class="flex items-center gap-2 bg-background2 px-3 py-[13px] transition-all hover:bg-window2"
+                    class="language-link flex items-center gap-2 bg-background2 px-3 py-[13px] transition-all hover:bg-window2"
                     ><img
                       width="20"
                       height="20"
                       class="overflow-hidden rounded-full"
                       src="./img/flags/es.svg"
                       alt="Es flag"
-                    />Espanol</a
+                    />Español</a
                   >
                 </li>
               </ul>

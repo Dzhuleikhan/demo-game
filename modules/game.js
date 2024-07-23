@@ -1,5 +1,9 @@
 import gsap from "gsap";
-import { countries, countryFlags, countryData } from "../public/data";
+import {
+  countriesPayments,
+  countryFlags,
+  countryCurrencyData,
+} from "../public/data";
 import horizontalLoop from "./marquee";
 
 const headerFlagGeo = document.querySelector(".header-country-flag");
@@ -105,7 +109,7 @@ function settingGeoLocation(countryInput) {
 }
 
 function getCountryCurrencyName(inputCountry) {
-  for (const data of countryData) {
+  for (const data of countryCurrencyData) {
     if (data.countries.includes(inputCountry)) {
       return data.countryCurrency;
     }
@@ -129,7 +133,7 @@ async function main() {
       gameFrame.setAttribute("src", gameURL);
     }
 
-    countries.forEach((country) => {
+    countriesPayments.forEach((country) => {
       if (country.name === locationData.country) {
         createPaymentIcons(country);
         createPaymentIcons(country);
