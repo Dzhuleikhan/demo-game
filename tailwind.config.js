@@ -7,6 +7,7 @@ module.exports = {
       padding: 24,
     },
     screens: {
+      xl: { max: "1200px" },
       lg: { max: "992px" },
       tbl: { max: "767px" },
       mobile: { max: "576px" },
