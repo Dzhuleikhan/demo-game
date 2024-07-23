@@ -1,5 +1,12 @@
 import { translations } from "/public/translations";
 
+async function getLocation() {
+  let url = "https://ipinfo.io/json?token=d5361631d79bbd";
+  let response = await fetch(url);
+  let data = await response.json();
+  return data;
+}
+
 function updateContent(lang) {
   const elements = document.querySelectorAll("[data-translate]");
   elements.forEach((element) => {
@@ -10,7 +17,6 @@ function updateContent(lang) {
 
 function changeLanguage(lang) {
   updateContent(lang);
-  // setLanguageUrl(lang);
   saveUserLanguage(lang);
   updateButtonText(lang);
   setActiveLanguageBtn(lang);
@@ -23,15 +29,11 @@ function getLanguageFromPath() {
   return translations[lang] ? lang : null;
 }
 
-// function setLanguageUrl(lang) {
-//   const newPath = `/${lang}${window.location.pathname.substring(3)}`;
-//   window.history.replaceState({}, "", newPath);
-// }
-
 function getUserLanguage() {
   const userLang = navigator.language || navigator.userLanguage;
   const supportedLangs = ["en", "es", "fr", "ru"];
   const langPrefix = userLang.split("-")[0]; // Get the language code without region
+
   return supportedLangs.includes(langPrefix) ? langPrefix : "en"; // Default to 'en' if the language is not supported
 }
 
@@ -74,12 +76,32 @@ function updateButtonText(lang) {
   sideLangBtnText.textContent = languageNames[lang] || "English";
 }
 
-window.onload = () => {
+async function determineLanguage() {
   let lang = getLanguageFromPath();
   if (!lang) {
-    lang = loadUserLanguage() || getUserLanguage();
-    // setLanguageUrl(lang);
+    lang = loadUserLanguage();
   }
+  if (!lang) {
+    try {
+      const locationData = await getLocation();
+      const countryLangMap = {
+        US: "en",
+        ES: "es",
+        FR: "fr",
+        RU: "ru",
+        // Add more country codes and their corresponding languages as needed
+      };
+      lang = countryLangMap[locationData.country] || getUserLanguage();
+    } catch (error) {
+      console.error("Failed to fetch location data:", error);
+      lang = getUserLanguage();
+    }
+  }
+  return lang;
+}
+
+window.onload = async () => {
+  const lang = await determineLanguage();
   changeLanguage(lang);
 };
 

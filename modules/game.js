@@ -148,3 +148,11 @@ async function main() {
   }
 }
 main();
+
+function updateContent(lang) {
+  const elements = document.querySelectorAll("[data-translate]");
+  elements.forEach((element) => {
+    const key = element.getAttribute("data-translate");
+    element.textContent = translations[lang][key];
+  });
+}
