@@ -1,7 +1,8 @@
 import gsap from "gsap";
+import { countries, paymentIcons } from "../public/data";
+import horizontalLoop from "./marquee";
 
 const gameWrapper = document.querySelector(".game-wrapper");
-const gameWrapperFrame = document.querySelector(".game-wrapper iframe");
 const fullScreenBtn = document.querySelector(".fullscreen-btn");
 const overlay = document.querySelector(".overlay");
 
@@ -55,3 +56,48 @@ const frameListener = window.addEventListener("blur", () => {
 if (localStorage.modal) {
   showModal();
 }
+
+async function getLocation() {
+  let url = "https://ipinfo.io/json?token=d5361631d79bbd";
+  let response = await fetch(url);
+  let data = await response.json();
+  return data;
+}
+
+const loop = horizontalLoop(".payments-list", {
+  repeat: -1,
+  paused: false,
+  speed: 1,
+});
+
+function createPaymentIcons(country) {
+  for (let i = 0; i < country.payments.length; i++) {
+    const paymentName = country.payments[i];
+    let item = document.createElement("li");
+    let itemIcon = document.createElement("img");
+    item.appendChild(itemIcon);
+    document.querySelector(".payments-list").appendChild(item);
+    itemIcon.setAttribute("src", country.payments[i]);
+  }
+}
+
+async function main() {
+  try {
+    let locationData = await getLocation();
+    console.log(locationData.country);
+
+    countries.forEach((country) => {
+      if (country.name === locationData.country) {
+        createPaymentIcons(country);
+        createPaymentIcons(country);
+        createPaymentIcons(country);
+        createPaymentIcons(country);
+        createPaymentIcons(country);
+        createPaymentIcons(country);
+      }
+    });
+  } catch (error) {
+    console.error("Error fetching location data:", error);
+  }
+}
+main();

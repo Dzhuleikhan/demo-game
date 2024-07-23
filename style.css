@@ -223,6 +223,15 @@ main {
   transition: 0.3s;
 }
 
+.payments-list li {
+  width: 116px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
 @media (max-width: 992px) {
   .sidemenu {
     transition: all 0.3s;
