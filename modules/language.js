@@ -10,7 +10,7 @@ function updateContent(lang) {
 
 function changeLanguage(lang) {
   updateContent(lang);
-  setLanguageUrl(lang);
+  // setLanguageUrl(lang);
   saveUserLanguage(lang);
   updateButtonText(lang);
   setActiveLanguageBtn(lang);
@@ -23,10 +23,10 @@ function getLanguageFromPath() {
   return translations[lang] ? lang : null;
 }
 
-function setLanguageUrl(lang) {
-  const newPath = `/${lang}${window.location.pathname.substring(3)}`;
-  window.history.replaceState({}, "", newPath);
-}
+// function setLanguageUrl(lang) {
+//   const newPath = `/${lang}${window.location.pathname.substring(3)}`;
+//   window.history.replaceState({}, "", newPath);
+// }
 
 function getUserLanguage() {
   const userLang = navigator.language || navigator.userLanguage;
@@ -78,7 +78,7 @@ window.onload = () => {
   let lang = getLanguageFromPath();
   if (!lang) {
     lang = loadUserLanguage() || getUserLanguage();
-    setLanguageUrl(lang);
+    // setLanguageUrl(lang);
   }
   changeLanguage(lang);
 };
