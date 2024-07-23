@@ -79,8 +79,6 @@ window.onload = () => {
   if (!lang) {
     lang = loadUserLanguage() || getUserLanguage();
     setLanguageUrl(lang);
-    // Redirect to the correct language URL if not already on one
-    window.location.replace(`/`);
   }
   changeLanguage(lang);
 };
