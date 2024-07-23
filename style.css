@@ -254,6 +254,10 @@ main {
   flex-shrink: 0;
 }
 
+.language-link.active {
+  background-color: #272f50;
+}
+
 @media (max-width: 992px) {
   .sidemenu {
     transition: all 0.3s;

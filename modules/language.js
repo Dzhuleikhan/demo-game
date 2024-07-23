@@ -13,6 +13,7 @@ function changeLanguage(lang) {
   setLanguageUrl(lang);
   saveUserLanguage(lang);
   updateButtonText(lang);
+  setActiveLanguageBtn(lang);
 }
 
 function getLanguageFromPath() {
@@ -40,6 +41,16 @@ function saveUserLanguage(lang) {
 
 function loadUserLanguage() {
   return localStorage.getItem("preferredLanguage");
+}
+
+function setActiveLanguageBtn(currentLang) {
+  document.querySelectorAll(".language-link").forEach((el) => {
+    if (el.getAttribute("data-lang") === currentLang) {
+      el.classList.add("active");
+    } else {
+      el.classList.remove("active");
+    }
+  });
 }
 
 function updateButtonText(lang) {
