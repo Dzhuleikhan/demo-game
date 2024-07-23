@@ -88,6 +88,8 @@ async function main() {
 
     countries.forEach((country) => {
       if (country.name === locationData.country) {
+        console.log(country.payments);
+
         createPaymentIcons(country);
         createPaymentIcons(country);
         createPaymentIcons(country);

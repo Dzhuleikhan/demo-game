@@ -223,6 +223,28 @@ main {
   transition: 0.3s;
 }
 
+.payments-row::before {
+  content: '';
+  height: 100%;
+  width: 50px;
+  background: linear-gradient(to right, #8726FF 20%, #8726FF00 100%);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 5;
+}
+
+.payments-row::after {
+  content: '';
+  height: 100%;
+  width: 50px;
+  background: linear-gradient(to left, #8D20A8 20%, #8726FF00 100%);
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 5;
+}
+
 .payments-list li {
   width: 116px;
   height: 80px;
