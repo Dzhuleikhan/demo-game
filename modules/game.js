@@ -6,14 +6,13 @@ import {
 } from "../public/data";
 import horizontalLoop from "./marquee";
 
+export const overlay = document.querySelector(".overlay");
 const headerFlagGeo = document.querySelector(".header-country-flag");
 
 const gameWrapper = document.querySelector(".game-wrapper");
 const fullScreenBtn = document.querySelector(".fullscreen-btn");
-const overlay = document.querySelector(".overlay");
 
 const gameFrame = document.querySelector(".game-frame");
-const gamePreviewImg = document.querySelector(".game-preview-img");
 let gameURL =
   "https://demo.spribe.io/launch/plinko?lang=nl&currency=EUR&mute=1";
 
@@ -51,24 +50,19 @@ function showModal() {
   document.body.style.overflow = "hidden";
 }
 
-// window.focus();
-// const frameListener = window.addEventListener("blur", () => {
-//   if (document.activeElement === document.querySelector("iframe")) {
-//     window.localStorage.setItem("modal", "open");
-//     showModal();
-//   }
-//   window.removeEventListener("blur", frameListener);
-// });
+window.focus();
+const frameListener = window.addEventListener("blur", () => {
+  if (document.activeElement === document.querySelector("iframe")) {
+    window.localStorage.setItem("modal", "open");
+    showModal();
+  }
+  window.removeEventListener("blur", frameListener);
+});
 
-// if (localStorage.modal) {
-//   showModal();
-// }
-
-async function getLocation() {
-  let url = "https://ipinfo.io/json?token=d5361631d79bbd";
-  let response = await fetch(url);
-  let data = await response.json();
-  return data;
+if (localStorage.modal) {
+  showModal();
+} else {
+  overlay.classList.remove("is-open");
 }
 
 const loop = horizontalLoop(".payments-list", {
@@ -115,6 +109,13 @@ function getCountryCurrencyName(inputCountry) {
     }
   }
   return "USD"; // or some default value if country is not found
+}
+
+async function getLocation() {
+  let url = "https://ipinfo.io/json?token=d5361631d79bbd";
+  let response = await fetch(url);
+  let data = await response.json();
+  return data;
 }
 
 async function main() {
