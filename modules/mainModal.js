@@ -165,17 +165,23 @@ formBonus.forEach((bonus) => {
         hideDropdown();
       }
     });
+  }
+});
 
-    // Promocode
-    const promocodeBtn = document.querySelector(".promocode-btn");
-    const promocodeBox = document.querySelector(".promocode-input-box");
+/**
+ *  Promocode
+ */
+const promocodeWrapper = document.querySelectorAll(".promocode-wrapper");
 
-    if (promocodeBtn) {
-      promocodeBtn.addEventListener("click", () => {
-        promocodeBtn.classList.add("hidden");
-        promocodeBox.classList.remove("hidden");
-        promocodeBox.classList.add("grid");
-      });
-    }
+promocodeWrapper.forEach((promo) => {
+  if (promo) {
+    const promocodeBtn = promo.querySelector(".promocode-btn");
+    const promocodeBox = promo.querySelector(".promocode-input-box");
+
+    promocodeBtn.addEventListener("click", () => {
+      promocodeBtn.classList.add("hidden");
+      promocodeBox.classList.remove("hidden");
+      promocodeBox.classList.add("grid");
+    });
   }
 });
