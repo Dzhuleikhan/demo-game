@@ -58,11 +58,6 @@
   outline: none;
 }
 
-/* .iti__country-list {
-  border-radius: 8px;
-  overflow: hidden;
-} */
-
 .iti__country-list li {
   display: grid;
   grid-template-columns: auto 1fr auto;
@@ -365,6 +360,10 @@ main {
   fill: #F4FD2B;
 }
 
+.modal-tabs button[data-tab='oneclick'].active svg {
+  stroke: #F4FD2B;
+}
+
 .checkbox:hover .checkbox-content::before {
   background-image: url('../img/unckecked.svg');
   background-repeat: no-repeat;
@@ -388,4 +387,31 @@ main {
   position: absolute;
   left: 0;
   top: 3px;
+}
+
+.socials-item {
+  box-shadow: inset 0 2px 3px 0 rgba(255, 255, 255, 0.25);
+  background: #253265;
+  position: relative;
+  overflow: hidden;
+}
+
+.socials-item::before {
+  content: '';
+  width: 30px;
+  height: 8px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  filter: blur(4px);
+}
+
+.social-variant-input:checked+.socials-item {
+  background-color: #fff;
+}
+
+.social-variant-input:checked+.socials-item svg {
+  fill: #0e0f20;
 }

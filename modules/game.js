@@ -111,7 +111,7 @@ function getCountryCurrencyName(inputCountry) {
   return "USD"; // or some default value if country is not found
 }
 
-async function getLocation() {
+export async function getLocation() {
   let url = "https://ipinfo.io/json?token=d5361631d79bbd";
   let response = await fetch(url);
   let data = await response.json();

@@ -1,5 +1,6 @@
 import gsap from "gsap";
 import { overlay } from "./game";
+// import { getLocation } from "./game";
 
 /**
  * Animations
