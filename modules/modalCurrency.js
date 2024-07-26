@@ -26,19 +26,32 @@ async function settingModalCurrency() {
     const currencyFullName = getCountryCurrencyFullName(countryInput);
     const currencyIcon = getCountryCurrencyIcon(countryInput);
 
-    // Update local storage
     const currencyData = {
-      abbr: curAbbr,
-      name: curName,
-      icon: curIcon,
+      abbr: currencyAbbr,
+      name: currencyFullName,
+      icon: currencyIcon,
     };
-    console.log("Saving currency data to localStorage:", currencyData);
+
+    // Save to local storage
     localStorage.setItem("currencyData", JSON.stringify(currencyData));
+
+    setCurrency(currencyAbbr, currencyFullName, currencyIcon);
   } catch (error) {
     console.error("Error fetching location data:", error);
   }
 }
-settingModalCurrency();
+
+function loadCurrencyFromLocalStorage() {
+  const currencyData = JSON.parse(localStorage.getItem("currencyData"));
+  if (currencyData) {
+    setCurrency(currencyData.abbr, currencyData.name, currencyData.icon);
+  } else {
+    settingModalCurrency();
+  }
+}
+
+// Call this function when the page loads
+document.addEventListener("DOMContentLoaded", loadCurrencyFromLocalStorage);
 
 /**
  *  Currency dropdown
@@ -100,15 +113,3 @@ formCurrency.forEach((cur) => {
     });
   }
 });
-
-function loadCurrencyFromLocalStorage() {
-  const currencyData = JSON.parse(localStorage.getItem("currencyData"));
-  if (currencyData) {
-    setCurrency(currencyData.abbr, currencyData.name, currencyData.icon);
-  } else {
-    settingModalCurrency();
-  }
-}
-
-// Call this function when the page loads
-document.addEventListener("DOMContentLoaded", loadCurrencyFromLocalStorage);
