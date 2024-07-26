@@ -91,10 +91,8 @@ formCurrency.forEach((cur) => {
         let curSymbol = item.querySelector(".currency-item-symbol").textContent;
         let curAbbr = item.querySelector(".currency-item-abbr").textContent;
 
-        currencyDropdownBtn.querySelector(".main-currency-icon").src = curIcon;
-        currencyDropdownBtn.querySelector(".main-currency-name").textContent =
-          curName;
-        currencyInput.value = curAbbr;
+        // Update all currency inputs on the page
+        setCurrency(curAbbr, curName, curIcon);
 
         // Update local storage
         const currencyData = {
