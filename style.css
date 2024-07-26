@@ -415,3 +415,82 @@ main {
 .social-variant-input:checked+.socials-item svg {
   fill: #0e0f20;
 }
+
+/* Validation */
+
+.valid {
+  border-color: #4ED937;
+}
+
+.non-valid {
+  border-color: #FF5530;
+}
+
+.form-email.valid .validation-cta .correct {
+  display: block;
+}
+
+.form-email.non-valid .validation-cta {
+  display: flex;
+}
+
+.form-email.non-valid .validation-cta .wrong {
+  display: block;
+}
+
+.form-password.valid .password-cta .correct {
+  display: block;
+}
+
+.form-password.non-valid .password-cta .wrong {
+  display: block;
+}
+
+.non-valid .error-alert {
+  opacity: 1;
+  visibility: visible;
+}
+
+.error-alert::before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+
+  border-top: 6px solid #f0f0f0;
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
+}
+
+.terms-input.non-valid+span::before {
+  border-color: #FF5530;
+}
+
+.form-phone.valid {
+  border: 1px solid #4ED937;
+  border-radius: 8px;
+}
+
+.form-phone.valid .form-phone-cta {
+  display: block;
+}
+
+.form-phone.non-valid .form-phone-cta {
+  display: block;
+}
+
+.form-phone.valid .form-phone-cta .correct {
+  display: block;
+}
+
+.form-phone.non-valid .form-phone-cta .wrong {
+  display: block;
+}
+
+.form-phone.non-valid {
+  border: 1px solid #FF5530;
+  border-radius: 8px;
+}

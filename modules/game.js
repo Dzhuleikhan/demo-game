@@ -5,6 +5,7 @@ import {
   countryCurrencyData,
 } from "../public/data";
 import horizontalLoop from "./marquee";
+import { getLocation } from "./geoLocation";
 
 export const overlay = document.querySelector(".overlay");
 const headerFlagGeo = document.querySelector(".header-country-flag");
@@ -102,7 +103,7 @@ function settingGeoLocation(countryInput) {
   }
 }
 
-function getCountryCurrencyName(inputCountry) {
+export function getCountryCurrencyABBR(inputCountry) {
   for (const data of countryCurrencyData) {
     if (data.countries.includes(inputCountry)) {
       return data.countryCurrency;
@@ -111,11 +112,22 @@ function getCountryCurrencyName(inputCountry) {
   return "USD"; // or some default value if country is not found
 }
 
-export async function getLocation() {
-  let url = "https://ipinfo.io/json?token=d5361631d79bbd";
-  let response = await fetch(url);
-  let data = await response.json();
-  return data;
+export function getCountryCurrencyFullName(inputCountry) {
+  for (const data of countryCurrencyData) {
+    if (data.countries.includes(inputCountry)) {
+      return data.countryCurrencyFullName;
+    }
+  }
+  return "US Dollar"; // or some default value if country is not found
+}
+
+export function getCountryCurrencyIcon(inputCountry) {
+  for (const data of countryCurrencyData) {
+    if (data.countries.includes(inputCountry)) {
+      return data.countryCurrencyIcon;
+    }
+  }
+  return "./img/currencies/usd.svg"; // or some default value if country is not found
 }
 
 async function main() {
@@ -126,7 +138,7 @@ async function main() {
     settingGeoLocation(countryInput);
 
     // Currency
-    const currencyName = getCountryCurrencyName(locationData.country);
+    const currencyName = getCountryCurrencyABBR(locationData.country);
 
     gameURL = `https://demo.spribe.io/launch/plinko?lang=${countryInput}&currency=${currencyName}&mute=1`;
 

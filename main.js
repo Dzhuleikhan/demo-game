@@ -6,4 +6,6 @@ import "./modules/game";
 import "./modules/sidebar";
 import "./modules/language";
 import "./modules/mainModal";
-import "./modules/telInput";
+import "./modules/formValidation";
+import "./modules/geoLocation";
+import "./modules/modalCurrency";

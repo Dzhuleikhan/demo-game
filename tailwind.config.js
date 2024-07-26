@@ -28,6 +28,7 @@ module.exports = {
         darkGray: "#8A95C1",
         lightGray: "#a9aabf",
         purple: "#8726FF",
+        successGreen: "#4ED937",
       },
       boxShadow: {
         shadow: "0 4px 4px 0 rgba(0, 0, 0, 0.25)",
