@@ -341,6 +341,7 @@ function resetForm(form) {
   const submitBtn = form.querySelector(".form-submit-btn");
   if (submitBtn) {
     submitBtn.disabled = true;
+    submitBtn.textContent = "Select at least 1 social";
   }
 }
 submitForm(emailForm);
