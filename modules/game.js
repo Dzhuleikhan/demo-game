@@ -1,14 +1,10 @@
 import gsap from "gsap";
-import {
-  countriesPayments,
-  countryFlags,
-  countryCurrencyData,
-} from "../public/data";
+import { countriesPayments, countryCurrencyData } from "../public/data";
 import horizontalLoop from "./marquee";
 import { getLocation } from "./geoLocation";
+import { settingGeoLocation } from "./settingGlobalGeo";
 
 export const overlay = document.querySelector(".overlay");
-const headerFlagGeo = document.querySelector(".header-country-flag");
 
 const gameWrapper = document.querySelector(".game-wrapper");
 const fullScreenBtn = document.querySelector(".fullscreen-btn");
@@ -83,26 +79,6 @@ function createPaymentIcons(country) {
   }
 }
 
-function settingGeoLocation(countryInput) {
-  let flagSet = false;
-
-  countryFlags.forEach((location) => {
-    if (location.slug.includes(countryInput)) {
-      headerFlagGeo.setAttribute("src", `./img/flags/${countryInput}.svg`);
-      headerFlagGeo.setAttribute("alt", location.name);
-      flagSet = true;
-      setTimeout(() => {
-        headerFlagGeo.classList.remove("hidden");
-      }, 1000);
-    }
-  });
-
-  if (!flagSet) {
-    headerFlagGeo.setAttribute("src", "");
-    headerFlagGeo.setAttribute("alt", "");
-  }
-}
-
 export function getCountryCurrencyABBR(inputCountry) {
   for (const data of countryCurrencyData) {
     if (data.countries.includes(inputCountry)) {
@@ -135,7 +111,7 @@ async function main() {
     let locationData = await getLocation();
     const countryInput = locationData.country.toLowerCase();
 
-    settingGeoLocation(countryInput);
+    settingGeoLocation(countryInput, "header-country-flag");
 
     // Currency
     const currencyName = getCountryCurrencyABBR(locationData.country);

@@ -12,3 +12,4 @@ import "./modules/modalCurrency";
 import "./modules/modalBonus";
 import "./modules/setPayments";
 import "./modules/savingInputValues";
+import "./modules/settingGlobalGeo";
