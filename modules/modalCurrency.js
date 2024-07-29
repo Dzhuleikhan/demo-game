@@ -5,51 +5,6 @@ import {
   getCountryCurrencyIcon,
 } from "./game";
 
-// function setCurrency(abbr, name, icon) {
-//   const formCurrency = document.querySelectorAll(".form-currency");
-//   formCurrency.forEach((cur) => {
-//     let input = cur.querySelector("input");
-//     let currencyName = cur.querySelector(".main-currency-name");
-//     let currencyIcon = cur.querySelector(".main-currency-icon");
-//     input.value = abbr;
-//     currencyName.textContent = name;
-//     currencyIcon.src = icon;
-//   });
-// }
-
-// async function settingModalCurrency() {
-//   try {
-//     let locationData = await getLocation();
-//     const countryInput = locationData.country;
-
-//     const currencyAbbr = getCountryCurrencyABBR(countryInput);
-//     const currencyFullName = getCountryCurrencyFullName(countryInput);
-//     const currencyIcon = getCountryCurrencyIcon(countryInput);
-
-//     const currencyData = {
-//       abbr: currencyAbbr,
-//       name: currencyFullName,
-//       icon: currencyIcon,
-//     };
-
-//     // Save to local storage
-//     localStorage.setItem("currencyData", JSON.stringify(currencyData));
-
-//     setCurrency(currencyAbbr, currencyFullName, currencyIcon);
-//   } catch (error) {
-//     console.error("Error fetching location data:", error);
-//   }
-// }
-
-// function loadCurrencyFromLocalStorage() {
-//   const currencyData = JSON.parse(localStorage.getItem("currencyData"));
-//   if (currencyData) {
-//     setCurrency(currencyData.abbr, currencyData.name, currencyData.icon);
-//   } else {
-//     settingModalCurrency();
-//   }
-// }
-
 function setCurrency(abbr, name, icon) {
   const formCurrency = document.querySelectorAll(".form-currency");
   formCurrency.forEach((cur) => {
@@ -59,7 +14,6 @@ function setCurrency(abbr, name, icon) {
     input.value = abbr;
     currencyName.textContent = name;
     currencyIcon.src = icon;
-    cur.style.display = "block"; // Show currency info once updated
   });
 }
 
@@ -88,18 +42,12 @@ async function settingModalCurrency() {
 }
 
 function loadCurrencyFromLocalStorage() {
-  // Hide currency info until it is updated
-  const formCurrency = document.querySelectorAll(".form-currency");
-  formCurrency.forEach((cur) => {
-    cur.style.display = "none";
-  });
-
   const currencyData = JSON.parse(localStorage.getItem("currencyData"));
   if (currencyData) {
     setCurrency(currencyData.abbr, currencyData.name, currencyData.icon);
+  } else {
+    settingModalCurrency();
   }
-  // Fetch and update the currency data
-  settingModalCurrency();
 }
 
 // Call this function when the page loads
