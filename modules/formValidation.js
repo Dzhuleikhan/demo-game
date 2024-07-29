@@ -172,20 +172,21 @@ promocodeWrapper.forEach((promo) => {
   if (promo) {
     const promocodeBtn = promo.querySelector(".promocode-btn");
     const promocodeBox = promo.querySelector(".promocode-input-box");
-    const icon = promo.querySelector(".promocode-check-icon");
+    const iconValid = promo.querySelector(".icon-valid");
+    const iconInvalidalid = promo.querySelector(".icon-invalid");
     const promocodeInput = promo.querySelector("input");
 
     promocodeInput.addEventListener("focusout", () => {
       if (promocodeInput.value.length >= 1) {
         promocodeBox.classList.add("valid");
         promocodeBox.classList.remove("non-valid");
-        icon.classList.remove("fill-lightGray");
-        icon.classList.add("fill-successGreen");
+        iconValid.classList.remove("hidden");
+        iconInvalidalid.classList.add("hidden");
       } else {
         promocodeBox.classList.add("non-valid");
         promocodeBox.classList.remove("valid");
-        icon.classList.add("fill-lightGray");
-        icon.classList.remove("fill-successGreen");
+        iconValid.classList.add("hidden");
+        iconInvalidalid.classList.remove("hidden");
       }
     });
 
