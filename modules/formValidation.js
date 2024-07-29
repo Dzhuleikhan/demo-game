@@ -26,6 +26,26 @@ const phoneForm = document.querySelector(".form-type-phone");
 const socialForm = document.querySelector(".form-type-social");
 const oneClickForm = document.querySelector(".form-type-oneclick");
 const termsCheckbox = document.querySelectorAll(".terms-checkbox");
+const formsWrapper = document.querySelectorAll(".form");
+
+formsWrapper.forEach((form) => {
+  if (form) {
+    let emailInput = form.querySelector("input[type='email']");
+    let telInput = form.querySelector("input[type='tel']");
+    if (emailInput) {
+      emailInput.addEventListener("input", () => {
+        localStorage.setItem("emailValue", emailInput.value);
+      });
+      emailInput.value = localStorage.getItem("emailValue");
+    }
+    if (telInput) {
+      telInput.addEventListener("input", () => {
+        localStorage.setItem("phoneValue", telInput.value);
+      });
+      telInput.value = localStorage.getItem("phoneValue");
+    }
+  }
+});
 
 // Validate email input
 function validateEmailInput() {
@@ -257,7 +277,7 @@ function submitForm(form) {
       const input = phone.querySelector("input[name='phone']");
       let code = iti.getSelectedCountryData().dialCode;
       let phoneNumber = input.value.trim();
-      if (input.value === "") {
+      if (input.value === "" || !iti.isValidNumber()) {
         phone.classList.add("non-valid");
         isValid = false;
       } else {

@@ -2,53 +2,6 @@
  *  Bonus dropdown
  */
 
-// const formBonus = document.querySelectorAll(".form-bonus");
-
-// formBonus.forEach((bonus) => {
-//   if (bonus) {
-//     const bonusDropdownBtn = bonus.querySelector(".form-bonus-btn");
-//     const bonusDropdownList = bonus.querySelector(".form-bonus-dropdown");
-//     const bonusInput = bonus.querySelector(".bonus-input");
-
-//     function hideDropdown() {
-//       bonusDropdownBtn.classList.remove("active");
-//       bonusDropdownList.classList.remove("active");
-//     }
-
-//     bonusDropdownBtn.addEventListener("click", () => {
-//       bonusDropdownBtn.classList.toggle("active");
-//       bonusDropdownList.classList.toggle("active");
-//     });
-
-//     const bonusListItems = bonusDropdownList.querySelectorAll("li");
-
-//     bonusListItems.forEach((item) => {
-//       item.addEventListener("click", () => {
-//         bonusListItems.forEach((el) => {
-//           el.classList.remove("active");
-//         });
-//         item.classList.add("active");
-//         hideDropdown();
-
-//         // Taking currency value from item
-//         let bonusIcon = item.querySelector(".bonus-item-icon").src;
-//         let bonusName = item.querySelector(".bonus-item-name").textContent;
-
-//         bonusDropdownBtn.querySelector(".main-bonus-icon").src = bonusIcon;
-//         bonusDropdownBtn.querySelector(".main-bonus-name").textContent =
-//           bonusName;
-//         bonusInput.value = bonusName;
-//       });
-//     });
-
-//     document.addEventListener("click", (event) => {
-//       if (!bonus.contains(event.target)) {
-//         hideDropdown();
-//       }
-//     });
-//   }
-// });
-
 const formBonus = document.querySelectorAll(".form-bonus");
 
 formBonus.forEach((bonus) => {
