@@ -248,7 +248,7 @@ function submitForm(form) {
           let fullPhoneNumber = `+${code}${phoneNumber.replace(/\s+/g, "")}`;
           alert(fullPhoneNumber);
           if (iti.isValidNumber()) {
-            formData.phone = +fullPhoneNumber;
+            formData.phone = fullPhoneNumber;
           } else {
             isValid = false;
           }
