@@ -239,9 +239,7 @@ function submitForm(form) {
     if (phone) {
       const input = phone.querySelector("input[name='phone']");
       let code = iti.getSelectedCountryData().dialCode;
-      alert(code);
       let phoneNumber = input.value;
-      alert(phoneNumber);
       if (input.value === "") {
         phone.classList.add("non-valid");
         isValid = false;
