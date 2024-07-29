@@ -379,3 +379,29 @@ export const countryCurrencyData = [
     countryCurrencyIcon: "./img/currencies/rub.svg",
   },
 ];
+
+export const paymentCountries = [
+  {
+    name: "NL",
+    payments: [
+      "./img/payments/mastercard.svg",
+      "./img/payments/jcb.svg",
+      "./img/payments/sepa.svg",
+      "./img/payments/unionpay.svg",
+      "./img/payments/discover.svg",
+      "./img/payments/visa.svg",
+    ],
+  },
+  {
+    name: "RU",
+    payments: [
+      "./img/payments/unionpay.svg",
+      "./img/payments/visa.svg",
+      "./img/payments/mastercard.svg",
+    ],
+  },
+  {
+    name: "PT",
+    payments: ["../img/payments/visa.svg", "../img/payments/mastercard.svg"],
+  },
+];

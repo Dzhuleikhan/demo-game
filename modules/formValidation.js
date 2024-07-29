@@ -33,7 +33,8 @@ function validateEmailInput() {
     const formEmailInput = formEmail.querySelector("input");
     const emailRegEx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-    formEmailInput.addEventListener("input", () => {
+    // formEmailInput.addEventListener("input", () => {
+    function emailInputValidate() {
       let inputValue = formEmailInput.value.toLowerCase();
       if (inputValue === "") {
         formEmail.classList.remove("valid");
@@ -50,6 +51,13 @@ function validateEmailInput() {
           formEmail.classList.add("non-valid");
         }
       }
+    }
+    // });
+
+    formEmailInput.addEventListener("focusout", emailInputValidate);
+    formEmailInput.addEventListener("focusin", () => {
+      formEmail.classList.remove("valid");
+      formEmail.classList.remove("non-valid");
     });
   }
 }
@@ -62,9 +70,9 @@ function validatePasswordInput() {
   if (formPassword) {
     const formPasswordInput = formPassword.querySelector("input");
     const showPasswordBtn = formPassword.querySelector(".show-password");
-    formPasswordInput.addEventListener("input", () => {
-      let inputValue = formPasswordInput.value;
 
+    function passwordInputValidation() {
+      let inputValue = formPasswordInput.value;
       if (inputValue === "") {
         formPassword.classList.remove("valid");
         formPassword.classList.remove("non-valid");
@@ -79,6 +87,12 @@ function validatePasswordInput() {
           formPassword.classList.remove("valid");
         }
       }
+    }
+
+    formPasswordInput.addEventListener("focusout", passwordInputValidation);
+    formPasswordInput.addEventListener("focusin", () => {
+      formPassword.classList.remove("non-valid");
+      formPassword.classList.remove("valid");
     });
 
     // Toggle password visibility
@@ -116,10 +130,12 @@ if (socialForm) {
   inputs.forEach((inp) => {
     inp.addEventListener("input", () => {
       submitBtn.disabled = false;
+      submitBtn.textContent = "Sign Up";
     });
   });
 }
 
+// Validate phone input
 if (phoneForm) {
   const phone = phoneForm.querySelector(".form-phone");
   const input = phone.querySelector("input[name='phone']");
@@ -140,9 +156,50 @@ if (phoneForm) {
     }
   }
 
-  input.addEventListener("input", validatePhoneNumber);
+  input.addEventListener("focusout", validatePhoneNumber);
+  input.addEventListener("focusin", () => {
+    phone.classList.remove("non-valid");
+    phone.classList.remove("valid");
+  });
 }
 
+/**
+ *  Promocode
+ */
+const promocodeWrapper = document.querySelectorAll(".promocode-wrapper");
+
+promocodeWrapper.forEach((promo) => {
+  if (promo) {
+    const promocodeBtn = promo.querySelector(".promocode-btn");
+    const promocodeBox = promo.querySelector(".promocode-input-box");
+    const icon = promo.querySelector(".promocode-check-icon");
+    const promocodeInput = promo.querySelector("input");
+
+    promocodeInput.addEventListener("focusout", () => {
+      if (promocodeInput.value.length >= 1) {
+        promocodeBox.classList.add("valid");
+        promocodeBox.classList.remove("non-valid");
+        icon.classList.remove("fill-lightGray");
+        icon.classList.add("fill-successGreen");
+      } else {
+        promocodeBox.classList.add("non-valid");
+        promocodeBox.classList.remove("valid");
+        icon.classList.add("fill-lightGray");
+        icon.classList.remove("fill-successGreen");
+      }
+    });
+
+    promocodeBtn.addEventListener("click", () => {
+      promocodeBtn.classList.add("hidden");
+      promocodeBox.classList.remove("hidden");
+      promocodeBox.classList.add("grid");
+    });
+  }
+});
+
+/**
+ *  Submitting form
+ */
 function submitForm(form) {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -236,7 +293,13 @@ function submitForm(form) {
     // Checking Promocode
     if (promoCode) {
       let input = promoCode.querySelector("input");
-      formData.promocode = input.value;
+      let icon = promoCode.querySelector(".promocode-check-icon");
+
+      if (input.value.length >= 1) {
+        formData.promocode = input.value;
+        icon.classList.remove("fill-lightGray");
+        icon.classList.add("fill-successGreen");
+      }
     }
 
     if (terms) {
@@ -256,6 +319,9 @@ function submitForm(form) {
   });
 }
 
+/**
+ *  Reseting form
+ */
 function resetForm(form) {
   form.reset();
   form
@@ -275,3 +341,22 @@ submitForm(emailForm);
 submitForm(phoneForm);
 submitForm(socialForm);
 submitForm(oneClickForm);
+
+/**
+ *  Validation CTA
+ */
+const validationCta = document.querySelectorAll(".validation-cta");
+
+validationCta.forEach((el) => {
+  if (el) {
+    let error = el.querySelector(".error-alert");
+    let x = el.querySelector(".wrong");
+
+    x.addEventListener("pointerenter", () => {
+      error.classList.add("is-visible");
+    });
+    x.addEventListener("pointerleave", () => {
+      error.classList.remove("is-visible");
+    });
+  }
+});

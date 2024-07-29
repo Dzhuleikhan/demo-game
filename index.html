@@ -1462,14 +1462,14 @@
     </div>
     <!-- Main form modal -->
     <div
-      class="main-overlay fixed left-0 top-0 z-[60] hidden h-screen w-full place-items-center overflow-y-auto bg-pageBg/80 p-8"
+      class="main-overlay fixed left-0 top-0 z-[60] hidden h-screen w-full place-items-center overflow-y-auto overflow-x-hidden bg-pageBg/80 p-8 mobile:p-0"
     >
       <div
-        class="grid min-h-[700px] w-full max-w-[722px] grid-cols-[1fr_400px] rounded-2xl border border-white/10 bg-window1"
+        class="grid min-h-[700px] w-full max-w-[722px] grid-cols-[1fr_400px] rounded-2xl border border-white/10 bg-window1 tbl:min-w-max tbl:max-w-[500px] tbl:grid-cols-1 mobile:h-dvh mobile:w-full mobile:rounded-none mobile:border-none"
       >
         <!-- left -->
         <div
-          class="relative h-full w-full overflow-hidden rounded-bl-xl rounded-tl-2xl bg-[url(../img/modal-left-bg.png)] bg-cover bg-center bg-no-repeat p-9"
+          class="relative h-full w-full overflow-hidden rounded-bl-xl rounded-tl-2xl bg-[url(../img/modal-left-bg.png)] bg-cover bg-center bg-no-repeat p-9 tbl:hidden"
         >
           <img
             class="relative z-[2] mx-auto"
@@ -1838,7 +1838,7 @@
                   </div>
                   <!-- Password -->
                   <div
-                    class="form-password relative grid grid-cols-[auto_1fr_auto] items-center gap-2 rounded-lg border border-white/20 bg-black/35 px-3 py-[13px]"
+                    class="form-password relative grid grid-cols-[auto_1fr] items-center gap-2 rounded-lg border border-white/20 bg-black/35 px-3 py-[13px]"
                   >
                     <svg
                       width="24"
@@ -1856,12 +1856,19 @@
                       />
                     </svg>
                     <input
-                      class="bg-transparent font-bold text-white outline-none placeholder:text-white/50"
+                      class="max-w-[50%] bg-transparent font-bold text-white outline-none placeholder:text-white/50"
                       name="password"
                       type="password"
                       placeholder="Password"
                     />
-                    <div class="password-cta flex items-center gap-2">
+                    <div
+                      class="password-cta validation-cta absolute right-3 top-1/2 flex -translate-y-1/2 items-center gap-2"
+                    >
+                      <div
+                        class="error-alert invisible absolute -right-12 bottom-10 min-w-[151px] rounded bg-white px-2 py-[6px] text-center text-sm font-normal leading-[120%] text-black opacity-0 transition-all mobile:right-0"
+                      >
+                        At least 6 characters.
+                      </div>
                       <button class="show-password hidden">
                         <svg
                           width="24"
@@ -1915,11 +1922,6 @@
                           fill="#4ED937"
                         />
                       </svg>
-                    </div>
-                    <div
-                      class="error-alert invisible absolute -right-12 bottom-10 rounded bg-white px-2 py-[6px] text-center text-sm font-normal leading-[120%] text-black opacity-0 transition-all"
-                    >
-                      At least 6 characters.
                     </div>
                   </div>
                   <!-- Bonus -->
@@ -2034,7 +2036,7 @@
                       I Have a Promo-Code
                     </p>
                     <div
-                      class="promocode-input-box valid hidden grid-cols-[auto_1fr_auto] items-center gap-2 rounded-lg border border-white/20 bg-black/35 px-3 py-[13px]"
+                      class="promocode-input-box hidden grid-cols-[auto_1fr_auto] items-center gap-2 rounded-lg border border-white/20 bg-black/35 px-3 py-[13px]"
                     >
                       <svg
                         width="24"
@@ -2059,14 +2061,14 @@
                         />
                       </svg>
                       <input
-                        value="ASKGAMBLERS200"
+                        value=""
                         class="promocode-input w-full bg-transparent font-bold outline-none placeholder:text-white/50"
                         name="promocode"
                         type="text"
                         placeholder="Promo-Code"
                       />
                       <svg
-                        class="promocode-check-icon fill-successGreen"
+                        class="promocode-check-icon fill-lightGray"
                         width="24"
                         height="25"
                         viewBox="0 0 24 25"
@@ -2234,8 +2236,13 @@
                       type="tel"
                     />
                     <div
-                      class="form-phone-cta absolute right-3 top-[13px] hidden"
+                      class="form-phone-cta validation-cta absolute right-3 top-[13px] hidden"
                     >
+                      <div
+                        class="error-alert invisible absolute -right-[42px] bottom-9 min-w-[115px] rounded bg-white px-2 py-[6px] text-center text-sm font-normal leading-[120%] text-black opacity-0 transition-all mobile:-right-7"
+                      >
+                        Wrong number
+                      </div>
                       <svg
                         class="wrong hidden"
                         width="24"
@@ -2265,11 +2272,6 @@
                           fill="#4ED937"
                         />
                       </svg>
-                    </div>
-                    <div
-                      class="error-alert invisible absolute -right-[35px] bottom-11 rounded bg-white px-2 py-[6px] text-center text-sm font-normal leading-[120%] text-black opacity-0 transition-all"
-                    >
-                      Wrong number
                     </div>
                   </div>
                   <!-- Bonus -->
@@ -2409,7 +2411,7 @@
                         />
                       </svg>
                       <input
-                        value="ASKGAMBLERS200"
+                        value=""
                         class="promocode-input w-full bg-transparent font-bold outline-none placeholder:text-white/50"
                         name="promocode"
                         type="text"
@@ -2838,7 +2840,7 @@
                         />
                       </svg>
                       <input
-                        value="ASKGAMBLERS200"
+                        value=""
                         class="promocode-input w-full bg-transparent font-bold outline-none placeholder:text-white/50"
                         name="promocode"
                         type="text"
@@ -2861,7 +2863,7 @@
                   <button
                     class="form-submit-btn w-full rounded-lg bg-gradient-to-b from-[#F4FD2B] to-[#FFA434] p-[14px] text-base font-bold text-black shadow-formBtnShadow disabled:opacity-40"
                   >
-                    Sign Up
+                    Select at least 1 social
                   </button>
                   <!-- Terms -->
                   <label class="checkbox relative cursor-pointer">
@@ -3141,7 +3143,7 @@
                         />
                       </svg>
                       <input
-                        value="ASKGAMBLERS200"
+                        value=""
                         class="promocode-input w-full bg-transparent font-bold outline-none placeholder:text-white/50"
                         name="promocode"
                         type="text"
@@ -3190,36 +3192,9 @@
           </div>
           <!-- Payments -->
           <div class="mb-4 mt-4 px-6">
-            <ul class="grid grid-cols-4 gap-3">
-              <li>
-                <img
-                  class="w-auto"
-                  src="./img/payment-icon1.svg"
-                  alt="Payment icon"
-                />
-              </li>
-              <li>
-                <img
-                  class="w-auto"
-                  src="./img/payment-icon2.svg"
-                  alt="Payment icon"
-                />
-              </li>
-              <li>
-                <img
-                  class="w-auto"
-                  src="./img/payment-icon3.svg"
-                  alt="Payment icon"
-                />
-              </li>
-              <li>
-                <img
-                  class="w-auto"
-                  src="./img/payment-icon4.svg"
-                  alt="Payment icon"
-                />
-              </li>
-            </ul>
+            <ul
+              class="payments-list-modal flex flex-wrap items-center justify-center gap-5"
+            ></ul>
           </div>
           <!-- Have account? -->
           <div
