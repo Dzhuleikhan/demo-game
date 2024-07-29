@@ -1,7 +1,7 @@
 import { translations } from "/public/translations";
 
 async function getLocation() {
-  let url = "https://ipinfo.io/json?token=d5361631d79bbd";
+  let url = "https://ipinfo.io/json?token=fcd65e5fcfdda1";
   let response = await fetch(url);
   let data = await response.json();
   return data;

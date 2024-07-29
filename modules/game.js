@@ -112,6 +112,7 @@ async function main() {
     const countryInput = locationData.country.toLowerCase();
 
     settingGeoLocation(countryInput, "header-country-flag");
+    settingGeoLocation(countryInput, "modal-country-flag");
 
     // Currency
     const currencyName = getCountryCurrencyABBR(locationData.country);

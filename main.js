@@ -15,3 +15,4 @@ import "./modules/savingInputValues";
 import "./modules/settingGlobalGeo";
 import "./modules/declineModal";
 import "./modules/animations";
+import "./modules/params";

@@ -1,29 +1,37 @@
 import intlTelInput from "intl-tel-input/intlTelInputWithUtils";
 
-const input = document.getElementById("phone-input");
+const input = document.querySelectorAll(".phone-input");
 
-const iti = intlTelInput(input, {
-  initialCountry: "auto",
-  separateDialCode: true,
-  useFullscreenPopup: false,
-  autoPlaceholder: "polite",
-  geoIpLookup: function (success, failure) {
-    fetch("https://ipapi.co/json")
-      .then(function (res) {
-        return res.json();
-      })
-      .then(function (data) {
-        success(data.country_code);
-      })
-      .catch(function () {
-        failure();
-      });
-  },
+input.forEach((input) => {
+  const geoIpLookup = (success, failure) => {
+    const cachedData = localStorage.getItem("geoIpData");
+    if (cachedData) {
+      success(JSON.parse(cachedData).country);
+    } else {
+      fetch("https://ipinfo.io/json?token=fcd65e5fcfdda1")
+        .then((res) => res.json())
+        .then((data) => {
+          localStorage.setItem("geoIpData", JSON.stringify(data));
+          success(data.country);
+        })
+        .catch(() => {
+          failure();
+        });
+    }
+  };
+
+  const iti = intlTelInput(input, {
+    initialCountry: "auto",
+    separateDialCode: true,
+    useFullscreenPopup: false,
+    autoPlaceholder: "polite",
+    geoIpLookup: geoIpLookup,
+  });
 });
 
 const emailForm = document.querySelector(".form-type-email");
 const phoneForm = document.querySelector(".form-type-phone");
-const socialForm = document.querySelector(".form-type-social");
+const socialForm = document.querySelectorAll(".form-type-social");
 const oneClickForm = document.querySelector(".form-type-oneclick");
 const termsCheckbox = document.querySelectorAll(".terms-checkbox");
 const formsWrapper = document.querySelectorAll(".form");
@@ -135,26 +143,29 @@ function validatePasswordInput() {
 validatePasswordInput();
 
 // Validate socials input
-if (socialForm) {
-  let inputs = socialForm.querySelectorAll("input[name='social-variant']");
-  const submitBtn = socialForm.querySelector(".form-submit-btn");
 
-  let socialInput = document.querySelector(
-    'input[name="social-variant"]:checked',
-  );
-  if (!socialInput) {
-    socialForm.querySelector(".form-submit-btn").disabled = true;
-  } else {
-    socialForm.querySelector(".form-submit-btn").disabled = false;
-  }
+socialForm.forEach((socialForm) => {
+  if (socialForm) {
+    let inputs = socialForm.querySelectorAll("input[name='social-variant']");
+    const submitBtn = socialForm.querySelector(".form-submit-btn");
 
-  inputs.forEach((inp) => {
-    inp.addEventListener("input", () => {
-      submitBtn.disabled = false;
-      submitBtn.textContent = "Sign Up";
+    let socialInput = document.querySelector(
+      'input[name="social-variant"]:checked',
+    );
+    if (!socialInput) {
+      socialForm.querySelector(".form-submit-btn").disabled = true;
+    } else {
+      socialForm.querySelector(".form-submit-btn").disabled = false;
+    }
+
+    inputs.forEach((inp) => {
+      inp.addEventListener("input", () => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Sign Up";
+      });
     });
-  });
-}
+  }
+});
 
 // Terms validation
 termsCheckbox.forEach((el) => {
@@ -385,8 +396,11 @@ function resetForm(form) {
 }
 submitForm(emailForm);
 submitForm(phoneForm);
-submitForm(socialForm);
 submitForm(oneClickForm);
+
+socialForm.forEach((socialForm) => {
+  submitForm(socialForm);
+});
 
 /**
  *  Validation CTA

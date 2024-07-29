@@ -30,6 +30,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Gilroy';
+  src: url('../fonts/Gilroy-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -598,4 +606,22 @@ main {
 
 .decline-yellow-btn:hover {
   background: #dde63d;
+}
+
+.next-deposit {
+  background: url('../img/next-deposit-bg.webp'), linear-gradient(180deg, rgba(20, 130, 255, 0.4) 0%, rgba(20, 130, 255, 0.4) 100%);
+  background-repeat: no-repeat;
+  background-position: 100% 0;
+  background-size: contain;
+}
+
+.banner-big-text {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.your-winning {
+  background: url('../img/your-winning-bg.webp'), linear-gradient(180deg, rgba(78, 217, 55, 0.4) 0%, rgba(24, 94, 13, 0.4) 100%);
+  background-repeat: no-repeat;
+  background-position: 100% 0;
+  background-size: contain;
 }

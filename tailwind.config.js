@@ -39,6 +39,7 @@ module.exports = {
       },
       fontFamily: {
         raleway: "Raleway",
+        gilroy: "Gilroy",
       },
     },
   },
