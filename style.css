@@ -389,8 +389,7 @@ main {
 }
 
 .checkbox-input:checked+.checkbox-content::before {
-  background-color: #F4FD2B;
-  background-image: url('../img/ckecked.svg');
+  background: url('../img/ckecked.svg'), #F4FD2B;
   background-repeat: no-repeat;
   background-size: contain;
 }
