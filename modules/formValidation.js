@@ -396,10 +396,10 @@ validationCta.forEach((el) => {
     let error = el.querySelector(".error-alert");
     let x = el.querySelector(".wrong");
 
-    x.addEventListener("pointerenter", () => {
+    x.addEventListener("mouseenter", () => {
       error.classList.add("is-visible");
     });
-    x.addEventListener("pointerleave", () => {
+    x.addEventListener("mouseleave", () => {
       error.classList.remove("is-visible");
     });
   }
