@@ -29,6 +29,7 @@ module.exports = {
         lightGray: "#a9aabf",
         purple: "#8726FF",
         successGreen: "#4ED937",
+        stateFail: "#ff5530",
       },
       boxShadow: {
         shadow: "0 4px 4px 0 rgba(0, 0, 0, 0.25)",

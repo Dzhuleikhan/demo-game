@@ -350,8 +350,10 @@ function submitForm(form) {
     }
 
     if (isValid) {
-      alert(JSON.stringify(formData));
+      console.log(formData);
       resetForm(form);
+      window.location.href =
+        "https://dev1.goldbet.io/?modal=auth&method=email&mode=sign-in";
     }
   });
 }

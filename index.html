@@ -1531,7 +1531,7 @@
               />
             </svg>
             sign up
-            <button class="group h-6 w-6">
+            <button class="main-modal-close-btn group h-6 w-6">
               <svg
                 class="stroke-lightGray transition-all group-hover:stroke-white"
                 width="24"
@@ -2099,7 +2099,7 @@
                     </div>
                   </div>
                   <button
-                    class="w-full rounded-lg bg-gradient-to-b from-[#F4FD2B] to-[#FFA434] p-[14px] text-base font-bold text-black shadow-formBtnShadow"
+                    class="w-full rounded-lg bg-gradient-to-b from-[#F4FD2B] to-[#FFA434] p-[14px] text-base font-bold text-black shadow-formBtnShadow transition-all hover:to-[#dde63d]"
                   >
                     Sign Up
                   </button>
@@ -2117,7 +2117,7 @@
                     >
                       I agree to the
                       <a
-                        href="#"
+                        href="https://dev1.goldbet.io/terms-and-conditions"
                         class="text-white underline underline-offset-4"
                         >Terms and Conditions</a
                       ></span
@@ -2463,7 +2463,7 @@
                     </div>
                   </div>
                   <button
-                    class="w-full rounded-lg bg-gradient-to-b from-[#F4FD2B] to-[#FFA434] p-[14px] text-base font-bold text-black shadow-formBtnShadow"
+                    class="w-full rounded-lg bg-gradient-to-b from-[#F4FD2B] to-[#FFA434] p-[14px] text-base font-bold text-black shadow-formBtnShadow transition-all hover:to-[#dde63d]"
                   >
                     Sign Up
                   </button>
@@ -2481,7 +2481,7 @@
                     >
                       I agree to the
                       <a
-                        href="#"
+                        href="https://dev1.goldbet.io/terms-and-conditions"
                         class="text-white underline underline-offset-4"
                         >Terms and Conditions</a
                       ></span
@@ -2906,7 +2906,7 @@
                     </div>
                   </div>
                   <button
-                    class="form-submit-btn w-full rounded-lg bg-gradient-to-b from-[#F4FD2B] to-[#FFA434] p-[14px] text-base font-bold text-black shadow-formBtnShadow disabled:opacity-40"
+                    class="form-submit-btn w-full rounded-lg bg-gradient-to-b from-[#F4FD2B] to-[#FFA434] p-[14px] text-base font-bold text-black shadow-formBtnShadow transition-all hover:to-[#dde63d] disabled:pointer-events-none disabled:opacity-40"
                   >
                     Choose a social
                   </button>
@@ -2924,7 +2924,7 @@
                     >
                       I agree to the
                       <a
-                        href="#"
+                        href="https://dev1.goldbet.io/terms-and-conditions"
                         class="text-white underline underline-offset-4"
                         >Terms and Conditions</a
                       ></span
@@ -3223,7 +3223,7 @@
                     </div>
                   </div>
                   <button
-                    class="w-full rounded-lg bg-gradient-to-b from-[#F4FD2B] to-[#FFA434] p-[14px] text-base font-bold text-black shadow-formBtnShadow"
+                    class="w-full rounded-lg bg-gradient-to-b from-[#F4FD2B] to-[#FFA434] p-[14px] text-base font-bold text-black shadow-formBtnShadow transition-all hover:to-[#dde63d]"
                   >
                     Sign Up
                   </button>
@@ -3241,7 +3241,7 @@
                     >
                       I agree to the
                       <a
-                        href="#"
+                        href="https://dev1.goldbet.io/terms-and-conditions"
                         class="text-white underline underline-offset-4"
                         >Terms and Conditions</a
                       ></span
@@ -3264,6 +3264,98 @@
             <p class="text-darkGray">Already have an account?</p>
             <a href="#" class="underline underline-offset-4">Sign In</a>
           </div>
+        </div>
+      </div>
+    </div>
+    <!-- Descline modal -->
+    <div
+      class="decline-overlay fixed left-0 top-0 z-[500] hidden h-full w-full place-items-center bg-pageBg/75 p-5 transition-all duration-300 [&.active]:grid"
+    >
+      <div
+        class="decline-modal relative flex h-[530px] w-[500px] flex-col items-center gap-4 overflow-hidden rounded-2xl bg-[url(../img/decline-bonus-bg.png)] bg-cover bg-center bg-no-repeat p-6"
+      >
+        <button class="decline-close-btn group absolute right-6 top-6">
+          <svg
+            class="stroke-lightGray transition-all group-hover:stroke-white"
+            width="32"
+            height="32"
+            viewBox="0 0 32 32"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M24 8L8 24M8 8L24 24"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+        <p class="text-center text-xl font-semibold uppercase">
+          ONE STEP AWAY <br />
+          FROM RECEIVING THE BONUS
+        </p>
+        <div class="relative min-h-[220px]">
+          <img width="214" height="138" src="./img/fire.svg" alt="Fire" />
+          <img
+            class="absolute bottom-0 left-1/2 max-w-[186px] -translate-x-1/2"
+            width="186"
+            height="140"
+            src="./img/money.png"
+            alt="Money"
+          />
+        </div>
+        <div>
+          <p class="text-center text-sm font-semibold uppercase leading-[136%]">
+            ARE YOU SURE YOU WANT TO
+          </p>
+          <p
+            class="decline-title text-center text-[48px] font-black uppercase italic leading-none -tracking-[0.02em]"
+          >
+            <span>decline</span> your bonus?
+          </p>
+        </div>
+        <div class="grid w-full grid-cols-2 gap-4">
+          <button
+            class="decline-close-btn decline-yellow-btn flex items-center justify-center gap-1 rounded-lg p-[14px] text-base font-bold text-black"
+          >
+            Continue
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9 6L15 12L9 18"
+                stroke="#0F0F0F"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+          <button
+            class="decline-red-cancel border-stateFail bg-stateFail/20 hover:bg-stateFail flex items-center justify-center gap-1 rounded-lg border-2 text-base font-bold transition-all"
+          >
+            <svg
+              width="25"
+              height="24"
+              viewBox="0 0 25 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M18.5 6L6.5 18M6.5 6L18.5 18"
+                stroke="#F0F0F0"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            Decline Bonus
+          </button>
         </div>
       </div>
     </div>
