@@ -239,13 +239,13 @@ function submitForm(form) {
     if (phone) {
       const input = phone.querySelector("input[name='phone']");
       let code = iti.getSelectedCountryData().dialCode;
-      let phoneNumber = input.value;
+      let phoneNumber = input.value.trim();
       if (input.value === "") {
         phone.classList.add("non-valid");
         isValid = false;
       } else {
         if (code && phoneNumber) {
-          let fullPhoneNumber = `${code}${phoneNumber.trim()}`;
+          let fullPhoneNumber = `${code}${phoneNumber.replace(/\s+/g, "")}`;
           if (iti.isValidNumber()) {
             formData.phone = fullPhoneNumber;
           } else {
