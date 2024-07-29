@@ -245,7 +245,7 @@ function submitForm(form) {
         isValid = false;
       } else {
         if (code && phoneNumber) {
-          let fullPhoneNumber = `+${code}${phoneNumber.split(" ").join("")}`;
+          let fullPhoneNumber = `+${code}${phoneNumber.replace(/\s+/g, "")}`;
           if (iti.isValidNumber()) {
             formData.phone = +fullPhoneNumber;
           } else {
