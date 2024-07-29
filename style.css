@@ -343,6 +343,10 @@ main {
   .sidemenu.is-open {
     width: 100%;
   }
+
+  .payments-list-modal li {
+    max-width: 50px;
+  }
 }
 
 .main-overlay.is-open {
