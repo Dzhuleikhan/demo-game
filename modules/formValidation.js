@@ -25,6 +25,7 @@ const emailForm = document.querySelector(".form-type-email");
 const phoneForm = document.querySelector(".form-type-phone");
 const socialForm = document.querySelector(".form-type-social");
 const oneClickForm = document.querySelector(".form-type-oneclick");
+const termsCheckbox = document.querySelectorAll(".terms-checkbox");
 
 // Validate email input
 function validateEmailInput() {
@@ -135,6 +136,21 @@ if (socialForm) {
   });
 }
 
+// Terms validation
+termsCheckbox.forEach((el) => {
+  if (el) {
+    const input = el.querySelector("input");
+    input.addEventListener("input", () => {
+      const text = el.querySelector("span");
+      if (input.checked) {
+        text.style.color = "#8A95C1";
+      } else {
+        text.style.color = "#FF5530";
+      }
+    });
+  }
+});
+
 // Validate phone input
 if (phoneForm) {
   const phone = phoneForm.querySelector(".form-phone");
@@ -211,7 +227,7 @@ function submitForm(form) {
     const password = form.querySelector(".form-password");
     const bonus = form.querySelector(".form-bonus");
     const promoCode = form.querySelector(".promocode-input-box");
-    const terms = form.querySelector(".terms-input");
+    const terms = form.querySelector(".checkbox");
 
     let formData = {};
     let isValid = true;
@@ -302,13 +318,14 @@ function submitForm(form) {
       }
     }
 
+    // Checking terms and conditions
     if (terms) {
-      // Checking terms and conditions
-      if (!terms.checked) {
-        terms.classList.add("non-valid");
+      const input = terms.querySelector("input");
+      if (!input.checked) {
+        input.classList.add("non-valid");
         isValid = false;
       } else {
-        terms.classList.remove("non-valid");
+        input.classList.remove("non-valid");
       }
     }
 

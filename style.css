@@ -392,6 +392,7 @@ main {
   background: url('../img/ckecked.svg'), #F4FD2B;
   background-repeat: no-repeat;
   background-size: contain;
+  border: none;
 }
 
 .checkbox-content::before {
