@@ -512,3 +512,47 @@ main {
   border: 1px solid #FF5530;
   border-radius: 8px;
 }
+
+.modal-tabs button::before {
+  content: '';
+  width: 50px;
+  height: 30px;
+  border-radius: 50px;
+  background: #ffffff50;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -20px;
+  z-index: 2;
+  filter: blur(15px);
+  will-change: filter;
+  opacity: 0;
+  transition: 0.2s;
+}
+
+.modal-tabs button.active::after {
+  content: '';
+  width: 50px;
+  height: 30px;
+  border-radius: 50px;
+  background: #F4FD2B50;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -20px;
+  z-index: 10;
+  filter: blur(15px);
+  will-change: filter;
+}
+
+.modal-tabs button.active::before {
+  display: none;
+}
+
+.modal-tabs button:hover::before {
+  opacity: 1;
+}
+
+.modal-tabs button.active:hover::before {
+  background: #F4FD2B50;
+}

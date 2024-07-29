@@ -1555,7 +1555,7 @@
             <div class="modal-tabs grid grid-cols-3">
               <button
                 data-tab="email"
-                class="active flex items-center justify-center gap-1 border-b-2 border-borderColor px-[11px] py-[10px] text-sm font-bold leading-[186%] text-white"
+                class="active relative flex items-center justify-center gap-1 overflow-hidden border-b-2 border-borderColor px-[11px] py-[10px] text-sm font-bold leading-[186%] text-white"
               >
                 <svg
                   class="stroke-white"
@@ -1576,7 +1576,7 @@
               </button>
               <button
                 data-tab="phone"
-                class="flex items-center justify-center gap-1 border-b-2 border-borderColor px-[11px] py-[10px] text-sm font-bold leading-[186%] text-white"
+                class="relative flex items-center justify-center gap-1 overflow-hidden border-b-2 border-borderColor px-[11px] py-[10px] text-sm font-bold leading-[186%] text-white"
               >
                 <svg
                   class="stroke-white"
@@ -1597,7 +1597,7 @@
               </button>
               <button
                 data-tab="social"
-                class="flex items-center justify-center gap-1 border-b-2 border-borderColor px-[11px] py-[10px] text-sm font-bold leading-[186%] text-white"
+                class="relative flex items-center justify-center gap-1 overflow-hidden border-b-2 border-borderColor px-[11px] py-[10px] text-sm font-bold leading-[186%] text-white"
               >
                 <svg
                   class="fill-white"
@@ -1615,7 +1615,7 @@
               </button>
               <button
                 data-tab="oneclick"
-                class="flex hidden items-center justify-center gap-1 border-b-2 border-borderColor px-1 py-[10px] text-sm font-bold leading-[186%] text-white"
+                class="relative flex hidden items-center justify-center gap-1 overflow-hidden border-b-2 border-borderColor px-1 py-[10px] text-sm font-bold leading-[186%] text-white"
               >
                 <svg
                   class="stroke-white"
@@ -1804,7 +1804,12 @@
                       type="email"
                       placeholder="E-mail"
                     />
-                    <div class="validation-cta hidden">
+                    <div class="validation-cta relative hidden">
+                      <div
+                        class="error-alert invisible absolute -right-[55px] bottom-10 min-w-[151px] rounded bg-white px-2 py-[6px] text-center text-sm font-normal leading-[120%] text-black opacity-0 transition-all mobile:right-0"
+                      >
+                        Wrong e-mail
+                      </div>
                       <svg
                         class="wrong hidden"
                         width="24"
@@ -1838,7 +1843,7 @@
                   </div>
                   <!-- Password -->
                   <div
-                    class="form-password relative grid grid-cols-[auto_1fr] items-center gap-2 rounded-lg border border-white/20 bg-black/35 px-3 py-[13px] pr-14"
+                    class="form-password relative grid grid-cols-[auto_1fr] items-center gap-2 rounded-lg border border-white/20 bg-black/35 px-3 py-[13px]"
                   >
                     <svg
                       width="24"
@@ -1856,7 +1861,7 @@
                       />
                     </svg>
                     <input
-                      class="max-w-[50%] bg-transparent font-bold text-white outline-none placeholder:text-white/50"
+                      class="bg-transparent font-bold text-white outline-none placeholder:text-white/50"
                       name="password"
                       type="password"
                       placeholder="Password"
@@ -1865,7 +1870,7 @@
                       class="password-cta validation-cta absolute right-3 top-1/2 flex -translate-y-1/2 items-center gap-2"
                     >
                       <div
-                        class="error-alert invisible absolute -right-12 bottom-10 min-w-[151px] rounded bg-white px-2 py-[6px] text-center text-sm font-normal leading-[120%] text-black opacity-0 transition-all mobile:right-0"
+                        class="error-alert invisible absolute -right-[55px] bottom-10 min-w-[151px] rounded bg-white px-2 py-[6px] text-center text-sm font-normal leading-[120%] text-black opacity-0 transition-all mobile:right-0"
                       >
                         At least 6 characters.
                       </div>

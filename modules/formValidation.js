@@ -219,7 +219,7 @@ promocodeWrapper.forEach((promo) => {
         iconValid.classList.remove("hidden");
         iconInvalidalid.classList.add("hidden");
       } else {
-        promocodeBox.classList.add("non-valid");
+        promocodeBox.classList.remove("non-valid");
         promocodeBox.classList.remove("valid");
         iconValid.classList.add("hidden");
         iconInvalidalid.classList.remove("hidden");
