@@ -14,6 +14,7 @@ module.exports = {
       tbl: { max: "767px" },
       mobile: { max: "576px" },
       sm: { max: "480px" },
+      xs: { max: "360px" },
     },
     extend: {
       colors: {

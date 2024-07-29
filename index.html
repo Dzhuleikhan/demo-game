@@ -3269,13 +3269,13 @@
     </div>
     <!-- Descline modal -->
     <div
-      class="decline-overlay fixed left-0 top-0 z-[500] hidden h-full w-full place-items-center bg-pageBg/75 p-5 transition-all duration-300 [&.active]:grid"
+      class="decline-overlay fixed left-0 top-0 z-[500] hidden h-full w-full place-items-center overflow-y-auto bg-pageBg/75 p-5 transition-all duration-300 [&.active]:grid"
     >
       <div
         class="decline-modal relative flex w-full max-w-[500px] flex-col items-center gap-4 overflow-hidden rounded-2xl bg-[url(../img/decline-bonus-bg.png)] bg-cover bg-center bg-no-repeat p-6"
       >
         <button
-          class="decline-close-btn group absolute right-6 top-6 mobile:right-4 mobile:top-4"
+          class="decline-close-btn xs:top-3 xs:right-3 group absolute right-6 top-6 mobile:right-4 mobile:top-4"
         >
           <svg
             class="stroke-lightGray transition-all group-hover:stroke-white"
@@ -3297,10 +3297,16 @@
           ONE STEP AWAY <br />
           FROM RECEIVING THE BONUS
         </p>
-        <div class="relative min-h-[220px]">
-          <img width="214" height="138" src="./img/fire.svg" alt="Fire" />
+        <div class="relative min-h-[220px] mobile:min-h-[180px]">
           <img
-            class="absolute bottom-0 left-1/2 max-w-[186px] -translate-x-1/2"
+            class="mobile:max-w-[180px]"
+            width="214"
+            height="138"
+            src="./img/fire.svg"
+            alt="Fire"
+          />
+          <img
+            class="absolute bottom-0 left-1/2 max-w-[186px] -translate-x-1/2 mobile:max-w-[140px]"
             width="186"
             height="140"
             src="./img/money.png"
@@ -3312,7 +3318,7 @@
             ARE YOU SURE YOU WANT TO
           </p>
           <p
-            class="decline-title text-center text-[48px] font-black uppercase italic leading-none -tracking-[0.02em] mobile:text-[37px]"
+            class="decline-title xs:text-[32px] text-center text-[48px] font-black uppercase italic leading-none -tracking-[0.02em] mobile:text-[37px]"
           >
             <span>decline</span>
             your bonus?

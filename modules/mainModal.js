@@ -1,3 +1,4 @@
+import gsap from "gsap";
 import { overlay } from "./game";
 
 window.addEventListener("mousemove", (e) => {
