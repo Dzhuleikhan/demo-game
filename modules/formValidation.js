@@ -299,8 +299,6 @@ function submitForm(form) {
 
       if (input.value.length >= 1) {
         formData.promocode = input.value;
-        icon.classList.remove("fill-lightGray");
-        icon.classList.add("fill-successGreen");
       }
     }
 
@@ -326,6 +324,12 @@ function submitForm(form) {
  */
 function resetForm(form) {
   form.reset();
+  promocodeWrapper.forEach((el) => {
+    let valid = el.querySelector(".icon-valid");
+    let invalid = el.querySelector(".icon-invalid");
+    valid.classList.add("hidden");
+    invalid.classList.remove("hidden");
+  });
   form
     .querySelectorAll(".non-valid")
     .forEach((el) => el.classList.remove("non-valid"));
