@@ -1,21 +1,4 @@
-import gsap from "gsap";
 import { overlay } from "./game";
-
-/**
- * Animations
- */
-gsap.fromTo(
-  ".shine-img",
-  { opacity: 1 },
-  {
-    opacity: 0,
-    duration: 0.5,
-    ease: "none",
-    yoyo: true,
-    stagger: 0.3,
-    repeat: -1,
-  },
-);
 
 window.addEventListener("mousemove", (e) => {
   let cursorX = e.clientX;
