@@ -604,10 +604,6 @@ main {
   background: linear-gradient(180deg, #f4fd2b 0%, #ffa434 100%);
 }
 
-.decline-yellow-btn:hover {
-  background: #dde63d;
-}
-
 .next-deposit {
   background: url('../img/next-deposit-bg.webp'), linear-gradient(180deg, rgba(20, 130, 255, 0.4) 0%, rgba(20, 130, 255, 0.4) 100%);
   background-repeat: no-repeat;
@@ -624,4 +620,28 @@ main {
   background-repeat: no-repeat;
   background-position: 100% 0;
   background-size: contain;
+}
+
+.form-yellow-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.form-yellow-btn::before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  background-color: #f0f0f020;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 3;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.2s;
+}
+
+.form-yellow-btn:hover::before {
+  opacity: 1;
+  visibility: visible;
 }
