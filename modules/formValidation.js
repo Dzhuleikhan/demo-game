@@ -1,30 +1,32 @@
 import intlTelInput from "intl-tel-input/intlTelInputWithUtils";
 
-const input = document.querySelector(".phone-input");
+const input = document.querySelectorAll(".phone-input");
 
-const geoIpLookup = (success, failure) => {
-  const cachedData = localStorage.getItem("geoIpData");
-  if (cachedData) {
-    success(JSON.parse(cachedData).country);
-  } else {
-    fetch("https://ipinfo.io/json?token=fcd65e5fcfdda1")
-      .then((res) => res.json())
-      .then((data) => {
-        localStorage.setItem("geoIpData", JSON.stringify(data));
-        success(data.country);
-      })
-      .catch(() => {
-        failure();
-      });
-  }
-};
+input.forEach((input) => {
+  const geoIpLookup = (success, failure) => {
+    const cachedData = localStorage.getItem("geoIpData");
+    if (cachedData) {
+      success(JSON.parse(cachedData).country);
+    } else {
+      fetch("https://ipinfo.io/json?token=fcd65e5fcfdda1")
+        .then((res) => res.json())
+        .then((data) => {
+          localStorage.setItem("geoIpData", JSON.stringify(data));
+          success(data.country);
+        })
+        .catch(() => {
+          failure();
+        });
+    }
+  };
 
-const iti = intlTelInput(input, {
-  initialCountry: "auto",
-  separateDialCode: true,
-  useFullscreenPopup: false,
-  autoPlaceholder: "polite",
-  geoIpLookup: geoIpLookup,
+  const iti = intlTelInput(input, {
+    initialCountry: "auto",
+    separateDialCode: true,
+    useFullscreenPopup: false,
+    autoPlaceholder: "polite",
+    geoIpLookup: geoIpLookup,
+  });
 });
 
 const emailForm = document.querySelector(".form-type-email");
