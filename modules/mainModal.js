@@ -12,6 +12,14 @@ window.addEventListener("mousemove", (e) => {
 const firstModalRegBtn = document.querySelector(".reg-target-btn");
 const mainOverlay = document.querySelector(".main-overlay");
 const modalTigerImg = document.querySelector(".modal-tiger-img");
+const headerAuthBtns = document.querySelectorAll(".header-auth-btn");
+
+headerAuthBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    mainOverlay.classList.add("is-open");
+    localStorage.setItem("mainModal", "open");
+  });
+});
 
 firstModalRegBtn.addEventListener("click", () => {
   localStorage.removeItem("modal");
