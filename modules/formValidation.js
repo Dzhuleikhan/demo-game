@@ -370,12 +370,13 @@ function submitForm(form) {
     if (isValid) {
       resetForm(form);
       if (formType === "email") {
-        window.location.href = `http://www.gbetauth.com/api/register/${formType}/&currency=${formData.currency}&email=${formData.email}&password=${formData.password}&lang=${preferredLang}?utm_campaign=100110754_1705949_nodescription&utm_content=100110754&utm_medium=casap&utm_source=aff`;
-        // window.location.href = `https://dev1.goldbet.io/games/bgaming/softswiss:${gameData.id}?mode=sign-up&modal=${modalParam}&currency=${formData.currency}&method=${formType}`;
+        window.location.href = `https://dev1.goldbet.io/?modal=auth&currency=${formData.currency}&method=${formType}&mode=sign-up`;
       } else if (formType === "phone") {
-        window.location.href = `http://www.gbetauth.com/api/register/${formType}/&currency=${formData.currency}&email=${formData.email}&password=${formData.password}&lang=${preferredLang}?utm_campaign=100110754_1705949_nodescription&utm_content=100110754&utm_medium=casap&utm_source=aff`;
+        window.location.href = `https://dev1.goldbet.io/?modal=auth&currency=${formData.currency}&method=${formType}&mode=sign-up`;
       } else if (formType === "social") {
+        window.location.href = `https://dev1.goldbet.io/?modal=auth&currency=${formData.currency}&method=${formType}&mode=sign-up`;
       } else if (formType === "oneclick") {
+        window.location.href = `https://dev1.goldbet.io/?modal=auth&currency=${formData.currency}&method=${formType}&mode=sign-up`;
       }
     }
   });
