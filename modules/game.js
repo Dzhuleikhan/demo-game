@@ -10,12 +10,17 @@ const gameWrapper = document.querySelector(".game-wrapper");
 const fullScreenBtn = document.querySelector(".fullscreen-btn");
 
 const gameFrame = document.querySelector(".game-frame");
+export const gameData = {
+  id: 53453,
+  name: "Pincle",
+  url: "https://demo.spribe.io/launch/plinko?lang=nl&currency=EUR&mute=1",
+};
 let gameURL =
   "https://demo.spribe.io/launch/plinko?lang=nl&currency=EUR&mute=1";
 
 document.addEventListener("DOMContentLoaded", () => {
   if (gameFrame) {
-    gameFrame.setAttribute("src", gameURL);
+    gameFrame.setAttribute("src", gameData.url);
   }
 });
 
@@ -117,7 +122,7 @@ async function main() {
     // Currency
     const currencyName = getCountryCurrencyABBR(locationData.country);
 
-    gameURL = `https://demo.spribe.io/launch/plinko?lang=${countryInput}&currency=${currencyName}&mute=1`;
+    gameData.url = `https://demo.spribe.io/launch/plinko?lang=${countryInput}&currency=${currencyName}&mute=1`;
 
     if (gameFrame) {
       gameFrame.setAttribute("src", gameURL);

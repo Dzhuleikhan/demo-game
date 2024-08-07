@@ -1,32 +1,32 @@
 import intlTelInput from "intl-tel-input/intlTelInputWithUtils";
+import { gameData } from "./game";
+import { getUrlParameter } from "./params";
 
-const input = document.querySelectorAll(".phone-input");
+const input = document.querySelector(".phone-input");
 
-input.forEach((input) => {
-  const geoIpLookup = (success, failure) => {
-    const cachedData = localStorage.getItem("geoIpData");
-    if (cachedData) {
-      success(JSON.parse(cachedData).country);
-    } else {
-      fetch("https://ipinfo.io/json?token=fcd65e5fcfdda1")
-        .then((res) => res.json())
-        .then((data) => {
-          localStorage.setItem("geoIpData", JSON.stringify(data));
-          success(data.country);
-        })
-        .catch(() => {
-          failure();
-        });
-    }
-  };
+const geoIpLookup = (success, failure) => {
+  const cachedData = localStorage.getItem("geoIpData");
+  if (cachedData) {
+    success(JSON.parse(cachedData).country);
+  } else {
+    fetch("https://ipinfo.io/json?token=fcd65e5fcfdda1")
+      .then((res) => res.json())
+      .then((data) => {
+        localStorage.setItem("geoIpData", JSON.stringify(data));
+        success(data.country);
+      })
+      .catch(() => {
+        failure();
+      });
+  }
+};
 
-  const iti = intlTelInput(input, {
-    initialCountry: "auto",
-    separateDialCode: true,
-    useFullscreenPopup: false,
-    autoPlaceholder: "polite",
-    geoIpLookup: geoIpLookup,
-  });
+const iti = intlTelInput(input, {
+  initialCountry: "auto",
+  separateDialCode: true,
+  useFullscreenPopup: false,
+  autoPlaceholder: "polite",
+  geoIpLookup: geoIpLookup,
 });
 
 const emailForm = document.querySelector(".form-type-email");
@@ -245,6 +245,10 @@ promocodeWrapper.forEach((promo) => {
   }
 });
 
+// Getting parameters
+const methodParam = getUrlParameter("method");
+const modalParam = getUrlParameter("modal");
+
 /**
  *  Submitting form
  */
@@ -259,6 +263,8 @@ function submitForm(form) {
     const bonus = form.querySelector(".form-bonus");
     const promoCode = form.querySelector(".promocode-input-box");
     const terms = form.querySelector(".checkbox");
+
+    let formType = form.getAttribute("data-from-type");
 
     let formData = {};
     let isValid = true;
@@ -361,10 +367,8 @@ function submitForm(form) {
     }
 
     if (isValid) {
-      console.log(formData);
       resetForm(form);
-      window.location.href =
-        "https://dev1.goldbet.io/?modal=auth&method=email&mode=sign-in";
+      window.location.href = `https://dev1.goldbet.io/games/bgaming/softswiss:${gameData.id}?mode=sign-up&modal=${modalParam}&currency=${formData.currency}&method=${formType}`;
     }
   });
 }
