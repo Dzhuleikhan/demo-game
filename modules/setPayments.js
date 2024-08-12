@@ -4,14 +4,22 @@ import { paymentCountries } from "../public/data";
 function setPaymentMethods(countries, location) {
   countries.forEach((country) => {
     if (country.name === location) {
+      // Loop through the payment methods and limit to a maximum of 4
       for (let i = 0; i < country.payments.length && i < 4; i++) {
         const paymentName = country.payments[i];
-        let item = document.createElement("li");
-        let itemIcon = document.createElement("img");
-        item.appendChild(itemIcon);
-        itemIcon.setAttribute("src", paymentName);
-        itemIcon.setAttribute("alt", "Payment icon");
-        document.querySelector(".payments-list-modal").appendChild(item);
+
+        document.querySelectorAll(".payments-list-modal").forEach((el) => {
+          // Create a new list item and icon for each element
+          let item = document.createElement("li");
+          let itemIcon = document.createElement("img");
+          item.appendChild(itemIcon);
+
+          // Set the src and alt attributes of the icon
+          itemIcon.setAttribute("src", paymentName);
+          itemIcon.setAttribute("alt", "Payment icon");
+
+          el.appendChild(item);
+        });
       }
     }
   });

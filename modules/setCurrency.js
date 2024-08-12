@@ -1,9 +1,32 @@
 import { getLocation } from "./geoLocation";
-import {
-  getCountryCurrencyABBR,
-  getCountryCurrencyFullName,
-  getCountryCurrencyIcon,
-} from "./game";
+import { countryCurrencyData } from "../public/data";
+
+export function getCountryCurrencyABBR(inputCountry) {
+  for (const data of countryCurrencyData) {
+    if (data.countries.includes(inputCountry)) {
+      return data.countryCurrency;
+    }
+  }
+  return "USD"; // or some default value if country is not found
+}
+
+export function getCountryCurrencyFullName(inputCountry) {
+  for (const data of countryCurrencyData) {
+    if (data.countries.includes(inputCountry)) {
+      return data.countryCurrencyFullName;
+    }
+  }
+  return "US Dollar"; // or some default value if country is not found
+}
+
+export function getCountryCurrencyIcon(inputCountry) {
+  for (const data of countryCurrencyData) {
+    if (data.countries.includes(inputCountry)) {
+      return data.countryCurrencyIcon;
+    }
+  }
+  return "./img/currencies/usd.svg"; // or some default value if country is not found
+}
 
 function setCurrency(abbr, name, icon) {
   const formCurrency = document.querySelectorAll(".form-currency");
@@ -16,6 +39,18 @@ function setCurrency(abbr, name, icon) {
     currencyIcon.src = icon;
   });
 }
+
+function loadCurrencyFromLocalStorage() {
+  const currencyData = JSON.parse(localStorage.getItem("currencyData"));
+  if (currencyData) {
+    setCurrency(currencyData.abbr, currencyData.name, currencyData.icon);
+  } else {
+    settingModalCurrency();
+  }
+}
+
+// Call this function when the page loads
+document.addEventListener("DOMContentLoaded", loadCurrencyFromLocalStorage);
 
 async function settingModalCurrency() {
   try {
@@ -40,18 +75,6 @@ async function settingModalCurrency() {
     console.error("Error fetching location data:", error);
   }
 }
-
-function loadCurrencyFromLocalStorage() {
-  const currencyData = JSON.parse(localStorage.getItem("currencyData"));
-  if (currencyData) {
-    setCurrency(currencyData.abbr, currencyData.name, currencyData.icon);
-  } else {
-    settingModalCurrency();
-  }
-}
-
-// Call this function when the page loads
-document.addEventListener("DOMContentLoaded", loadCurrencyFromLocalStorage);
 
 /**
  *  Currency dropdown

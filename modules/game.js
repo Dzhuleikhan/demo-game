@@ -3,6 +3,7 @@ import { countriesPayments, countryCurrencyData } from "../public/data";
 import horizontalLoop from "./marquee";
 import { getLocation } from "./geoLocation";
 import { settingGeoLocation } from "./settingGlobalGeo";
+import { getCountryCurrencyABBR } from "./setCurrency";
 
 export const overlay = document.querySelector(".overlay");
 
@@ -77,33 +78,6 @@ function createPaymentIcons(country) {
     document.querySelector(".payments-list").appendChild(item);
     itemIcon.setAttribute("src", country.payments[i]);
   }
-}
-
-export function getCountryCurrencyABBR(inputCountry) {
-  for (const data of countryCurrencyData) {
-    if (data.countries.includes(inputCountry)) {
-      return data.countryCurrency;
-    }
-  }
-  return "USD"; // or some default value if country is not found
-}
-
-export function getCountryCurrencyFullName(inputCountry) {
-  for (const data of countryCurrencyData) {
-    if (data.countries.includes(inputCountry)) {
-      return data.countryCurrencyFullName;
-    }
-  }
-  return "US Dollar"; // or some default value if country is not found
-}
-
-export function getCountryCurrencyIcon(inputCountry) {
-  for (const data of countryCurrencyData) {
-    if (data.countries.includes(inputCountry)) {
-      return data.countryCurrencyIcon;
-    }
-  }
-  return "./img/currencies/usd.svg"; // or some default value if country is not found
 }
 
 async function main() {

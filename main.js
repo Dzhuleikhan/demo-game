@@ -8,7 +8,7 @@ import "./modules/language";
 import "./modules/mainModal";
 import "./modules/formValidation";
 import "./modules/geoLocation";
-import "./modules/modalCurrency";
+import "./modules/setCurrency";
 import "./modules/modalBonus";
 import "./modules/setPayments";
 import "./modules/settingGlobalGeo";
