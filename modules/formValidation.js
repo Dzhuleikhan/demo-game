@@ -369,12 +369,13 @@ function submitForm(form) {
 
     if (isValid) {
       resetForm(form);
+      console.log(formData);
       if (formType === "email") {
         window.location.href = `https://dev1.goldbet.io/?modal=auth&currency=${formData.currency}&method=${formType}&mode=sign-up`;
       } else if (formType === "phone") {
         window.location.href = `https://dev1.goldbet.io/?modal=auth&currency=${formData.currency}&method=${formType}&mode=sign-up`;
       } else if (formType === "social") {
-        window.location.href = `https://dev1.goldbet.io/?modal=auth&currency=${formData.currency}&method=${formType}&mode=sign-up`;
+        window.location.href = `https://gbetauth.com/api/register?type=${formData.social}&currency=${formData.currency}&bonus=${formData.bonus}&utm_campaign=100110754_1705949_nodescription&utm_content=100110754&utm_medium=casap&utm_source=aff`;
       } else if (formType === "oneclick") {
         window.location.href = `https://dev1.goldbet.io/?modal=auth&currency=${formData.currency}&method=${formType}&mode=sign-up`;
       }
