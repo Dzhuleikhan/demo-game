@@ -358,7 +358,7 @@ function submitForm(form) {
       }
     }
 
-    // Checking terms and conditions
+    // Checking terms and  conditions
     if (terms) {
       const input = terms.querySelector("input");
       if (!input.checked) {
@@ -411,8 +411,6 @@ function submitForm(form) {
     }
 
     if (isValid) {
-      // resetForm(form);
-
       if (formType === "email") {
         disableEmailForm();
         window.location.href = `https://gbetauth.com/api/register?type=${formType}&currency=${formData.currency}&email=${formData.email}&password=${formData.password}&lang=ru?utm_campaign=100110754_1705949_nodescription&utm_content=100110754&utm_medium=casap&utm_source=aff`;
