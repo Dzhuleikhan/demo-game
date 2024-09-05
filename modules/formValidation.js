@@ -161,7 +161,7 @@ socialForm.forEach((socialForm) => {
     inputs.forEach((inp) => {
       inp.addEventListener("input", () => {
         submitBtn.disabled = false;
-        submitBtn.textContent = "Sign Up";
+        submitBtn.querySelector("span").textContent = "Sign Up";
       });
     });
   }
@@ -263,7 +263,9 @@ function submitForm(form) {
     const password = form.querySelector(".form-password");
     const bonus = form.querySelector(".form-bonus");
     const promoCode = form.querySelector(".promocode-input-box");
+    const promoCodeWrapper = form.querySelector(".promocode-wrapper");
     const terms = form.querySelector(".checkbox");
+    const formbtn = form.querySelector(".form-yellow-btn");
 
     let formType = form.getAttribute("data-from-type");
 
@@ -367,20 +369,62 @@ function submitForm(form) {
       }
     }
 
+    function disableEmailForm() {
+      currency.classList.add("submit-disabled");
+      email.classList.add("submit-disabled");
+      password.classList.add("submit-disabled");
+      bonus.classList.add("submit-disabled");
+      promoCodeWrapper.classList.add("submit-disabled");
+      terms.classList.add("submit-disabled");
+      formbtn.disabled = true;
+      formbtn.classList.add("loading");
+    }
+
+    function disablePhoneForm() {
+      currency.classList.add("submit-disabled");
+      phone.classList.add("submit-disabled");
+      password.classList.add("submit-disabled");
+      bonus.classList.add("submit-disabled");
+      promoCodeWrapper.classList.add("submit-disabled");
+      terms.classList.add("submit-disabled");
+      formbtn.disabled = true;
+      formbtn.classList.add("loading");
+    }
+
+    function disableSocialForm() {
+      socials.classList.add("submit-disabled");
+      currency.classList.add("submit-disabled");
+      bonus.classList.add("submit-disabled");
+      promoCodeWrapper.classList.add("submit-disabled");
+      terms.classList.add("submit-disabled");
+      formbtn.disabled = true;
+      formbtn.classList.add("loading");
+    }
+
+    function disableOneClickForm() {
+      currency.classList.add("submit-disabled");
+      bonus.classList.add("submit-disabled");
+      promoCodeWrapper.classList.add("submit-disabled");
+      terms.classList.add("submit-disabled");
+      formbtn.disabled = true;
+      formbtn.classList.add("loading");
+    }
+
     if (isValid) {
-      resetForm(form);
-      console.log(formData);
+      // resetForm(form);
+
       if (formType === "email") {
+        disableEmailForm();
         window.location.href = `https://gbetauth.com/api/register?type=${formType}&currency=${formData.currency}&email=${formData.email}&password=${formData.password}&lang=ru?utm_campaign=100110754_1705949_nodescription&utm_content=100110754&utm_medium=casap&utm_source=aff`;
-        console.log(
-          `https://gbetauth.com/api/register?type=${formType}&currency=${formData.currency}&email=${formData.email}&password=${formData.password}&lang=en?utm_campaign=100110754_1705949_nodescription&utm_content=100110754&utm_medium=casap&utm_source=aff`,
-        );
       } else if (formType === "phone") {
+        disablePhoneForm();
         window.location.href = `https://gbetauth.com/api/register?type=${formType}&currency=${formData.currency}&phone=${formData.phone}&password=Qwerty1234&lang=en?utm_campaign=100110754_1705949_nodescription&utm_content=100110754&utm_medium=casap&utm_source=aff`;
       } else if (formType === "social") {
+        disableSocialForm();
         window.location.href = `https://gbetauth.com/api/register?type=${formData.social}&currency=${formData.currency}&bonus=${formData.bonus}&utm_campaign=100110754_1705949_nodescription&utm_content=100110754&utm_medium=casap&utm_source=aff`;
       } else if (formType === "oneclick") {
-        window.location.href = `https://dev1.goldbet.io/?modal=auth&currency=${formData.currency}&method=${formType}&mode=sign-up`;
+        disableOneClickForm();
+        window.location.href = `https://gbetauth.com/register?type=${formType}&currency=${formData.currency}?utm_campaign=100110754_1705949_nodescription&utm_content=100110754&utm_medium=casap&utm_source=aff`;
       }
     }
   });

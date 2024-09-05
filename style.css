@@ -649,3 +649,24 @@ main {
 .social-variant-input:disabled+span {
   opacity: 0.4;
 }
+
+.submit-disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.form-yellow-btn svg {
+  display: none;
+}
+
+.form-yellow-btn span {
+  display: block;
+}
+
+.form-yellow-btn.loading svg {
+  display: block;
+}
+
+.form-yellow-btn.loading span {
+  display: none;
+}

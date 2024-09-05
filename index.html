@@ -1662,7 +1662,7 @@
               </button>
               <button
                 data-tab="social"
-                class="relative flex items-center justify-center gap-1 overflow-hidden border-b-2 border-borderColor px-[11px] py-[10px] text-sm font-bold leading-[186%] text-white"
+                class="relative flex hidden items-center justify-center gap-1 overflow-hidden border-b-2 border-borderColor px-[11px] py-[10px] text-sm font-bold leading-[186%] text-white"
               >
                 <svg
                   class="fill-white"
@@ -1680,7 +1680,7 @@
               </button>
               <button
                 data-tab="oneclick"
-                class="relative flex hidden items-center justify-center gap-1 overflow-hidden border-b-2 border-borderColor px-1 py-[10px] text-sm font-bold leading-[186%] text-white"
+                class="relative flex items-center justify-center gap-1 overflow-hidden border-b-2 border-borderColor px-1 py-[10px] text-sm font-bold leading-[186%] text-white"
               >
                 <svg
                   class="stroke-white"
@@ -1809,23 +1809,6 @@
                           </div>
                         </li>
                         <li
-                          class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
-                        >
-                          <img
-                            class="currency-item-icon"
-                            width="24"
-                            height="24"
-                            src="./img/currencies/rub.svg"
-                            alt="RUB"
-                          />
-                          <span class="currency-item-name">Russian Ruble</span>
-                          <div>
-                            <span class="currency-item-symbol">₽</span>
-                            |
-                            <span class="currency-item-abbr">RUB</span>
-                          </div>
-                        </li>
-                        <li
                           class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
                         >
                           <img
@@ -1940,7 +1923,7 @@
                       >
                         At least 6 characters.
                       </div>
-                      <button class="show-password hidden">
+                      <div class="show-password hidden">
                         <svg
                           width="24"
                           height="24"
@@ -1963,7 +1946,7 @@
                             stroke-linejoin="round"
                           />
                         </svg>
-                      </button>
+                      </div>
                       <svg
                         class="wrong hidden"
                         width="24"
@@ -2167,7 +2150,77 @@
                   <button
                     class="form-yellow-btn w-full rounded-lg bg-gradient-to-b from-[#F4FD2B] to-[#FFA434] p-[14px] text-base font-bold text-black shadow-formBtnShadow transition-all"
                   >
-                    Sign Up
+                    <svg
+                      class="mx-auto h-6 w-6"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 200 200"
+                    >
+                      <radialgradient
+                        id="a11"
+                        cx=".66"
+                        fx=".66"
+                        cy=".3125"
+                        fy=".3125"
+                        gradientTransform="scale(1.5)"
+                      >
+                        <stop offset="0" stop-color="#1A020B"></stop>
+                        <stop
+                          offset=".3"
+                          stop-color="#1A020B"
+                          stop-opacity=".9"
+                        ></stop>
+                        <stop
+                          offset=".6"
+                          stop-color="#1A020B"
+                          stop-opacity=".6"
+                        ></stop>
+                        <stop
+                          offset=".8"
+                          stop-color="#1A020B"
+                          stop-opacity=".3"
+                        ></stop>
+                        <stop
+                          offset="1"
+                          stop-color="#1A020B"
+                          stop-opacity="0"
+                        ></stop>
+                      </radialgradient>
+                      <circle
+                        transform-origin="center"
+                        fill="none"
+                        stroke="url(#a11)"
+                        stroke-width="26"
+                        stroke-linecap="round"
+                        stroke-dasharray="200 1000"
+                        stroke-dashoffset="0"
+                        cx="100"
+                        cy="100"
+                        r="70"
+                      >
+                        <animatetransform
+                          type="rotate"
+                          attributeName="transform"
+                          calcMode="spline"
+                          dur="2"
+                          values="360;0"
+                          keyTimes="0;1"
+                          keySplines="0 0 1 1"
+                          repeatCount="indefinite"
+                        ></animatetransform>
+                      </circle>
+                      <circle
+                        transform-origin="center"
+                        fill="none"
+                        opacity=".2"
+                        stroke="#1A020B"
+                        stroke-width="26"
+                        stroke-linecap="round"
+                        cx="100"
+                        cy="100"
+                        r="70"
+                      ></circle>
+                    </svg>
+                    <span>Sign Up</span>
                   </button>
                   <!-- Terms -->
                   <label
@@ -2280,23 +2333,6 @@
                           </div>
                         </li>
                         <li
-                          class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
-                        >
-                          <img
-                            class="currency-item-icon"
-                            width="24"
-                            height="24"
-                            src="./img/currencies/rub.svg"
-                            alt="RUB"
-                          />
-                          <span class="currency-item-name">Russian Ruble</span>
-                          <div>
-                            <span class="currency-item-symbol">₽</span>
-                            |
-                            <span class="currency-item-abbr">RUB</span>
-                          </div>
-                        </li>
-                        <li
                           class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
                         >
                           <img
@@ -2330,6 +2366,94 @@
                         class="error-alert invisible absolute -right-[42px] bottom-9 min-w-[115px] rounded bg-white px-2 py-[6px] text-center text-sm font-normal leading-[120%] text-black opacity-0 transition-all mobile:-right-7"
                       >
                         Wrong number
+                      </div>
+                      <svg
+                        class="wrong hidden"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M18 6L6 18M6 6L18 18"
+                          stroke="#FF5530"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                      <svg
+                        class="correct hidden"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M17 3.34001C18.5083 4.21087 19.7629 5.46054 20.6398 6.96531C21.5167 8.47009 21.9854 10.1778 21.9994 11.9194C22.0135 13.6609 21.5725 15.376 20.72 16.8947C19.8676 18.4135 18.6332 19.6832 17.1392 20.5783C15.6452 21.4734 13.9434 21.9628 12.2021 21.9981C10.4608 22.0333 8.74055 21.6132 7.21155 20.7793C5.68256 19.9453 4.39787 18.7265 3.48467 17.2435C2.57146 15.7605 2.06141 14.0647 2.005 12.324L2 12L2.005 11.676C2.061 9.94901 2.56355 8.26598 3.46364 6.79101C4.36373 5.31604 5.63065 4.09947 7.14089 3.2599C8.65113 2.42033 10.3531 1.98641 12.081 2.00045C13.8089 2.01449 15.5036 2.47601 17 3.34001ZM15.707 9.29302C15.5348 9.12084 15.3057 9.01741 15.0627 9.00213C14.8197 8.98685 14.5794 9.06076 14.387 9.21001L14.293 9.29302L11 12.585L9.707 11.293L9.613 11.21C9.42058 11.0609 9.18037 10.987 8.9374 11.0024C8.69444 11.0177 8.46541 11.1211 8.29326 11.2933C8.12112 11.4654 8.01768 11.6945 8.00235 11.9374C7.98702 12.1804 8.06086 12.4206 8.21 12.613L8.293 12.707L10.293 14.707L10.387 14.79C10.5624 14.9261 10.778 14.9999 11 14.9999C11.222 14.9999 11.4376 14.9261 11.613 14.79L11.707 14.707L15.707 10.707L15.79 10.613C15.9393 10.4206 16.0132 10.1804 15.9979 9.93733C15.9826 9.69431 15.8792 9.46521 15.707 9.29302Z"
+                          fill="#4ED937"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <!-- Password -->
+                  <div
+                    class="form-password relative grid grid-cols-[auto_1fr] items-center gap-2 rounded-lg border border-white/20 bg-black/35 px-3 py-[13px]"
+                  >
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M8 11V7C8 5.93913 8.42143 4.92172 9.17157 4.17157C9.92172 3.42143 10.9391 3 12 3C13.0609 3 14.0783 3.42143 14.8284 4.17157C15.5786 4.92172 16 5.93913 16 7V11M5 13C5 12.4696 5.21071 11.9609 5.58579 11.5858C5.96086 11.2107 6.46957 11 7 11H17C17.5304 11 18.0391 11.2107 18.4142 11.5858C18.7893 11.9609 19 12.4696 19 13V19C19 19.5304 18.7893 20.0391 18.4142 20.4142C18.0391 20.7893 17.5304 21 17 21H7C6.46957 21 5.96086 20.7893 5.58579 20.4142C5.21071 20.0391 5 19.5304 5 19V13ZM11 16C11 16.2652 11.1054 16.5196 11.2929 16.7071C11.4804 16.8946 11.7348 17 12 17C12.2652 17 12.5196 16.8946 12.7071 16.7071C12.8946 16.5196 13 16.2652 13 16C13 15.7348 12.8946 15.4804 12.7071 15.2929C12.5196 15.1054 12.2652 15 12 15C11.7348 15 11.4804 15.1054 11.2929 15.2929C11.1054 15.4804 11 15.7348 11 16Z"
+                        stroke="#F0F0F0"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    <input
+                      class="bg-transparent font-bold text-white outline-none placeholder:text-white/50"
+                      name="password"
+                      type="password"
+                      placeholder="Password"
+                    />
+                    <div
+                      class="password-cta validation-cta absolute right-3 top-1/2 flex -translate-y-1/2 items-center gap-2"
+                    >
+                      <div
+                        class="error-alert invisible absolute -right-[55px] bottom-10 min-w-[151px] rounded bg-white px-2 py-[6px] text-center text-sm font-normal leading-[120%] text-black opacity-0 transition-all mobile:right-0"
+                      >
+                        At least 6 characters.
+                      </div>
+                      <div class="show-password hidden">
+                        <svg
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M10 12C10 12.5304 10.2107 13.0391 10.5858 13.4142C10.9609 13.7893 11.4696 14 12 14C12.5304 14 13.0391 13.7893 13.4142 13.4142C13.7893 13.0391 14 12.5304 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10C11.4696 10 10.9609 10.2107 10.5858 10.5858C10.2107 10.9609 10 11.4696 10 12Z"
+                            stroke="#A9AABF"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M21 12C18.6 16 15.6 18 12 18C8.4 18 5.4 16 3 12C5.4 8 8.4 6 12 6C15.6 6 18.6 8 21 12Z"
+                            stroke="#A9AABF"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
                       </div>
                       <svg
                         class="wrong hidden"
@@ -2534,7 +2658,77 @@
                   <button
                     class="form-yellow-btn w-full rounded-lg bg-gradient-to-b from-[#F4FD2B] to-[#FFA434] p-[14px] text-base font-bold text-black shadow-formBtnShadow transition-all"
                   >
-                    Sign Up
+                    <svg
+                      class="mx-auto h-6 w-6"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 200 200"
+                    >
+                      <radialgradient
+                        id="a12"
+                        cx=".66"
+                        fx=".66"
+                        cy=".3125"
+                        fy=".3125"
+                        gradientTransform="scale(1.5)"
+                      >
+                        <stop offset="0" stop-color="#1A020B"></stop>
+                        <stop
+                          offset=".3"
+                          stop-color="#1A020B"
+                          stop-opacity=".9"
+                        ></stop>
+                        <stop
+                          offset=".6"
+                          stop-color="#1A020B"
+                          stop-opacity=".6"
+                        ></stop>
+                        <stop
+                          offset=".8"
+                          stop-color="#1A020B"
+                          stop-opacity=".3"
+                        ></stop>
+                        <stop
+                          offset="1"
+                          stop-color="#1A020B"
+                          stop-opacity="0"
+                        ></stop>
+                      </radialgradient>
+                      <circle
+                        transform-origin="center"
+                        fill="none"
+                        stroke="url(#a12)"
+                        stroke-width="26"
+                        stroke-linecap="round"
+                        stroke-dasharray="200 1000"
+                        stroke-dashoffset="0"
+                        cx="100"
+                        cy="100"
+                        r="70"
+                      >
+                        <animatetransform
+                          type="rotate"
+                          attributeName="transform"
+                          calcMode="spline"
+                          dur="2"
+                          values="360;0"
+                          keyTimes="0;1"
+                          keySplines="0 0 1 1"
+                          repeatCount="indefinite"
+                        ></animatetransform>
+                      </circle>
+                      <circle
+                        transform-origin="center"
+                        fill="none"
+                        opacity=".2"
+                        stroke="#1A020B"
+                        stroke-width="26"
+                        stroke-linecap="round"
+                        cx="100"
+                        cy="100"
+                        r="70"
+                      ></circle>
+                    </svg>
+                    <span>Sign Up</span>
                   </button>
                   <!-- Terms -->
                   <label
@@ -2774,23 +2968,6 @@
                           </div>
                         </li>
                         <li
-                          class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
-                        >
-                          <img
-                            class="currency-item-icon"
-                            width="24"
-                            height="24"
-                            src="./img/currencies/rub.svg"
-                            alt="RUB"
-                          />
-                          <span class="currency-item-name">Russian Ruble</span>
-                          <div>
-                            <span class="currency-item-symbol">₽</span>
-                            |
-                            <span class="currency-item-abbr">RUB</span>
-                          </div>
-                        </li>
-                        <li
                           class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
                         >
                           <img
@@ -2982,7 +3159,77 @@
                   <button
                     class="form-submit-btn form-yellow-btn w-full rounded-lg bg-gradient-to-b from-[#F4FD2B] to-[#FFA434] p-[14px] text-base font-bold text-black shadow-formBtnShadow transition-all disabled:pointer-events-none disabled:opacity-40"
                   >
-                    Choose a social
+                    <svg
+                      class="mx-auto h-6 w-6"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 200 200"
+                    >
+                      <radialgradient
+                        id="a13"
+                        cx=".66"
+                        fx=".66"
+                        cy=".3125"
+                        fy=".3125"
+                        gradientTransform="scale(1.5)"
+                      >
+                        <stop offset="0" stop-color="#1A020B"></stop>
+                        <stop
+                          offset=".3"
+                          stop-color="#1A020B"
+                          stop-opacity=".9"
+                        ></stop>
+                        <stop
+                          offset=".6"
+                          stop-color="#1A020B"
+                          stop-opacity=".6"
+                        ></stop>
+                        <stop
+                          offset=".8"
+                          stop-color="#1A020B"
+                          stop-opacity=".3"
+                        ></stop>
+                        <stop
+                          offset="1"
+                          stop-color="#1A020B"
+                          stop-opacity="0"
+                        ></stop>
+                      </radialgradient>
+                      <circle
+                        transform-origin="center"
+                        fill="none"
+                        stroke="url(#a13)"
+                        stroke-width="26"
+                        stroke-linecap="round"
+                        stroke-dasharray="200 1000"
+                        stroke-dashoffset="0"
+                        cx="100"
+                        cy="100"
+                        r="70"
+                      >
+                        <animatetransform
+                          type="rotate"
+                          attributeName="transform"
+                          calcMode="spline"
+                          dur="2"
+                          values="360;0"
+                          keyTimes="0;1"
+                          keySplines="0 0 1 1"
+                          repeatCount="indefinite"
+                        ></animatetransform>
+                      </circle>
+                      <circle
+                        transform-origin="center"
+                        fill="none"
+                        opacity=".2"
+                        stroke="#1A020B"
+                        stroke-width="26"
+                        stroke-linecap="round"
+                        cx="100"
+                        cy="100"
+                        r="70"
+                      ></circle>
+                    </svg>
+                    <span>Choose a social</span>
                   </button>
                   <!-- Terms -->
                   <label
@@ -3092,23 +3339,6 @@
                             <span class="currency-item-symbol">$</span>
                             |
                             <span class="currency-item-abbr">USD</span>
-                          </div>
-                        </li>
-                        <li
-                          class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
-                        >
-                          <img
-                            class="currency-item-icon"
-                            width="24"
-                            height="24"
-                            src="./img/currencies/rub.svg"
-                            alt="RUB"
-                          />
-                          <span class="currency-item-name">Russian Ruble</span>
-                          <div>
-                            <span class="currency-item-symbol">₽</span>
-                            |
-                            <span class="currency-item-abbr">RUB</span>
                           </div>
                         </li>
                         <li
@@ -3303,7 +3533,77 @@
                   <button
                     class="form-yellow-btn w-full rounded-lg bg-gradient-to-b from-[#F4FD2B] to-[#FFA434] p-[14px] text-base font-bold text-black shadow-formBtnShadow transition-all"
                   >
-                    Sign Up
+                    <svg
+                      class="mx-auto h-6 w-6"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 200 200"
+                    >
+                      <radialgradient
+                        id="a14"
+                        cx=".66"
+                        fx=".66"
+                        cy=".3125"
+                        fy=".3125"
+                        gradientTransform="scale(1.5)"
+                      >
+                        <stop offset="0" stop-color="#1A020B"></stop>
+                        <stop
+                          offset=".3"
+                          stop-color="#1A020B"
+                          stop-opacity=".9"
+                        ></stop>
+                        <stop
+                          offset=".6"
+                          stop-color="#1A020B"
+                          stop-opacity=".6"
+                        ></stop>
+                        <stop
+                          offset=".8"
+                          stop-color="#1A020B"
+                          stop-opacity=".3"
+                        ></stop>
+                        <stop
+                          offset="1"
+                          stop-color="#1A020B"
+                          stop-opacity="0"
+                        ></stop>
+                      </radialgradient>
+                      <circle
+                        transform-origin="center"
+                        fill="none"
+                        stroke="url(#a14)"
+                        stroke-width="26"
+                        stroke-linecap="round"
+                        stroke-dasharray="200 1000"
+                        stroke-dashoffset="0"
+                        cx="100"
+                        cy="100"
+                        r="70"
+                      >
+                        <animatetransform
+                          type="rotate"
+                          attributeName="transform"
+                          calcMode="spline"
+                          dur="2"
+                          values="360;0"
+                          keyTimes="0;1"
+                          keySplines="0 0 1 1"
+                          repeatCount="indefinite"
+                        ></animatetransform>
+                      </circle>
+                      <circle
+                        transform-origin="center"
+                        fill="none"
+                        opacity=".2"
+                        stroke="#1A020B"
+                        stroke-width="26"
+                        stroke-linecap="round"
+                        cx="100"
+                        cy="100"
+                        r="70"
+                      ></circle>
+                    </svg>
+                    <span>Sign Up</span>
                   </button>
                   <!-- Terms -->
                   <label
