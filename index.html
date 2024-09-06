@@ -3803,14 +3803,18 @@
               <div
                 class="form-content active form-content-social-quick form-content-social"
               >
-                <form action="#" class="form form-type-social grid gap-3">
+                <form
+                  data-from-type="social"
+                  action="#"
+                  class="form form-type-social grid gap-3"
+                >
                   <!-- socials radio -->
                   <div class="socials grid grid-cols-6 gap-2">
                     <label class="relative cursor-pointer">
                       <input
                         class="social-variant-input absolute"
                         hidden
-                        value="steam"
+                        value="discord"
                         type="radio"
                         name="social-variant"
                       />
@@ -3818,7 +3822,7 @@
                         class="socials-item flex h-14 items-center justify-center rounded-xl bg-[#253265] transition-all before:bg-white hover:bg-[#253265]/10"
                       >
                         <svg
-                          class="fill-white group-hover:fill-white"
+                          class="h-8 w-8"
                           width="36"
                           height="36"
                           viewBox="0 0 36 36"
@@ -3826,16 +3830,15 @@
                           xmlns="http://www.w3.org/2000/svg"
                         >
                           <path
-                            d="M5.60419 22.0755C6.43037 24.7764 8.10186 27.1408 10.3726 28.8205C12.6433 30.5002 15.3933 31.4065 18.2178 31.4061C25.5018 31.4061 31.4061 25.5084 31.4061 18.2343C31.4061 10.9602 25.5018 5.0625 18.2195 5.0625C14.8759 5.06121 11.6568 6.33055 9.21401 8.61349C6.77118 10.8964 5.28718 14.0224 5.0625 17.3584L5.06744 17.3682L12.1539 20.2809C12.793 19.8577 13.55 19.6484 14.3157 19.6832L17.5428 15.0006L17.5411 14.9348C17.5424 13.6066 18.0705 12.3333 19.0094 11.394C19.9484 10.4548 21.2216 9.92628 22.5497 9.92454C23.8778 9.92628 25.151 10.4548 26.0899 11.394C27.0289 12.3333 27.557 13.6066 27.5583 14.9348C27.5578 15.6021 27.4241 16.2627 27.1651 16.8777C26.9061 17.4928 26.5271 18.05 26.0501 18.5167C25.573 18.9835 25.0077 19.3503 24.3872 19.5959C23.7666 19.8414 23.1033 19.9606 22.4361 19.9466L17.8194 23.2396C17.835 23.8495 17.698 24.4537 17.4206 24.9972C17.1433 25.5407 16.7344 26.0062 16.2313 26.3514C15.7282 26.6967 15.1468 26.9106 14.5399 26.9739C13.933 27.0371 13.32 26.9477 12.7565 26.7136C12.2156 26.4883 11.737 26.136 11.361 25.6867C10.985 25.2373 10.7227 24.7041 10.5963 24.132L5.60584 22.0755H5.60419Z"
-                          />
-                          <path
-                            d="M13.0779 25.9445C13.7639 26.2064 14.5249 26.1907 15.1995 25.9009C15.8741 25.611 16.4093 25.0698 16.6916 24.392C16.9739 23.7142 16.981 22.953 16.7115 22.27C16.442 21.587 15.917 21.0359 15.248 20.7334C14.5846 20.4566 13.8403 20.4449 13.1685 20.7005L14.8528 21.3986C15.1047 21.5035 15.3335 21.6569 15.5261 21.8502C15.7187 22.0435 15.8713 22.2728 15.9753 22.5251C16.0792 22.7774 16.1325 23.0476 16.132 23.3205C16.1315 23.5933 16.0773 23.8634 15.9724 24.1153C15.8676 24.3672 15.7141 24.596 15.5208 24.7886C15.3275 24.9811 15.0982 25.1338 14.846 25.2377C14.5937 25.3417 14.3234 25.395 14.0506 25.3945C13.7777 25.394 13.5076 25.3398 13.2557 25.2349L11.6257 24.5598C11.9224 25.1844 12.4397 25.6787 13.0779 25.9445ZM19.2127 14.9346C19.2131 15.8199 19.5648 16.6688 20.1905 17.2952C20.8162 17.9215 21.6648 18.274 22.5501 18.2753C23.4354 18.274 24.284 17.9215 24.9097 17.2952C25.5354 16.6688 25.887 15.8199 25.8875 14.9346C25.8862 14.0498 25.5341 13.2017 24.9085 12.5761C24.2829 11.9505 23.4348 11.5985 22.5501 11.5972C21.6653 11.5985 20.8172 11.9505 20.1916 12.5761C19.566 13.2017 19.214 14.0498 19.2127 14.9346ZM22.555 12.4204C22.8845 12.4206 23.2108 12.4857 23.5151 12.612C23.8195 12.7383 24.096 12.9233 24.3288 13.1565C24.5617 13.3897 24.7463 13.6664 24.8722 13.9709C24.9981 14.2754 25.0628 14.6018 25.0626 14.9313C25.0624 15.2608 24.9973 15.587 24.871 15.8914C24.7447 16.1957 24.5597 16.4722 24.3265 16.7051C24.0933 16.9379 23.8166 17.1226 23.5121 17.2485C23.2076 17.3744 22.8812 17.4391 22.5517 17.4389C21.8862 17.4384 21.2482 17.1736 20.7779 16.7028C20.3077 16.2319 20.0437 15.5935 20.0441 14.928C20.0446 14.2625 20.3094 13.6244 20.7802 13.1542C21.2511 12.6839 21.8895 12.42 22.555 12.4204Z"
+                            d="M29.107 8.01004C27.0084 7.0587 24.7883 6.38272 22.5052 6C22.2209 6.49812 21.8886 7.16809 21.6595 7.70109C19.198 7.34245 16.7591 7.34245 14.3429 7.70109C14.1139 7.16821 13.7741 6.49812 13.4871 6C11.2019 6.38289 8.97981 7.06058 6.88024 8.01501C2.70224 14.1321 1.56962 20.0971 2.13587 25.9776C4.90699 27.9826 7.59249 29.2006 10.2327 29.9976C10.889 29.1233 11.469 28.1977 11.9669 27.2304C11.0189 26.8807 10.105 26.4498 9.23611 25.9427C9.46476 25.7785 9.68803 25.6074 9.90561 25.4296C15.1709 27.8157 20.8919 27.8157 26.0944 25.4296C26.3129 25.6062 26.5361 25.7773 26.7637 25.9427C25.8935 26.4512 24.9779 26.8829 24.028 27.2329C24.5287 28.2042 25.1077 29.1307 25.7621 30C28.4049 29.2031 31.0929 27.9851 33.864 25.9776C34.5285 19.1606 32.729 13.2504 29.107 8.01004ZM12.6842 22.3612C11.1036 22.3612 9.80736 20.9315 9.80736 19.1906C9.80736 17.4496 11.076 16.0175 12.6842 16.0175C14.2925 16.0175 15.5887 17.4471 15.5611 19.1906C15.5636 20.9315 14.2926 22.3612 12.6842 22.3612ZM23.3156 22.3612C21.735 22.3612 20.4389 20.9315 20.4389 19.1906C20.4389 17.4496 21.7074 16.0175 23.3156 16.0175C24.924 16.0175 26.2201 17.4471 26.1925 19.1906C26.1925 20.9315 24.924 22.3612 23.3156 22.3612Z"
+                            fill="#5865F2"
                           />
                         </svg>
                       </span>
                     </label>
                     <label class="relative cursor-pointer">
                       <input
+                        disabled
                         class="social-variant-input absolute"
                         hidden
                         value="twitch"
@@ -3895,6 +3898,7 @@
                       <input
                         class="social-variant-input absolute"
                         hidden
+                        disabled
                         value="instagram"
                         type="radio"
                         name="social-variant"
@@ -3914,6 +3918,7 @@
                       <input
                         class="social-variant-input absolute"
                         hidden
+                        disabled
                         value="telegram"
                         type="radio"
                         name="social-variant"
@@ -4009,23 +4014,6 @@
                             <span class="currency-item-symbol">$</span>
                             |
                             <span class="currency-item-abbr">USD</span>
-                          </div>
-                        </li>
-                        <li
-                          class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
-                        >
-                          <img
-                            class="currency-item-icon"
-                            width="24"
-                            height="24"
-                            src="./img/currencies/rub.svg"
-                            alt="RUB"
-                          />
-                          <span class="currency-item-name">Russian Ruble</span>
-                          <div>
-                            <span class="currency-item-symbol">₽</span>
-                            |
-                            <span class="currency-item-abbr">RUB</span>
                           </div>
                         </li>
                         <li
@@ -4220,7 +4208,77 @@
                   <button
                     class="form-submit-btn form-yellow-btn w-full rounded-lg bg-gradient-to-b from-[#F4FD2B] to-[#FFA434] p-[14px] text-base font-bold text-black shadow-formBtnShadow transition-all disabled:pointer-events-none disabled:opacity-40"
                   >
-                    Choose a social
+                    <svg
+                      class="mx-auto h-6 w-6"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 200 200"
+                    >
+                      <radialgradient
+                        id="a143"
+                        cx=".66"
+                        fx=".66"
+                        cy=".3125"
+                        fy=".3125"
+                        gradientTransform="scale(1.5)"
+                      >
+                        <stop offset="0" stop-color="#1A020B"></stop>
+                        <stop
+                          offset=".3"
+                          stop-color="#1A020B"
+                          stop-opacity=".9"
+                        ></stop>
+                        <stop
+                          offset=".6"
+                          stop-color="#1A020B"
+                          stop-opacity=".6"
+                        ></stop>
+                        <stop
+                          offset=".8"
+                          stop-color="#1A020B"
+                          stop-opacity=".3"
+                        ></stop>
+                        <stop
+                          offset="1"
+                          stop-color="#1A020B"
+                          stop-opacity="0"
+                        ></stop>
+                      </radialgradient>
+                      <circle
+                        transform-origin="center"
+                        fill="none"
+                        stroke="url(#a143)"
+                        stroke-width="26"
+                        stroke-linecap="round"
+                        stroke-dasharray="200 1000"
+                        stroke-dashoffset="0"
+                        cx="100"
+                        cy="100"
+                        r="70"
+                      >
+                        <animatetransform
+                          type="rotate"
+                          attributeName="transform"
+                          calcMode="spline"
+                          dur="2"
+                          values="360;0"
+                          keyTimes="0;1"
+                          keySplines="0 0 1 1"
+                          repeatCount="indefinite"
+                        ></animatetransform>
+                      </circle>
+                      <circle
+                        transform-origin="center"
+                        fill="none"
+                        opacity=".2"
+                        stroke="#1A020B"
+                        stroke-width="26"
+                        stroke-linecap="round"
+                        cx="100"
+                        cy="100"
+                        r="70"
+                      ></circle>
+                    </svg>
+                    <span>Choose a social</span>
                   </button>
                   <!-- Terms -->
                   <label
@@ -4415,14 +4473,18 @@
               <div
                 class="form-content active form-content-social-quick form-content-social"
               >
-                <form action="#" class="form form-type-social grid gap-3">
+                <form
+                  data-from-type="social"
+                  action="#"
+                  class="form form-type-social grid gap-3"
+                >
                   <!-- socials radio -->
                   <div class="socials grid grid-cols-6 gap-2">
                     <label class="relative cursor-pointer">
                       <input
                         class="social-variant-input absolute"
                         hidden
-                        value="steam"
+                        value="discord"
                         type="radio"
                         name="social-variant"
                       />
@@ -4430,7 +4492,7 @@
                         class="socials-item flex h-14 items-center justify-center rounded-xl bg-[#253265] transition-all before:bg-white hover:bg-[#253265]/10"
                       >
                         <svg
-                          class="fill-white group-hover:fill-white"
+                          class="h-8 w-8"
                           width="36"
                           height="36"
                           viewBox="0 0 36 36"
@@ -4438,16 +4500,15 @@
                           xmlns="http://www.w3.org/2000/svg"
                         >
                           <path
-                            d="M5.60419 22.0755C6.43037 24.7764 8.10186 27.1408 10.3726 28.8205C12.6433 30.5002 15.3933 31.4065 18.2178 31.4061C25.5018 31.4061 31.4061 25.5084 31.4061 18.2343C31.4061 10.9602 25.5018 5.0625 18.2195 5.0625C14.8759 5.06121 11.6568 6.33055 9.21401 8.61349C6.77118 10.8964 5.28718 14.0224 5.0625 17.3584L5.06744 17.3682L12.1539 20.2809C12.793 19.8577 13.55 19.6484 14.3157 19.6832L17.5428 15.0006L17.5411 14.9348C17.5424 13.6066 18.0705 12.3333 19.0094 11.394C19.9484 10.4548 21.2216 9.92628 22.5497 9.92454C23.8778 9.92628 25.151 10.4548 26.0899 11.394C27.0289 12.3333 27.557 13.6066 27.5583 14.9348C27.5578 15.6021 27.4241 16.2627 27.1651 16.8777C26.9061 17.4928 26.5271 18.05 26.0501 18.5167C25.573 18.9835 25.0077 19.3503 24.3872 19.5959C23.7666 19.8414 23.1033 19.9606 22.4361 19.9466L17.8194 23.2396C17.835 23.8495 17.698 24.4537 17.4206 24.9972C17.1433 25.5407 16.7344 26.0062 16.2313 26.3514C15.7282 26.6967 15.1468 26.9106 14.5399 26.9739C13.933 27.0371 13.32 26.9477 12.7565 26.7136C12.2156 26.4883 11.737 26.136 11.361 25.6867C10.985 25.2373 10.7227 24.7041 10.5963 24.132L5.60584 22.0755H5.60419Z"
-                          />
-                          <path
-                            d="M13.0779 25.9445C13.7639 26.2064 14.5249 26.1907 15.1995 25.9009C15.8741 25.611 16.4093 25.0698 16.6916 24.392C16.9739 23.7142 16.981 22.953 16.7115 22.27C16.442 21.587 15.917 21.0359 15.248 20.7334C14.5846 20.4566 13.8403 20.4449 13.1685 20.7005L14.8528 21.3986C15.1047 21.5035 15.3335 21.6569 15.5261 21.8502C15.7187 22.0435 15.8713 22.2728 15.9753 22.5251C16.0792 22.7774 16.1325 23.0476 16.132 23.3205C16.1315 23.5933 16.0773 23.8634 15.9724 24.1153C15.8676 24.3672 15.7141 24.596 15.5208 24.7886C15.3275 24.9811 15.0982 25.1338 14.846 25.2377C14.5937 25.3417 14.3234 25.395 14.0506 25.3945C13.7777 25.394 13.5076 25.3398 13.2557 25.2349L11.6257 24.5598C11.9224 25.1844 12.4397 25.6787 13.0779 25.9445ZM19.2127 14.9346C19.2131 15.8199 19.5648 16.6688 20.1905 17.2952C20.8162 17.9215 21.6648 18.274 22.5501 18.2753C23.4354 18.274 24.284 17.9215 24.9097 17.2952C25.5354 16.6688 25.887 15.8199 25.8875 14.9346C25.8862 14.0498 25.5341 13.2017 24.9085 12.5761C24.2829 11.9505 23.4348 11.5985 22.5501 11.5972C21.6653 11.5985 20.8172 11.9505 20.1916 12.5761C19.566 13.2017 19.214 14.0498 19.2127 14.9346ZM22.555 12.4204C22.8845 12.4206 23.2108 12.4857 23.5151 12.612C23.8195 12.7383 24.096 12.9233 24.3288 13.1565C24.5617 13.3897 24.7463 13.6664 24.8722 13.9709C24.9981 14.2754 25.0628 14.6018 25.0626 14.9313C25.0624 15.2608 24.9973 15.587 24.871 15.8914C24.7447 16.1957 24.5597 16.4722 24.3265 16.7051C24.0933 16.9379 23.8166 17.1226 23.5121 17.2485C23.2076 17.3744 22.8812 17.4391 22.5517 17.4389C21.8862 17.4384 21.2482 17.1736 20.7779 16.7028C20.3077 16.2319 20.0437 15.5935 20.0441 14.928C20.0446 14.2625 20.3094 13.6244 20.7802 13.1542C21.2511 12.6839 21.8895 12.42 22.555 12.4204Z"
+                            d="M29.107 8.01004C27.0084 7.0587 24.7883 6.38272 22.5052 6C22.2209 6.49812 21.8886 7.16809 21.6595 7.70109C19.198 7.34245 16.7591 7.34245 14.3429 7.70109C14.1139 7.16821 13.7741 6.49812 13.4871 6C11.2019 6.38289 8.97981 7.06058 6.88024 8.01501C2.70224 14.1321 1.56962 20.0971 2.13587 25.9776C4.90699 27.9826 7.59249 29.2006 10.2327 29.9976C10.889 29.1233 11.469 28.1977 11.9669 27.2304C11.0189 26.8807 10.105 26.4498 9.23611 25.9427C9.46476 25.7785 9.68803 25.6074 9.90561 25.4296C15.1709 27.8157 20.8919 27.8157 26.0944 25.4296C26.3129 25.6062 26.5361 25.7773 26.7637 25.9427C25.8935 26.4512 24.9779 26.8829 24.028 27.2329C24.5287 28.2042 25.1077 29.1307 25.7621 30C28.4049 29.2031 31.0929 27.9851 33.864 25.9776C34.5285 19.1606 32.729 13.2504 29.107 8.01004ZM12.6842 22.3612C11.1036 22.3612 9.80736 20.9315 9.80736 19.1906C9.80736 17.4496 11.076 16.0175 12.6842 16.0175C14.2925 16.0175 15.5887 17.4471 15.5611 19.1906C15.5636 20.9315 14.2926 22.3612 12.6842 22.3612ZM23.3156 22.3612C21.735 22.3612 20.4389 20.9315 20.4389 19.1906C20.4389 17.4496 21.7074 16.0175 23.3156 16.0175C24.924 16.0175 26.2201 17.4471 26.1925 19.1906C26.1925 20.9315 24.924 22.3612 23.3156 22.3612Z"
+                            fill="#5865F2"
                           />
                         </svg>
                       </span>
                     </label>
                     <label class="relative cursor-pointer">
                       <input
+                        disabled
                         class="social-variant-input absolute"
                         hidden
                         value="twitch"
@@ -4507,6 +4568,7 @@
                       <input
                         class="social-variant-input absolute"
                         hidden
+                        disabled
                         value="instagram"
                         type="radio"
                         name="social-variant"
@@ -4526,6 +4588,7 @@
                       <input
                         class="social-variant-input absolute"
                         hidden
+                        disabled
                         value="telegram"
                         type="radio"
                         name="social-variant"
@@ -4621,536 +4684,6 @@
                             <span class="currency-item-symbol">$</span>
                             |
                             <span class="currency-item-abbr">USD</span>
-                          </div>
-                        </li>
-                        <li
-                          class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
-                        >
-                          <img
-                            class="currency-item-icon"
-                            width="24"
-                            height="24"
-                            src="./img/currencies/rub.svg"
-                            alt="RUB"
-                          />
-                          <span class="currency-item-name">Russian Ruble</span>
-                          <div>
-                            <span class="currency-item-symbol">₽</span>
-                            |
-                            <span class="currency-item-abbr">RUB</span>
-                          </div>
-                        </li>
-                        <li
-                          class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
-                        >
-                          <img
-                            class="currency-item-icon"
-                            width="24"
-                            height="24"
-                            src="./img/currencies/brl.svg"
-                            alt="BRL"
-                          />
-                          <span class="currency-item-name">Brazilian real</span>
-                          <div>
-                            <span class="currency-item-symbol">R$</span>
-                            |
-                            <span class="currency-item-abbr">BRL</span>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <!-- Bonus -->
-                  <div class="form-bonus relative">
-                    <input
-                      class="bonus-input"
-                      name="bonus"
-                      type="hidden"
-                      value="High Roller Bonus 200%"
-                    />
-                    <div
-                      class="form-bonus-btn grid cursor-pointer grid-cols-[auto_1fr_auto] items-center gap-2 rounded-lg border border-white/20 bg-[#253265] p-3 transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
-                    >
-                      <img
-                        class="main-bonus-icon"
-                        width="24"
-                        height="24"
-                        src="./img/bonus-icon1.svg"
-                        alt="Icon"
-                      />
-                      <div class="space-y-1">
-                        <p class="text-xs font-semibold text-lightGray">
-                          Your Welcome Bonus
-                        </p>
-                        <span
-                          class="main-bonus-name text-base font-bold text-white"
-                          >High Roller Bonus 200%</span
-                        >
-                      </div>
-                      <svg
-                        width="24"
-                        height="25"
-                        viewBox="0 0 24 25"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M6 9.5L12 15.5L18 9.5"
-                          stroke="#F0F0F0"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </svg>
-                    </div>
-                    <div
-                      class="form-bonus-dropdown invisible absolute left-0 top-[105%] z-[3] w-full overflow-hidden rounded-lg border border-white/20 opacity-0 [&.active]:visible [&.active]:opacity-100"
-                    >
-                      <ul>
-                        <li
-                          class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
-                        >
-                          <img
-                            class="bonus-item-icon"
-                            width="24"
-                            height="24"
-                            src="./img/bonus-icon1.svg"
-                            alt="Icon"
-                          />
-                          <span class="bonus-item-name"
-                            >High Roller Bonus 200%</span
-                          >
-                        </li>
-                        <li
-                          class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
-                        >
-                          <img
-                            class="bonus-item-icon"
-                            width="24"
-                            height="24"
-                            src="./img/bonus-icon2.svg"
-                            alt="Icon"
-                          />
-                          <span class="bonus-item-name"
-                            >Satoshi Bonus 300%</span
-                          >
-                        </li>
-                        <li
-                          class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
-                        >
-                          <img
-                            class="bonus-item-icon"
-                            width="24"
-                            height="24"
-                            src="./img/bonus-icon3.svg"
-                            alt="Icon"
-                          />
-                          <span class="bonus-item-name"
-                            >Welcome Bonus 150%</span
-                          >
-                        </li>
-                        <li
-                          class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
-                        >
-                          <img
-                            class="bonus-item-icon"
-                            width="24"
-                            height="24"
-                            src="./img/bonus-icon4.svg"
-                            alt="Icon"
-                          />
-                          <span class="bonus-item-name">Without Bonus</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <!-- Promocode applied -->
-                  <div class="flex items-center gap-2">
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M15.0002 1.33989C16.5085 2.21075 17.7632 3.46042 18.64 4.96519C19.5169 6.46997 19.9856 8.17766 19.9997 9.91923C20.0137 11.6608 19.5727 13.3758 18.7203 14.8946C17.8678 16.4133 16.6334 17.6831 15.1394 18.5782C13.6454 19.4733 11.9435 19.9627 10.2022 19.998C8.46093 20.0332 6.74063 19.6131 5.21162 18.7791C3.6826 17.9452 2.3979 16.7264 1.48468 15.2434C0.571469 13.7604 0.0614101 12.0646 0.00500018 10.3239L0 9.99989L0.00500018 9.67589C0.061004 7.94888 0.563555 6.26585 1.46366 4.79088C2.36376 3.31592 3.6307 2.09934 5.14095 1.25977C6.65121 0.420205 8.35325 -0.0137108 10.0811 0.000330246C11.809 0.0143713 13.5038 0.47589 15.0002 1.33989ZM13.7072 7.29289C13.535 7.12071 13.3059 7.01728 13.0628 7.002C12.8198 6.98672 12.5796 7.06064 12.3872 7.20989L12.2932 7.29289L9.00011 10.5849L7.70709 9.29289L7.61309 9.20989C7.42068 9.06075 7.18046 8.98691 6.93749 9.00224C6.69452 9.01757 6.46549 9.12101 6.29334 9.29315C6.12119 9.4653 6.01776 9.69433 6.00243 9.93729C5.9871 10.1803 6.06093 10.4205 6.21008 10.6129L6.29308 10.7069L8.2931 12.7069L8.3871 12.7899C8.56248 12.926 8.77814 12.9998 9.00011 12.9998C9.22208 12.9998 9.43774 12.926 9.61312 12.7899L9.70712 12.7069L13.7072 8.70689L13.7902 8.61289C13.9394 8.42049 14.0133 8.18023 13.9981 7.93721C13.9828 7.69418 13.8793 7.46508 13.7072 7.29289Z"
-                        fill="#4ED937"
-                      />
-                    </svg>
-                    <p
-                      class="text-sm font-bold leading-[186%] text-darkGray xs:text-[10px]"
-                    >
-                      Applied referral code
-                      <span class="promocode-applied text-successGreen"
-                        >ASKGAMBLERS200</span
-                      >
-                    </p>
-                  </div>
-                  <button
-                    class="form-submit-btn form-yellow-btn w-full rounded-lg bg-gradient-to-b from-[#F4FD2B] to-[#FFA434] p-[14px] text-base font-bold text-black shadow-formBtnShadow transition-all disabled:pointer-events-none disabled:opacity-40"
-                  >
-                    Choose a social
-                  </button>
-                  <!-- Terms -->
-                  <label
-                    class="checkbox terms-checkbox relative cursor-pointer"
-                  >
-                    <input
-                      class="checkbox-input absolute hidden"
-                      type="checkbox"
-                      checked
-                    />
-                    <span
-                      class="checkbox-content relative block pl-7 text-sm font-bold leading-[186%] text-darkGray"
-                    >
-                      I agree to the
-                      <a
-                        href="https://dev1.goldbet.io/terms-and-conditions"
-                        class="text-white underline underline-offset-4"
-                        >Terms and Conditions</a
-                      ></span
-                    >
-                  </label>
-                </form>
-              </div>
-            </div>
-          </div>
-          <!-- Have account? -->
-          <div
-            class="mt-auto flex items-center justify-center gap-1 text-sm font-bold leading-[186%]"
-          >
-            <a href="#" class="underline underline-offset-4"
-              >Register with Email</a
-            >
-          </div>
-        </div>
-      </div>
-      <!-- prize fixed -->
-      <div
-        class="modal-content modal-content-prize-fixed hidden min-h-[700px] w-full max-w-[722px] grid-cols-[1fr_400px] rounded-2xl border border-white/10 bg-window1 tbl:min-w-max tbl:max-w-[500px] tbl:grid-cols-1 mobile:h-full mobile:min-h-[unset] mobile:w-full mobile:rounded-none mobile:border-none [&.active]:grid"
-      >
-        <!-- left -->
-        <div
-          class="relative h-full w-full overflow-hidden rounded-bl-xl rounded-tl-2xl bg-[url(../img/fixed-modal-left-bg.webp)] bg-cover bg-center bg-no-repeat p-9 tbl:hidden"
-        ></div>
-        <!-- right -->
-        <div class="signup-content flex flex-col justify-between gap-4 py-6">
-          <div class="flex items-center justify-center gap-2">
-            <img width="133" height="45" src="./img/logo.svg" alt="Golbet" />
-            <img class="modal-country-flag" src="Flag" alt="Country" />
-          </div>
-          <!-- inner -->
-          <div class="px-6 py-4 mobile:px-3">
-            <!-- WINNIG BANNERS -->
-            <div
-              class="winning-banner next-deposit relative hidden w-full rounded-xl border-2 border-[#1482FF] px-4 py-[11px]"
-            >
-              <img
-                class="absolute -bottom-[15px] -left-5"
-                width="63"
-                height="63"
-                src="./img/deposit-box.svg"
-                alt="Gift box"
-              />
-              <img
-                class="absolute -right-5 -top-[15px]"
-                width="54"
-                height="54"
-                src="./img/dollar-coin.svg"
-                alt="Coin"
-              />
-              <p class="text-xs font-semibold uppercase leading-[159%]">
-                Bonus on Next Deposit
-              </p>
-              <div
-                class="ml-[22px] flex items-center gap-[6px] font-gilroy text-[24px] font-normal uppercase italic drop-shadow-2xl"
-              >
-                <img src="./img/activated-icon.svg" alt="Icon" />
-                <span class="banner-big-text">ACTIVATED</span>
-              </div>
-            </div>
-            <div
-              class="winning-banner your-winning relative w-full rounded-xl border-2 border-[#4ED937] px-4 py-[11px]"
-            >
-              <img
-                class="absolute -bottom-[15px] -left-5"
-                width="63"
-                height="63"
-                src="./img/box-cup.svg"
-                alt="Gift box"
-              />
-              <img
-                class="absolute -right-5 -top-[15px]"
-                width="54"
-                height="54"
-                src="./img/percent-badge.svg"
-                alt="Coin"
-              />
-              <p class="text-xs font-semibold uppercase leading-[159%]">
-                your winning
-              </p>
-              <div
-                class="ml-[22px] flex items-center gap-[6px] font-gilroy text-[24px] font-normal uppercase italic drop-shadow-2xl"
-              >
-                <img
-                  width="24"
-                  height="24"
-                  src="./img/activated-icon.svg"
-                  alt="Icon"
-                />
-                <span class="banner-big-text">200% + 75 FS</span>
-              </div>
-            </div>
-            <div
-              class="mt-4 flex items-center justify-center gap-2 border-white/10 px-6 text-base font-bold uppercase xs:px-2 xs:text-sm"
-            >
-              <svg
-                width="25"
-                height="25"
-                viewBox="0 0 25 25"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M12.4998 15.6665C10.9085 15.6665 9.38243 15.0344 8.25721 13.9091C7.13199 12.7839 6.49985 11.2578 6.49985 9.6665C6.49985 8.0752 7.13199 6.54908 8.25721 5.42386C9.38243 4.29865 10.9085 3.6665 12.4998 3.6665C14.0911 3.6665 15.6173 4.29865 16.7425 5.42386C17.8677 6.54908 18.4998 8.0752 18.4998 9.6665C18.4998 11.2578 17.8677 12.7839 16.7425 13.9091C15.6173 15.0344 14.0911 15.6665 12.4998 15.6665ZM12.4998 15.6665L15.8998 21.5565L17.4978 18.3235L21.0958 18.5555L17.6958 12.6665M7.30186 12.6665L3.90186 18.5565L7.49986 18.3235L9.09786 21.5555L12.4979 15.6665"
-                  stroke="#F4FD2B"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              SIGN UP TO CLAIM YOUR PRIZE
-            </div>
-            <!-- form wrapper -->
-            <div class="mt-4">
-              <!-- social form -->
-              <div
-                class="form-content active form-content-social-quick form-content-social"
-              >
-                <form action="#" class="form form-type-social grid gap-3">
-                  <!-- socials radio -->
-                  <div class="socials grid grid-cols-6 gap-2">
-                    <label class="relative cursor-pointer">
-                      <input
-                        class="social-variant-input absolute"
-                        hidden
-                        value="steam"
-                        type="radio"
-                        name="social-variant"
-                      />
-                      <span
-                        class="socials-item flex h-14 items-center justify-center rounded-xl bg-[#253265] transition-all before:bg-white hover:bg-[#253265]/10"
-                      >
-                        <svg
-                          class="fill-white group-hover:fill-white"
-                          width="36"
-                          height="36"
-                          viewBox="0 0 36 36"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M5.60419 22.0755C6.43037 24.7764 8.10186 27.1408 10.3726 28.8205C12.6433 30.5002 15.3933 31.4065 18.2178 31.4061C25.5018 31.4061 31.4061 25.5084 31.4061 18.2343C31.4061 10.9602 25.5018 5.0625 18.2195 5.0625C14.8759 5.06121 11.6568 6.33055 9.21401 8.61349C6.77118 10.8964 5.28718 14.0224 5.0625 17.3584L5.06744 17.3682L12.1539 20.2809C12.793 19.8577 13.55 19.6484 14.3157 19.6832L17.5428 15.0006L17.5411 14.9348C17.5424 13.6066 18.0705 12.3333 19.0094 11.394C19.9484 10.4548 21.2216 9.92628 22.5497 9.92454C23.8778 9.92628 25.151 10.4548 26.0899 11.394C27.0289 12.3333 27.557 13.6066 27.5583 14.9348C27.5578 15.6021 27.4241 16.2627 27.1651 16.8777C26.9061 17.4928 26.5271 18.05 26.0501 18.5167C25.573 18.9835 25.0077 19.3503 24.3872 19.5959C23.7666 19.8414 23.1033 19.9606 22.4361 19.9466L17.8194 23.2396C17.835 23.8495 17.698 24.4537 17.4206 24.9972C17.1433 25.5407 16.7344 26.0062 16.2313 26.3514C15.7282 26.6967 15.1468 26.9106 14.5399 26.9739C13.933 27.0371 13.32 26.9477 12.7565 26.7136C12.2156 26.4883 11.737 26.136 11.361 25.6867C10.985 25.2373 10.7227 24.7041 10.5963 24.132L5.60584 22.0755H5.60419Z"
-                          />
-                          <path
-                            d="M13.0779 25.9445C13.7639 26.2064 14.5249 26.1907 15.1995 25.9009C15.8741 25.611 16.4093 25.0698 16.6916 24.392C16.9739 23.7142 16.981 22.953 16.7115 22.27C16.442 21.587 15.917 21.0359 15.248 20.7334C14.5846 20.4566 13.8403 20.4449 13.1685 20.7005L14.8528 21.3986C15.1047 21.5035 15.3335 21.6569 15.5261 21.8502C15.7187 22.0435 15.8713 22.2728 15.9753 22.5251C16.0792 22.7774 16.1325 23.0476 16.132 23.3205C16.1315 23.5933 16.0773 23.8634 15.9724 24.1153C15.8676 24.3672 15.7141 24.596 15.5208 24.7886C15.3275 24.9811 15.0982 25.1338 14.846 25.2377C14.5937 25.3417 14.3234 25.395 14.0506 25.3945C13.7777 25.394 13.5076 25.3398 13.2557 25.2349L11.6257 24.5598C11.9224 25.1844 12.4397 25.6787 13.0779 25.9445ZM19.2127 14.9346C19.2131 15.8199 19.5648 16.6688 20.1905 17.2952C20.8162 17.9215 21.6648 18.274 22.5501 18.2753C23.4354 18.274 24.284 17.9215 24.9097 17.2952C25.5354 16.6688 25.887 15.8199 25.8875 14.9346C25.8862 14.0498 25.5341 13.2017 24.9085 12.5761C24.2829 11.9505 23.4348 11.5985 22.5501 11.5972C21.6653 11.5985 20.8172 11.9505 20.1916 12.5761C19.566 13.2017 19.214 14.0498 19.2127 14.9346ZM22.555 12.4204C22.8845 12.4206 23.2108 12.4857 23.5151 12.612C23.8195 12.7383 24.096 12.9233 24.3288 13.1565C24.5617 13.3897 24.7463 13.6664 24.8722 13.9709C24.9981 14.2754 25.0628 14.6018 25.0626 14.9313C25.0624 15.2608 24.9973 15.587 24.871 15.8914C24.7447 16.1957 24.5597 16.4722 24.3265 16.7051C24.0933 16.9379 23.8166 17.1226 23.5121 17.2485C23.2076 17.3744 22.8812 17.4391 22.5517 17.4389C21.8862 17.4384 21.2482 17.1736 20.7779 16.7028C20.3077 16.2319 20.0437 15.5935 20.0441 14.928C20.0446 14.2625 20.3094 13.6244 20.7802 13.1542C21.2511 12.6839 21.8895 12.42 22.555 12.4204Z"
-                          />
-                        </svg>
-                      </span>
-                    </label>
-                    <label class="relative cursor-pointer">
-                      <input
-                        class="social-variant-input absolute"
-                        hidden
-                        value="twitch"
-                        type="radio"
-                        name="social-variant"
-                      />
-                      <span
-                        class="socials-item flex h-14 items-center justify-center rounded-xl bg-[#253265] transition-all before:bg-purple hover:bg-[#253265]/10"
-                      >
-                        <img
-                          width="36"
-                          height="36"
-                          src="./img/socials/twitch.svg"
-                          alt="Twitch"
-                        />
-                      </span>
-                    </label>
-                    <label class="relative cursor-pointer">
-                      <input
-                        class="social-variant-input absolute"
-                        hidden
-                        value="facebook"
-                        type="radio"
-                        name="social-variant"
-                      />
-                      <span
-                        class="socials-item flex h-14 items-center justify-center rounded-xl bg-[#253265] transition-all before:bg-[#026AE0] hover:bg-[#253265]/10"
-                      >
-                        <img
-                          width="36"
-                          height="36"
-                          src="./img/socials/facebook.svg"
-                          alt="Facebook"
-                        />
-                      </span>
-                    </label>
-                    <label class="relative cursor-pointer">
-                      <input
-                        class="social-variant-input absolute"
-                        hidden
-                        value="google"
-                        type="radio"
-                        name="social-variant"
-                      />
-                      <span
-                        class="socials-item flex h-14 items-center justify-center rounded-xl bg-[#253265] transition-all before:bg-[#4ED937] hover:bg-[#253265]/10"
-                      >
-                        <img
-                          width="36"
-                          height="36"
-                          src="./img/socials/google.svg"
-                          alt="Google"
-                        />
-                      </span>
-                    </label>
-                    <label class="relative cursor-pointer">
-                      <input
-                        class="social-variant-input absolute"
-                        hidden
-                        value="instagram"
-                        type="radio"
-                        name="social-variant"
-                      />
-                      <span
-                        class="socials-item flex h-14 items-center justify-center rounded-xl bg-[#253265] transition-all before:bg-[#FFB600] hover:bg-[#253265]/10"
-                      >
-                        <img
-                          width="36"
-                          height="36"
-                          src="./img/socials/instagram.svg"
-                          alt="Instagram"
-                        />
-                      </span>
-                    </label>
-                    <label class="relative cursor-pointer">
-                      <input
-                        class="social-variant-input absolute"
-                        hidden
-                        value="telegram"
-                        type="radio"
-                        name="social-variant"
-                      />
-                      <span
-                        class="socials-item flex h-14 items-center justify-center rounded-xl bg-[#253265] transition-all before:bg-[#34AADF] hover:bg-[#253265]/10"
-                      >
-                        <img
-                          width="36"
-                          height="36"
-                          src="./img/socials/telegram.svg"
-                          alt="Telegram"
-                        />
-                      </span>
-                    </label>
-                  </div>
-                  <!-- Currency -->
-                  <div class="form-currency relative">
-                    <input
-                      class="currency-input"
-                      name="currency"
-                      type="hidden"
-                      value="USD"
-                    />
-                    <div
-                      class="form-currency-btn grid cursor-pointer grid-cols-[auto_1fr_auto] items-center gap-2 rounded-lg border border-white/20 bg-[#253265] p-3 transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
-                    >
-                      <img
-                        class="main-currency-icon"
-                        width="24"
-                        height="24"
-                        src="./img/currencies/usd.svg"
-                        alt="USD"
-                      />
-                      <div class="space-y-1">
-                        <p class="text-xs font-semibold text-lightGray">
-                          Your Currency
-                        </p>
-                        <span
-                          class="main-currency-name text-base font-bold text-white"
-                          >US Dollar</span
-                        >
-                      </div>
-                      <svg
-                        width="24"
-                        height="25"
-                        viewBox="0 0 24 25"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M6 9.5L12 15.5L18 9.5"
-                          stroke="#F0F0F0"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </svg>
-                    </div>
-                    <div
-                      class="form-currency-dropdown invisible absolute left-0 top-[105%] z-[3] w-full overflow-hidden rounded-lg border border-white/20 opacity-0 [&.active]:visible [&.active]:opacity-100"
-                    >
-                      <ul>
-                        <li
-                          class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
-                        >
-                          <img
-                            class="currency-item-icon"
-                            width="24"
-                            height="24"
-                            src="./img/currencies/eur.svg"
-                            alt="EUR"
-                          />
-                          <span class="currency-item-name">Euro</span>
-                          <div>
-                            <span class="currency-item-symbol">€</span>
-                            |
-                            <span class="currency-item-abbr">EUR</span>
-                          </div>
-                        </li>
-                        <li
-                          class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
-                        >
-                          <img
-                            class="currency-item-icon"
-                            width="24"
-                            height="24"
-                            src="./img/currencies/usd.svg"
-                            alt="USD"
-                          />
-                          <span class="currency-item-name">US Dollar</span>
-                          <div>
-                            <span class="currency-item-symbol">$</span>
-                            |
-                            <span class="currency-item-abbr">USD</span>
-                          </div>
-                        </li>
-                        <li
-                          class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
-                        >
-                          <img
-                            class="currency-item-icon"
-                            width="24"
-                            height="24"
-                            src="./img/currencies/rub.svg"
-                            alt="RUB"
-                          />
-                          <span class="currency-item-name">Russian Ruble</span>
-                          <div>
-                            <span class="currency-item-symbol">₽</span>
-                            |
-                            <span class="currency-item-abbr">RUB</span>
                           </div>
                         </li>
                         <li
@@ -5345,7 +4878,690 @@
                   <button
                     class="form-submit-btn form-yellow-btn w-full rounded-lg bg-gradient-to-b from-[#F4FD2B] to-[#FFA434] p-[14px] text-base font-bold text-black shadow-formBtnShadow transition-all disabled:pointer-events-none disabled:opacity-40"
                   >
-                    Choose a social
+                    <svg
+                      class="mx-auto h-6 w-6"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 200 200"
+                    >
+                      <radialgradient
+                        id="a144"
+                        cx=".66"
+                        fx=".66"
+                        cy=".3125"
+                        fy=".3125"
+                        gradientTransform="scale(1.5)"
+                      >
+                        <stop offset="0" stop-color="#1A020B"></stop>
+                        <stop
+                          offset=".3"
+                          stop-color="#1A020B"
+                          stop-opacity=".9"
+                        ></stop>
+                        <stop
+                          offset=".6"
+                          stop-color="#1A020B"
+                          stop-opacity=".6"
+                        ></stop>
+                        <stop
+                          offset=".8"
+                          stop-color="#1A020B"
+                          stop-opacity=".3"
+                        ></stop>
+                        <stop
+                          offset="1"
+                          stop-color="#1A020B"
+                          stop-opacity="0"
+                        ></stop>
+                      </radialgradient>
+                      <circle
+                        transform-origin="center"
+                        fill="none"
+                        stroke="url(#a144)"
+                        stroke-width="26"
+                        stroke-linecap="round"
+                        stroke-dasharray="200 1000"
+                        stroke-dashoffset="0"
+                        cx="100"
+                        cy="100"
+                        r="70"
+                      >
+                        <animatetransform
+                          type="rotate"
+                          attributeName="transform"
+                          calcMode="spline"
+                          dur="2"
+                          values="360;0"
+                          keyTimes="0;1"
+                          keySplines="0 0 1 1"
+                          repeatCount="indefinite"
+                        ></animatetransform>
+                      </circle>
+                      <circle
+                        transform-origin="center"
+                        fill="none"
+                        opacity=".2"
+                        stroke="#1A020B"
+                        stroke-width="26"
+                        stroke-linecap="round"
+                        cx="100"
+                        cy="100"
+                        r="70"
+                      ></circle>
+                    </svg>
+                    <span>Choose a social</span>
+                  </button>
+                  <!-- Terms -->
+                  <label
+                    class="checkbox terms-checkbox relative cursor-pointer"
+                  >
+                    <input
+                      class="checkbox-input absolute hidden"
+                      type="checkbox"
+                      checked
+                    />
+                    <span
+                      class="checkbox-content relative block pl-7 text-sm font-bold leading-[186%] text-darkGray"
+                    >
+                      I agree to the
+                      <a
+                        href="https://dev1.goldbet.io/terms-and-conditions"
+                        class="text-white underline underline-offset-4"
+                        >Terms and Conditions</a
+                      ></span
+                    >
+                  </label>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- Have account? -->
+          <div
+            class="mt-auto flex items-center justify-center gap-1 text-sm font-bold leading-[186%]"
+          >
+            <a href="#" class="underline underline-offset-4"
+              >Register with Email</a
+            >
+          </div>
+        </div>
+      </div>
+      <!-- prize fixed -->
+      <div
+        class="modal-content modal-content-prize-fixed hidden min-h-[700px] w-full max-w-[722px] grid-cols-[1fr_400px] rounded-2xl border border-white/10 bg-window1 tbl:min-w-max tbl:max-w-[500px] tbl:grid-cols-1 mobile:h-full mobile:min-h-[unset] mobile:w-full mobile:rounded-none mobile:border-none [&.active]:grid"
+      >
+        <!-- left -->
+        <div
+          class="relative h-full w-full overflow-hidden rounded-bl-xl rounded-tl-2xl bg-[url(../img/fixed-modal-left-bg.webp)] bg-cover bg-center bg-no-repeat p-9 tbl:hidden"
+        ></div>
+        <!-- right -->
+        <div class="signup-content flex flex-col justify-between gap-4 py-6">
+          <div class="flex items-center justify-center gap-2">
+            <img width="133" height="45" src="./img/logo.svg" alt="Golbet" />
+            <img class="modal-country-flag" src="Flag" alt="Country" />
+          </div>
+          <!-- inner -->
+          <div class="px-6 py-4 mobile:px-3">
+            <!-- WINNIG BANNERS -->
+            <div
+              class="winning-banner next-deposit relative hidden w-full rounded-xl border-2 border-[#1482FF] px-4 py-[11px]"
+            >
+              <img
+                class="absolute -bottom-[15px] -left-5"
+                width="63"
+                height="63"
+                src="./img/deposit-box.svg"
+                alt="Gift box"
+              />
+              <img
+                class="absolute -right-5 -top-[15px]"
+                width="54"
+                height="54"
+                src="./img/dollar-coin.svg"
+                alt="Coin"
+              />
+              <p class="text-xs font-semibold uppercase leading-[159%]">
+                Bonus on Next Deposit
+              </p>
+              <div
+                class="ml-[22px] flex items-center gap-[6px] font-gilroy text-[24px] font-normal uppercase italic drop-shadow-2xl"
+              >
+                <img src="./img/activated-icon.svg" alt="Icon" />
+                <span class="banner-big-text">ACTIVATED</span>
+              </div>
+            </div>
+            <div
+              class="winning-banner your-winning relative w-full rounded-xl border-2 border-[#4ED937] px-4 py-[11px]"
+            >
+              <img
+                class="absolute -bottom-[15px] -left-5"
+                width="63"
+                height="63"
+                src="./img/box-cup.svg"
+                alt="Gift box"
+              />
+              <img
+                class="absolute -right-5 -top-[15px]"
+                width="54"
+                height="54"
+                src="./img/percent-badge.svg"
+                alt="Coin"
+              />
+              <p class="text-xs font-semibold uppercase leading-[159%]">
+                your winning
+              </p>
+              <div
+                class="ml-[22px] flex items-center gap-[6px] font-gilroy text-[24px] font-normal uppercase italic drop-shadow-2xl"
+              >
+                <img
+                  width="24"
+                  height="24"
+                  src="./img/activated-icon.svg"
+                  alt="Icon"
+                />
+                <span class="banner-big-text">200% + 75 FS</span>
+              </div>
+            </div>
+            <div
+              class="mt-4 flex items-center justify-center gap-2 border-white/10 px-6 text-base font-bold uppercase xs:px-2 xs:text-sm"
+            >
+              <svg
+                width="25"
+                height="25"
+                viewBox="0 0 25 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12.4998 15.6665C10.9085 15.6665 9.38243 15.0344 8.25721 13.9091C7.13199 12.7839 6.49985 11.2578 6.49985 9.6665C6.49985 8.0752 7.13199 6.54908 8.25721 5.42386C9.38243 4.29865 10.9085 3.6665 12.4998 3.6665C14.0911 3.6665 15.6173 4.29865 16.7425 5.42386C17.8677 6.54908 18.4998 8.0752 18.4998 9.6665C18.4998 11.2578 17.8677 12.7839 16.7425 13.9091C15.6173 15.0344 14.0911 15.6665 12.4998 15.6665ZM12.4998 15.6665L15.8998 21.5565L17.4978 18.3235L21.0958 18.5555L17.6958 12.6665M7.30186 12.6665L3.90186 18.5565L7.49986 18.3235L9.09786 21.5555L12.4979 15.6665"
+                  stroke="#F4FD2B"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              SIGN UP TO CLAIM YOUR PRIZE
+            </div>
+            <!-- form wrapper -->
+            <div class="mt-4">
+              <!-- social form -->
+              <div
+                class="form-content active form-content-social-quick form-content-social"
+              >
+                <form
+                  data-from-type="social"
+                  action="#"
+                  class="form form-type-social grid gap-3"
+                >
+                  <!-- socials radio -->
+                  <div class="socials grid grid-cols-6 gap-2">
+                    <label class="relative cursor-pointer">
+                      <input
+                        class="social-variant-input absolute"
+                        hidden
+                        value="discord"
+                        type="radio"
+                        name="social-variant"
+                      />
+                      <span
+                        class="socials-item flex h-14 items-center justify-center rounded-xl bg-[#253265] transition-all before:bg-white hover:bg-[#253265]/10"
+                      >
+                        <svg
+                          class="h-8 w-8"
+                          width="36"
+                          height="36"
+                          viewBox="0 0 36 36"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M29.107 8.01004C27.0084 7.0587 24.7883 6.38272 22.5052 6C22.2209 6.49812 21.8886 7.16809 21.6595 7.70109C19.198 7.34245 16.7591 7.34245 14.3429 7.70109C14.1139 7.16821 13.7741 6.49812 13.4871 6C11.2019 6.38289 8.97981 7.06058 6.88024 8.01501C2.70224 14.1321 1.56962 20.0971 2.13587 25.9776C4.90699 27.9826 7.59249 29.2006 10.2327 29.9976C10.889 29.1233 11.469 28.1977 11.9669 27.2304C11.0189 26.8807 10.105 26.4498 9.23611 25.9427C9.46476 25.7785 9.68803 25.6074 9.90561 25.4296C15.1709 27.8157 20.8919 27.8157 26.0944 25.4296C26.3129 25.6062 26.5361 25.7773 26.7637 25.9427C25.8935 26.4512 24.9779 26.8829 24.028 27.2329C24.5287 28.2042 25.1077 29.1307 25.7621 30C28.4049 29.2031 31.0929 27.9851 33.864 25.9776C34.5285 19.1606 32.729 13.2504 29.107 8.01004ZM12.6842 22.3612C11.1036 22.3612 9.80736 20.9315 9.80736 19.1906C9.80736 17.4496 11.076 16.0175 12.6842 16.0175C14.2925 16.0175 15.5887 17.4471 15.5611 19.1906C15.5636 20.9315 14.2926 22.3612 12.6842 22.3612ZM23.3156 22.3612C21.735 22.3612 20.4389 20.9315 20.4389 19.1906C20.4389 17.4496 21.7074 16.0175 23.3156 16.0175C24.924 16.0175 26.2201 17.4471 26.1925 19.1906C26.1925 20.9315 24.924 22.3612 23.3156 22.3612Z"
+                            fill="#5865F2"
+                          />
+                        </svg>
+                      </span>
+                    </label>
+                    <label class="relative cursor-pointer">
+                      <input
+                        disabled
+                        class="social-variant-input absolute"
+                        hidden
+                        value="twitch"
+                        type="radio"
+                        name="social-variant"
+                      />
+                      <span
+                        class="socials-item flex h-14 items-center justify-center rounded-xl bg-[#253265] transition-all before:bg-purple hover:bg-[#253265]/10"
+                      >
+                        <img
+                          width="36"
+                          height="36"
+                          src="./img/socials/twitch.svg"
+                          alt="Twitch"
+                        />
+                      </span>
+                    </label>
+                    <label class="relative cursor-pointer">
+                      <input
+                        class="social-variant-input absolute"
+                        hidden
+                        value="facebook"
+                        type="radio"
+                        name="social-variant"
+                      />
+                      <span
+                        class="socials-item flex h-14 items-center justify-center rounded-xl bg-[#253265] transition-all before:bg-[#026AE0] hover:bg-[#253265]/10"
+                      >
+                        <img
+                          width="36"
+                          height="36"
+                          src="./img/socials/facebook.svg"
+                          alt="Facebook"
+                        />
+                      </span>
+                    </label>
+                    <label class="relative cursor-pointer">
+                      <input
+                        class="social-variant-input absolute"
+                        hidden
+                        value="google"
+                        type="radio"
+                        name="social-variant"
+                      />
+                      <span
+                        class="socials-item flex h-14 items-center justify-center rounded-xl bg-[#253265] transition-all before:bg-[#4ED937] hover:bg-[#253265]/10"
+                      >
+                        <img
+                          width="36"
+                          height="36"
+                          src="./img/socials/google.svg"
+                          alt="Google"
+                        />
+                      </span>
+                    </label>
+                    <label class="relative cursor-pointer">
+                      <input
+                        class="social-variant-input absolute"
+                        hidden
+                        disabled
+                        value="instagram"
+                        type="radio"
+                        name="social-variant"
+                      />
+                      <span
+                        class="socials-item flex h-14 items-center justify-center rounded-xl bg-[#253265] transition-all before:bg-[#FFB600] hover:bg-[#253265]/10"
+                      >
+                        <img
+                          width="36"
+                          height="36"
+                          src="./img/socials/instagram.svg"
+                          alt="Instagram"
+                        />
+                      </span>
+                    </label>
+                    <label class="relative cursor-pointer">
+                      <input
+                        class="social-variant-input absolute"
+                        hidden
+                        disabled
+                        value="telegram"
+                        type="radio"
+                        name="social-variant"
+                      />
+                      <span
+                        class="socials-item flex h-14 items-center justify-center rounded-xl bg-[#253265] transition-all before:bg-[#34AADF] hover:bg-[#253265]/10"
+                      >
+                        <img
+                          width="36"
+                          height="36"
+                          src="./img/socials/telegram.svg"
+                          alt="Telegram"
+                        />
+                      </span>
+                    </label>
+                  </div>
+                  <!-- Currency -->
+                  <div class="form-currency relative">
+                    <input
+                      class="currency-input"
+                      name="currency"
+                      type="hidden"
+                      value="USD"
+                    />
+                    <div
+                      class="form-currency-btn grid cursor-pointer grid-cols-[auto_1fr_auto] items-center gap-2 rounded-lg border border-white/20 bg-[#253265] p-3 transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
+                    >
+                      <img
+                        class="main-currency-icon"
+                        width="24"
+                        height="24"
+                        src="./img/currencies/usd.svg"
+                        alt="USD"
+                      />
+                      <div class="space-y-1">
+                        <p class="text-xs font-semibold text-lightGray">
+                          Your Currency
+                        </p>
+                        <span
+                          class="main-currency-name text-base font-bold text-white"
+                          >US Dollar</span
+                        >
+                      </div>
+                      <svg
+                        width="24"
+                        height="25"
+                        viewBox="0 0 24 25"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M6 9.5L12 15.5L18 9.5"
+                          stroke="#F0F0F0"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="form-currency-dropdown invisible absolute left-0 top-[105%] z-[3] w-full overflow-hidden rounded-lg border border-white/20 opacity-0 [&.active]:visible [&.active]:opacity-100"
+                    >
+                      <ul>
+                        <li
+                          class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
+                        >
+                          <img
+                            class="currency-item-icon"
+                            width="24"
+                            height="24"
+                            src="./img/currencies/eur.svg"
+                            alt="EUR"
+                          />
+                          <span class="currency-item-name">Euro</span>
+                          <div>
+                            <span class="currency-item-symbol">€</span>
+                            |
+                            <span class="currency-item-abbr">EUR</span>
+                          </div>
+                        </li>
+                        <li
+                          class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
+                        >
+                          <img
+                            class="currency-item-icon"
+                            width="24"
+                            height="24"
+                            src="./img/currencies/usd.svg"
+                            alt="USD"
+                          />
+                          <span class="currency-item-name">US Dollar</span>
+                          <div>
+                            <span class="currency-item-symbol">$</span>
+                            |
+                            <span class="currency-item-abbr">USD</span>
+                          </div>
+                        </li>
+                        <li
+                          class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
+                        >
+                          <img
+                            class="currency-item-icon"
+                            width="24"
+                            height="24"
+                            src="./img/currencies/brl.svg"
+                            alt="BRL"
+                          />
+                          <span class="currency-item-name">Brazilian real</span>
+                          <div>
+                            <span class="currency-item-symbol">R$</span>
+                            |
+                            <span class="currency-item-abbr">BRL</span>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <!-- Bonus -->
+                  <div class="form-bonus relative">
+                    <input
+                      class="bonus-input"
+                      name="bonus"
+                      type="hidden"
+                      value="High Roller Bonus 200%"
+                    />
+                    <div
+                      class="form-bonus-btn grid cursor-pointer grid-cols-[auto_1fr_auto] items-center gap-2 rounded-lg border border-white/20 bg-[#253265] p-3 transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
+                    >
+                      <img
+                        class="main-bonus-icon"
+                        width="24"
+                        height="24"
+                        src="./img/bonus-icon1.svg"
+                        alt="Icon"
+                      />
+                      <div class="space-y-1">
+                        <p class="text-xs font-semibold text-lightGray">
+                          Your Welcome Bonus
+                        </p>
+                        <span
+                          class="main-bonus-name text-base font-bold text-white"
+                          >High Roller Bonus 200%</span
+                        >
+                      </div>
+                      <svg
+                        width="24"
+                        height="25"
+                        viewBox="0 0 24 25"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M6 9.5L12 15.5L18 9.5"
+                          stroke="#F0F0F0"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="form-bonus-dropdown invisible absolute left-0 top-[105%] z-[3] w-full overflow-hidden rounded-lg border border-white/20 opacity-0 [&.active]:visible [&.active]:opacity-100"
+                    >
+                      <ul>
+                        <li
+                          class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
+                        >
+                          <img
+                            class="bonus-item-icon"
+                            width="24"
+                            height="24"
+                            src="./img/bonus-icon1.svg"
+                            alt="Icon"
+                          />
+                          <span class="bonus-item-name"
+                            >High Roller Bonus 200%</span
+                          >
+                        </li>
+                        <li
+                          class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
+                        >
+                          <img
+                            class="bonus-item-icon"
+                            width="24"
+                            height="24"
+                            src="./img/bonus-icon2.svg"
+                            alt="Icon"
+                          />
+                          <span class="bonus-item-name"
+                            >Satoshi Bonus 300%</span
+                          >
+                        </li>
+                        <li
+                          class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
+                        >
+                          <img
+                            class="bonus-item-icon"
+                            width="24"
+                            height="24"
+                            src="./img/bonus-icon3.svg"
+                            alt="Icon"
+                          />
+                          <span class="bonus-item-name"
+                            >Welcome Bonus 150%</span
+                          >
+                        </li>
+                        <li
+                          class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
+                        >
+                          <img
+                            class="bonus-item-icon"
+                            width="24"
+                            height="24"
+                            src="./img/bonus-icon4.svg"
+                            alt="Icon"
+                          />
+                          <span class="bonus-item-name">Without Bonus</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <!-- Promocode -->
+                  <div class="promocode-wrapper">
+                    <p
+                      class="promocode-btn mt-1 cursor-pointer text-center text-sm font-bold leading-[186%] underline underline-offset-4"
+                    >
+                      I Have a Promo-Code
+                    </p>
+                    <div
+                      class="promocode-input-box hidden grid-cols-[auto_1fr_auto] items-center gap-2 rounded-lg border border-white/20 bg-black/35 px-3 py-[13px]"
+                    >
+                      <svg
+                        width="24"
+                        height="25"
+                        viewBox="0 0 24 25"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M6.5 8C6.5 8.26522 6.60536 8.51957 6.79289 8.70711C6.98043 8.89464 7.23478 9 7.5 9C7.76522 9 8.01957 8.89464 8.20711 8.70711C8.39464 8.51957 8.5 8.26522 8.5 8C8.5 7.73478 8.39464 7.48043 8.20711 7.29289C8.01957 7.10536 7.76522 7 7.5 7C7.23478 7 6.98043 7.10536 6.79289 7.29289C6.60536 7.48043 6.5 7.73478 6.5 8Z"
+                          stroke="#F0F0F0"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M3 6.5V11.672C3.00011 12.2024 3.2109 12.711 3.586 13.086L11.296 20.796C11.748 21.2479 12.3609 21.5017 13 21.5017C13.6391 21.5017 14.252 21.2479 14.704 20.796L20.296 15.204C20.7479 14.752 21.0017 14.1391 21.0017 13.5C21.0017 12.8609 20.7479 12.248 20.296 11.796L12.586 4.086C12.211 3.7109 11.7024 3.50011 11.172 3.5H6C5.20435 3.5 4.44129 3.81607 3.87868 4.37868C3.31607 4.94129 3 5.70435 3 6.5Z"
+                          stroke="#F0F0F0"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                      <input
+                        value=""
+                        class="promocode-input w-full bg-transparent font-bold outline-none placeholder:text-white/50"
+                        name="promocode"
+                        type="text"
+                        placeholder="Promo-Code"
+                      />
+                      <svg
+                        class="promocode-check-icon icon-invalid fill-lightGray"
+                        width="24"
+                        height="25"
+                        viewBox="0 0 24 25"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M17 3.83989C18.5083 4.71075 19.7629 5.96042 20.6398 7.46519C21.5167 8.96997 21.9854 10.6777 21.9994 12.4192C22.0135 14.1608 21.5725 15.8758 20.72 17.3946C19.8676 18.9133 18.6332 20.1831 17.1392 21.0782C15.6452 21.9733 13.9434 22.4627 12.2021 22.498C10.4608 22.5332 8.74055 22.1131 7.21155 21.2791C5.68256 20.4452 4.39787 19.2264 3.48467 17.7434C2.57146 16.2604 2.06141 14.5646 2.005 12.8239L2 12.4999L2.005 12.1759C2.061 10.4489 2.56355 8.76585 3.46364 7.29089C4.36373 5.81592 5.63065 4.59934 7.14089 3.75977C8.65113 2.92021 10.3531 2.48629 12.081 2.50033C13.8089 2.51437 15.5036 2.97589 17 3.83989ZM15.707 9.79289C15.5348 9.62072 15.3057 9.51729 15.0627 9.502C14.8197 9.48672 14.5794 9.56064 14.387 9.70989L14.293 9.79289L11 13.0849L9.707 11.7929L9.613 11.7099C9.42058 11.5607 9.18037 11.4869 8.9374 11.5022C8.69444 11.5176 8.46541 11.621 8.29326 11.7932C8.12112 11.9653 8.01768 12.1943 8.00235 12.4373C7.98702 12.6803 8.06086 12.9205 8.21 13.1129L8.293 13.2069L10.293 15.2069L10.387 15.2899C10.5624 15.426 10.778 15.4998 11 15.4998C11.222 15.4998 11.4376 15.426 11.613 15.2899L11.707 15.2069L15.707 11.2069L15.79 11.1129C15.9393 10.9205 16.0132 10.6802 15.9979 10.4372C15.9826 10.1942 15.8792 9.96509 15.707 9.79289Z"
+                        />
+                      </svg>
+                      <svg
+                        class="promocode-check-icon icon-valid hidden fill-successGreen"
+                        width="24"
+                        height="25"
+                        viewBox="0 0 24 25"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M17 3.83989C18.5083 4.71075 19.7629 5.96042 20.6398 7.46519C21.5167 8.96997 21.9854 10.6777 21.9994 12.4192C22.0135 14.1608 21.5725 15.8758 20.72 17.3946C19.8676 18.9133 18.6332 20.1831 17.1392 21.0782C15.6452 21.9733 13.9434 22.4627 12.2021 22.498C10.4608 22.5332 8.74055 22.1131 7.21155 21.2791C5.68256 20.4452 4.39787 19.2264 3.48467 17.7434C2.57146 16.2604 2.06141 14.5646 2.005 12.8239L2 12.4999L2.005 12.1759C2.061 10.4489 2.56355 8.76585 3.46364 7.29089C4.36373 5.81592 5.63065 4.59934 7.14089 3.75977C8.65113 2.92021 10.3531 2.48629 12.081 2.50033C13.8089 2.51437 15.5036 2.97589 17 3.83989ZM15.707 9.79289C15.5348 9.62072 15.3057 9.51729 15.0627 9.502C14.8197 9.48672 14.5794 9.56064 14.387 9.70989L14.293 9.79289L11 13.0849L9.707 11.7929L9.613 11.7099C9.42058 11.5607 9.18037 11.4869 8.9374 11.5022C8.69444 11.5176 8.46541 11.621 8.29326 11.7932C8.12112 11.9653 8.01768 12.1943 8.00235 12.4373C7.98702 12.6803 8.06086 12.9205 8.21 13.1129L8.293 13.2069L10.293 15.2069L10.387 15.2899C10.5624 15.426 10.778 15.4998 11 15.4998C11.222 15.4998 11.4376 15.426 11.613 15.2899L11.707 15.2069L15.707 11.2069L15.79 11.1129C15.9393 10.9205 16.0132 10.6802 15.9979 10.4372C15.9826 10.1942 15.8792 9.96509 15.707 9.79289Z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <button
+                    class="form-submit-btn form-yellow-btn w-full rounded-lg bg-gradient-to-b from-[#F4FD2B] to-[#FFA434] p-[14px] text-base font-bold text-black shadow-formBtnShadow transition-all disabled:pointer-events-none disabled:opacity-40"
+                  >
+                    <svg
+                      class="mx-auto h-6 w-6"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 200 200"
+                    >
+                      <radialgradient
+                        id="a148"
+                        cx=".66"
+                        fx=".66"
+                        cy=".3125"
+                        fy=".3125"
+                        gradientTransform="scale(1.5)"
+                      >
+                        <stop offset="0" stop-color="#1A020B"></stop>
+                        <stop
+                          offset=".3"
+                          stop-color="#1A020B"
+                          stop-opacity=".9"
+                        ></stop>
+                        <stop
+                          offset=".6"
+                          stop-color="#1A020B"
+                          stop-opacity=".6"
+                        ></stop>
+                        <stop
+                          offset=".8"
+                          stop-color="#1A020B"
+                          stop-opacity=".3"
+                        ></stop>
+                        <stop
+                          offset="1"
+                          stop-color="#1A020B"
+                          stop-opacity="0"
+                        ></stop>
+                      </radialgradient>
+                      <circle
+                        transform-origin="center"
+                        fill="none"
+                        stroke="url(#a148)"
+                        stroke-width="26"
+                        stroke-linecap="round"
+                        stroke-dasharray="200 1000"
+                        stroke-dashoffset="0"
+                        cx="100"
+                        cy="100"
+                        r="70"
+                      >
+                        <animatetransform
+                          type="rotate"
+                          attributeName="transform"
+                          calcMode="spline"
+                          dur="2"
+                          values="360;0"
+                          keyTimes="0;1"
+                          keySplines="0 0 1 1"
+                          repeatCount="indefinite"
+                        ></animatetransform>
+                      </circle>
+                      <circle
+                        transform-origin="center"
+                        fill="none"
+                        opacity=".2"
+                        stroke="#1A020B"
+                        stroke-width="26"
+                        stroke-linecap="round"
+                        cx="100"
+                        cy="100"
+                        r="70"
+                      ></circle>
+                    </svg>
+                    <span>Choose a social</span>
                   </button>
                   <!-- Terms -->
                   <label
