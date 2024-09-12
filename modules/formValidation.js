@@ -417,16 +417,16 @@ function submitForm(form) {
         console.log(formData);
 
         disableEmailForm();
-        window.location.href = `https://gbetauth.com/api/register?env&game=softswiss:plinko&type=${formType}&currency=${formData.currency}&email=${formData.email}&password=${formData.password}${formData.bonus === "Without Bonus" ? "" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}?utm_campaign=100110754_1705949_nodescription&utm_content=100110754&utm_medium=casap&utm_source=aff`;
+        window.location.href = `https://gbetauth.com/api/register?env=dev&game=softswiss:plinko&type=${formType}&currency=${formData.currency}&email=${formData.email}&password=${formData.password}${formData.bonus === "Without Bonus" ? "" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}?utm_campaign=100110754_1705949_nodescription&utm_content=100110754&utm_medium=casap&utm_source=aff`;
       } else if (formType === "phone") {
         disablePhoneForm();
-        window.location.href = `https://gbetauth.com/api/register?env&game=softswiss:plinko&type=${formType}&currency=${formData.currency}&phone=${formData.phone}&password=${formData.password}${formData.bonus === "Without Bonus" ? "" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}?utm_campaign=100110754_1705949_nodescription&utm_content=100110754&utm_medium=casap&utm_source=aff`;
+        window.location.href = `https://gbetauth.com/api/register?env=dev&game=softswiss:plinko&type=${formType}&currency=${formData.currency}&phone=${formData.phone}&password=${formData.password}${formData.bonus === "Without Bonus" ? "" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}?utm_campaign=100110754_1705949_nodescription&utm_content=100110754&utm_medium=casap&utm_source=aff`;
       } else if (formType === "social") {
         disableSocialForm();
-        window.location.href = `https://gbetauth.com/api/register?type=${formData.social}&currency=${formData.currency}${formData.bonus === "Without Bonus" ? "" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}?utm_campaign=100110754_1705949_nodescription&utm_content=100110754&utm_medium=casap&utm_source=aff`;
+        window.location.href = `https://gbetauth.com/api/register?env=dev&game=softswiss:plinko&type=${formData.social}&currency=${formData.currency}${formData.bonus === "Without Bonus" ? "" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}?utm_campaign=100110754_1705949_nodescription&utm_content=100110754&utm_medium=casap&utm_source=aff`;
       } else if (formType === "oneclick") {
         disableOneClickForm();
-        window.location.href = `https://gbetauth.com/api/register?type=${formType}&currency=${formData.currency}${formData.bonus === "Without Bonus" ? "" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}?utm_campaign=100110754_1705949_nodescription&utm_content=100110754&utm_medium=casap&utm_source=aff`;
+        window.location.href = `https://gbetauth.com/api/register?env=dev&game=softswiss:plinko&type=${formType}&currency=${formData.currency}${formData.bonus === "Without Bonus" ? "" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}?utm_campaign=100110754_1705949_nodescription&utm_content=100110754&utm_medium=casap&utm_source=aff`;
       }
     }
   });
