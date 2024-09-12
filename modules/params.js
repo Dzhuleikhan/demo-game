@@ -56,6 +56,10 @@ if (modal === "auth") {
     showMethod("social");
   } else if (method === "oneclick") {
     showMethod("oneclick");
+    document.querySelector("button[data-tab='social']").classList.add("hidden");
+    document
+      .querySelector("button[data-tab='oneclick']")
+      .classList.remove("hidden");
   }
 } else if (modal === "quick") {
   showCurrentModal("quick");

@@ -28,6 +28,7 @@ formBonus.forEach((bonus) => {
         // Get the selected bonus details
         let bonusIcon = item.querySelector(".bonus-item-icon").src;
         let bonusName = item.querySelector(".bonus-item-name").textContent;
+        let bonusId = item.getAttribute("data-bonus-id");
 
         // Update all form bonus elements with the selected bonus details
         formBonus.forEach((bonus) => {
@@ -39,7 +40,7 @@ formBonus.forEach((bonus) => {
           bonusDropdownBtn.querySelector(".main-bonus-icon").src = bonusIcon;
           bonusDropdownBtn.querySelector(".main-bonus-name").textContent =
             bonusName;
-          bonusInput.value = bonusName;
+          bonusInput.value = bonusId;
 
           // Update the list items' active state
           bonusListItems.forEach((el) => {
@@ -57,7 +58,7 @@ formBonus.forEach((bonus) => {
         // Save selected bonus to localStorage
         localStorage.setItem(
           "selectedBonus",
-          JSON.stringify({ bonusIcon, bonusName }),
+          JSON.stringify({ bonusIcon, bonusId }),
         );
       });
     });
