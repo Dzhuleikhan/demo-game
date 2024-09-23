@@ -88,12 +88,12 @@ input:-webkit-autofill:hover {
   -webkit-text-fill-color: #f0f0f0;
 }
 
-.iti {
+/* .iti {
   --iti-path-flags-1x: url('/demo-game-api/assets/flags.webp');
   --iti-path-flags-2x: url('/demo-game-api/assets/flags@2x.webp');
   --iti-path-globe-1x: url('/demo-game-api/assets/globe.webp');
   --iti-path-globe-2x: url('/demo-game-api/assets/globe@2x.webp');
-}
+} */
 
 .iti {
   width: 100%;
