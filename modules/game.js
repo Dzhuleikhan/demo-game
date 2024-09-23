@@ -76,19 +76,11 @@ const loop = horizontalLoop(".payments-list", {
 function createPaymentIcons(country) {
   for (let i = 0; i < country.payments.length; i++) {
     const paymentName = country.payments[i];
-
-    document.querySelectorAll(".payments-list").forEach((el) => {
-      // Create a new list item and icon for each element
-      let item = document.createElement("li");
-      let itemIcon = document.createElement("img");
-      item.appendChild(itemIcon);
-
-      // Set the src and alt attributes of the icon
-      itemIcon.setAttribute("src", paymentName);
-      itemIcon.setAttribute("alt", "Payment icon");
-
-      el.appendChild(item);
-    });
+    let item = document.createElement("li");
+    let itemIcon = document.createElement("img");
+    item.appendChild(itemIcon);
+    document.querySelector(".payments-list").appendChild(item);
+    itemIcon.setAttribute("src", country.payments[i]);
   }
 }
 
