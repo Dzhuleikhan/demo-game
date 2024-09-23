@@ -1,6 +1,6 @@
-export default {
-  server: {
-    open: true,
-    host: true,
-  },
-};
+// vite.config.js
+import { defineConfig } from "vite";
+
+export default defineConfig({
+  base: "",
+});
