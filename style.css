@@ -89,10 +89,10 @@ input:-webkit-autofill:hover {
 }
 
 .iti {
-  --iti-path-flags-1x: url('/demo-game-api/flags.webp');
-  --iti-path-flags-2x: url('/demo-game-api/flags@2x.webp');
-  --iti-path-globe-1x: url('/demo-game-api/globe.webp');
-  --iti-path-globe-2x: url('/demo-game-api/globe@2x.webp');
+  --iti-path-flags-1x: url('/demo-game-api/assets/flags.webp');
+  --iti-path-flags-2x: url('/demo-game-api/assets/flags@2x.webp');
+  --iti-path-globe-1x: url('/demo-game-api/assets/globe.webp');
+  --iti-path-globe-2x: url('/demo-game-api/assets/globe@2x.webp');
 }
 
 .iti {
