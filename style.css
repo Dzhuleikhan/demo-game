@@ -89,6 +89,13 @@ input:-webkit-autofill:hover {
 }
 
 .iti {
+  --iti-path-flags-1x: url('./flags.webp');
+  --iti-path-flags-2x: url('./flags@2x.webp');
+  --iti-path-globe-1x: url('./globe.webp');
+  --iti-path-globe-2x: url('./globe@2x.webp');
+}
+
+.iti {
   width: 100%;
   height: 50px;
   background: rgba(0, 0, 0, 0.35);
