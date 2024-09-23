@@ -1,5 +1,6 @@
 import gsap from "gsap";
 import { overlay } from "./game";
+import { showCurrentModal, showMethod, updateUrl } from "./params";
 
 window.addEventListener("mousemove", (e) => {
   let cursorX = e.clientX;
@@ -55,4 +56,16 @@ modalTabs.addEventListener("click", (e) => {
   btn.classList.add("active");
   let tab = btn.getAttribute("data-tab");
   showActualModal(tab);
+});
+
+const regWithEmailBtns = document.querySelectorAll(".reg-with-email-btn");
+
+regWithEmailBtns.forEach((btn) => {
+  if (btn) {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      showCurrentModal("main");
+      updateUrl("modal", "auth");
+    });
+  }
 });

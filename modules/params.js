@@ -2,14 +2,14 @@ const allModals = document.querySelectorAll(".modal-content");
 const methodTabs = document.querySelectorAll(".modal-tabs button");
 const methodFormContents = document.querySelectorAll(".form-content");
 
-function showCurrentModal(modalName, bannerName) {
+export function showCurrentModal(modalName, bannerName) {
   allModals.forEach((modal) => {
     modal.classList.remove("active");
   });
   document.querySelector(`.modal-content-${modalName}`).classList.add("active");
 }
 
-function showMethod(method) {
+export function showMethod(method) {
   methodTabs.forEach((tab) => {
     tab.classList.remove("active");
   });
@@ -84,7 +84,7 @@ function addUrlParameter(key, value) {
 }
 
 // Function to update the URL with a new parameter and value
-function updateUrl(key, value) {
+export function updateUrl(key, value) {
   if (history.pushState) {
     var newUrl =
       window.location.protocol +
