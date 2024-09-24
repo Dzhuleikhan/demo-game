@@ -158,10 +158,17 @@ socialForm.forEach((socialForm) => {
       socialForm.querySelector(".form-submit-btn").disabled = false;
     }
 
+    const btnText1 = submitBtn.querySelector(".btn--1");
+    const btnText2 = submitBtn.querySelector(".btn--2");
+
+    btnText2.style.display = "none";
+
     inputs.forEach((inp) => {
       inp.addEventListener("input", () => {
         submitBtn.disabled = false;
-        submitBtn.querySelector("span").textContent = "Sign Up";
+        btnText1.style.display = "none";
+        btnText2.style.display = "block";
+        // submitBtn.querySelector("span").textContent = "Sign Up";
       });
     });
   }
@@ -420,6 +427,9 @@ function submitForm(form) {
       } else if (formType === "phone") {
         disablePhoneForm();
         window.location.href = `https://dev.gbetauth.com/api/register?env=dev&game=softswiss:plinko&type=${formType}&currency=${formData.currency}&phone=${formData.phone}&password=${formData.password}${formData.bonus === "Without Bonus" ? "" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}?utm_campaign=100110754_1705949_nodescription&utm_content=100110754&utm_medium=casap&utm_source=aff`;
+        console.log(
+          `https://dev.gbetauth.com/api/register?env=dev&game=softswiss:plinko&type=${formType}&currency=${formData.currency}&phone=${formData.phone}&password=${formData.password}${formData.bonus === "Without Bonus" ? "" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}?utm_campaign=100110754_1705949_nodescription&utm_content=100110754&utm_medium=casap&utm_source=aff`,
+        );
       } else if (formType === "social") {
         disableSocialForm();
         window.location.href = `https://dev.gbetauth.com/api/register?env=dev&game=softswiss:plinko&type=${formData.social}&currency=${formData.currency}${formData.bonus === "Without Bonus" ? "" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}?utm_campaign=100110754_1705949_nodescription&utm_content=100110754&utm_medium=casap&utm_source=aff`;
