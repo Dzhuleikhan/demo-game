@@ -20,6 +20,7 @@ export const modalTranslations = {
     regWithEmail: "Register with email",
     yourWinning: "Your winning",
     signUpToClaim: "Sign up to claim your prize",
+    passwordPlaceholder: "Пароль",
   },
   ru: {
     mainModalTitle: "регистрация",
@@ -42,6 +43,7 @@ export const modalTranslations = {
     regWithEmail: "Регистрация по e-mail",
     yourWinning: "Ваш выигрыш",
     signUpToClaim: "Зарегистрируйтесь, чтобы забрать приз",
+    passwordPlaceholder: "Contraseña",
   },
   es: {
     mainModalTitle: "Registrarse",
@@ -64,6 +66,7 @@ export const modalTranslations = {
     regWithEmail: "Registrarse con correo electrónico",
     yourWinning: "Tus ganancias",
     signUpToClaim: "Regístrate para reclamar tu premio",
+    passwordPlaceholder: "Contraseña",
   },
   pt: {
     mainModalTitle: "Cadastre-se",
@@ -86,6 +89,7 @@ export const modalTranslations = {
     regWithEmail: "Cadastre-se com e-mail",
     yourWinning: "Seu prêmio",
     signUpToClaim: "Cadastre-se para reivindicar seu prêmio",
+    passwordPlaceholder: "Senha",
   },
   az: {
     mainModalTitle: "Qeydiyyat",
@@ -108,6 +112,7 @@ export const modalTranslations = {
     regWithEmail: "E-mail ilə qeydiyyat",
     yourWinning: "Sizin uduşunuz",
     signUpToClaim: "Mükafat üçün qeydiyyatdan keçin",
+    passwordPlaceholder: "Şifrə",
   },
   kz: {
     mainModalTitle: "Тіркелу",
@@ -130,6 +135,7 @@ export const modalTranslations = {
     regWithEmail: "E-mail арқылы тіркелу",
     yourWinning: "Сіздің ұтысыңыз",
     signUpToClaim: "Сыйлығыңызды алу үшін тіркеліңіз",
+    passwordPlaceholder: "Құпиясөз",
   },
   uz: {
     mainModalTitle: "Roʻyxatdan oʻtish",
@@ -152,6 +158,7 @@ export const modalTranslations = {
     regWithEmail: "E-mail orqali roʻyxatdan oʻtish",
     yourWinning: "Sizning yutugʻingiz",
     signUpToClaim: "Sovrinni olish uchun roʻyxatdan oʻting",
+    passwordPlaceholder: "Parol",
   },
   fr: {
     mainModalTitle: "Inscription",
@@ -174,6 +181,7 @@ export const modalTranslations = {
     regWithEmail: "S'inscrire avec e-mail",
     yourWinning: "Vos gains",
     signUpToClaim: "Inscrivez-vous pour réclamer votre prix",
+    passwordPlaceholder: "Mot de passe",
   },
   de: {
     mainModalTitle: "Registrieren",
@@ -197,6 +205,7 @@ export const modalTranslations = {
     regWithEmail: "Mit E-Mail registrieren",
     yourWinning: "Ihr Gewinn",
     signUpToClaim: "Registrieren Sie sich, um Ihren Preis zu holen",
+    passwordPlaceholder: "Passwort",
   },
   tr: {
     mainModalTitle: "Kayıt Ol",
@@ -219,5 +228,6 @@ export const modalTranslations = {
     regWithEmail: "E-posta ile kayıt ol",
     yourWinning: "Kazancınız",
     signUpToClaim: "Ödülünüzü almak için kayıt olun",
+    passwordPlaceholder: "Şifre",
   },
 };

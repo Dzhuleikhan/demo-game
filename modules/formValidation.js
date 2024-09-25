@@ -142,6 +142,19 @@ function validatePasswordInput() {
 }
 validatePasswordInput();
 
+// Password input placeholder
+const passwordInput = document.querySelectorAll(".password-input");
+
+passwordInput.forEach((input) => {
+  input.addEventListener("input", () => {
+    if (input.value.length >= 1) {
+      input.nextElementSibling.classList.add("hidden");
+    } else {
+      input.nextElementSibling.classList.remove("hidden");
+    }
+  });
+});
+
 // Validate socials input
 
 socialForm.forEach((socialForm) => {
