@@ -181,7 +181,6 @@ socialForm.forEach((socialForm) => {
         submitBtn.disabled = false;
         btnText1.style.display = "none";
         btnText2.style.display = "block";
-        // submitBtn.querySelector("span").textContent = "Sign Up";
       });
     });
   }
@@ -264,11 +263,6 @@ promocodeWrapper.forEach((promo) => {
     });
   }
 });
-
-// Getting parameters
-const methodParam = getUrlParameter("method");
-const modalParam = getUrlParameter("modal");
-const preferredLang = localStorage.getItem("preferredLanguage");
 
 /**
  *  Submitting form
@@ -419,6 +413,7 @@ function submitForm(form) {
       terms.classList.add("submit-disabled");
       formbtn.disabled = true;
       formbtn.classList.add("loading");
+      formbtn.querySelector(".btn--2").style.display = "none";
     }
 
     function disableOneClickForm() {
