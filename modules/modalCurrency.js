@@ -1,6 +1,7 @@
 import { getLocation } from "./geoLocation";
+import { countryCurrencyData } from "../public/data";
 
-function getCountryCurrencyABBR(inputCountry) {
+export function getCountryCurrencyABBR(inputCountry) {
   for (const data of countryCurrencyData) {
     if (data.countries.includes(inputCountry)) {
       return data.countryCurrency;

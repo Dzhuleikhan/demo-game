@@ -23,7 +23,6 @@ tigerImg.forEach((img) => {
     window.addEventListener("mousemove", (e) => {
       let cursorX = e.clientX;
       gsap.to(img, { x: -cursorX / 50 });
-      console.log("sdfsd");
     });
   }
 });

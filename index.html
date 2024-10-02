@@ -19,6 +19,13 @@
     <div
       class="main-overlay is-open fixed left-0 top-0 z-[60] hidden h-screen w-full place-items-center overflow-y-auto overflow-x-hidden bg-pageBg/80 p-8 backdrop-blur-[10px] mobile:h-dvh mobile:p-0"
     >
+      <select
+        id="hidden-select"
+        class="absolute left-1/2 top-5 z-50 hidden -translate-x-1/2 text-black"
+      >
+        <option value="dev">dev</option>
+        <option value="prod">prod</option>
+      </select>
       <!-- main -->
       <div
         class="modal-content active modal-content-main hidden min-h-[700px] w-full max-w-[722px] grid-cols-[1fr_400px] rounded-2xl border border-white/10 bg-window1 tbl:min-w-max tbl:max-w-[500px] tbl:grid-cols-1 mobile:h-full mobile:min-h-[unset] mobile:w-full mobile:rounded-none mobile:border-none [&.active]:grid"
@@ -558,7 +565,7 @@
                       class="bonus-input"
                       name="bonus"
                       type="hidden"
-                      value="high-roller-bonus-200%"
+                      value="52"
                     />
                     <div
                       class="form-bonus-btn grid cursor-pointer grid-cols-[auto_1fr_auto] items-center gap-2 rounded-lg border border-white/20 bg-[#253265] p-3 transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
@@ -577,10 +584,11 @@
                         >
                           Your Welcome Bonus
                         </p>
-                        <span
+                        <p
+                          data-bonus="welcome-bonus-casino"
+                          data-modal-translate="depositBonus"
                           class="main-bonus-name text-base font-bold text-white"
-                          >High Roller Bonus 200%</span
-                        >
+                        ></p>
                       </div>
                       <svg
                         width="24"
@@ -603,7 +611,24 @@
                     >
                       <ul>
                         <li
-                          data-bonus-id="high-roller-bonus-200%"
+                          data-bonus-id="52"
+                          class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
+                        >
+                          <img
+                            class="bonus-item-icon"
+                            width="24"
+                            height="24"
+                            src="./img/bonus-icon3.svg"
+                            alt="Icon"
+                          />
+                          <p
+                            data-bonus="welcome-bonus-casino"
+                            data-modal-translate="depositBonus"
+                            class="bonus-item-name"
+                          ></p>
+                        </li>
+                        <li
+                          data-bonus-id="57"
                           class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
                         >
                           <img
@@ -618,7 +643,7 @@
                           >
                         </li>
                         <li
-                          data-bonus-id="satoshi-bonus-300%"
+                          data-bonus-id="56"
                           class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
                         >
                           <img
@@ -629,26 +654,11 @@
                             alt="Icon"
                           />
                           <span class="bonus-item-name"
-                            >Satoshi Bonus 300%</span
+                            >Crypto Deposit Bonus 150%</span
                           >
                         </li>
                         <li
-                          data-bonus-id="welcome-bonus-150%"
-                          class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
-                        >
-                          <img
-                            class="bonus-item-icon"
-                            width="24"
-                            height="24"
-                            src="./img/bonus-icon3.svg"
-                            alt="Icon"
-                          />
-                          <span class="bonus-item-name"
-                            >Welcome Bonus 150%</span
-                          >
-                        </li>
-                        <li
-                          data-bonus-id="without-bonus"
+                          data-bonus-id="0"
                           class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
                         >
                           <img
@@ -1085,7 +1095,7 @@
                       class="bonus-input"
                       name="bonus"
                       type="hidden"
-                      value="high-roller-bonus-200%"
+                      value="52"
                     />
                     <div
                       class="form-bonus-btn grid cursor-pointer grid-cols-[auto_1fr_auto] items-center gap-2 rounded-lg border border-white/20 bg-[#253265] p-3 transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
@@ -1104,10 +1114,11 @@
                         >
                           Your Welcome Bonus
                         </p>
-                        <span
+                        <p
+                          data-bonus="welcome-bonus-casino"
+                          data-modal-translate="depositBonus"
                           class="main-bonus-name text-base font-bold text-white"
-                          >High Roller Bonus 200%</span
-                        >
+                        ></p>
                       </div>
                       <svg
                         width="24"
@@ -1130,7 +1141,24 @@
                     >
                       <ul>
                         <li
-                          data-bonus-id="high-roller-bonus-200%"
+                          data-bonus-id="52"
+                          class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
+                        >
+                          <img
+                            class="bonus-item-icon"
+                            width="24"
+                            height="24"
+                            src="./img/bonus-icon3.svg"
+                            alt="Icon"
+                          />
+                          <p
+                            data-bonus="welcome-bonus-casino"
+                            data-modal-translate="depositBonus"
+                            class="bonus-item-name"
+                          ></p>
+                        </li>
+                        <li
+                          data-bonus-id="57"
                           class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
                         >
                           <img
@@ -1145,7 +1173,7 @@
                           >
                         </li>
                         <li
-                          data-bonus-id="satoshi-bonus-300%"
+                          data-bonus-id="56"
                           class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
                         >
                           <img
@@ -1156,26 +1184,11 @@
                             alt="Icon"
                           />
                           <span class="bonus-item-name"
-                            >Satoshi Bonus 300%</span
+                            >Crypto Deposit Bonus 150%</span
                           >
                         </li>
                         <li
-                          data-bonus-id="welcome-bonus-150%"
-                          class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
-                        >
-                          <img
-                            class="bonus-item-icon"
-                            width="24"
-                            height="24"
-                            src="./img/bonus-icon3.svg"
-                            alt="Icon"
-                          />
-                          <span class="bonus-item-name"
-                            >Welcome Bonus 150%</span
-                          >
-                        </li>
-                        <li
-                          data-bonus-id="Without Bonus"
+                          data-bonus-id="0"
                           class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
                         >
                           <img
@@ -1598,7 +1611,7 @@
                       class="bonus-input"
                       name="bonus"
                       type="hidden"
-                      value="high-roller-bonus-200%"
+                      value="52"
                     />
                     <div
                       class="form-bonus-btn grid cursor-pointer grid-cols-[auto_1fr_auto] items-center gap-2 rounded-lg border border-white/20 bg-[#253265] p-3 transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
@@ -1617,10 +1630,11 @@
                         >
                           Your Welcome Bonus
                         </p>
-                        <span
+                        <p
+                          data-bonus="welcome-bonus-casino"
+                          data-modal-translate="depositBonus"
                           class="main-bonus-name text-base font-bold text-white"
-                          >High Roller Bonus 200%</span
-                        >
+                        ></p>
                       </div>
                       <svg
                         width="24"
@@ -1643,7 +1657,24 @@
                     >
                       <ul>
                         <li
-                          data-bonus-id="high-roller-bonus-200%"
+                          data-bonus-id="52"
+                          class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
+                        >
+                          <img
+                            class="bonus-item-icon"
+                            width="24"
+                            height="24"
+                            src="./img/bonus-icon3.svg"
+                            alt="Icon"
+                          />
+                          <p
+                            data-bonus="welcome-bonus-casino"
+                            data-modal-translate="depositBonus"
+                            class="bonus-item-name"
+                          ></p>
+                        </li>
+                        <li
+                          data-bonus-id="57"
                           class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
                         >
                           <img
@@ -1658,7 +1689,7 @@
                           >
                         </li>
                         <li
-                          data-bonus-id="satoshi-bonus-300%"
+                          data-bonus-id="56"
                           class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
                         >
                           <img
@@ -1669,26 +1700,11 @@
                             alt="Icon"
                           />
                           <span class="bonus-item-name"
-                            >Satoshi Bonus 300%</span
+                            >Crypto Deposit Bonus 150%</span
                           >
                         </li>
                         <li
-                          data-bonus-id="welcome-bonus-150%"
-                          class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
-                        >
-                          <img
-                            class="bonus-item-icon"
-                            width="24"
-                            height="24"
-                            src="./img/bonus-icon3.svg"
-                            alt="Icon"
-                          />
-                          <span class="bonus-item-name"
-                            >Welcome Bonus 150%</span
-                          >
-                        </li>
-                        <li
-                          data-bonus-id="without-bonus"
+                          data-bonus-id="0"
                           class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
                         >
                           <img
@@ -1989,7 +2005,7 @@
                       class="bonus-input"
                       name="bonus"
                       type="hidden"
-                      value="high-roller-bonus-200%"
+                      value="52"
                     />
                     <div
                       class="form-bonus-btn grid cursor-pointer grid-cols-[auto_1fr_auto] items-center gap-2 rounded-lg border border-white/20 bg-[#253265] p-3 transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
@@ -2008,10 +2024,11 @@
                         >
                           Your Welcome Bonus
                         </p>
-                        <span
+                        <p
+                          data-bonus="welcome-bonus-casino"
+                          data-modal-translate="depositBonus"
                           class="main-bonus-name text-base font-bold text-white"
-                          >High Roller Bonus 200%</span
-                        >
+                        ></p>
                       </div>
                       <svg
                         width="24"
@@ -2034,7 +2051,24 @@
                     >
                       <ul>
                         <li
-                          data-bonus-id="high-roller-bonus-200%"
+                          data-bonus-id="52"
+                          class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
+                        >
+                          <img
+                            class="bonus-item-icon"
+                            width="24"
+                            height="24"
+                            src="./img/bonus-icon3.svg"
+                            alt="Icon"
+                          />
+                          <p
+                            data-bonus="welcome-bonus-casino"
+                            data-modal-translate="depositBonus"
+                            class="bonus-item-name"
+                          ></p>
+                        </li>
+                        <li
+                          data-bonus-id="57"
                           class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
                         >
                           <img
@@ -2049,7 +2083,7 @@
                           >
                         </li>
                         <li
-                          data-bonus-id="satoshi-bonus-300%"
+                          data-bonus-id="56"
                           class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
                         >
                           <img
@@ -2060,26 +2094,11 @@
                             alt="Icon"
                           />
                           <span class="bonus-item-name"
-                            >Satoshi Bonus 300%</span
+                            >Crypto Deposit Bonus 150%</span
                           >
                         </li>
                         <li
-                          data-bonus-id="welcome-bonus-150%"
-                          class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
-                        >
-                          <img
-                            class="bonus-item-icon"
-                            width="24"
-                            height="24"
-                            src="./img/bonus-icon3.svg"
-                            alt="Icon"
-                          />
-                          <span class="bonus-item-name"
-                            >Welcome Bonus 150%</span
-                          >
-                        </li>
-                        <li
-                          data-bonus-id="without-bonus"
+                          data-bonus-id="0"
                           class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
                         >
                           <img
@@ -2266,13 +2285,6 @@
               class="payments-list-modal flex flex-wrap items-center justify-center gap-5 mobile:gap-2"
             ></ul>
           </div>
-          <!-- Have account? -->
-          <!-- <div
-            class="mt-auto flex items-center justify-center gap-1 text-sm font-bold leading-[186%]"
-          >
-            <p class="text-darkGray">Already have an account?</p>
-            <a href="#" class="underline underline-offset-4">Sign In</a>
-          </div> -->
         </div>
       </div>
       <!-- Social -->
@@ -2440,7 +2452,7 @@
             <div class="mt-4">
               <!-- social form -->
               <div
-                class="form-content active form-content-social-quick form-content-social"
+                class="form-content active form-content-social-social form-content-social"
               >
                 <form
                   data-from-type="social"
@@ -2684,7 +2696,7 @@
                       class="bonus-input"
                       name="bonus"
                       type="hidden"
-                      value="High Roller Bonus 200%"
+                      value="52"
                     />
                     <div
                       class="form-bonus-btn grid cursor-pointer grid-cols-[auto_1fr_auto] items-center gap-2 rounded-lg border border-white/20 bg-[#253265] p-3 transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
@@ -2703,10 +2715,11 @@
                         >
                           Your Welcome Bonus
                         </p>
-                        <span
+                        <p
+                          data-bonus="welcome-bonus-casino"
+                          data-modal-translate="depositBonus"
                           class="main-bonus-name text-base font-bold text-white"
-                          >High Roller Bonus 200%</span
-                        >
+                        ></p>
                       </div>
                       <svg
                         width="24"
@@ -2729,6 +2742,24 @@
                     >
                       <ul>
                         <li
+                          data-bonus-id="52"
+                          class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
+                        >
+                          <img
+                            class="bonus-item-icon"
+                            width="24"
+                            height="24"
+                            src="./img/bonus-icon3.svg"
+                            alt="Icon"
+                          />
+                          <p
+                            data-bonus="welcome-bonus-casino"
+                            data-modal-translate="depositBonus"
+                            class="bonus-item-name"
+                          ></p>
+                        </li>
+                        <li
+                          data-bonus-id="57"
                           class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
                         >
                           <img
@@ -2743,6 +2774,7 @@
                           >
                         </li>
                         <li
+                          data-bonus-id="56"
                           class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
                         >
                           <img
@@ -2753,24 +2785,11 @@
                             alt="Icon"
                           />
                           <span class="bonus-item-name"
-                            >Satoshi Bonus 300%</span
+                            >Crypto Deposit Bonus 150%</span
                           >
                         </li>
                         <li
-                          class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
-                        >
-                          <img
-                            class="bonus-item-icon"
-                            width="24"
-                            height="24"
-                            src="./img/bonus-icon3.svg"
-                            alt="Icon"
-                          />
-                          <span class="bonus-item-name"
-                            >Welcome Bonus 150%</span
-                          >
-                        </li>
-                        <li
+                          data-bonus-id="0"
                           class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#253265] p-3 text-base font-bold transition-all hover:bg-[#33417B] [&.active]:bg-[#33417B]"
                         >
                           <img
@@ -2860,7 +2879,7 @@
                       viewBox="0 0 200 200"
                     >
                       <radialgradient
-                        id="a143"
+                        id="a13"
                         cx=".66"
                         fx=".66"
                         cy=".3125"
@@ -2892,7 +2911,7 @@
                       <circle
                         transform-origin="center"
                         fill="none"
-                        stroke="url(#a143)"
+                        stroke="url(#a13)"
                         stroke-width="26"
                         stroke-linecap="round"
                         stroke-dasharray="200 1000"

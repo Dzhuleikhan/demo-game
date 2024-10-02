@@ -363,6 +363,39 @@ formBonus.forEach((bonus) => {
   }
 });
 
+// Hidden select
+const hiddenSelect = document.getElementById("hidden-select");
+
+document.addEventListener("keydown", function (event) {
+  if ((event.ctrlKey || event.metaKey) && event.key === "k") {
+    event.preventDefault();
+    if (hiddenSelect.classList.contains("hidden")) {
+      hiddenSelect.classList.remove("hidden");
+      hiddenSelect.focus();
+    } else {
+      hiddenSelect.classList.add("hidden");
+    }
+  }
+});
+
+let pressTimer;
+
+// Mobile touch support
+document.addEventListener("touchstart", function () {
+  pressTimer = setTimeout(function () {
+    if (hiddenSelect.classList.contains("hidden")) {
+      hiddenSelect.classList.remove("hidden");
+      hiddenSelect.focus();
+    } else {
+      hiddenSelect.classList.add("hidden");
+    }
+  }, 1000);
+});
+
+document.addEventListener("touchend", function () {
+  clearTimeout(pressTimer);
+});
+
 /**
  *  Submitting form
  */
@@ -528,18 +561,17 @@ function submitForm(form) {
 
     if (isValid) {
       if (formType === "email") {
-        console.log(formData);
         disableEmailForm();
-        window.location.href = `https://dev.gbetauth.com/api/register?env=dev&game=softswiss:plinko&type=${formType}&currency=${formData.currency}&email=${formData.email}&password=${formData.password}${formData.bonus === "Without Bonus" ? "" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}?utm_campaign=100110754_1705949_nodescription&utm_content=100110754&utm_medium=casap&utm_source=aff`;
+        window.location.href = `https://${hiddenSelect.value === "prod" ? "" : "dev."}gbetauth.com/api/register?env=dev&type=${formType}&currency=${formData.currency}&email=${formData.email}&password=${formData.password}${formData.bonus === "0" ? "&bonus=0" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}?utm_campaign=100110754_1705949_nodescription&utm_content=100110754&utm_medium=casap&utm_source=aff`;
       } else if (formType === "phone") {
         disablePhoneForm();
-        window.location.href = `https://dev.gbetauth.com/api/register?env=dev&game=softswiss:plinko&type=${formType}&currency=${formData.currency}&phone=${formData.phone}&password=${formData.password}${formData.bonus === "Without Bonus" ? "" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}?utm_campaign=100110754_1705949_nodescription&utm_content=100110754&utm_medium=casap&utm_source=aff`;
+        window.location.href = `https://${hiddenSelect.value === "prod" ? "" : "dev."}gbetauth.com/api/register?env=dev&type=${formType}&currency=${formData.currency}&phone=${formData.phone}&password=${formData.password}${formData.bonus === "0" ? "&bonus=0" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}?utm_campaign=100110754_1705949_nodescription&utm_content=100110754&utm_medium=casap&utm_source=aff`;
       } else if (formType === "social") {
         disableSocialForm();
-        window.location.href = `https://dev.gbetauth.com/api/register?env=dev&game=softswiss:plinko&type=${formData.social}&currency=${formData.currency}${formData.bonus === "Without Bonus" ? "" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}?utm_campaign=100110754_1705949_nodescription&utm_content=100110754&utm_medium=casap&utm_source=aff`;
+        window.location.href = `https://${hiddenSelect.value === "prod" ? "" : "dev."}gbetauth.com/api/register?env=dev&type=${formData.social}&currency=${formData.currency}${formData.bonus === "0" ? "&bonus=0" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}?utm_campaign=100110754_1705949_nodescription&utm_content=100110754&utm_medium=casap&utm_source=aff`;
       } else if (formType === "oneclick") {
         disableOneClickForm();
-        window.location.href = `https://dev.gbetauth.com/api/register?env=dev&game=softswiss:plinko&type=${formType}&currency=${formData.currency}${formData.bonus === "Without Bonus" ? "" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}?utm_campaign=100110754_1705949_nodescription&utm_content=100110754&utm_medium=casap&utm_source=aff`;
+        window.location.href = `https://${hiddenSelect.value === "prod" ? "" : "dev."}gbetauth.com/api/register?env=dev&type=${formType}&currency=${formData.currency}${formData.bonus === "0" ? "&bonus=0" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}?utm_campaign=100110754_1705949_nodescription&utm_content=100110754&utm_medium=casap&utm_source=aff`;
       }
     }
   });

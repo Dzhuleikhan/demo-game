@@ -9,3 +9,4 @@ import "./modules/setPayments";
 import "./modules/params";
 import "./modules/modalLanguage";
 import "./modules/mainModal";
+import "./modules/setBonusValue";

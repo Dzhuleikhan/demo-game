@@ -21,6 +21,7 @@ export const modalTranslations = {
     yourWinning: "Your winning",
     signUpToClaim: "Sign up to claim your prize",
     passwordPlaceholder: "Password",
+    depositBonus: `Welcome bonus <span class="bonus-value"></span> <span class="bonus-currency"></span>`,
   },
   ru: {
     mainModalTitle: "регистрация",
@@ -44,6 +45,7 @@ export const modalTranslations = {
     yourWinning: "Ваш выигрыш",
     signUpToClaim: "Зарегистрируйтесь, чтобы забрать приз",
     passwordPlaceholder: "Пароль",
+    depositBonus: `Welcome bonus <span class="bonus-value"></span> <span class="bonus-currency"></span>`,
   },
   es: {
     mainModalTitle: "Registrarse",
@@ -67,6 +69,7 @@ export const modalTranslations = {
     yourWinning: "Tus ganancias",
     signUpToClaim: "Regístrate para reclamar tu premio",
     passwordPlaceholder: "Contraseña",
+    depositBonus: `Welcome bonus <span class="bonus-value"></span> <span class="bonus-currency"></span>`,
   },
   pt: {
     mainModalTitle: "Cadastre-se",
@@ -90,6 +93,7 @@ export const modalTranslations = {
     yourWinning: "Seu prêmio",
     signUpToClaim: "Cadastre-se para reivindicar seu prêmio",
     passwordPlaceholder: "Senha",
+    depositBonus: `Welcome bonus <span class="bonus-value"></span> <span class="bonus-currency"></span>`,
   },
   az: {
     mainModalTitle: "Qeydiyyat",
@@ -113,6 +117,7 @@ export const modalTranslations = {
     yourWinning: "Sizin uduşunuz",
     signUpToClaim: "Mükafat üçün qeydiyyatdan keçin",
     passwordPlaceholder: "Şifrə",
+    depositBonus: `Welcome bonus <span class="bonus-value"></span> <span class="bonus-currency"></span>`,
   },
   kz: {
     mainModalTitle: "Тіркелу",
@@ -136,6 +141,7 @@ export const modalTranslations = {
     yourWinning: "Сіздің ұтысыңыз",
     signUpToClaim: "Сыйлығыңызды алу үшін тіркеліңіз",
     passwordPlaceholder: "Құпиясөз",
+    depositBonus: `Welcome bonus <span class="bonus-value"></span> <span class="bonus-currency"></span>`,
   },
   uz: {
     mainModalTitle: "Roʻyxatdan oʻtish",
@@ -159,6 +165,7 @@ export const modalTranslations = {
     yourWinning: "Sizning yutugʻingiz",
     signUpToClaim: "Sovrinni olish uchun roʻyxatdan oʻting",
     passwordPlaceholder: "Parol",
+    depositBonus: `Welcome bonus <span class="bonus-value"></span> <span class="bonus-currency"></span>`,
   },
   fr: {
     mainModalTitle: "Inscription",
@@ -182,6 +189,7 @@ export const modalTranslations = {
     yourWinning: "Vos gains",
     signUpToClaim: "Inscrivez-vous pour réclamer votre prix",
     passwordPlaceholder: "Mot de passe",
+    depositBonus: `Welcome bonus <span class="bonus-value"></span> <span class="bonus-currency"></span>`,
   },
   de: {
     mainModalTitle: "Registrieren",
@@ -206,6 +214,7 @@ export const modalTranslations = {
     yourWinning: "Ihr Gewinn",
     signUpToClaim: "Registrieren Sie sich, um Ihren Preis zu holen",
     passwordPlaceholder: "Passwort",
+    depositBonus: `Welcome bonus <span class="bonus-value"></span> <span class="bonus-currency"></span>`,
   },
   tr: {
     mainModalTitle: "Kayıt Ol",
@@ -229,5 +238,6 @@ export const modalTranslations = {
     yourWinning: "Kazancınız",
     signUpToClaim: "Ödülünüzü almak için kayıt olun",
     passwordPlaceholder: "Şifre",
+    depositBonus: `Welcome bonus <span class="bonus-value"></span> <span class="bonus-currency"></span>`,
   },
 };

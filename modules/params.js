@@ -68,6 +68,31 @@ if (modal === "auth") {
   showCurrentModal("main");
 }
 
+// Bonus
+let bonus = getUrlParameter("bonus");
+let bonusType = getUrlParameter("bonus-type");
+
+const bonusWrapper = document.querySelectorAll(".form-bonus");
+const bonusInput = document.querySelectorAll(".bonus-input");
+
+if (bonus) {
+  bonusWrapper.forEach((b) => {
+    b.classList.remove("hidden");
+  });
+  if (bonusType) {
+    bonusWrapper.forEach((b) => {
+      b.style.pointerEvents = "none";
+    });
+  }
+} else {
+  bonusWrapper.forEach((b) => {
+    b.classList.add("hidden");
+  });
+  bonusInput.forEach((input) => {
+    input.value = 0;
+  });
+}
+
 // Function to add a parameter to the URL
 function addUrlParameter(key, value) {
   var url = new URL(window.location.href);
