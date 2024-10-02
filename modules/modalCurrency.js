@@ -1,9 +1,31 @@
 import { getLocation } from "./geoLocation";
-import {
-  getCountryCurrencyABBR,
-  getCountryCurrencyFullName,
-  getCountryCurrencyIcon,
-} from "./game";
+
+function getCountryCurrencyABBR(inputCountry) {
+  for (const data of countryCurrencyData) {
+    if (data.countries.includes(inputCountry)) {
+      return data.countryCurrency;
+    }
+  }
+  return "USD"; // or some default value if country is not found
+}
+
+function getCountryCurrencyFullName(inputCountry) {
+  for (const data of countryCurrencyData) {
+    if (data.countries.includes(inputCountry)) {
+      return data.countryCurrencyFullName;
+    }
+  }
+  return "US Dollar"; // or some default value if country is not found
+}
+
+function getCountryCurrencyIcon(inputCountry) {
+  for (const data of countryCurrencyData) {
+    if (data.countries.includes(inputCountry)) {
+      return data.countryCurrencyIcon;
+    }
+  }
+  return "./img/currencies/usd.svg"; // or some default value if country is not found
+}
 
 function setCurrency(abbr, name, icon) {
   const formCurrency = document.querySelectorAll(".form-currency");
@@ -63,7 +85,6 @@ formCurrency.forEach((cur) => {
   if (cur) {
     const currencyDropdownBtn = cur.querySelector(".form-currency-btn");
     const currencyDropdownList = cur.querySelector(".form-currency-dropdown");
-    const currencyInput = cur.querySelector(".currency-input");
 
     function hideDropdown() {
       currencyDropdownBtn.classList.remove("active");
@@ -88,7 +109,6 @@ formCurrency.forEach((cur) => {
         // Taking currency value from item
         let curIcon = item.querySelector(".currency-item-icon").src;
         let curName = item.querySelector(".currency-item-name").textContent;
-        let curSymbol = item.querySelector(".currency-item-symbol").textContent;
         let curAbbr = item.querySelector(".currency-item-abbr").textContent;
 
         // Update all currency inputs on the page

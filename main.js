@@ -1,18 +1,11 @@
 import "./style.css";
 import "intl-tel-input/build/css/intlTelInput.css";
 
-import "./modules/header";
-import "./modules/game";
-import "./modules/sidebar";
-import "./modules/language";
-import "./modules/mainModal";
+import "./modules/animations";
 import "./modules/formValidation";
 import "./modules/geoLocation";
 import "./modules/modalCurrency";
-import "./modules/modalBonus";
 import "./modules/setPayments";
-import "./modules/settingGlobalGeo";
-import "./modules/declineModal";
-import "./modules/animations";
 import "./modules/params";
 import "./modules/modalLanguage";
+import "./modules/mainModal";

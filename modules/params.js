@@ -2,14 +2,14 @@ const allModals = document.querySelectorAll(".modal-content");
 const methodTabs = document.querySelectorAll(".modal-tabs button");
 const methodFormContents = document.querySelectorAll(".form-content");
 
-export function showCurrentModal(modalName, bannerName) {
+function showCurrentModal(modalName, bannerName) {
   allModals.forEach((modal) => {
     modal.classList.remove("active");
   });
   document.querySelector(`.modal-content-${modalName}`).classList.add("active");
 }
 
-export function showMethod(method) {
+function showMethod(method) {
   methodTabs.forEach((tab) => {
     tab.classList.remove("active");
   });
@@ -23,7 +23,7 @@ export function showMethod(method) {
 }
 
 // Function to get a URL parameter by name
-export function getUrlParameter(name) {
+function getUrlParameter(name) {
   name = name.replace(/[\[\]]/g, "\\$&");
   var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
     results = regex.exec(window.location.href);
@@ -34,6 +34,7 @@ export function getUrlParameter(name) {
 
 // Check if 'modal' parameter is present; if not, set it to 'normal'
 const modal = getUrlParameter("modal");
+
 if (!modal) {
   addUrlParameter("modal", "auth");
 }
@@ -61,19 +62,10 @@ if (modal === "auth") {
       .querySelector("button[data-tab='oneclick']")
       .classList.remove("hidden");
   }
-} else if (modal === "quick") {
-  showCurrentModal("quick");
-} else if (modal === "prize") {
-  if (!getUrlParameter("mode")) {
-    addUrlParameter("mode", "fixed");
-  }
-  const mode = getUrlParameter("mode");
-
-  if (mode === "normal") {
-    showCurrentModal("prize-normal");
-  } else if (mode === "fixed") {
-    showCurrentModal("prize-fixed");
-  }
+} else if (modal === "social") {
+  showCurrentModal("social");
+} else {
+  showCurrentModal("main");
 }
 
 // Function to add a parameter to the URL
@@ -83,37 +75,15 @@ function addUrlParameter(key, value) {
   window.history.pushState({ path: url.href }, "", url.href);
 }
 
-// Function to update the URL with a new parameter and value
 export function updateUrl(key, value) {
+  // Create a URL object based on the current window location
+  const url = new URL(window.location);
+
+  // Update or add the specified key-value pair
+  url.searchParams.set(key, value);
+
+  // Update the browser URL without reloading the page
   if (history.pushState) {
-    var newUrl =
-      window.location.protocol +
-      "//" +
-      window.location.host +
-      window.location.pathname +
-      "?" +
-      key +
-      "=" +
-      value;
-    window.history.pushState({ path: newUrl }, "", newUrl);
-  }
-}
-
-// Function to remove a parameter from the URL
-function removeUrlParameter(parameter) {
-  var url = window.location.href;
-  var urlParts = url.split("?");
-
-  if (urlParts.length >= 2) {
-    var params = urlParts[1].split(/[&;]/g);
-
-    // Filter out the parameter to be removed
-    var newParams = params.filter(function (param) {
-      return param.split("=")[0] !== parameter;
-    });
-
-    var newUrl =
-      urlParts[0] + (newParams.length > 0 ? "?" + newParams.join("&") : "");
-    window.history.pushState({ path: newUrl }, "", newUrl);
+    window.history.pushState({ path: url.href }, "", url.href);
   }
 }

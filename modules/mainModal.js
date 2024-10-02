@@ -1,39 +1,4 @@
-import gsap from "gsap";
-import { overlay } from "./game";
-import { showCurrentModal, showMethod, updateUrl } from "./params";
-
-window.addEventListener("mousemove", (e) => {
-  let cursorX = e.clientX;
-  gsap.to(modalTigerImg, { x: -cursorX / 50 });
-});
-
-/**
- * Showing main modal window
- */
-const firstModalRegBtn = document.querySelector(".reg-target-btn");
-const mainOverlay = document.querySelector(".main-overlay");
-const modalTigerImg = document.querySelector(".modal-tiger-img");
-const headerAuthBtns = document.querySelectorAll(".header-auth-btn");
-
-headerAuthBtns.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    mainOverlay.classList.add("is-open");
-    localStorage.setItem("mainModal", "open");
-  });
-});
-
-firstModalRegBtn.addEventListener("click", () => {
-  localStorage.removeItem("modal");
-  localStorage.setItem("mainModal", "open");
-  overlay.classList.remove("is-open");
-  mainOverlay.classList.add("is-open");
-});
-
-if (localStorage.mainModal) {
-  mainOverlay.classList.add("is-open");
-} else {
-  mainOverlay.classList.remove("is-open");
-}
+import { updateUrl } from "./params";
 
 /**
  * Tabs changing
@@ -56,16 +21,5 @@ modalTabs.addEventListener("click", (e) => {
   btn.classList.add("active");
   let tab = btn.getAttribute("data-tab");
   showActualModal(tab);
-});
-
-const regWithEmailBtns = document.querySelectorAll(".reg-with-email-btn");
-
-regWithEmailBtns.forEach((btn) => {
-  if (btn) {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      showCurrentModal("main");
-      updateUrl("modal", "auth");
-    });
-  }
+  updateUrl("method", tab);
 });
