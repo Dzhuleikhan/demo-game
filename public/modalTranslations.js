@@ -20,7 +20,7 @@ export const modalTranslations = {
     regWithEmail: "Register with email",
     yourWinning: "Your winning",
     signUpToClaim: "Sign up to claim your prize",
-    passwordPlaceholder: "Пароль",
+    passwordPlaceholder: "Password",
   },
   ru: {
     mainModalTitle: "регистрация",
@@ -43,7 +43,7 @@ export const modalTranslations = {
     regWithEmail: "Регистрация по e-mail",
     yourWinning: "Ваш выигрыш",
     signUpToClaim: "Зарегистрируйтесь, чтобы забрать приз",
-    passwordPlaceholder: "Contraseña",
+    passwordPlaceholder: "Пароль",
   },
   es: {
     mainModalTitle: "Registrarse",
