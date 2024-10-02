@@ -30,4 +30,3 @@ export async function gettingBonusCurrency() {
     console.error("Error fetching location data:", error);
   }
 }
-gettingBonusCurrency();

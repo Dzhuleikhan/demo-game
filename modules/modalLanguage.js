@@ -1,4 +1,5 @@
 import { modalTranslations } from "../public/modalTranslations";
+import { gettingBonusCurrency } from "./setBonusValue";
 
 async function getLocation() {
   let url = "https://ipinfo.io/json?token=fcd65e5fcfdda1";
@@ -19,8 +20,10 @@ function updateContent(lang) {
 function changeLanguage(lang) {
   if (modalTranslations[lang]) {
     updateContent(lang);
+    gettingBonusCurrency();
   } else {
     updateContent("en");
+    gettingBonusCurrency();
   }
 }
 

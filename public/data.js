@@ -372,10 +372,17 @@ export const countryCurrencyData = [
     countryCurrencyFullName: "Ukrainian Hryvnia",
   },
   {
-    countries: ["RU", "AB", "OS", "KZ"],
+    countries: ["RU", "AB", "OS"],
     countryCurrency: "RUB",
     countryCurrencySymbol: "₽",
     countryCurrencyFullName: "Russian Ruble",
+    countryCurrencyIcon: "./img/currencies/rub.svg",
+  },
+  {
+    countries: ["KZ"],
+    countryCurrency: "KZT",
+    countryCurrencySymbol: "₸",
+    countryCurrencyFullName: "Kazakhstani Tenge",
     countryCurrencyIcon: "./img/currencies/rub.svg",
   },
 ];
