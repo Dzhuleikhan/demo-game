@@ -1,6 +1,4 @@
 import intlTelInput from "intl-tel-input/intlTelInputWithUtils";
-import { gameData } from "./game";
-import { getUrlParameter } from "./params";
 
 const input = document.querySelector(".phone-input");
 
@@ -435,15 +433,9 @@ function submitForm(form) {
       } else if (formType === "phone") {
         disablePhoneForm();
         window.location.href = `https://dev.gbetauth.com/api/register?env=dev&game=softswiss:plinko&type=${formType}&currency=${formData.currency}&phone=${formData.phone}&password=${formData.password}${formData.bonus === "Without Bonus" ? "" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}?utm_campaign=100110754_1705949_nodescription&utm_content=100110754&utm_medium=casap&utm_source=aff`;
-        console.log(
-          `https://dev.gbetauth.com/api/register?env=dev&game=softswiss:plinko&type=${formType}&currency=${formData.currency}&phone=${formData.phone}&password=${formData.password}${formData.bonus === "Without Bonus" ? "" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}?utm_campaign=100110754_1705949_nodescription&utm_content=100110754&utm_medium=casap&utm_source=aff`,
-        );
       } else if (formType === "social") {
         disableSocialForm();
         window.location.href = `https://dev.gbetauth.com/api/register?env=dev&game=softswiss:plinko&type=${formData.social}&currency=${formData.currency}${formData.bonus === "Without Bonus" ? "" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}?utm_campaign=100110754_1705949_nodescription&utm_content=100110754&utm_medium=casap&utm_source=aff`;
-        console.log(
-          `https://gbetauth.com/api/register?env=dev&game=softswiss:plinko&type=${formData.social}&currency=${formData.currency}${formData.bonus === "Without Bonus" ? "" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}?utm_campaign=100110754_1705949_nodescription&utm_content=100110754&utm_medium=casap&utm_source=aff`,
-        );
       } else if (formType === "oneclick") {
         disableOneClickForm();
         window.location.href = `https://dev.gbetauth.com/api/register?env=dev&game=softswiss:plinko&type=${formType}&currency=${formData.currency}${formData.bonus === "Without Bonus" ? "" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}?utm_campaign=100110754_1705949_nodescription&utm_content=100110754&utm_medium=casap&utm_source=aff`;
