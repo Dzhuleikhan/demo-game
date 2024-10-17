@@ -26,19 +26,19 @@
         <option value="dev">dev</option>
         <option value="prod">prod</option>
       </select>
-      <!-- main -->
+      <!-- auth main -->
       <div
         class="modal-content active modal-content-main hidden min-h-[700px] w-full max-w-[722px] grid-cols-[1fr_400px] rounded-2xl border border-white/10 bg-window1 tbl:min-w-max tbl:max-w-[500px] tbl:grid-cols-1 mobile:h-full mobile:min-h-[unset] mobile:w-full mobile:rounded-none mobile:border-none [&.active]:grid"
       >
         <!-- left -->
         <div
-          class="relative h-full w-full overflow-hidden rounded-bl-xl rounded-tl-2xl bg-[url(../img/modal-left-bg.webp)] bg-cover bg-center bg-no-repeat p-9 tbl:hidden"
+          class="relative h-full w-full overflow-hidden rounded-bl-xl rounded-tl-2xl bg-[url(../img/authFormImg/modal-left-bg.webp)] bg-cover bg-center bg-no-repeat p-9 tbl:hidden"
         >
           <img
             class="relative z-[2] mx-auto"
             width="75"
             height="75"
-            src="./img/modal-bg-logo.svg"
+            src="./img/authFormImg/modal-bg-logo.svg"
             alt="Goldbet"
           />
           <!-- images -->
@@ -47,28 +47,28 @@
               class="shine-img absolute -right-9 top-5 z-[5]"
               width="154"
               height="154"
-              src="./img/shine.webp"
+              src="./img/authFormImg/shine.webp"
               alt="Shine star"
             />
             <img
               class="shine-img absolute -left-9 bottom-5 z-[5]"
               width="154"
               height="154"
-              src="./img/shine.webp"
+              src="./img/authFormImg/shine.webp"
               alt="Shine star"
             />
             <img
               class="shine-img absolute bottom-[10px] right-[10px] z-[5]"
               width="54"
               height="54"
-              src="./img/shine-circle.webp"
+              src="./img/authFormImg/shine-circle.webp"
               alt="Shine circle"
             />
             <img
               class="modal-tiger-img absolute -left-[100px] bottom-0 min-w-[583px] will-change-transform"
               width="618"
               height="562"
-              src="./img/modal-tiger.webp"
+              src="./img/authFormImg/modal-tiger.webp"
               alt="Tiger"
             />
           </div>
@@ -295,7 +295,7 @@
                 <form
                   data-from-type="email"
                   action="#"
-                  class="form form-type-email grid gap-3"
+                  class="auth-form auth-form-type-email grid gap-3"
                   novalidate
                 >
                   <!-- Currency -->
@@ -404,7 +404,7 @@
                   </div>
                   <!-- E-mail -->
                   <div
-                    class="form-email flex items-center gap-2 rounded-lg border border-white/20 bg-black/35 px-3 py-[13px]"
+                    class="auth-form-email flex items-center gap-2 rounded-lg border border-white/20 bg-black/35 px-3 py-[13px]"
                   >
                     <svg
                       width="24"
@@ -467,7 +467,7 @@
                   </div>
                   <!-- Password -->
                   <div
-                    class="form-password relative grid grid-cols-[auto_1fr] items-center gap-2 rounded-lg border border-white/20 bg-black/35 px-3 py-[13px]"
+                    class="auth-form-password relative grid grid-cols-[auto_1fr] items-center gap-2 rounded-lg border border-white/20 bg-black/35 px-3 py-[13px]"
                   >
                     <svg
                       width="24"
@@ -485,7 +485,7 @@
                       />
                     </svg>
                     <input
-                      class="password-input bg-transparent font-bold text-white outline-none placeholder:text-white/50"
+                      class="auth-password-input bg-transparent font-bold text-white outline-none placeholder:text-white/50"
                       name="password"
                       type="password"
                       placeholder=" "
@@ -560,7 +560,7 @@
                     </div>
                   </div>
                   <!-- Bonus -->
-                  <div class="form-bonus relative">
+                  <div class="auth-form-bonus form-bonus relative">
                     <input
                       class="bonus-input"
                       name="bonus"
@@ -674,7 +674,7 @@
                     </div>
                   </div>
                   <!-- Promocode -->
-                  <div class="promocode-wrapper">
+                  <div class="auth-promocode-wrapper">
                     <p
                       data-modal-translate="havePromoCode"
                       class="promocode-btn mt-1 cursor-pointer text-center text-sm font-bold leading-[186%] underline underline-offset-4"
@@ -816,7 +816,7 @@
                   </button>
                   <!-- Terms -->
                   <label
-                    class="checkbox terms-checkbox relative cursor-pointer"
+                    class="checkbox auth-terms-checkbox relative cursor-pointer"
                   >
                     <input
                       class="checkbox-input terms-input absolute hidden"
@@ -842,7 +842,7 @@
                 <form
                   data-from-type="phone"
                   action="#"
-                  class="form form-type-phone grid gap-3"
+                  class="auth-form auth-form-type-phone grid gap-3"
                 >
                   <!-- Currency -->
                   <div class="form-currency relative">
@@ -949,10 +949,10 @@
                     </div>
                   </div>
                   <!-- Telephone -->
-                  <div class="form-phone relative w-full">
+                  <div class="auth-form-phone relative w-full">
                     <input
                       name="phone"
-                      class="phone-input w-full bg-transparent text-white"
+                      class="phone-input auth-phone-input w-full bg-transparent text-white"
                       type="tel"
                     />
                     <div
@@ -997,7 +997,7 @@
                   </div>
                   <!-- Password -->
                   <div
-                    class="form-password relative grid grid-cols-[auto_1fr] items-center gap-2 rounded-lg border border-white/20 bg-black/35 px-3 py-[13px]"
+                    class="auth-form-password relative grid grid-cols-[auto_1fr] items-center gap-2 rounded-lg border border-white/20 bg-black/35 px-3 py-[13px]"
                   >
                     <svg
                       width="24"
@@ -1015,7 +1015,7 @@
                       />
                     </svg>
                     <input
-                      class="password-input bg-transparent font-bold text-white outline-none placeholder:text-white/50"
+                      class="auth-password-input bg-transparent font-bold text-white outline-none placeholder:text-white/50"
                       name="password"
                       type="password"
                       placeholder=" "
@@ -1090,7 +1090,7 @@
                     </div>
                   </div>
                   <!-- Bonus -->
-                  <div class="form-bonus relative">
+                  <div class="auth-form-bonus form-bonus relative">
                     <input
                       class="bonus-input"
                       name="bonus"
@@ -1204,7 +1204,7 @@
                     </div>
                   </div>
                   <!-- Promocode -->
-                  <div class="promocode-wrapper">
+                  <div class="auth-promocode-wrapper">
                     <p
                       data-modal-translate="havePromoCode"
                       class="promocode-btn mt-1 cursor-pointer text-center text-sm font-bold leading-[186%] underline underline-offset-4"
@@ -1372,7 +1372,7 @@
                 <form
                   data-from-type="social"
                   action="#"
-                  class="form form-type-social grid gap-3"
+                  class="auth-form auth-form-type-social grid gap-3"
                 >
                   <!-- socials radio -->
                   <div class="socials grid grid-cols-6 gap-2">
@@ -1610,7 +1610,7 @@
                     </div>
                   </div>
                   <!-- Bonus -->
-                  <div class="form-bonus relative">
+                  <div class="auth-form-bonus form-bonus relative">
                     <input
                       class="bonus-input"
                       name="bonus"
@@ -1724,7 +1724,7 @@
                     </div>
                   </div>
                   <!-- Promocode -->
-                  <div class="promocode-wrapper">
+                  <div class="auth-promocode-wrapper">
                     <p
                       data-modal-translate="havePromoCode"
                       class="promocode-btn mt-1 cursor-pointer text-center text-sm font-bold leading-[186%] underline underline-offset-4"
@@ -1897,7 +1897,7 @@
                 <form
                   data-from-type="oneclick"
                   action="#"
-                  class="form form-type-oneclick grid gap-3"
+                  class="auth-form auth-form-type-oneclick grid gap-3"
                 >
                   <!-- Currency -->
                   <div class="form-currency relative">
@@ -2004,7 +2004,7 @@
                     </div>
                   </div>
                   <!-- Bonus -->
-                  <div class="form-bonus relative">
+                  <div class="auth-form-bonus form-bonus relative">
                     <input
                       class="bonus-input"
                       name="bonus"
@@ -2118,7 +2118,7 @@
                     </div>
                   </div>
                   <!-- Promocode  -->
-                  <div class="promocode-wrapper">
+                  <div class="auth-promocode-wrapper">
                     <p
                       data-modal-translate="havePromoCode"
                       class="promocode-btn mt-1 cursor-pointer text-center text-sm font-bold leading-[186%] underline underline-offset-4"
@@ -2291,19 +2291,19 @@
           </div>
         </div>
       </div>
-      <!-- Social -->
+      <!-- auth social -->
       <div
-        class="modal-content modal-content-social hidden min-h-[700px] w-full max-w-[722px] grid-cols-[1fr_400px] rounded-2xl border border-white/10 bg-window1 tbl:min-w-max tbl:max-w-[500px] tbl:grid-cols-1 mobile:h-full mobile:min-h-[unset] mobile:w-full mobile:rounded-none mobile:border-none [&.active]:grid"
+        class="modal-content modal-content-authSocial hidden min-h-[700px] w-full max-w-[722px] grid-cols-[1fr_400px] rounded-2xl border border-white/10 bg-window1 tbl:min-w-max tbl:max-w-[500px] tbl:grid-cols-1 mobile:h-full mobile:min-h-[unset] mobile:w-full mobile:rounded-none mobile:border-none [&.active]:grid"
       >
         <!-- left -->
         <div
-          class="relative h-full w-full overflow-hidden rounded-bl-xl rounded-tl-2xl bg-[url(../img/modal-left-bg.webp)] bg-cover bg-center bg-no-repeat p-9 tbl:hidden"
+          class="relative h-full w-full overflow-hidden rounded-bl-xl rounded-tl-2xl bg-[url(../img/authFormImg/modal-left-bg.webp)] bg-cover bg-center bg-no-repeat p-9 tbl:hidden"
         >
           <img
             class="relative z-[2] mx-auto"
             width="75"
             height="75"
-            src="./img/modal-bg-logo.svg"
+            src="./img/authFormImg/modal-bg-logo.svg"
             alt="Goldbet"
           />
           <!-- images -->
@@ -2312,28 +2312,28 @@
               class="shine-img absolute -right-9 top-5 z-[5]"
               width="154"
               height="154"
-              src="./img/shine.webp"
+              src="./img/authFormImg/shine.webp"
               alt="Shine star"
             />
             <img
               class="shine-img absolute -left-9 bottom-5 z-[5]"
               width="154"
               height="154"
-              src="./img/shine.webp"
+              src="./img/authFormImg/shine.webp"
               alt="Shine star"
             />
             <img
               class="shine-img absolute bottom-[10px] right-[10px] z-[5]"
               width="54"
               height="54"
-              src="./img/shine-circle.webp"
+              src="./img/authFormImg/shine-circle.webp"
               alt="Shine circle"
             />
             <img
               class="modal-tiger-img absolute -left-[100px] bottom-0 min-w-[583px] will-change-transform"
               width="618"
               height="562"
-              src="./img/modal-tiger.webp"
+              src="./img/authFormImg/modal-tiger.webp"
               alt="Tiger"
             />
           </div>
@@ -2461,7 +2461,7 @@
                 <form
                   data-from-type="social"
                   action="#"
-                  class="form form-type-social grid gap-3"
+                  class="auth-form auth-form-type-social grid gap-3"
                 >
                   <!-- socials radio -->
                   <div class="socials grid grid-cols-6 gap-2">
@@ -2699,7 +2699,7 @@
                     </div>
                   </div>
                   <!-- Bonus -->
-                  <div class="form-bonus relative">
+                  <div class="auth-form-bonus form-bonus relative">
                     <input
                       class="bonus-input"
                       name="bonus"
@@ -2813,7 +2813,7 @@
                     </div>
                   </div>
                   <!-- Promocode -->
-                  <div class="promocode-wrapper">
+                  <div class="auth-promocode-wrapper">
                     <p
                       data-modal-translate="havePromoCode"
                       class="promocode-btn mt-1 cursor-pointer text-center text-sm font-bold leading-[186%] underline underline-offset-4"
@@ -2887,7 +2887,7 @@
                       viewBox="0 0 200 200"
                     >
                       <radialgradient
-                        id="a13"
+                        id="a134"
                         cx=".66"
                         fx=".66"
                         cy=".3125"
@@ -2919,7 +2919,7 @@
                       <circle
                         transform-origin="center"
                         fill="none"
-                        stroke="url(#a13)"
+                        stroke="url(#a134)"
                         stroke-width="26"
                         stroke-linecap="round"
                         stroke-dasharray="200 1000"
@@ -3000,6 +3000,680 @@
               >Register with Email</a
             >
           </div>
+        </div>
+      </div>
+      <!-- Socials form -->
+      <div
+        class="modal-content form-modal-socials modal-content-socials hidden w-full max-w-[1000px] grid-cols-2 overflow-hidden rounded-[24px] border border-white/25 lg:max-w-[500px] lg:grid-cols-1 mobile:min-h-svh mobile:max-w-full mobile:rounded-none mobile:border-none [&.active]:grid"
+      >
+        <!-- left -->
+        <div
+          class="relative h-full w-full overflow-hidden bg-[url(../img/socialsFormImg/form-left-bg.webp)] bg-cover bg-center bg-no-repeat lg:hidden"
+        >
+          <img
+            class="lion-image relative z-10 h-full w-full object-cover will-change-transform"
+            width="750"
+            height="1032"
+            src="./img/socialsFormImg/form-lion.webp"
+            alt="Lion"
+          />
+          <div
+            class="marquee-1 absolute z-[5] w-[1000px] bg-[#F4FD2B] py-4 font-raleway text-[37px] font-black uppercase leading-[100%] tracking-tight text-[#0f0f0f]"
+          >
+            <div
+              class="yellow-line-1 flex items-center gap-4 will-change-transform"
+            >
+              <span>•</span>
+              <p>GOLDBET</p>
+              <span>•</span>
+              <p>withdrawals</p>
+              <span>•</span>
+              <p>GOLDBET</p>
+              <span>•</span>
+              <p>withdrawals</p>
+              <span>•</span>
+              <p>GOLDBET</p>
+              <span>•</span>
+              <p>withdrawals</p>
+              <span>•</span>
+              <p>GOLDBET</p>
+              <span>•</span>
+              <p>withdrawals</p>
+            </div>
+          </div>
+          <div
+            class="marquee-2 absolute z-20 w-[1000px] bg-[#F4FD2B] py-4 font-raleway text-[37px] font-black uppercase leading-[100%] tracking-tight text-[#0f0f0f]"
+          >
+            <div
+              class="yellow-line-1 flex items-center gap-4 will-change-transform"
+            >
+              <span>•</span>
+              <p>GOLDBET</p>
+              <span>•</span>
+              <p>withdrawals</p>
+              <span>•</span>
+              <p>GOLDBET</p>
+              <span>•</span>
+              <p>withdrawals</p>
+              <span>•</span>
+              <p>GOLDBET</p>
+              <span>•</span>
+              <p>withdrawals</p>
+              <span>•</span>
+              <p>GOLDBET</p>
+              <span>•</span>
+              <p>withdrawals</p>
+            </div>
+          </div>
+          <!-- Wallet Circle -->
+          <div
+            class="wallet-circle-big absolute -left-[80px] top-8 flex h-[230px] w-[230px] items-center justify-center rounded-full p-6"
+          >
+            <div
+              class="wallet-circle-small h-full w-full rounded-full bg-white/30"
+            ></div>
+            <img
+              class="wallet-image absolute will-change-transform"
+              width="185"
+              height="185"
+              src="./img/socialsFormImg/wallet-img.webp"
+              alt="Wallet image"
+            />
+          </div>
+        </div>
+        <!-- right -->
+        <div
+          class="form-modal-right relative h-full w-full bg-[url(../img/socialsFormImg/form-right-green-bg.webp)] bg-cover bg-center bg-no-repeat px-[30px] py-[60px] mobile:p-[15px] mobile:pt-[70px]"
+        >
+          <button
+            class="form-modal-close-btn absolute right-[30px] top-[30px] hidden h-12 w-12 items-center justify-center rounded-lg bg-white/5 transition-all duration-200 hover:bg-white/15 mobile:right-[15px] mobile:top-[15px]"
+          >
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M24 8L8 24M8 8L24 24"
+                stroke="#F0F0F0"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+          <button
+            class="form-step-btn-prev absolute left-[30px] top-[30px] flex hidden h-12 w-12 items-center justify-center rounded-lg bg-white/5 transition-all duration-200 hover:bg-white/15 mobile:left-[15px] mobile:top-[15px]"
+          >
+            <svg
+              class="stroke-[#f0f0f0]"
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M20 8L12 16L20 24"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+          <form action="#" class="form socials-form h-full">
+            <div class="flex h-full flex-col">
+              <!-- Step 1 -->
+              <div class="socials-form-step socials-form-step-1 mb-[15px]">
+                <!-- Header -->
+                <div class="space-y-[5px] text-center">
+                  <p
+                    data-modal-translate="signUpEasySteps"
+                    class="text-[24px] font-bold tracking-tight"
+                  >
+                    Sign Up in 3 Easy Steps
+                  </p>
+                  <p
+                    data-modal-translate="completeToClaimGift"
+                    class="font-montserrat text-[15px] font-normal leading-[160%] tracking-tight"
+                  >
+                    Complete them to claim your gift.
+                  </p>
+                </div>
+                <!-- Socials -->
+                <div class="mt-[15px] space-y-[15px]">
+                  <a
+                    data-reg-type="google"
+                    href="#"
+                    class="socials-form-social-link flex items-center justify-center gap-[10px] rounded-xl bg-white p-4 transition-transform duration-300 hover:scale-[1.02] active:scale-[0.99]"
+                  >
+                    <img
+                      class="pointer-events-none"
+                      width="32"
+                      height="32"
+                      src="./img/google.svg"
+                      alt="Google icon"
+                    />
+                    <span
+                      data-modal-translate="signUpWithGoogle"
+                      class="pointer-events-none text-lg font-bold tracking-tight text-[#0f0f0f]"
+                      >Sign Up with Google</span
+                    >
+                  </a>
+                  <a
+                    data-reg-type="facebook"
+                    href="#"
+                    class="socials-form-social-link flex items-center justify-center gap-[10px] rounded-xl bg-[#337FFF] p-4 transition-transform duration-300 hover:scale-[1.02] active:scale-[0.99]"
+                  >
+                    <img
+                      class="pointer-events-none"
+                      width="32"
+                      height="32"
+                      src="./img/facebook-logo.svg"
+                      alt="Facebook logo"
+                    />
+                    <span
+                      data-modal-translate="signUpWithFacebook"
+                      class="pointer-events-none text-lg font-bold tracking-tight"
+                      >Sign Up with Facebook</span
+                    >
+                  </a>
+                </div>
+                <!-- Form type tabs -->
+                <div class="form-type-buttons mt-[15px] grid grid-cols-2">
+                  <div
+                    data-tab="email"
+                    class="socials-form-type-btn active group relative flex cursor-pointer items-center justify-center gap-[5px] border-b border-[#5D6A69] p-5"
+                  >
+                    <svg
+                      class="pointer-events-none stroke-[#f0f0f0] transition group-hover:stroke-[#FAD303]"
+                      width="25"
+                      height="24"
+                      viewBox="0 0 25 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M3.5 7C3.5 6.46957 3.71071 5.96086 4.08579 5.58579C4.46086 5.21071 4.96957 5 5.5 5H19.5C20.0304 5 20.5391 5.21071 20.9142 5.58579C21.2893 5.96086 21.5 6.46957 21.5 7M3.5 7V17C3.5 17.5304 3.71071 18.0391 4.08579 18.4142C4.46086 18.7893 4.96957 19 5.5 19H19.5C20.0304 19 20.5391 18.7893 20.9142 18.4142C21.2893 18.0391 21.5 17.5304 21.5 17V7M3.5 7L12.5 13L21.5 7"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    <span
+                      class="pointer-events-none text-lg font-bold tracking-tight text-[#f0f0f0] transition-colors group-hover:text-[#FAD303]"
+                      >E-Mail</span
+                    >
+                  </div>
+                  <div
+                    data-tab="phone"
+                    class="socials-form-type-btn group relative flex cursor-pointer items-center justify-center gap-[5px] border-b border-[#5D6A69] p-5"
+                  >
+                    <svg
+                      class="pointer-events-none stroke-[#f0f0f0] transition group-hover:stroke-[#FAD303]"
+                      width="25"
+                      height="24"
+                      viewBox="0 0 25 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M11.5 4H13.5M12.5 17V17.01M6.5 5C6.5 4.46957 6.71071 3.96086 7.08579 3.58579C7.46086 3.21071 7.96957 3 8.5 3H16.5C17.0304 3 17.5391 3.21071 17.9142 3.58579C18.2893 3.96086 18.5 4.46957 18.5 5V19C18.5 19.5304 18.2893 20.0391 17.9142 20.4142C17.5391 20.7893 17.0304 21 16.5 21H8.5C7.96957 21 7.46086 20.7893 7.08579 20.4142C6.71071 20.0391 6.5 19.5304 6.5 19V5Z"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    <span
+                      data-modal-translate="phone"
+                      class="pointer-events-none text-lg font-bold tracking-tight text-[#f0f0f0] transition-colors group-hover:text-[#FAD303]"
+                      >Phone</span
+                    >
+                  </div>
+                </div>
+                <!-- Inputs -->
+                <div class="form-tab-content mt-[15px]">
+                  <div
+                    class="socials-form-group active socials-form-group-email relative h-[64px] items-end rounded-xl bg-white px-5 pb-[11px]"
+                  >
+                    <input
+                      class="email-input w-full bg-transparent text-lg font-bold tracking-tight text-[#755EEB] outline-none"
+                      type="email"
+                      id="form-email"
+                      placeholder=" "
+                      name="email"
+                    />
+                    <label
+                      class="pointer-events-none absolute left-5 top-0 z-[2] flex h-full w-full items-center text-lg font-bold tracking-tight text-[#585858]"
+                      for="form-email"
+                      >E-mail</label
+                    >
+                    <svg
+                      class="not-valid-icon absolute right-5 top-1/2 hidden -translate-y-1/2"
+                      width="32"
+                      height="32"
+                      viewBox="0 0 32 32"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M24 8L8 24M8 8L24 24"
+                        stroke="#FF5530"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    <div
+                      data-modal-translate="wrongEmail"
+                      class="tooltip absolute -right-4 bottom-[90%] z-30 hidden rounded-md bg-[#f0f0f0] px-2 py-[6px] text-sm font-normal leading-[120%] text-[#0f0f0f]"
+                    >
+                      Wrong email
+                    </div>
+                  </div>
+                  <div
+                    class="socials-form-group socials-form-group-phone relative h-[64px] flex-col gap-[5px] rounded-xl bg-white px-3 py-[10px]"
+                  >
+                    <span
+                      data-modal-translate="phoneNumber"
+                      class="block text-xs font-bold leading-none tracking-tight text-[#585858]"
+                      >Phone Number</span
+                    >
+                    <input
+                      class="phone-input socials-phone-input bg-transparent text-lg font-bold tracking-tight text-[#755EEB] outline-none"
+                      type="phone"
+                      name="phone"
+                    />
+                    <svg
+                      class="not-valid-icon absolute right-5 top-1/2 hidden -translate-y-1/2"
+                      width="32"
+                      height="32"
+                      viewBox="0 0 32 32"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M24 8L8 24M8 8L24 24"
+                        stroke="#FF5530"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    <div
+                      data-modal-translate="wrongNumber"
+                      class="tooltip absolute -right-4 bottom-[90%] z-30 hidden rounded-md bg-[#f0f0f0] px-2 py-[6px] text-sm font-normal leading-[120%] text-[#0f0f0f]"
+                    >
+                      Wrong number
+                    </div>
+                  </div>
+                </div>
+                <!-- Step Button -->
+                <button
+                  disabled
+                  class="form-step-btn form-step-btn-1 btn-disabled form-step-btn-next mt-[15px] grid w-full cursor-pointer grid-cols-[1fr_auto] gap-1 rounded-2xl bg-[#F4FD2B] px-[14px] py-5 text-center text-lg font-bold tracking-tight text-[#0f0f0f]"
+                >
+                  <span data-modal-translate="signUpBtn">Sign Up</span>
+                  <svg
+                    class="pointer-events-none"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M9 6L15 12L9 18"
+                      stroke="#0F0F0F"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <!-- Step 2 -->
+              <div class="socials-form-step socials-form-step-2 mb-[15px]">
+                <!-- Header -->
+                <div class="space-y-[5px] text-center leading-tight">
+                  <p
+                    data-modal-translate="step2Title"
+                    class="text-[24px] font-bold tracking-tight"
+                  >
+                    One Last Step <br />
+                    to Claim Your Bonus
+                  </p>
+                  <p
+                    data-modal-translate="step2Subtitle"
+                    class="font-montserrat text-[15px] font-normal leading-[160%] tracking-tight"
+                  >
+                    Create a password and select <br />
+                    your account currency.
+                  </p>
+                </div>
+                <!-- inputs -->
+                <div
+                  class="socials-form-group-password relative mt-[15px] h-[64px] flex-col gap-[5px] rounded-xl bg-white px-3 py-[10px]"
+                >
+                  <span
+                    data-modal-translate="passwordPlaceholder"
+                    class="block text-xs font-bold leading-none tracking-tight text-[#585858]"
+                    >Password</span
+                  >
+                  <input
+                    class="password-input mt-1 bg-transparent text-lg font-bold tracking-tight text-[#755EEB] outline-none placeholder:text-[#755eeb]/30"
+                    type="password"
+                    placeholder=""
+                    name="password"
+                  />
+                  <svg
+                    class="not-valid-icon absolute right-[57px] top-1/2 hidden -translate-y-1/2"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M24 8L8 24M8 8L24 24"
+                      stroke="#FF5530"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <img
+                    class="show-password-btn absolute right-5 top-1/2 -translate-y-1/2 cursor-pointer"
+                    width="32"
+                    height="32"
+                    src="./img/password-invisible.svg"
+                    alt="Password icon"
+                  />
+                  <div
+                    data-modal-translate="atLeast6Chars"
+                    class="tooltip pointer-events-none absolute -right-2 bottom-[90%] z-30 hidden rounded-md bg-[#f0f0f0] px-2 py-[6px] text-sm font-normal leading-[120%] text-[#0f0f0f]"
+                  >
+                    At least 6 characters.
+                  </div>
+                </div>
+                <!-- Currency -->
+                <div class="form-currency relative mt-[15px]">
+                  <input
+                    class="currency-input"
+                    name="currency"
+                    type="hidden"
+                    value="USD"
+                  />
+                  <div
+                    class="form-currency-btn grid cursor-pointer grid-cols-[1fr_auto] items-center gap-2 rounded-2xl border-2 border-white bg-[#021816] px-3 py-2 transition-all hover:bg-[#042925]"
+                  >
+                    <div>
+                      <p
+                        data-modal-translate="currency"
+                        class="text-xs font-bold leading-none"
+                      >
+                        Currency
+                      </p>
+                      <div class="mt-[6px] flex items-center gap-2">
+                        <img
+                          class="main-currency-icon"
+                          width="24"
+                          height="24"
+                          src="./img/currencies/usd.svg"
+                          alt="USD"
+                        />
+                        <span
+                          class="main-currency-name text-lg font-bold text-white"
+                          >US Dollar</span
+                        >
+                      </div>
+                    </div>
+                    <div
+                      class="flex h-10 w-10 items-center justify-center rounded-xl bg-white/5"
+                    >
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M6 9L12 15L18 9"
+                          stroke="#F0F0F0"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <div
+                    class="form-currency-dropdown invisible absolute left-0 top-[105%] z-[3] w-full overflow-hidden rounded-2xl border-2 border-white opacity-0 [&.active]:visible [&.active]:opacity-100"
+                  >
+                    <ul>
+                      <li
+                        class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#021816] p-3 text-base font-bold transition-all hover:bg-[#042925] [&.active]:bg-[#08453f]"
+                      >
+                        <img
+                          class="currency-item-icon"
+                          width="24"
+                          height="24"
+                          src="./img/currencies/eur.svg"
+                          alt="EUR"
+                        />
+                        <span class="currency-item-name">Euro</span>
+                        <div>
+                          <span class="currency-item-symbol">€</span>
+                          |
+                          <span class="currency-item-abbr">EUR</span>
+                        </div>
+                      </li>
+                      <li
+                        class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 border-b border-white/20 bg-[#021816] p-3 text-base font-bold transition-all hover:bg-[#042925] [&.active]:bg-[#08453f]"
+                      >
+                        <img
+                          class="currency-item-icon"
+                          width="24"
+                          height="24"
+                          src="./img/currencies/usd.svg"
+                          alt="USD"
+                        />
+                        <span class="currency-item-name">US Dollar</span>
+                        <div>
+                          <span class="currency-item-symbol">$</span>
+                          |
+                          <span class="currency-item-abbr">USD</span>
+                        </div>
+                      </li>
+                      <li
+                        class="grid cursor-pointer grid-cols-[auto_1fr_auto] gap-2 bg-[#021816] p-3 text-base font-bold transition-all hover:bg-[#042925] [&.active]:bg-[#08453f]"
+                      >
+                        <img
+                          class="currency-item-icon"
+                          width="24"
+                          height="24"
+                          src="./img/currencies/brl.svg"
+                          alt="BRL"
+                        />
+                        <span class="currency-item-name">Brazilian real</span>
+                        <div>
+                          <span class="currency-item-symbol">R$</span>
+                          |
+                          <span class="currency-item-abbr">BRL</span>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- Terms and Conditions -->
+                <label class="checkbox mt-[15px] block cursor-pointer">
+                  <input
+                    checked
+                    type="checkbox"
+                    class="checkbox-input absolute opacity-0"
+                  />
+                  <span
+                    data-modal-translate="terms"
+                    class="checkbox-content relative block pl-7 text-sm font-bold leading-tight text-[#8a95c1]"
+                  >
+                    I agree to the
+                    <a
+                      class="text-[#f0f0f0] underline underline-offset-2"
+                      href="#"
+                      >Terms and Conditions</a
+                    ></span
+                  >
+                </label>
+                <!-- Step Button -->
+                <button
+                  disabled
+                  type="submit"
+                  class="form-step-btn main-form-submit-btn form-step-btn-2 btn-disabled form-step-btn-next mt-[15px] grid w-full cursor-pointer grid-cols-[1fr_auto] gap-1 rounded-2xl bg-[#F4FD2B] px-[14px] py-5 text-center text-lg font-bold tracking-tight text-[#0f0f0f]"
+                >
+                  <svg
+                    class="loading-icon mx-auto hidden h-6 w-6"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 200 200"
+                  >
+                    <radialgradient
+                      id="a135"
+                      cx=".66"
+                      fx=".66"
+                      cy=".3125"
+                      fy=".3125"
+                      gradientTransform="scale(1.5)"
+                    >
+                      <stop offset="0" stop-color="#1A020B"></stop>
+                      <stop
+                        offset=".3"
+                        stop-color="#1A020B"
+                        stop-opacity=".9"
+                      ></stop>
+                      <stop
+                        offset=".6"
+                        stop-color="#1A020B"
+                        stop-opacity=".6"
+                      ></stop>
+                      <stop
+                        offset=".8"
+                        stop-color="#1A020B"
+                        stop-opacity=".3"
+                      ></stop>
+                      <stop
+                        offset="1"
+                        stop-color="#1A020B"
+                        stop-opacity="0"
+                      ></stop>
+                    </radialgradient>
+                    <circle
+                      transform-origin="center"
+                      fill="none"
+                      stroke="url(#a135)"
+                      stroke-width="26"
+                      stroke-linecap="round"
+                      stroke-dasharray="200 1000"
+                      stroke-dashoffset="0"
+                      cx="100"
+                      cy="100"
+                      r="70"
+                    >
+                      <animatetransform
+                        type="rotate"
+                        attributeName="transform"
+                        calcMode="spline"
+                        dur="2"
+                        values="360;0"
+                        keyTimes="0;1"
+                        keySplines="0 0 1 1"
+                        repeatCount="indefinite"
+                      ></animatetransform>
+                    </circle>
+                    <circle
+                      transform-origin="center"
+                      fill="none"
+                      opacity=".2"
+                      stroke="#1A020B"
+                      stroke-width="26"
+                      stroke-linecap="round"
+                      cx="100"
+                      cy="100"
+                      r="70"
+                    ></circle>
+                  </svg>
+                  <span data-modal-translate="startPlaying">Start Playing</span>
+                </button>
+              </div>
+              <!-- Bonus -->
+              <div
+                class="bonus-wrapper form-bonus mt-auto rounded-2xl bg-white p-[2px] pb-2"
+              >
+                <div
+                  class="flex items-center gap-[5px] rounded-[14px] bg-[#2BA943] px-[14px] py-[9px]"
+                >
+                  <div class="w-full">
+                    <p
+                      data-modal-translate="promoApplied"
+                      class="text-xs font-bold tracking-tight"
+                    >
+                      Promocode applied
+                    </p>
+                    <!-- <input
+                        disabled
+                        class="bonus-input pointer-events-none w-full bg-transparent text-lg font-bold uppercase tracking-tight text-[#f0f0f0] outline-none"
+                        value="ASKGAMBLERS200"
+                        type="text"
+                      /> -->
+                    <div
+                      data-bonus="welcome-bonus-casino"
+                      data-modal-translate="depositBonus"
+                      class="bonus-input pointer-events-none w-full bg-transparent text-lg font-bold uppercase tracking-tight text-[#f0f0f0] outline-none"
+                    ></div>
+                  </div>
+                  <svg
+                    class="shrink-0"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M16.0133 2.68115C17.0504 2.68122 18.0519 3.05898 18.8306 3.74382L19.036 3.93715L19.9666 4.86782C20.2221 5.12157 20.5556 5.28176 20.9133 5.32249L21.0933 5.33315H22.4266C23.5163 5.33309 24.5646 5.74991 25.3567 6.49814C26.1488 7.24637 26.6247 8.26929 26.6866 9.35715L26.6933 9.59982V10.9332C26.6933 11.2932 26.816 11.6438 27.0373 11.9238L27.1573 12.0572L28.0866 12.9878C28.8569 13.7537 29.3061 14.7846 29.3425 15.8703C29.3789 16.956 28.9999 18.0147 28.2826 18.8305L28.0893 19.0358L27.1586 19.9665C26.9049 20.2219 26.7447 20.5554 26.704 20.9132L26.6933 21.0932V22.4265C26.6934 23.5161 26.2766 24.5645 25.5283 25.3566C24.7801 26.1487 23.7572 26.6245 22.6693 26.6865L22.4266 26.6932H21.0933C20.7338 26.6933 20.3848 26.8144 20.1026 27.0372L19.9693 27.1572L19.0386 28.0865C18.2727 28.8568 17.2418 29.3059 16.1561 29.3423C15.0705 29.3788 14.0118 28.9997 13.196 28.2825L12.9906 28.0892L12.06 27.1585C11.8046 26.9047 11.471 26.7445 11.1133 26.7038L10.9333 26.6932H9.59997C8.51035 26.6932 7.46199 26.2764 6.66988 25.5282C5.87778 24.7799 5.40195 23.757 5.33997 22.6692L5.33331 22.4265V21.0932C5.33319 20.7337 5.21201 20.3847 4.98931 20.1025L4.86931 19.9692L3.93997 19.0385C3.16968 18.2726 2.72054 17.2417 2.68412 16.156C2.6477 15.0703 3.02675 14.0117 3.74397 13.1958L3.93731 12.9905L4.86797 12.0598C5.12172 11.8044 5.28191 11.4709 5.32264 11.1132L5.33331 10.9332V9.59982L5.33997 9.35715C5.39951 8.31108 5.84188 7.32348 6.58276 6.5826C7.32364 5.84172 8.31123 5.39936 9.35731 5.33982L9.59997 5.33315H10.9333C11.2928 5.33303 11.6418 5.21186 11.924 4.98915L12.0573 4.86915L12.988 3.93982C13.3844 3.541 13.8558 3.22449 14.375 3.00848C14.8942 2.79248 15.451 2.68123 16.0133 2.68115ZM20.9426 12.3905C20.6926 12.1405 20.3535 12.0001 20 12.0001C19.6464 12.0001 19.3073 12.1405 19.0573 12.3905L14.6666 16.7798L12.9426 15.0572L12.8173 14.9465C12.5493 14.7393 12.2125 14.6418 11.8753 14.674C11.538 14.7061 11.2257 14.8654 11.0016 15.1194C10.7776 15.3735 10.6587 15.7034 10.669 16.042C10.6793 16.3806 10.8182 16.7025 11.0573 16.9425L13.724 19.6092L13.8493 19.7198C14.1058 19.9188 14.4262 20.0174 14.7502 19.997C15.0743 19.9766 15.3797 19.8387 15.6093 19.6092L20.9426 14.2758L21.0533 14.1505C21.2523 13.8939 21.3509 13.5736 21.3305 13.2496C21.3101 12.9255 21.1722 12.6201 20.9426 12.3905Z"
+                      fill="white"
+                    />
+                  </svg>
+                </div>
+                <div
+                  class="mt-[10px] flex items-center justify-center gap-1 text-sm font-bold tracking-tight text-[#2BA943]"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.5 6.16707V17.0004M10.5 6.16707C10.1986 4.92491 9.67954 3.86292 9.01061 3.11966C8.34169 2.37641 7.5539 1.98636 6.75 2.00036C6.19747 2.00036 5.66756 2.21986 5.27686 2.61056C4.88616 3.00126 4.66667 3.53116 4.66667 4.0837C4.66667 4.63623 4.88616 5.16614 5.27686 5.55684C5.66756 5.94754 6.19747 6.16703 6.75 6.16703M10.5 6.16707C10.8014 4.92491 11.3205 3.86292 11.9894 3.11966C12.6583 2.37641 13.4461 1.98636 14.25 2.00036C14.8025 2.00036 15.3324 2.21986 15.7231 2.61056C16.1138 3.00126 16.3333 3.53116 16.3333 4.0837C16.3333 4.63623 16.1138 5.16614 15.7231 5.55684C15.3324 5.94754 14.8025 6.16703 14.25 6.16703M16.3333 9.50041V15.3337C16.3333 15.7758 16.1577 16.1997 15.8452 16.5123C15.5326 16.8248 15.1087 17.0004 14.6667 17.0004H6.33333C5.89131 17.0004 5.46738 16.8248 5.15482 16.5123C4.84226 16.1997 4.66667 15.7758 4.66667 15.3337V9.50041M3 7.00041C3 6.77939 3.0878 6.56743 3.24408 6.41115C3.40036 6.25487 3.61232 6.16707 3.83333 6.16707H17.1667C17.3877 6.16707 17.5996 6.25487 17.7559 6.41115C17.9122 6.56743 18 6.77939 18 7.00041V8.66707C18 8.88809 17.9122 9.10005 17.7559 9.25633C17.5996 9.41261 17.3877 9.50041 17.1667 9.50041H3.83333C3.61232 9.50041 3.40036 9.41261 3.24408 9.25633C3.0878 9.10005 3 8.88809 3 8.66707V7.00041Z"
+                      stroke="#2BA943"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <p
+                    data-modal-translate="bonusName"
+                    class="pomocode-text pomocode-text-1"
+                  >
+                    WELCOME CASINO BONUS
+                  </p>
+                </div>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>

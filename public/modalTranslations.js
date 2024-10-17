@@ -1,5 +1,6 @@
 export const modalTranslations = {
   en: {
+    // ? AUTH
     mainModalTitle: "sign up",
     tabEmail: "E-mail",
     tabPhone: "Phone",
@@ -22,8 +23,35 @@ export const modalTranslations = {
     signUpToClaim: "Sign up to claim your prize",
     passwordPlaceholder: "Password",
     depositBonus: `Welcome bonus <span class="bonus-value"></span> <span class="bonus-currency"></span>`,
+    // ? SOCIALS
+    signUpEasySteps: "Sign Up in 3 Easy Steps",
+    completeToClaimGift: "Complete them to claim your gift.",
+    signUpWithGoogle: "Sign Up with Google",
+    signUpWithFacebook: "Sign Up with Facebook",
+    phone: "Phone",
+    wrongEmail: "Wrong email",
+    wrongNumber: "Wrong number",
+    signUpBtn: "Sign up",
+    promoApplied: "Bonus applied",
+    bonusName: "WELCOME CASINO BONUS",
+    depositBonus: `bonus up to <span class="bonus-value"></span> <span class="bonus-currency"></span>`,
+    depositBonus2: "400% on Deposit up to 6000",
+    phoneNumber: "Phone Number",
+    password: "Password",
+    minSymbols: "Minimum 6 symbols",
+    atLeast6Chars: "At least 6 characters",
+    currency: "Currency",
+    terms: `I agree to the <a href="https://dev1.goldbet.io/terms-and-conditions" class="text-white underline underline-offset-4" >Terms and Conditions</a></span>`,
+    startPlaying: "Start playing",
+    areYouSure: `Are You Sure? <br /> Your Progress Will Be Lost`,
+    keepRegistering: "Keep registering",
+    returnToWebsite: "Return to website",
+    step2Title: `One Last Step <br /> to Claim Your Bonus`,
+    step2Subtitle: `Create a password and select <br /> your account currency.`,
+    passwordPlaceholder: "Password",
   },
   ru: {
+    // ? AUTH
     mainModalTitle: "регистрация",
     tabEmail: "Почта",
     tabPhone: "Телефон",
@@ -48,6 +76,7 @@ export const modalTranslations = {
     depositBonus: `Welcome bonus <span class="bonus-value"></span> <span class="bonus-currency"></span>`,
   },
   es: {
+    // ? AUTH
     mainModalTitle: "Registrarse",
     tabEmail: "E-mail",
     tabPhone: "Teléfono",
@@ -72,6 +101,7 @@ export const modalTranslations = {
     depositBonus: `Welcome bonus <span class="bonus-value"></span> <span class="bonus-currency"></span>`,
   },
   pt: {
+    // ? AUTH
     mainModalTitle: "Cadastre-se",
     tabEmail: "E-mail",
     tabPhone: "Telefone",
@@ -96,6 +126,7 @@ export const modalTranslations = {
     depositBonus: `Welcome bonus <span class="bonus-value"></span> <span class="bonus-currency"></span>`,
   },
   az: {
+    // ? AUTH
     mainModalTitle: "Qeydiyyat",
     tabEmail: "E-mail",
     tabPhone: "Telefon",
@@ -120,6 +151,7 @@ export const modalTranslations = {
     depositBonus: `Welcome bonus <span class="bonus-value"></span> <span class="bonus-currency"></span>`,
   },
   kz: {
+    // ? AUTH
     mainModalTitle: "Тіркелу",
     tabEmail: "E-mail",
     tabPhone: "Телефон",
@@ -144,6 +176,7 @@ export const modalTranslations = {
     depositBonus: `Welcome bonus <span class="bonus-value"></span> <span class="bonus-currency"></span>`,
   },
   uz: {
+    // ? AUTH
     mainModalTitle: "Roʻyxatdan oʻtish",
     tabEmail: "E-mail",
     tabPhone: "Telefon",
@@ -168,6 +201,7 @@ export const modalTranslations = {
     depositBonus: `Welcome bonus <span class="bonus-value"></span> <span class="bonus-currency"></span>`,
   },
   fr: {
+    // ? AUTH
     mainModalTitle: "Inscription",
     tabEmail: "E-mail",
     tabPhone: "Téléphone",
@@ -192,6 +226,7 @@ export const modalTranslations = {
     depositBonus: `Welcome bonus <span class="bonus-value"></span> <span class="bonus-currency"></span>`,
   },
   de: {
+    // ? AUTH
     mainModalTitle: "Registrieren",
     tabEmail: "E-mail",
     tabPhone: "Telefon",
@@ -217,6 +252,7 @@ export const modalTranslations = {
     depositBonus: `Welcome bonus <span class="bonus-value"></span> <span class="bonus-currency"></span>`,
   },
   tr: {
+    // ? AUTH
     mainModalTitle: "Kayıt Ol",
     tabEmail: "E-mail",
     tabPhone: "Telefon",

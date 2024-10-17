@@ -23,7 +23,7 @@ function showMethod(method) {
 }
 
 // Function to get a URL parameter by name
-function getUrlParameter(name) {
+export function getUrlParameter(name) {
   name = name.replace(/[\[\]]/g, "\\$&");
   var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
     results = regex.exec(window.location.href);
@@ -62,8 +62,10 @@ if (modal === "auth") {
       .querySelector("button[data-tab='oneclick']")
       .classList.remove("hidden");
   }
-} else if (modal === "social") {
-  showCurrentModal("social");
+} else if (modal === "auth-social") {
+  showCurrentModal("authSocial");
+} else if (modal === "socials") {
+  showCurrentModal("socials");
 } else {
   showCurrentModal("main");
 }
