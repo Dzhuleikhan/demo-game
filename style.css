@@ -59,65 +59,6 @@
   }
 }
 
-.auth-form input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 1000px #131523 inset;
-  -webkit-text-fill-color: #f0f0f0;
-}
-
-.auth-form input:-webkit-autofill:focus {
-  -webkit-box-shadow: 0 0 0 1000px #131523 inset;
-  -webkit-text-fill-color: #f0f0f0;
-}
-
-.auth-form input:-webkit-autofill:hover {
-  -webkit-box-shadow: 0 0 0 1000px #131523 inset;
-  -webkit-text-fill-color: #f0f0f0;
-}
-
-
-.auth-form .iti {
-  width: 100%;
-  height: 52px;
-  background: #131523;
-  border: 1px solid rgba(240, 240, 240, 0.2);
-  border-radius: 8px;
-  font-weight: 700;
-}
-
-.auth-form .iti .phone-input {
-  width: 100%;
-  height: 100%;
-  outline: none;
-}
-
-.auth-form .iti__country-list li {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: 8px;
-  background-color: #253265;
-}
-
-.auth-form .iti__search-input {
-  display: none !important;
-}
-
-.auth-form .iti__country-list li.iti__highlight {
-  background-color: #33417B;
-}
-
-.auth-form .iti__country-list li span {
-  color: #f0f0f0;
-}
-
-.auth-form .iti__dropdown-content {
-  top: 105%;
-  border-radius: 8px !important;
-  overflow: hidden !important;
-  border-color: #4E5881 !important;
-}
-
-
-
 html {
   font-feature-settings: 'lnum';
   -moz-font-feature-settings: 'lnum=1';
@@ -125,8 +66,6 @@ html {
   -webkit-font-feature-settings: 'lnum';
   -o-font-feature-settings: 'lnum';
 }
-
-
 
 main {
   height: calc(100dvh - 59px);
@@ -378,7 +317,64 @@ main {
   overflow-y: auto;
 }
 
-/* AUTH FORM */
+/* | AUTH FORM STYLES */
+
+.auth-form input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #131523 inset;
+  -webkit-text-fill-color: #f0f0f0;
+}
+
+.auth-form input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #131523 inset;
+  -webkit-text-fill-color: #f0f0f0;
+}
+
+.auth-form input:-webkit-autofill:hover {
+  -webkit-box-shadow: 0 0 0 1000px #131523 inset;
+  -webkit-text-fill-color: #f0f0f0;
+}
+
+
+.auth-form .iti {
+  width: 100%;
+  height: 52px;
+  background: #131523;
+  border: 1px solid rgba(240, 240, 240, 0.2);
+  border-radius: 8px;
+  font-weight: 700;
+}
+
+.auth-form .iti .phone-input {
+  width: 100%;
+  height: 100%;
+  outline: none;
+}
+
+.auth-form .iti__country-list li {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 8px;
+  background-color: #253265;
+}
+
+.auth-form .iti__search-input {
+  display: none !important;
+}
+
+.auth-form .iti__country-list li.iti__highlight {
+  background-color: #33417B;
+}
+
+.auth-form .iti__country-list li span {
+  color: #f0f0f0;
+}
+
+.auth-form .iti__dropdown-content {
+  top: 105%;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  border-color: #4E5881 !important;
+}
 
 .form-content {
   display: none;
@@ -665,9 +661,7 @@ main {
   display: none;
 }
 
-/* AUTH FORM END */
-
-/* SOCIALS FORM */
+/* | SOCIALS FORM STYLES */
 
 .socials-form .iti {
   width: 100%;
