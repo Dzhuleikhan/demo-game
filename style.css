@@ -373,6 +373,11 @@ main {
   display: grid;
 }
 
+.form-currency-dropdown {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
 /* AUTH FORM */
 
 .form-content {
