@@ -369,7 +369,7 @@ main {
   }
 }
 
-.main-overlay.is-open {
+.form-overlay.is-open {
   display: grid;
 }
 
