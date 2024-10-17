@@ -5,7 +5,8 @@ import { welcomeBonusData } from "../public/welcomeBonusAmount";
 export async function gettingBonusCurrency() {
   try {
     let locationData = await getLocation();
-    const countryInput = locationData.country;
+    const countryInput = locationData.countryCode;
+
     const bonusCurrency = document.querySelectorAll(".bonus-currency");
     const bonusValue = document.querySelectorAll(".bonus-value");
 

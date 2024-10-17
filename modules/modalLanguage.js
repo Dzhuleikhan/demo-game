@@ -1,12 +1,6 @@
 import { modalTranslations } from "../public/modalTranslations";
 import { gettingBonusCurrency } from "./setBonusValue";
-
-async function getLocation() {
-  let url = "https://ipinfo.io/json?token=fcd65e5fcfdda1";
-  let response = await fetch(url);
-  let data = await response.json();
-  return data;
-}
+import { getLocation } from "./geoLocation";
 
 function updateContent(lang) {
   const elements = document.querySelectorAll("[data-modal-translate]");
@@ -30,7 +24,9 @@ function changeLanguage(lang) {
 async function setModalLanguage() {
   try {
     const location = await getLocation();
-    const locationCode = location.country.toLowerCase();
+    const locationCode = location.countryCode.toLowerCase();
+    console.log(locationCode);
+
     changeLanguage(locationCode);
   } catch (error) {
     console.log(error);
