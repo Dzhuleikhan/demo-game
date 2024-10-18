@@ -25,8 +25,6 @@ async function setModalLanguage() {
   try {
     const location = await getLocation();
     const locationCode = location.countryCode.toLowerCase();
-    console.log(locationCode);
-
     changeLanguage(locationCode);
   } catch (error) {
     console.log(error);
