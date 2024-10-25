@@ -1,3 +1,5 @@
+import { getLocation } from "./geoLocation";
+
 const allModals = document.querySelectorAll(".modal-content");
 const methodTabs = document.querySelectorAll(".modal-tabs button");
 const methodFormContents = document.querySelectorAll(".form-content");
@@ -114,3 +116,10 @@ export function updateUrl(key, value) {
     window.history.pushState({ path: url.href }, "", url.href);
   }
 }
+
+async function saveUserLanguage() {
+  const location = await getLocation();
+  const lang = location.countryCode;
+  localStorage.setItem("preferredLanguage", lang.toLowerCase());
+}
+saveUserLanguage();
