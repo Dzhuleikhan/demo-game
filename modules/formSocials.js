@@ -293,10 +293,10 @@ if (mainForm) {
         if (!submitBtn.disabled) {
           if (formTab === "email") {
             disableFormWhileSubmitting();
-            window.location.href = `https://gbetauth.com/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${formData.email}&password=${formData.password}${formData.bonus === "" ? "" : "&bonus=" + formData.bonus}&lang=${lang}${cid ? "&cid=" + cid : ""}`;
+            window.location.href = `https://${hiddenSelect.value === "dev" ? "dev." : ""}gbetauth.com/api/register?env=${hiddenSelect.value === "dev" ? "dev" : "prod"}&type=${formTab}&currency=${formData.currency}&email=${formData.email}&password=${formData.password}${formData.bonus === "" ? "" : "&bonus=" + formData.bonus}&lang=${lang}${cid ? "&cid=" + cid : ""}`;
           } else if (formTab === "phone") {
             disableFormWhileSubmitting();
-            window.location.href = `https://gbetauth.com/api/register?env=prod&type=${formTab}&currency=${formData.currency}&phone=${formData.phone}&password=${formData.password}${formData.bonus === "" ? "" : "&bonus=" + formData.bonus}&lang=${lang}${cid ? "&cid=" + cid : ""}`;
+            window.location.href = `https://${hiddenSelect.value === "dev" ? "dev." : ""}gbetauth.com/api/register?env=${hiddenSelect.value === "dev" ? "dev" : "prod"}&type=${formTab}&currency=${formData.currency}&phone=${formData.phone}&password=${formData.password}${formData.bonus === "" ? "" : "&bonus=" + formData.bonus}&lang=${lang}${cid ? "&cid=" + cid : ""}`;
           }
         }
       }
@@ -342,10 +342,10 @@ if (mainForm) {
 
     if (formTab === "email") {
       disableFormWhileSubmitting();
-      window.location.href = `https://gbetauth.com/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${formData.email}&password=${formData.password}${formData.bonus === "" ? "" : "&bonus=" + formData.bonus}&lang=${lang}${cid ? "&cid=" + cid : ""}`;
+      window.location.href = `https://${hiddenSelect.value === "dev" ? "dev." : ""}gbetauth.com/api/register?env=${hiddenSelect.value === "dev" ? "dev" : "prod"}&type=${formTab}&currency=${formData.currency}&email=${formData.email}&password=${formData.password}${formData.bonus === "" ? "" : "&bonus=" + formData.bonus}&lang=${lang}${cid ? "&cid=" + cid : ""}`;
     } else if (formTab === "phone") {
       disableFormWhileSubmitting();
-      window.location.href = `https://gbetauth.com/api/register?env=prod&type=${formTab}&currency=${formData.currency}&phone=${formData.phone}&password=${formData.password}${formData.bonus === "" ? "" : "&bonus=" + formData.bonus}&lang=${lang}${cid ? "&cid=" + cid : ""}`;
+      window.location.href = `https://${hiddenSelect.value === "dev" ? "dev." : ""}gbetauth.com/api/register?env=${hiddenSelect.value === "dev" ? "dev" : "prod"}&type=${formTab}&currency=${formData.currency}&phone=${formData.phone}&password=${formData.password}${formData.bonus === "" ? "" : "&bonus=" + formData.bonus}&lang=${lang}${cid ? "&cid=" + cid : ""}`;
     }
   });
 }
@@ -371,7 +371,7 @@ formSocialLinks.forEach((link) => {
       let currencyStoredData = localStorage.getItem("currencyData");
       let currencyData = JSON.parse(currencyStoredData);
       let currency = currencyData.abbr;
-      window.location.href = `https://gbetauth.com/api/register?env=prod&type=${type}&currency=${currency}${bonus === "" ? "" : "&bonus=" + bonus}&lang=${lang}${cid ? "&cid=" + cid : ""}`;
+      window.location.href = `https://${hiddenSelect.value === "dev" ? "dev." : ""}gbetauth.com/api/register?env=${hiddenSelect.value === "dev" ? "dev" : "prod"}&type=${type}&currency=${currency}${bonus === "" ? "" : "&bonus=" + bonus}&lang=${lang}${cid ? "&cid=" + cid : ""}`;
     });
   }
 });
