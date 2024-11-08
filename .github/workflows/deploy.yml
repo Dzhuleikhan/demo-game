@@ -32,3 +32,12 @@ jobs:
           password: ${{ secrets.SFTP_PASSWORD }}
           local-dir: ./dist/ # The folder containing your built project
           server-dir: /www/goldbetio.com/goldbet/ # The directory on the server where you want to upload the dist folder
+
+      - name: Deploy to VPS
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist/ # The folder containing your built project
+          server-dir: /www/goldbetio.com/goldbet/ # The directory on the server where you want to upload the dist folder
