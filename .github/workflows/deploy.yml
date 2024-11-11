@@ -22,7 +22,7 @@ jobs:
         run: npm install
 
       - name: Build project
-        run: npm run build # Adjust if your build command differs
+        run: npm run build # Adjust if your build command differs /
 
       - name: Deploy to OVHCloud via SFTP
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
