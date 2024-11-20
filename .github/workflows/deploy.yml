@@ -24,20 +24,11 @@ jobs:
       - name: Build project
         run: npm run build # Adjust if your build command differs /
 
-      - name: Deploy to OVHCloud via SFTP
+      - name: Deploy to VPS 107.189.10.94
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
-          server: ${{ secrets.SFTP_HOST }}
-          username: ${{ secrets.SFTP_USER }}
-          password: ${{ secrets.SFTP_PASSWORD }}
-          local-dir: ./dist/ # The folder containing your built project
-          server-dir: /www/goldbetio.com/goldbet/ # The directory on the server where you want to upload the dist folder
-
-      - name: Deploy to VPS
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASSWORD }}
+          server: ${{ secrets.FTP_HOST_ISP }}
+          username: ${{ secrets.FTP_USER_ISP }}
+          password: ${{ secrets.FTP_PASSWORD_ISP }}
           local-dir: ./dist/ # The folder containing your built project
           server-dir: /www/goldbetio.com/goldbet/ # The directory on the server where you want to upload the dist folder
