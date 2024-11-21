@@ -79,5 +79,5 @@ jobs:
           server: ${{ secrets.FTP_HOST_OVH }}
           username: ${{ secrets.FTP_USER_OVH }}
           password: ${{ secrets.FTP_PASSWORD_OVH }}
-          local-dir: ./dist/ # The folder containing your built project
+          local-dir: ./dist/ # The folder containing your built project 1
           server-dir: /www/goldbet16eu.top/goldbet/ # The directory on the server where you want to upload the dist folder
