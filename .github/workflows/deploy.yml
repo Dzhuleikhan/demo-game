@@ -24,12 +24,12 @@ jobs:
       - name: Build project
         run: npm run build # Adjust if your build command differs
 
-      - name: Deploy to VPS 107.189.10.94 - ISP
+      - name: Deploy to 185.206.180.88 - PRIMA
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
-          server: ${{ secrets.FTP_HOST_ISP }}
-          username: ${{ secrets.FTP_USER_ISP }}
-          password: ${{ secrets.FTP_PASSWORD_ISP }}
+          server: ${{ secrets.FTP_HOST_PRIMA }}
+          username: ${{ secrets.FTP_USER_PRIMA }}
+          password: ${{ secrets.FTP_PASSWORD_PRIMA }}
           local-dir: ./dist/ # The folder containing your built project
           server-dir: /www/goldbetio.com/goldbet/regatest/ # The directory on the server where you want to upload the dist folder
 
