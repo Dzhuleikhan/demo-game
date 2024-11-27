@@ -132,6 +132,18 @@ passwordInput.forEach((input) => {
     }
   });
 });
+// Promocode input placeholder
+const promocodeInput = document.querySelectorAll(".auth-promocode-input");
+
+promocodeInput.forEach((input) => {
+  input.addEventListener("input", () => {
+    if (input.value.length >= 1) {
+      input.nextElementSibling.classList.add("hidden");
+    } else {
+      input.nextElementSibling.classList.remove("hidden");
+    }
+  });
+});
 
 // Validate socials input
 

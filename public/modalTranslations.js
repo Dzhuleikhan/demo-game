@@ -22,6 +22,7 @@ export const modalTranslations = {
     yourWinning: "Your winning",
     signUpToClaim: "Sign up to claim your prize",
     passwordPlaceholder: "Password",
+    promocodePlaceholder: "Promo-Code",
     depositBonus: `Welcome bonus <span class="bonus-value"></span> <span class="bonus-currency"></span>`,
     // ? SOCIALS
     signUpEasySteps: "Sign Up in 3 Easy Steps",
@@ -73,6 +74,7 @@ export const modalTranslations = {
     yourWinning: "Ваш выигрыш",
     signUpToClaim: "Зарегистрируйтесь, чтобы забрать приз",
     passwordPlaceholder: "Пароль",
+    promocodePlaceholder: "Promo-Code",
     depositBonus: `Welcome bonus <span class="bonus-value"></span> <span class="bonus-currency"></span>`,
     // ? SOCIALS
     signUpEasySteps: "Регистрация в 3 простых шага",
@@ -124,6 +126,7 @@ export const modalTranslations = {
     yourWinning: "Tus ganancias",
     signUpToClaim: "Regístrate para reclamar tu premio",
     passwordPlaceholder: "Contraseña",
+    promocodePlaceholder: "Promo-Code",
     depositBonus: `Welcome bonus <span class="bonus-value"></span> <span class="bonus-currency"></span>`,
     // ? SOCIALS
     signUpEasySteps: "Regístrate en 3 sencillos pasos",
@@ -175,6 +178,7 @@ export const modalTranslations = {
     yourWinning: "Seu prêmio",
     signUpToClaim: "Cadastre-se para reivindicar seu prêmio",
     passwordPlaceholder: "Senha",
+    promocodePlaceholder: "Promo-Code",
     depositBonus: `Welcome bonus <span class="bonus-value"></span> <span class="bonus-currency"></span>`,
     // ? SOCIALS
     signUpEasySteps: "Cadastre-se em 3 passos fáceis",
@@ -226,6 +230,7 @@ export const modalTranslations = {
     yourWinning: "Sizin uduşunuz",
     signUpToClaim: "Mükafat üçün qeydiyyatdan keçin",
     passwordPlaceholder: "Şifrə",
+    promocodePlaceholder: "Promo-Code",
     depositBonus: `Welcome bonus <span class="bonus-value"></span> <span class="bonus-currency"></span>`,
     // ? SOCIALS
     signUpEasySteps: "3 asan addımla qeydiyyatdan keçin",
@@ -277,6 +282,7 @@ export const modalTranslations = {
     yourWinning: "Сіздің ұтысыңыз",
     signUpToClaim: "Сыйлығыңызды алу үшін тіркеліңіз",
     passwordPlaceholder: "Құпиясөз",
+    promocodePlaceholder: "Promo-Code",
     depositBonus: `Welcome bonus <span class="bonus-value"></span> <span class="bonus-currency"></span>`,
     // ? SOCIALS
     signUpEasySteps: "3 қарапайым қадамда тіркелу",
@@ -328,6 +334,7 @@ export const modalTranslations = {
     yourWinning: "Sizning yutugʻingiz",
     signUpToClaim: "Sovrinni olish uchun roʻyxatdan oʻting",
     passwordPlaceholder: "Parol",
+    promocodePlaceholder: "Promo-Code",
     depositBonus: `Welcome bonus <span class="bonus-value"></span> <span class="bonus-currency"></span>`,
     // ? SOCIALS
     signUpEasySteps: "3 oson qadamda roʻyxatdan oʻting",
@@ -379,6 +386,7 @@ export const modalTranslations = {
     yourWinning: "Vos gains",
     signUpToClaim: "Inscrivez-vous pour réclamer votre prix",
     passwordPlaceholder: "Mot de passe",
+    promocodePlaceholder: "Promo-Code",
     depositBonus: `Welcome bonus <span class="bonus-value"></span> <span class="bonus-currency"></span>`,
     // ? SOCIALS
     signUpEasySteps: "Inscrivez-vous en 3 étapes simples",
@@ -431,6 +439,7 @@ export const modalTranslations = {
     yourWinning: "Ihr Gewinn",
     signUpToClaim: "Registrieren Sie sich, um Ihren Preis zu holen",
     passwordPlaceholder: "Passwort",
+    promocodePlaceholder: "Promo-Code",
     depositBonus: `Welcome bonus <span class="bonus-value"></span> <span class="bonus-currency"></span>`,
     // ? SOCIALS
     signUpEasySteps: "Registrieren Sie sich in 3 einfachen Schritten",
@@ -483,6 +492,7 @@ export const modalTranslations = {
     yourWinning: "Kazancınız",
     signUpToClaim: "Ödülünüzü almak için kayıt olun",
     passwordPlaceholder: "Şifre",
+    promocodePlaceholder: "Promo-Code",
     depositBonus: `Welcome bonus <span class="bonus-value"></span> <span class="bonus-currency"></span>`,
     // ? SOCIALS
     signUpEasySteps: "3 kolay adımda kayıt olun",
