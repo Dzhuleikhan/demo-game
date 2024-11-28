@@ -79,7 +79,9 @@ let bonusType = getUrlParameter("bonus-type");
 const bonusWrapper = document.querySelectorAll(".form-bonus");
 const bonusInput = document.querySelectorAll(".bonus-input");
 
-bonusWrapper.classList.add("hidden");
+bonusWrapper.forEach((bon) => {
+  bon.classList.add("hidden");
+});
 
 if (bonus) {
   bonusWrapper.forEach((b) => {
