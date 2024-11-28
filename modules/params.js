@@ -80,6 +80,9 @@ const bonusWrapper = document.querySelectorAll(".form-bonus");
 const bonusInput = document.querySelectorAll(".bonus-input");
 
 if (bonus) {
+  document.querySelectorAll(".form-bonus").forEach((bonus) => {
+    bonus.classList.remove("hidden");
+  });
   bonusWrapper.forEach((b) => {
     b.classList.remove("hidden");
   });
@@ -89,6 +92,9 @@ if (bonus) {
     });
   }
 } else {
+  document.querySelectorAll(".form-bonus").forEach((bonus) => {
+    bonus.classList.remove("hidden");
+  });
   bonusWrapper.forEach((b) => {
     b.classList.add("hidden");
   });

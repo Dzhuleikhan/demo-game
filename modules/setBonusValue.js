@@ -12,15 +12,6 @@ export async function gettingBonusCurrency() {
 
     const currencyAbbr = getCountryCurrencyABBR(countryInput);
 
-    if (!countryInput) {
-      document.querySelectorAll(".form-bonus").forEach((bonus) => {
-        bonus.classList.add("hidden");
-      });
-    } else {
-      document.querySelectorAll(".form-bonus").forEach((bonus) => {
-        bonus.classList.remove("hidden");
-      });
-    }
     bonusCurrency.forEach((cur) => {
       cur.innerHTML = currencyAbbr;
     });
