@@ -3,7 +3,7 @@ import { getCountryCurrencyABBR } from "./modalCurrency";
 import { welcomeBonusData } from "../public/welcomeBonusAmount";
 
 document.querySelectorAll(".form-bonus").forEach((bon) => {
-  bon.classList.add("hidden");
+  bon.style.opacity = 0;
 });
 
 export async function gettingBonusCurrency() {
@@ -13,7 +13,7 @@ export async function gettingBonusCurrency() {
 
     if (countryInput) {
       document.querySelectorAll(".form-bonus").forEach((bon) => {
-        bon.classList.remove("hidden");
+        bon.style.opacity = 1;
       });
     }
 
