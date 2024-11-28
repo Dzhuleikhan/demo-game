@@ -2,11 +2,20 @@ import { getLocation } from "./geoLocation";
 import { getCountryCurrencyABBR } from "./modalCurrency";
 import { welcomeBonusData } from "../public/welcomeBonusAmount";
 
+document.querySelectorAll(".form-bonus").forEach((bon) => {
+  bon.classList.add("hidden");
+});
+
 export async function gettingBonusCurrency() {
   try {
     let locationData = await getLocation();
     const countryInput = locationData.countryCode;
-    console.log(countryInput);
+
+    if (countryInput) {
+      document.querySelectorAll(".form-bonus").forEach((bon) => {
+        bon.classList.remove("hidden");
+      });
+    }
 
     const bonusCurrency = document.querySelectorAll(".bonus-currency");
     const bonusValue = document.querySelectorAll(".bonus-value");
