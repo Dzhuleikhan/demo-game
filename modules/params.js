@@ -79,10 +79,9 @@ let bonusType = getUrlParameter("bonus-type");
 const bonusWrapper = document.querySelectorAll(".form-bonus");
 const bonusInput = document.querySelectorAll(".bonus-input");
 
+bonusWrapper.classList.add("hidden");
+
 if (bonus) {
-  document.querySelectorAll(".form-bonus").forEach((bonus) => {
-    bonus.classList.remove("hidden");
-  });
   bonusWrapper.forEach((b) => {
     b.classList.remove("hidden");
   });
@@ -92,9 +91,6 @@ if (bonus) {
     });
   }
 } else {
-  document.querySelectorAll(".form-bonus").forEach((bonus) => {
-    bonus.classList.remove("hidden");
-  });
   bonusWrapper.forEach((b) => {
     b.classList.add("hidden");
   });
