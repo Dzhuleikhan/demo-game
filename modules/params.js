@@ -79,16 +79,10 @@ let bonusType = getUrlParameter("bonus-type");
 const bonusWrapper = document.querySelectorAll(".form-bonus");
 const bonusInput = document.querySelectorAll(".bonus-input");
 
-bonusWrapper.forEach((bon) => {
-  bon.classList.add("hidden");
-});
-
 if (bonus) {
-  setTimeout(() => {
-    bonusWrapper.forEach((b) => {
-      b.classList.remove("hidden");
-    });
-  }, 1000);
+  bonusWrapper.forEach((b) => {
+    b.classList.remove("hidden");
+  });
   if (bonusType) {
     bonusWrapper.forEach((b) => {
       b.style.pointerEvents = "none";
