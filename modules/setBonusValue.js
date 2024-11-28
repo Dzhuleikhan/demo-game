@@ -2,20 +2,10 @@ import { getLocation } from "./geoLocation";
 import { getCountryCurrencyABBR } from "./modalCurrency";
 import { welcomeBonusData } from "../public/welcomeBonusAmount";
 
-document.querySelectorAll(".form-bonus").forEach((bon) => {
-  bon.style.opacity = 0;
-});
-
 export async function gettingBonusCurrency() {
   try {
     let locationData = await getLocation();
     const countryInput = locationData.countryCode;
-
-    if (countryInput) {
-      document.querySelectorAll(".form-bonus").forEach((bon) => {
-        bon.style.opacity = 1;
-      });
-    }
 
     const bonusCurrency = document.querySelectorAll(".bonus-currency");
     const bonusValue = document.querySelectorAll(".bonus-value");
