@@ -21,7 +21,8 @@ export async function getLocation() {
 
   try {
     // Fetch new data
-    let url = "https://apiip.net/api/check?accessKey=" + GEO_API_KEY;
+    let url =
+      "https://apiip.net/api/check?accessKey=0439ba6e-6092-46c2-9aeb-8662065bc43c";
     let response = await fetch(url);
     let data = await response.json();
 
