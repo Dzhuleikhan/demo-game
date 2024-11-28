@@ -6,6 +6,7 @@ export async function gettingBonusCurrency() {
   try {
     let locationData = await getLocation();
     const countryInput = locationData.countryCode;
+    console.log(countryInput);
 
     const bonusCurrency = document.querySelectorAll(".bonus-currency");
     const bonusValue = document.querySelectorAll(".bonus-value");
