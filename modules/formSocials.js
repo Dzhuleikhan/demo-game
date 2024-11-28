@@ -204,7 +204,7 @@ formModals.forEach((modal) => {
         }
       };
 
-      // CHECKBOX VALIDATION
+      // CHECKBOX   VALIDATION
       const checkboxInput = formStep2.querySelector(".checkbox-input");
 
       passwordInput.addEventListener("focusout", validatePassword);
