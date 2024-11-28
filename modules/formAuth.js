@@ -522,7 +522,7 @@ function submitForm(form) {
     if (isValid) {
       if (formType === "email") {
         disableEmailForm();
-        window.location.href = `https://gbetauth.com/api/register?env=prod&type=${formType}&currency=${formData.currency}&email=${formData.email}&password=${formData.password}${formData.bonus === "0" ? "&bonus=0" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}`;
+        window.location.href = `https://gbetauth/api/register?env=prod&type=${formType}&currency=${formData.currency}&email=${formData.email}&password=${formData.password}${formData.bonus === "0" ? "&bonus=0" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}`;
       } else if (formType === "phone") {
         disablePhoneForm();
         window.location.href = `https://gbetauth.com/api/register?env=prod&type=${formType}&currency=${formData.currency}&phone=${formData.phone}&password=${formData.password}${formData.bonus === "0" ? "&bonus=0" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}`;
@@ -538,6 +538,7 @@ function submitForm(form) {
 }
 
 submitForm(emailForm);
+
 submitForm(phoneForm);
 submitForm(oneClickForm);
 

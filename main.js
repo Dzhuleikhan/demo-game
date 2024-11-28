@@ -12,3 +12,4 @@ import "./modules/setPayments";
 import "./modules/params";
 import "./modules/modalLanguage";
 import "./modules/setBonusValue";
+import "./modules/fetchingDomain";
