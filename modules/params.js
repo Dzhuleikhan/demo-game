@@ -84,9 +84,11 @@ bonusWrapper.forEach((bon) => {
 });
 
 if (bonus) {
-  bonusWrapper.forEach((b) => {
-    b.classList.remove("hidden");
-  });
+  setTimeout(() => {
+    bonusWrapper.forEach((b) => {
+      b.classList.remove("hidden");
+    });
+  }, 1000);
   if (bonusType) {
     bonusWrapper.forEach((b) => {
       b.style.pointerEvents = "none";
