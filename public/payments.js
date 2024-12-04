@@ -38,7 +38,7 @@ export const paymentCountries = [
   {
     name: "pt",
     payments: [
-      "./img/payments/pt/mbway.svg",
+      "./img/payments/pt/logo_mbway.svg",
       "./img/payments/pt/logo_multibanco.svg",
       "./img/payments/pt/mastercard.svg",
       "./img/payments/pt/visa.svg",
@@ -63,7 +63,7 @@ export const paymentCountries = [
     ],
   },
   {
-    name: "ky",
+    name: "kg",
     payments: [
       "./img/payments/ky/logo_humo.svg",
       "./img/payments/ky/logo_megapay.svg",
