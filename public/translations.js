@@ -1,4 +1,4 @@
-export const pageTranslations = {
+export const translations = {
   en: {
     home: "Home",
   },

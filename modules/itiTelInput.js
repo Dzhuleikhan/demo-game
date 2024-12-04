@@ -1,5 +1,4 @@
 import intlTelInput from "intl-tel-input/intlTelInputWithUtils";
-import { GEO_API_KEY } from "../public/geoApi";
 
 const authPhoneInput = document.querySelector(".auth-phone-input");
 const socialsPhoneInput = document.querySelector(".socials-phone-input");
@@ -9,9 +8,7 @@ const geoIpLookup = (success, failure) => {
   if (cachedData) {
     success(JSON.parse(cachedData).countryCode);
   } else {
-    fetch(
-      "https://apiip.net/api/check?accessKey=0439ba6e-6092-46c2-9aeb-8662065bc43c",
-    )
+    fetch("https://cdndigitaloceanspaces.cloud/geoip")
       .then((res) => res.json())
       .then((data) => {
         localStorage.setItem("geoIpData", JSON.stringify(data));

@@ -2,7 +2,7 @@ import gsap from "gsap";
 import { authIti } from "./itiTelInput";
 import { hiddenSelect } from "./hiddenSelect";
 import { getUrlParameter, updateUrl } from "./params";
-import { fetchDomain } from "./fetchingDomain";
+import { newDomain } from "./fetchingDomain";
 
 // | AUTH FORM VALIDATION AND SUBMITTING
 
@@ -359,7 +359,7 @@ formBonus.forEach((bonus) => {
 /**
  *  Submitting form
  */
-function submitForm(form, domain) {
+function submitForm(form, newDomain) {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const socials = form.querySelector(".socials");
@@ -523,42 +523,39 @@ function submitForm(form, domain) {
     if (isValid) {
       if (formType === "email") {
         disableEmailForm();
-        window.location.href = `https://${domain}/api/register?env=prod&type=${formType}&currency=${formData.currency}&email=${formData.email}&password=${formData.password}${formData.bonus === "0" ? "&bonus=0" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}`;
+        // window.location.href = `https://${newDomain}/api/register?env=prod&type=${formType}&currency=${formData.currency}&email=${formData.email}&password=${formData.password}${formData.bonus === "0" ? "&bonus=0" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}`;
         console.log(
-          `https://${domain}/api/register?env=prod&type=${formType}&currency=${formData.currency}&email=${formData.email}&password=${formData.password}${formData.bonus === "0" ? "&bonus=0" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}`,
+          `https://${newDomain}/api/register?env=prod&type=${formType}&currency=${formData.currency}&email=${formData.email}&password=${formData.password}${formData.bonus === "0" ? "&bonus=0" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}`,
         );
       } else if (formType === "phone") {
         disablePhoneForm();
-        window.location.href = `https://${domain}/api/register?env=prod&type=${formType}&currency=${formData.currency}&phone=${formData.phone}&password=${formData.password}${formData.bonus === "0" ? "&bonus=0" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}`;
+        window.location.href = `https://${newDomain}/api/register?env=prod&type=${formType}&currency=${formData.currency}&phone=${formData.phone}&password=${formData.password}${formData.bonus === "0" ? "&bonus=0" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}`;
         console.log(
-          `https://${domain}/api/register?env=prod&type=${formType}&currency=${formData.currency}&phone=${formData.phone}&password=${formData.password}${formData.bonus === "0" ? "&bonus=0" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}`,
+          `https://${newDomain}/api/register?env=prod&type=${formType}&currency=${formData.currency}&phone=${formData.phone}&password=${formData.password}${formData.bonus === "0" ? "&bonus=0" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}`,
         );
       } else if (formType === "social") {
         disableSocialForm();
-        window.location.href = `https://${domain}/api/register?env=prod&type=${formData.social}&currency=${formData.currency}${formData.bonus === "0" ? "&bonus=0" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}`;
+        window.location.href = `https://${newDomain}/api/register?env=prod&type=${formData.social}&currency=${formData.currency}${formData.bonus === "0" ? "&bonus=0" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}`;
         console.log(
-          `https://${domain}/api/register?env=prod&type=${formData.social}&currency=${formData.currency}${formData.bonus === "0" ? "&bonus=0" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}`,
+          `https://${newDomain}/api/register?env=prod&type=${formData.social}&currency=${formData.currency}${formData.bonus === "0" ? "&bonus=0" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}`,
         );
       } else if (formType === "oneclick") {
         disableOneClickForm();
-        window.location.href = `https://${domain}/api/register?env=prod&type=${formType}&currency=${formData.currency}${formData.bonus === "0" ? "&bonus=0" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}`;
+        window.location.href = `https://${newDomain}/api/register?env=prod&type=${formType}&currency=${formData.currency}${formData.bonus === "0" ? "&bonus=0" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}`;
         console.log(
-          `https://${domain}/api/register?env=prod&type=${formType}&currency=${formData.currency}${formData.bonus === "0" ? "&bonus=0" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}`,
+          `https://${newDomain}/api/register?env=prod&type=${formType}&currency=${formData.currency}${formData.bonus === "0" ? "&bonus=0" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}`,
         );
       }
     }
   });
 }
-await fetchDomain((domain) => {
-  submitForm(emailForm, domain);
-  submitForm(phoneForm, domain);
-  submitForm(oneClickForm, domain);
-});
 
-await fetchDomain((domain) => {
-  socialForm.forEach((socialForm) => {
-    submitForm(socialForm, domain);
-  });
+submitForm(emailForm, newDomain);
+submitForm(phoneForm, newDomain);
+submitForm(oneClickForm, newDomain);
+
+socialForm.forEach((socialForm) => {
+  submitForm(socialForm, newDomain);
 });
 
 /**

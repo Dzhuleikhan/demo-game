@@ -78,14 +78,20 @@ let bonusType = getUrlParameter("bonus-type");
 
 const bonusWrapper = document.querySelectorAll(".form-bonus");
 const bonusInput = document.querySelectorAll(".bonus-input");
+const formBonusBtn = document.querySelectorAll(".form-bonus-btn");
 
 if (bonus) {
   bonusWrapper.forEach((b) => {
     b.classList.remove("hidden");
   });
-  if (bonusType) {
+  if (bonusType === "fixed") {
     bonusWrapper.forEach((b) => {
       b.style.pointerEvents = "none";
+    });
+    formBonusBtn.forEach((btn) => {
+      if (btn) {
+        btn.classList.add("bonus-applied");
+      }
     });
   }
 } else {

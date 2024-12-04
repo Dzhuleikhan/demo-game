@@ -1,5 +1,6 @@
 import { modalTranslations } from "../public/modalTranslations";
-import { gettingBonusCurrency } from "./setBonusValue";
+import { setPaymentMethods } from "./footerPayments";
+import { paymentCountries } from "../public/payments";
 import { getLocation } from "./geoLocation";
 
 function updateContent(lang) {
@@ -11,25 +12,36 @@ function updateContent(lang) {
   });
 }
 
+const preferredLanguage = localStorage.getItem("preferredLanguage");
+
 function changeLanguage(lang) {
+  if (preferredLanguage) {
+    updateContent(preferredLanguage);
+  } else {
+    if (modalTranslations[lang]) {
+      updateContent(lang);
+    } else {
+      updateContent("en");
+    }
+  }
+}
+
+export function changeModalLanguage(lang) {
   if (modalTranslations[lang]) {
     updateContent(lang);
-    gettingBonusCurrency();
   } else {
     updateContent("en");
-    gettingBonusCurrency();
   }
 }
 
 async function setModalLanguage() {
   try {
     const location = await getLocation();
-    const locationCode = location.countryCode.toLowerCase();
-    changeLanguage(locationCode);
+    changeLanguage(location.countryCode.toLowerCase());
+    setPaymentMethods(paymentCountries, location.countryCode.toLowerCase());
   } catch (error) {
     console.log(error);
     changeLanguage("en");
   }
 }
-
 setModalLanguage();

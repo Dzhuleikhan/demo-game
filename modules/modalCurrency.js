@@ -37,6 +37,17 @@ function setCurrency(abbr, name, icon) {
     input.value = abbr;
     currencyName.textContent = name;
     currencyIcon.src = icon;
+
+    const currencyListItem = cur.querySelectorAll(
+      ".form-currency-dropdown ul li",
+    );
+
+    currencyListItem.forEach((item) => {
+      const itemAbbr = item.querySelector(".currency-item-abbr").textContent;
+      if (itemAbbr.includes(abbr)) {
+        item.classList.add("active");
+      }
+    });
   });
 }
 
@@ -44,7 +55,6 @@ async function settingModalCurrency() {
   try {
     let locationData = await getLocation();
     const countryInput = locationData.countryCode;
-    console.log(countryInput);
 
     const currencyAbbr = getCountryCurrencyABBR(countryInput);
     const currencyFullName = getCountryCurrencyFullName(countryInput);
@@ -74,11 +84,10 @@ function loadCurrencyFromLocalStorage() {
   }
 }
 
-// Call this function when the page loads
-document.addEventListener("DOMContentLoaded", loadCurrencyFromLocalStorage);
+loadCurrencyFromLocalStorage();
 
 /**
- *  Currency dropdown
+ *  Currency dropdownxw
  */
 
 const formCurrency = document.querySelectorAll(".form-currency");
