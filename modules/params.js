@@ -136,5 +136,6 @@ if (regWithEmailBtn) {
   regWithEmailBtn.addEventListener("click", (e) => {
     e.preventDefault();
     showCurrentModal("main");
+    updateUrl("modal", "auth");
   });
 }
