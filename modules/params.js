@@ -129,3 +129,12 @@ async function saveUserLanguage() {
   localStorage.setItem("preferredLanguage", lang.toLowerCase());
 }
 saveUserLanguage();
+
+const regWithEmailBtn = document.querySelector(".reg-with-email-btn");
+
+if (regWithEmailBtn) {
+  regWithEmailBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    showCurrentModal("main");
+  });
+}
