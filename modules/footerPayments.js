@@ -12,7 +12,7 @@ export function setPaymentMethods(countries, location) {
     list.innerHTML = ""; // Clears the container before adding new payment methods
     country.payments.slice(0, 4).forEach((paymentName) => {
       // Create a new list item and icon for each element
-      let item = document.createElement("div");
+      let item = document.createElement("li");
       // item.classList.add("main-footer-payments-item");
       let itemIcon = document.createElement("img");
       item.appendChild(itemIcon);
