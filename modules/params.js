@@ -98,9 +98,6 @@ if (bonus) {
   bonusWrapper.forEach((b) => {
     b.classList.add("hidden");
   });
-  bonusInput.forEach((input) => {
-    input.value = 0;
-  });
 }
 
 // Function to add a parameter to the URL
