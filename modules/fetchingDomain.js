@@ -23,5 +23,11 @@ function updatingBonusValueNumbers() {
   initialBonusValueInput.forEach((input) => {
     input.value = 120;
   });
+
+  const formSocials = document.querySelectorAll(".form-modal-socials");
+  formSocials.forEach((form) => {
+    let input = form.querySelector(".bonus-input");
+    input.setAttribute("data-bonus", 120);
+  });
 }
 updatingBonusValueNumbers();
