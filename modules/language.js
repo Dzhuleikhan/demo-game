@@ -1,13 +1,23 @@
 import { countryCurrencyData } from "../public/data";
 import { geoData, getLocation } from "./geoLocation";
+import { translations } from "/public/translations";
 import gsap from "gsap";
 
 const bonusBoxes = document.querySelectorAll(".form-bonus");
 
 let lang;
 
+function updateContent(lang) {
+  const elements = document.querySelectorAll("[data-translate]");
+  elements.forEach((element) => {
+    const key = element.getAttribute("data-translate");
+    element.innerHTML = translations[lang][key];
+  });
+}
+
 function changeLanguage(lang) {
   settingBonusValueAndAmount(geoData.countryCode);
+  updateContent(lang);
 }
 
 bonusBoxes.forEach((bonusBox) => {
@@ -42,8 +52,26 @@ function settingBonusValueAndAmount(countryCode) {
 
 async function determineLanguage() {
   const location = await getLocation();
-  const userLang = navigator.language.split("-")[0];
-  lang = userLang || countryLangMap[location.countryCode] || "en";
+
+  const countryLangMap = {
+    EN: "en",
+    ES: "es",
+    FR: "fr",
+    AZ: "az",
+    UZ: "uz",
+    UA: "ua",
+    RU: "ru",
+    BD: "bd",
+    TR: "tr",
+    ID: "id",
+    PT: "pt",
+    DE: "de",
+    KZ: "kz",
+    KG: "kg",
+    // Add more country codes and their corresponding languages as needed
+  };
+
+  lang = countryLangMap[location.countryCode] || "en";
 
   return lang;
 }
