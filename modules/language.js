@@ -79,7 +79,6 @@ async function determineLanguage() {
 async function mainFunction() {
   try {
     lang = await determineLanguage();
-    localStorage.setItem("preferredLanguage", lang);
     console.log(lang);
 
     changeLanguage(lang);
