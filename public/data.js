@@ -348,7 +348,7 @@ export const countryCurrencyData = [
     amount: "15.000",
   },
   {
-    countries: ["RU", "AB", "OS", "KZ"],
+    countries: ["RU"],
     countryCurrency: "RUB",
     countryCurrencySymbol: "₽",
     countryCurrencyFullName: "Russian Ruble",

@@ -25,7 +25,11 @@ bonusBoxes.forEach((bonusBox) => {
 });
 
 function settingBonusValueAndAmount(countryCode) {
-  const detectedCountry = countryCode.toUpperCase();
+  let detectedCountry = countryCode.toUpperCase();
+
+  if (detectedCountry === "RU") {
+    detectedCountry = "US";
+  }
   // Find the matching entry in countryCurrencyData
   const matchingCurrencyData = countryCurrencyData.find((currency) =>
     currency.countries.includes(detectedCountry),
