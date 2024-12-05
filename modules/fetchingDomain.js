@@ -5,3 +5,23 @@ export const fetchDomain = async () => {
 };
 
 export const newDomain = await fetchDomain();
+console.log(newDomain);
+
+function updatingBonusValueNumbers() {
+  const dropd = document.querySelectorAll(".form-bonus-dropdown");
+  dropd.forEach((drop) => {
+    if (drop) {
+      const links = drop.querySelectorAll("li");
+      links[0].setAttribute("data-bonus-id", "120");
+      links[1].setAttribute("data-bonus-id", "122");
+      links[2].setAttribute("data-bonus-id", "121");
+    }
+  });
+  const initialBonusValueInput = document.querySelectorAll(
+    ".auth-form-bonus input",
+  );
+  initialBonusValueInput.forEach((input) => {
+    input.value = 120;
+  });
+}
+updatingBonusValueNumbers();
