@@ -65,10 +65,10 @@ export const paymentCountries = [
   {
     name: "kg",
     payments: [
-      "./img/payments/ky/logo_humo.svg",
-      "./img/payments/ky/logo_megapay.svg",
-      "./img/payments/ky/logo_payme.svg",
-      "./img/payments/ky/logo_uzcard.svg",
+      "./img/payments/kg/logo_humo.svg",
+      "./img/payments/kg/logo_megapay.svg",
+      "./img/payments/kg/logo_payme.svg",
+      "./img/payments/kg/logo_uzcard.svg",
     ],
   },
 ];
