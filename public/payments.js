@@ -4,17 +4,17 @@ export const paymentCountries = [
     payments: [
       "./img/payments/uz/logo_humo.svg",
       "./img/payments/uz/logo_uzcard.svg",
-      "./img/payments/uz/mastercard.svg",
       "./img/payments/uz/visa.svg",
+      "./img/payments/uz/mastercard.svg",
     ],
   },
   {
     name: "az",
     payments: [
-      "./img/payments/az/logo_mpay.svg",
       "./img/payments/az/logo_m10.svg",
-      "./img/payments/az/mastercard.svg",
+      "./img/payments/az/logo_mpay.svg",
       "./img/payments/az/visa.svg",
+      "./img/payments/az/mastercard.svg",
     ],
   },
   {
@@ -47,10 +47,10 @@ export const paymentCountries = [
   {
     name: "kz",
     payments: [
-      "./img/payments/kz/crypto.svg",
       "./img/payments/kz/logo_kaspi.svg",
-      "./img/payments/kz/mastercard.svg",
       "./img/payments/kz/visa.svg",
+      "./img/payments/kz/mastercard.svg",
+      "./img/payments/kz/crypto.svg",
     ],
   },
   {
