@@ -81,6 +81,11 @@ if (modal === "auth") {
   }
 } else if (modal === "auth-social") {
   showCurrentModal("authSocial");
+  if (!getUrlParameter("bonus")) {
+    document.querySelectorAll(".form-bonus").forEach((bonus) => {
+      bonus.style.display = "none";
+    });
+  }
 } else if (modal === "socials") {
   showCurrentModal("socials");
   if (!getUrlParameter("method-type")) {
@@ -105,6 +110,12 @@ let bonusType = getUrlParameter("bonus-type");
 const bonusWrapper = document.querySelectorAll(".form-bonus");
 const bonusInput = document.querySelectorAll(".bonus-input");
 const formBonusBtn = document.querySelectorAll(".form-bonus-btn");
+
+if (!bonus) {
+  bonusWrapper.forEach((b) => {
+    b.classList.add("hidden");
+  });
+}
 
 if (bonus) {
   bonusWrapper.forEach((b) => {
