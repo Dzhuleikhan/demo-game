@@ -83,11 +83,11 @@ if (modal === "auth") {
   showCurrentModal("authSocial");
 } else if (modal === "socials") {
   showCurrentModal("socials");
-  if (!getUrlParameter("mothod-type")) {
-    addUrlParameter("mothod-type", "email");
+  if (!getUrlParameter("method-type")) {
+    addUrlParameter("method-type", "email");
   }
 
-  const method = getUrlParameter("mothod-type");
+  const method = getUrlParameter("method-type");
 
   if (method === "phone") {
     showSocialsMethod("phone");
