@@ -14,3 +14,4 @@ import "./modules/fetchingDomain";
 import "./modules/footerPayments";
 import "./modules/language";
 import "./modules/termsModal";
+import "./modules/settingBonusValue";
