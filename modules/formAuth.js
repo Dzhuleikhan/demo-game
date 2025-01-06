@@ -535,7 +535,7 @@ function submitForm(form, newDomain) {
         );
       } else if (formType === "social") {
         disableSocialForm();
-        // window.location.href = `https://${newDomain}/api/register?env=prod&type=${formData.social}&currency=${formData.currency}${formData.bonus === "0" ? "&bonus=0" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}`;
+        window.location.href = `https://${newDomain}/api/register?env=prod&type=${formData.social}&currency=${formData.currency}${formData.bonus === "0" ? "&bonus=0" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}`;
         console.log(
           `https://${newDomain}/api/register?env=prod&type=${formData.social}&currency=${formData.currency}${formData.bonus === "0" ? "&bonus=0" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}`,
         );
