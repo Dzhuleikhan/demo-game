@@ -220,7 +220,7 @@ formModals.forEach((modal) => {
         if (formTab === "email") {
           if (
             checkboxInput.checked === true &&
-            passwordInput.value.length > 6
+            passwordInput.value.length >= 6
           ) {
             formStepBtnNext.disabled = false;
           } else {
