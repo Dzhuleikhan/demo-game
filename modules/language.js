@@ -1,9 +1,6 @@
-import { countryCurrencyData } from "../public/data";
-import { geoData, getLocation } from "./geoLocation";
+import { getLocation } from "./geoLocation";
 import { translations } from "/public/translations";
 import gsap from "gsap";
-
-const bonusBoxes = document.querySelectorAll(".form-bonus");
 
 let lang;
 
@@ -16,43 +13,25 @@ function updateContent(lang) {
 }
 
 function changeLanguage(lang) {
-  settingBonusValueAndAmount(geoData.countryCode);
   updateContent(lang);
 }
 
-bonusBoxes.forEach((bonusBox) => {
-  bonusBox.classList.add("hidden");
-});
-
-function settingBonusValueAndAmount(countryCode) {
-  let detectedCountry = countryCode.toUpperCase();
-
-  if (detectedCountry === "RU") {
-    detectedCountry = "US";
-  }
-  // Find the matching entry in countryCurrencyData
-  const matchingCurrencyData = countryCurrencyData.find((currency) =>
-    currency.countries.includes(detectedCountry),
-  );
-
-  if (matchingCurrencyData) {
-    const bonusCurrency = document.querySelectorAll(".bonus-currency");
-    const bonusValue = document.querySelectorAll(".bonus-value");
-
-    // Update the bonus amount and currency on the page
-    bonusValue.forEach((amount) => {
-      amount.innerHTML = matchingCurrencyData.amount;
-    });
-    bonusCurrency.forEach((cur) => {
-      cur.innerHTML = matchingCurrencyData.countryCurrencySymbol;
-    });
-    bonusBoxes.forEach((bonusBox) => {
-      bonusBox.classList.remove("hidden");
-    });
-  } else {
-    console.log("No matching country found in the data.");
-  }
-}
+export const availableLang = [
+  "en",
+  "es",
+  "fr",
+  "az",
+  "uz",
+  "ua",
+  "ru",
+  "bd",
+  "tr",
+  "id",
+  "pt",
+  "de",
+  "kz",
+  "kg",
+];
 
 async function determineLanguage() {
   const location = await getLocation();
