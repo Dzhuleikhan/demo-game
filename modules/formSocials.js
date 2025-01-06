@@ -189,7 +189,7 @@ formModals.forEach((modal) => {
       }
 
       const validatePassword = () => {
-        if (passwordInput.value.length > 6) {
+        if (passwordInput.value.length >= 6) {
           formStepBtnNext.disabled = false;
           formGroupPassword.classList.remove("not-valid");
           formGroupPassword
