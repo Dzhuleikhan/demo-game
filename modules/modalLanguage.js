@@ -2,8 +2,12 @@ import { modalTranslations } from "../public/modalTranslations";
 import { setPaymentMethods } from "./footerPayments";
 import { paymentCountries } from "../public/payments";
 import { getLocation } from "./geoLocation";
+import { availableLang } from "./language";
 
 function updateContent(lang) {
+  if (!availableLang.includes(lang)) {
+    lang = "en";
+  }
   const elements = document.querySelectorAll("[data-modal-translate]");
   elements.forEach((element) => {
     const key = element.getAttribute("data-modal-translate");

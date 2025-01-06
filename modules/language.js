@@ -24,12 +24,30 @@ bonusBoxes.forEach((bonusBox) => {
   bonusBox.classList.add("hidden");
 });
 
+export const availableLang = [
+  "en",
+  "es",
+  "fr",
+  "az",
+  "uz",
+  "ua",
+  "ru",
+  "bd",
+  "tr",
+  "id",
+  "pt",
+  "de",
+  "kz",
+  "kg",
+];
+
 function settingBonusValueAndAmount(countryCode) {
   let detectedCountry = countryCode.toUpperCase();
 
   if (detectedCountry === "RU") {
     detectedCountry = "US";
   }
+
   // Find the matching entry in countryCurrencyData
   const matchingCurrencyData = countryCurrencyData.find((currency) =>
     currency.countries.includes(detectedCountry),
@@ -72,7 +90,6 @@ async function determineLanguage() {
     DE: "de",
     KZ: "kz",
     KG: "kg",
-    // Add more country codes and their corresponding languages as needed
   };
 
   lang = countryLangMap[location.countryCode] || "en";
@@ -83,7 +100,6 @@ async function determineLanguage() {
 async function mainFunction() {
   try {
     lang = await determineLanguage();
-    console.log(lang);
 
     changeLanguage(lang);
     gsap.to(".preloader", { opacity: 0, duration: 0.5 });
