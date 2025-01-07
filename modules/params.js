@@ -40,13 +40,19 @@ function showSocialsMethod(method) {
 }
 
 // Function to get a URL parameter by name
-export function getUrlParameter(name) {
-  name = name.replace(/[\[\]]/g, "\\$&");
-  var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-    results = regex.exec(window.location.href);
-  if (!results) return null;
-  if (!results[2]) return "";
-  return decodeURIComponent(results[2].replace(/\+/g, " "));
+// export function getUrlParameter(name) {
+//   name = name.replace(/[\[\]]/g, "\\$&");
+//   var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+//     results = regex.exec(window.location.href);
+//   if (!results) return null;
+//   if (!results[2]) return "";
+//   return decodeURIComponent(results[2].replace(/\+/g, " "));
+// }
+
+export function getUrlParameter(key) {
+  const url = new URL(window.location.href);
+  const params = url.searchParams.getAll(key); // Gets all occurrences of the key
+  return params.length > 0 ? params[0] : null; // Returns the first value
 }
 
 // Check if 'modal' parameter is present; if not, set it to 'normal'
