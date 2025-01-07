@@ -40,19 +40,13 @@ function showSocialsMethod(method) {
 }
 
 // Function to get a URL parameter by name
-// export function getUrlParameter(name) {
-//   name = name.replace(/[\[\]]/g, "\\$&");
-//   var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-//     results = regex.exec(window.location.href);
-//   if (!results) return null;
-//   if (!results[2]) return "";
-//   return decodeURIComponent(results[2].replace(/\+/g, " "));
-// }
-
-export function getUrlParameter(key) {
-  const url = new URL(window.location.href);
-  const params = url.searchParams.getAll(key); // Gets all occurrences of the key
-  return params.length > 0 ? params[0] : null; // Returns the first value
+export function getUrlParameter(name) {
+  name = name.replace(/[\[\]]/g, "\\$&");
+  var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+    results = regex.exec(window.location.href);
+  if (!results) return null;
+  if (!results[2]) return "";
+  return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
 // Check if 'modal' parameter is present; if not, set it to 'normal'
@@ -94,11 +88,20 @@ if (modal === "auth") {
   }
 } else if (modal === "socials") {
   showCurrentModal("socials");
+
+  // adding method
   if (!getUrlParameter("method-type")) {
     addUrlParameter("method-type", "email");
+  }
+
+  const methodType = getUrlParameter("method-type");
+
+  if (methodType === "email") {
+    showSocialsMethod("email");
+  } else if (methodType === "phone") {
+    showSocialsMethod("phone");
   } else {
-    const methodType = getUrlParameter("method-type");
-    showSocialsMethod(methodType === "phone" ? "phone" : "email");
+    showSocialsMethod("phone");
   }
 } else {
   showCurrentModal("main");
