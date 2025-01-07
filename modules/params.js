@@ -88,9 +88,9 @@ if (modal === "auth") {
   }
 } else if (modal === "socials") {
   showCurrentModal("socials");
-  // if (!getUrlParameter("method-type")) {
-  //   addUrlParameter("method-type", "email");
-  // }
+  if (!getUrlParameter("method-type")) {
+    addUrlParameter("method-type");
+  }
 
   const method = getUrlParameter("method-type");
 
