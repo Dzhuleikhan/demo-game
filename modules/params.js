@@ -88,19 +88,11 @@ if (modal === "auth") {
   }
 } else if (modal === "socials") {
   showCurrentModal("socials");
-  // adding method
   if (!getUrlParameter("method-type")) {
     addUrlParameter("method-type", "email");
-  }
-
-  const methodType = getUrlParameter("method-type");
-
-  if (methodType === "phone") {
-    showSocialsMethod("phone");
-  } else if (methodType === "email") {
-    showSocialsMethod("email");
   } else {
-    showSocialsMethod("email");
+    const methodType = getUrlParameter("method-type");
+    showSocialsMethod(methodType === "phone" ? "phone" : "email");
   }
 } else {
   showCurrentModal("main");
