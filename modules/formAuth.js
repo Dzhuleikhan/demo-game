@@ -3,6 +3,7 @@ import { authIti } from "./itiTelInput";
 import { hiddenSelect } from "./hiddenSelect";
 import { getUrlParameter, updateUrl } from "./params";
 import { newDomain } from "./fetchingDomain";
+import { checkTir1CurrencyMatch } from "./modalCurrency";
 
 // | AUTH FORM VALIDATION AND SUBMITTING
 
@@ -517,13 +518,15 @@ function submitForm(form, newDomain) {
       formbtn.classList.add("loading");
     }
 
+    formData.bonus = checkTir1CurrencyMatch(formData.currency, formData.bonus);
+
     let lang = localStorage.getItem("preferredLanguage");
     let cid = getUrlParameter("cid");
 
     if (isValid) {
       if (formType === "email") {
         disableEmailForm();
-        window.location.href = `https://${newDomain}/api/register?env=prod&type=${formType}&currency=${formData.currency}&email=${formData.email}&password=${formData.password}${formData.bonus === "0" ? "&bonus=0" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}`;
+        // window.location.href = `https://${newDomain}/api/register?env=prod&type=${formType}&currency=${formData.currency}&email=${formData.email}&password=${formData.password}${formData.bonus === "0" ? "&bonus=0" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}`;
         console.log(
           `https://${newDomain}/api/register?env=prod&type=${formType}&currency=${formData.currency}&email=${formData.email}&password=${formData.password}${formData.bonus === "0" ? "&bonus=0" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}`,
         );

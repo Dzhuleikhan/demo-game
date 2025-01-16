@@ -208,6 +208,7 @@ export const countryCurrencyData = [
     countryCurrencyFullName: "Colombian Peso",
     countryCurrencyIcon: "./img/currencies/cop.svg",
     amount: "4.17 MLN",
+    spins: "25FS",
   },
   {
     countries: ["AR"],
@@ -216,6 +217,7 @@ export const countryCurrencyData = [
     countryCurrencyFullName: "Argentine Peso",
     countryCurrencyIcon: "./img/currencies/ars.svg",
     amount: "9 MLN",
+    spins: "25FS",
   },
   {
     countries: ["AU", "CX", "CC", "KI", "NR", "NF", "TV"],
@@ -224,6 +226,7 @@ export const countryCurrencyData = [
     countryCurrencyFullName: "Australian Dollar",
     countryCurrencyIcon: "./img/currencies/aud.svg",
     amount: "14.000",
+    spins: "25FS",
   },
   {
     countries: ["AZ"],
@@ -232,6 +235,7 @@ export const countryCurrencyData = [
     countryCurrencyFullName: "Azerbaijani Manat",
     countryCurrencyIcon: "./img/currencies/azn.svg",
     amount: "17.000",
+    spins: "25FS",
   },
   {
     countries: ["BD"],
@@ -240,6 +244,7 @@ export const countryCurrencyData = [
     countryCurrencyFullName: "Bangladeshi Taka",
     countryCurrencyIcon: "./img/currencies/bdt.svg",
     amount: "1 MLN",
+    spins: "25FS",
   },
   {
     countries: ["BR"],
@@ -248,6 +253,7 @@ export const countryCurrencyData = [
     countryCurrencyFullName: "Brazilian Real",
     countryCurrencyIcon: "./img/currencies/brl.svg",
     amount: "54.000",
+    spins: "25FS",
   },
   {
     countries: ["CA"],
@@ -255,7 +261,8 @@ export const countryCurrencyData = [
     countryCurrencySymbol: "$",
     countryCurrencyFullName: "Canadian Dollar",
     countryCurrencyIcon: "./img/currencies/cad.svg",
-    amount: "13.000",
+    amount: "6.500",
+    spins: "200FS",
   },
   {
     countries: ["CL"],
@@ -264,6 +271,7 @@ export const countryCurrencyData = [
     countryCurrencyFullName: "Chilean Peso",
     countryCurrencyIcon: "./img/currencies/clp.svg",
     amount: "9 MLN",
+    spins: "25FS",
   },
   {
     countries: [
@@ -297,7 +305,8 @@ export const countryCurrencyData = [
     countryCurrencySymbol: "€",
     countryCurrencyFullName: "Euro",
     countryCurrencyIcon: "./img/currencies/eur.svg",
-    amount: "9.000",
+    amount: "4.500",
+    spins: "200FS",
   },
   {
     countries: ["ID"],
@@ -306,6 +315,7 @@ export const countryCurrencyData = [
     countryCurrencyFullName: "Indonesian Rupiah",
     countryCurrencyIcon: "./img/currencies/idr.svg",
     amount: "150 MLN",
+    spins: "25FS",
   },
   {
     countries: ["IN", "BT", "NP"],
@@ -314,6 +324,7 @@ export const countryCurrencyData = [
     countryCurrencyFullName: "Indian Rupee",
     countryCurrencyIcon: "./img/currencies/inr.svg",
     amount: "830.000",
+    spins: "25FS",
   },
   {
     countries: ["KG"],
@@ -322,6 +333,7 @@ export const countryCurrencyData = [
     countryCurrencyFullName: "Kyrgyzstani Som",
     countryCurrencyIcon: "./img/currencies/kgs.svg",
     amount: "850.000",
+    spins: "25FS",
   },
   {
     countries: ["KZ"],
@@ -330,6 +342,7 @@ export const countryCurrencyData = [
     countryCurrencyFullName: "Kazakhstani Tenge",
     countryCurrencyIcon: "./img/currencies/kzt.svg",
     amount: "4.7 MLN",
+    spins: "25FS",
   },
   {
     countries: ["MX"],
@@ -338,6 +351,7 @@ export const countryCurrencyData = [
     countryCurrencyFullName: "Mexican Peso",
     countryCurrencyIcon: "./img/currencies/mxn.svg",
     amount: "190.000",
+    spins: "25FS",
   },
   {
     countries: ["NZ", "CK", "NU", "PN", "TK"],
@@ -346,6 +360,7 @@ export const countryCurrencyData = [
     countryCurrencyFullName: "New Zealand Dollar",
     countryCurrencyIcon: "./img/currencies/nzd.svg",
     amount: "15.000",
+    spins: "25FS",
   },
   {
     countries: ["RU"],
@@ -354,6 +369,7 @@ export const countryCurrencyData = [
     countryCurrencyFullName: "Russian Ruble",
     countryCurrencyIcon: "./img/currencies/rub.svg",
     amount: "900.000",
+    spins: "25FS",
   },
   {
     countries: ["TH"],
@@ -362,6 +378,7 @@ export const countryCurrencyData = [
     countryCurrencyFullName: "Thai Baht",
     countryCurrencyIcon: "./img/currencies/thb.svg",
     amount: "320.000",
+    spins: "25FS",
   },
   {
     countries: ["TR", "CY"],
@@ -370,6 +387,7 @@ export const countryCurrencyData = [
     countryCurrencyFullName: "Turkish Lira",
     countryCurrencyIcon: "./img/currencies/try.svg",
     amount: "340.000",
+    spins: "25FS",
   },
   {
     countries: ["UA"],
@@ -378,6 +396,7 @@ export const countryCurrencyData = [
     countryCurrencyFullName: "Ukrainian Hryvnia",
     countryCurrencyIcon: "./img/currencies/uah.svg",
     amount: "400.000",
+    spins: "25FS",
   },
   {
     countries: [
@@ -399,7 +418,8 @@ export const countryCurrencyData = [
     countryCurrencySymbol: "$",
     countryCurrencyFullName: "US Dollar",
     countryCurrencyIcon: "./img/currencies/usd.svg",
-    amount: "10.000",
+    amount: "5.000",
+    spins: "200FS",
   },
   {
     countries: ["UZ"],
@@ -408,5 +428,61 @@ export const countryCurrencyData = [
     countryCurrencyFullName: "Uzbekistani Som",
     countryCurrencyIcon: "./img/currencies/uzs.svg",
     amount: "127 MLN",
+    spins: "25FS",
+  },
+  // | New currencies
+  {
+    countries: ["RO"],
+    countryCurrency: "RON",
+    countryCurrencySymbol: "lei",
+    countryCurrencyFullName: "Romanian Leu",
+    countryCurrencyIcon: "./img/currencies/ron.svg",
+    amount: "24.000",
+    spins: "200FS",
+  },
+  {
+    countries: ["DK"],
+    countryCurrency: "DKK",
+    countryCurrencySymbol: "kr",
+    countryCurrencyFullName: "Danish Krone",
+    countryCurrencyIcon: "./img/currencies/dkk.svg",
+    amount: "36.000",
+    spins: "200FS",
+  },
+  {
+    countries: ["HU"],
+    countryCurrency: "HUF",
+    countryCurrencySymbol: "Ft",
+    countryCurrencyFullName: "Hungarian Forint",
+    countryCurrencyIcon: "./img/currencies/huf.svg",
+    amount: "2 MLN",
+    spins: "200FS",
+  },
+  {
+    countries: ["CZ"],
+    countryCurrency: "CZK",
+    countryCurrencySymbol: "Kč",
+    countryCurrencyFullName: "Czech Koruna",
+    countryCurrencyIcon: "./img/currencies/czk.svg",
+    amount: "120K",
+    spins: "200FS",
+  },
+  {
+    countries: ["CH"],
+    countryCurrency: "CHF",
+    countryCurrencySymbol: "CHF",
+    countryCurrencyFullName: "Swiss Franc",
+    countryCurrencyIcon: "./img/currencies/chf.svg",
+    amount: "4.500",
+    spins: "200FS",
+  },
+  {
+    countries: ["PL"],
+    countryCurrency: "PLN",
+    countryCurrencySymbol: "zł",
+    countryCurrencyFullName: "Polish Zloty",
+    countryCurrencyIcon: "./img/currencies/pln.svg",
+    amount: "20.000",
+    spins: "200FS",
   },
 ];

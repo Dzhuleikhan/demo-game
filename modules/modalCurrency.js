@@ -146,3 +146,23 @@ formCurrency.forEach((cur) => {
     });
   }
 });
+
+export const checkTir1CurrencyMatch = (currency, bonus) => {
+  const exceptCurrencies = [
+    "RON",
+    "DKK",
+    "HUF",
+    "CZK",
+    "CHF",
+    "PLN",
+    "CAD",
+    "USD",
+    "EUR",
+  ];
+  if (exceptCurrencies.includes(currency) && bonus === "welcome-bonus-1") {
+    bonus = bonus + "-alt";
+  } else {
+    bonus = bonus;
+  }
+  return bonus;
+};
