@@ -79,20 +79,32 @@ async function settingModalCurrency() {
   }
 }
 
-function loadCurrencyFromLocalStorage() {
-  const currencyData = JSON.parse(localStorage.getItem("currencyData"));
-  if (currencyData) {
-    setCurrency(currencyData.abbr, currencyData.name, currencyData.icon);
-  } else {
-    settingModalCurrency();
-  }
-}
-
-loadCurrencyFromLocalStorage();
+settingModalCurrency();
 
 /**
  *  Currency dropdownxw
  */
+export const settingBonusOnCurrencyChange = (
+  currencyDataArray,
+  targetCurrency,
+) => {
+  const matchedObject = currencyDataArray.find(
+    (item) => item.countryCurrency === targetCurrency.abbr,
+  );
+  const amount = matchedObject ? matchedObject.amount : null;
+  const symbol = matchedObject ? matchedObject.countryCurrencySymbol : null;
+  const spins = matchedObject ? matchedObject.spins : null;
+
+  document.querySelectorAll(".bonus-value").forEach((el) => {
+    el.innerHTML = amount;
+  });
+  document.querySelectorAll(".bonus-currency").forEach((el) => {
+    el.innerHTML = symbol;
+  });
+  document.querySelectorAll(".bonus-spins").forEach((el) => {
+    el.innerHTML = spins;
+  });
+};
 
 const formCurrency = document.querySelectorAll(".form-currency");
 
@@ -136,6 +148,7 @@ formCurrency.forEach((cur) => {
           icon: curIcon,
         };
         localStorage.setItem("currencyData", JSON.stringify(currencyData));
+        settingBonusOnCurrencyChange(countryCurrencyData, currencyData);
       });
     });
 
