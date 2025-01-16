@@ -4,6 +4,7 @@ import { paymentCountries } from "../public/payments";
 import { getLocation } from "./geoLocation";
 import { availableLang } from "./language";
 import { settingBonusValueAndAmount } from "./settingBonusValue";
+import { countryCurrencyData } from "../public/data";
 
 function updateContent(lang) {
   if (!availableLang.includes(lang)) {
