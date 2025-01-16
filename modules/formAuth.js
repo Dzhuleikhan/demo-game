@@ -3,6 +3,7 @@ import { authIti } from "./itiTelInput";
 import { hiddenSelect } from "./hiddenSelect";
 import { getUrlParameter, updateUrl } from "./params";
 import { newDomain } from "./fetchingDomain";
+import { checkTir1CurrencyMatch } from "./modalCurrency";
 
 // | AUTH FORM VALIDATION AND SUBMITTING
 
@@ -516,6 +517,8 @@ function submitForm(form, newDomain) {
       formbtn.disabled = true;
       formbtn.classList.add("loading");
     }
+
+    formData.bonus = checkTir1CurrencyMatch(formData.currency, formData.bonus);
 
     let lang = localStorage.getItem("preferredLanguage");
     let cid = getUrlParameter("cid");
