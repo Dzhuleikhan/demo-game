@@ -24,6 +24,21 @@ function showMethod(method) {
   document.querySelector(`.form-content-${method}`).classList.add("active");
 }
 
+function showSocialsMethod(method) {
+  document.querySelectorAll(".socials-form-type-btn").forEach((tab) => {
+    tab.classList.remove("active");
+  });
+  document.querySelectorAll(".socials-form-group").forEach((inputs) => {
+    inputs.classList.remove("active");
+  });
+  document
+    .querySelector(`.form-type-buttons div[data-tab='${method}']`)
+    .classList.add("active");
+  document
+    .querySelector(`.socials-form-group-${method}`)
+    .classList.add("active");
+}
+
 // Function to get a URL parameter by name
 export function getUrlParameter(name) {
   name = name.replace(/[\[\]]/g, "\\$&");
@@ -68,6 +83,21 @@ if (modal === "auth") {
   showCurrentModal("authSocial");
 } else if (modal === "socials") {
   showCurrentModal("socials");
+
+  // adding method
+  if (!getUrlParameter("method-type")) {
+    addUrlParameter("method-type", "email");
+  }
+
+  const methodType = getUrlParameter("method-type");
+
+  if (methodType === "email") {
+    showSocialsMethod("email");
+  } else if (methodType === "phone") {
+    showSocialsMethod("phone");
+  } else {
+    showSocialsMethod("phone");
+  }
 } else {
   showCurrentModal("main");
 }
