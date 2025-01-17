@@ -45,6 +45,6 @@ export function settingBonusValueAndAmount(countryCode) {
     );
   } else {
     console.log("No matching country found in the data.");
-    settingData("10.000", "$", "25FS");
+    settingData("5.000", "$", "200FS");
   }
 }
