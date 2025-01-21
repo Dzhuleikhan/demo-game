@@ -107,12 +107,10 @@ main {
   content: "";
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    to right bottom,
-    rgba(255, 255, 255, 0),
-    rgba(255, 255, 255, 0.5),
-    rgba(255, 255, 255, 0)
-  );
+  background: linear-gradient(to right bottom,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0));
   position: absolute;
   left: -150%;
   top: 0;
@@ -409,7 +407,7 @@ main {
   background-size: contain;
 }
 
-.checkbox-input:checked + .checkbox-content::before {
+.checkbox-input:checked+.checkbox-content::before {
   background: url("../img/ckecked.svg"), #f4fd2b;
   background-repeat: no-repeat;
   background-size: contain;
@@ -447,11 +445,11 @@ main {
   filter: blur(4px);
 }
 
-.social-variant-input:checked + .socials-item {
+.social-variant-input:checked+.socials-item {
   background-color: #fff;
 }
 
-.social-variant-input:checked + .socials-item svg {
+.social-variant-input:checked+.socials-item svg {
   fill: #0e0f20;
 }
 
@@ -502,7 +500,7 @@ main {
   transform: translateX(-50%);
 }
 
-.terms-input.non-valid + span::before {
+.terms-input.non-valid+span::before {
   border-color: #ff5530;
 }
 
@@ -594,11 +592,9 @@ main {
 
 .next-deposit {
   background: url("../img/next-deposit-bg.webp"),
-    linear-gradient(
-      180deg,
+    linear-gradient(180deg,
       rgba(20, 130, 255, 0.4) 0%,
-      rgba(20, 130, 255, 0.4) 100%
-    );
+      rgba(20, 130, 255, 0.4) 100%);
   background-repeat: no-repeat;
   background-position: 100% 0;
   background-size: contain;
@@ -610,11 +606,9 @@ main {
 
 .your-winning {
   background: url("../img/your-winning-bg.webp"),
-    linear-gradient(
-      180deg,
+    linear-gradient(180deg,
       rgba(78, 217, 55, 0.4) 0%,
-      rgba(24, 94, 13, 0.4) 100%
-    );
+      rgba(24, 94, 13, 0.4) 100%);
   background-repeat: no-repeat;
   background-position: 100% 0;
   background-size: contain;
@@ -644,7 +638,7 @@ main {
   visibility: visible;
 }
 
-.social-variant-input:disabled + span {
+.social-variant-input:disabled+span {
   opacity: 0.4;
 }
 
@@ -773,8 +767,8 @@ main {
 }
 
 /* .form-group-email input:focus, */
-.socials-form-group-email input:focus + label,
-.socials-form-group-email input:not(:placeholder-shown) + label {
+.socials-form-group-email input:focus+label,
+.socials-form-group-email input:not(:placeholder-shown)+label {
   font-size: 12px;
   transform: translateY(-14px);
 }
@@ -850,7 +844,7 @@ main {
   top: 0;
 }
 
-.checkbox .checkbox-input:checked + .checkbox-content::before {
+.checkbox .checkbox-input:checked+.checkbox-content::before {
   background: url("../img/checked.svg") #f4fd2b;
   background-repeat: no-repeat;
   background-position: center;
@@ -911,6 +905,7 @@ main {
 }
 
 @keyframes pulse {
+
   0%,
   100% {
     transform: scale(1);
@@ -988,6 +983,7 @@ main {
   .modal-tabs {
     display: flex;
   }
+
   .modal-tabs button {
     font-size: 10px;
     padding-left: 0;

@@ -63,10 +63,10 @@ async function mainFunction() {
     lang = await determineLanguage();
 
     changeLanguage(lang);
-    gsap.to(".preloader", { opacity: 0, duration: 0.5 });
     document.querySelector(".wrapper").classList.remove("hidden");
   } catch (error) {
     console.error("Error determining language:", error);
   }
 }
 mainFunction();
+gsap.to(".preloader", { opacity: 0, duration: 0.5, delay: 1.5 });
