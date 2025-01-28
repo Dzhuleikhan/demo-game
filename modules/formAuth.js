@@ -4,6 +4,7 @@ import { hiddenSelect } from "./hiddenSelect";
 import { getUrlParameter, updateUrl } from "./params";
 import { newDomain } from "./fetchingDomain";
 import { checkTir1CurrencyMatch } from "./modalCurrency";
+import { getSupportedLanguage } from "./geoLocation";
 
 // | AUTH FORM VALIDATION AND SUBMITTING
 
@@ -520,7 +521,10 @@ function submitForm(form, newDomain) {
 
     formData.bonus = checkTir1CurrencyMatch(formData.currency, formData.bonus);
 
-    let lang = localStorage.getItem("preferredLanguage");
+    let lang = getSupportedLanguage(
+      localStorage.getItem("preferredLanguage").toUpperCase(),
+    );
+
     let cid = getUrlParameter("cid");
 
     if (isValid) {

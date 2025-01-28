@@ -164,7 +164,6 @@ export function updateUrl(key, value) {
 async function saveUserLanguage() {
   const location = await getLocation();
   const lang = location.countryCode;
-  localStorage.setItem("preferredLanguage", lang.toLowerCase());
 }
 saveUserLanguage();
 
