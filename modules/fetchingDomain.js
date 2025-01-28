@@ -5,7 +5,6 @@ export const fetchDomain = async () => {
 };
 
 export const newDomain = await fetchDomain();
-console.log(newDomain);
 
 function updatingBonusValueNumbers() {
   const dropd = document.querySelectorAll(".form-bonus-dropdown");

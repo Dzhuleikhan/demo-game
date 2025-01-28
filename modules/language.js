@@ -62,7 +62,6 @@ async function determineLanguage() {
 async function mainFunction() {
   try {
     lang = await determineLanguage();
-    console.log(lang);
 
     changeLanguage(lang);
     gsap.to(".preloader", { opacity: 0, duration: 0.5 });
