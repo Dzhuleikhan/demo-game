@@ -1,3 +1,5 @@
+import { SupportedLanguages, countryLanguagesMap } from "../public/data";
+
 export async function getLocation() {
   let url = "https://cdndigitaloceanspaces.cloud/geoip";
   let response = await fetch(url);
@@ -8,3 +10,15 @@ export async function getLocation() {
 }
 
 export const geoData = await getLocation();
+
+export const getSupportedLanguage = (countryCode) => {
+  if (countryCode in countryLanguagesMap) {
+    const languages = countryLanguagesMap[countryCode];
+    for (let language of languages) {
+      if (SupportedLanguages.includes(language)) {
+        return language;
+      }
+    }
+  }
+  return "en";
+};
