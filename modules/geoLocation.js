@@ -10,6 +10,7 @@ export async function getLocation() {
 
 export const geoData = await getLocation();
 
+// Checking language
 export const getSupportedLanguage = (countryCode) => {
   if (countryCode in countryLanguagesMap) {
     const languages = countryLanguagesMap[countryCode];
