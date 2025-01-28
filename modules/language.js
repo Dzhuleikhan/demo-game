@@ -1,7 +1,6 @@
 import { getLocation } from "./geoLocation";
 import { translations } from "/public/translations";
 import gsap from "gsap";
-import { getSupportedLanguage } from "./geoLocation";
 
 let lang;
 
