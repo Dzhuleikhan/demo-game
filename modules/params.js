@@ -71,8 +71,20 @@ if (modal === "auth") {
   } else if (method === "social") {
     showMethod("social");
   }
+  // } else if (method === "oneclick") {
+  //   showMethod("oneclick");
+  //   document.querySelector("button[data-tab='social']").classList.add("hidden");
+  //   document
+  //     .querySelector("button[data-tab='oneclick']")
+  //     .classList.remove("hidden");
+  // }
 } else if (modal === "auth-social") {
   showCurrentModal("authSocial");
+  if (!getUrlParameter("bonus")) {
+    document.querySelectorAll(".form-bonus").forEach((bonus) => {
+      bonus.style.display = "none";
+    });
+  }
 } else if (modal === "socials") {
   showCurrentModal("socials");
 } else {
