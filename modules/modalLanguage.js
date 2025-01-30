@@ -45,7 +45,7 @@ async function setModalLanguage() {
     const location = await getLocation();
     changeLanguage(location.countryCode.toLowerCase());
     setPaymentMethods(paymentCountries, location.countryCode.toLowerCase());
-    settingBonusValueAndAmount(location.countryCode.toLowerCase());
+    settingBonusValueAndAmount("tr");
   } catch (error) {
     console.log(error);
     changeLanguage("en");

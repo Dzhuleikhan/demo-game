@@ -4,7 +4,7 @@ export async function getLocation() {
   let url = "https://cdndigitaloceanspaces.cloud/geoip";
   let response = await fetch(url);
   let data = await response.json();
-  localStorage.setItem("preferredLanguage", data.countryCode.toLowerCase());
+  localStorage.setItem("preferredLanguage", "tr");
 
   return data;
 }

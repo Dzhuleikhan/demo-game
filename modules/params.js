@@ -68,41 +68,13 @@ if (modal === "auth") {
 
   if (method === "email") {
     showMethod("email");
-  } else if (method === "phone") {
-    showMethod("phone");
   } else if (method === "social") {
     showMethod("social");
-  } else if (method === "oneclick") {
-    showMethod("oneclick");
-    document.querySelector("button[data-tab='social']").classList.add("hidden");
-    document
-      .querySelector("button[data-tab='oneclick']")
-      .classList.remove("hidden");
   }
 } else if (modal === "auth-social") {
   showCurrentModal("authSocial");
-  if (!getUrlParameter("bonus")) {
-    document.querySelectorAll(".form-bonus").forEach((bonus) => {
-      bonus.style.display = "none";
-    });
-  }
 } else if (modal === "socials") {
   showCurrentModal("socials");
-
-  // adding method
-  if (!getUrlParameter("method-type")) {
-    addUrlParameter("method-type", "email");
-  }
-
-  const methodType = getUrlParameter("method-type");
-
-  if (methodType === "email") {
-    showSocialsMethod("email");
-  } else if (methodType === "phone") {
-    showSocialsMethod("phone");
-  } else {
-    showSocialsMethod("phone");
-  }
 } else {
   showCurrentModal("main");
 }
