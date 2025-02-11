@@ -392,7 +392,10 @@ formSocialLinks.forEach((link) => {
       let bonus = mainForm
         .querySelector(".bonus-input")
         .getAttribute("data-bonus");
-      const lang = localStorage.getItem("preferredLanguage");
+
+      const lang = getSupportedLanguage(
+        localStorage.getItem("preferredLanguage").toUpperCase(),
+      );
 
       let currencyStoredData = localStorage.getItem("currencyData");
       let currencyData = JSON.parse(currencyStoredData);
