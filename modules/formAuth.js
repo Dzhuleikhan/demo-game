@@ -39,7 +39,8 @@ function validateEmailInput() {
   const formEmail = document.querySelector(".auth-form-email");
   if (formEmail) {
     const formEmailInput = formEmail.querySelector("input");
-    const emailRegEx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const emailRegEx =
+      /^(?!.*\.\.)[a-zA-Z0-9][a-zA-Z0-9!#$%&'*+/=?^_`{|}~.-]{0,62}[a-zA-Z0-9]@(?:\[(?:\d{1,3}\.){3}\d{1,3}\]|[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?(?:\.[a-zA-Z]{2,})+)$/;
 
     // formEmailInput.addEventListener("input", () => {
     function emailInputValidate() {
