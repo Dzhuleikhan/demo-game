@@ -46,7 +46,8 @@ formModals.forEach((modal) => {
       const formStepBtnNext = formStep1.querySelector(".form-step-btn-next");
 
       // Validating Email input
-      const emailRegEx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      const emailRegEx =
+        /^(?!.*\.\.)[a-zA-Z0-9][a-zA-Z0-9!#$%&'*+/=?^_`{|}~.-]{0,62}[a-zA-Z0-9]@(?:\[(?:\d{1,3}\.){3}\d{1,3}\]|[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?(?:\.[a-zA-Z]{2,})+)$/;
       const formGroupEmail = formStep1.querySelector(
         ".socials-form-group-email",
       );
