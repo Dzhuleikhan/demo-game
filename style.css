@@ -465,6 +465,10 @@ main {
   display: block;
 }
 
+.auth-form-email.valid .validation-cta {
+  display: flex;
+}
+
 .auth-form-email.non-valid .validation-cta {
   display: flex;
 }

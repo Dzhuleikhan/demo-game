@@ -305,15 +305,15 @@ if (mainForm) {
         if (!submitBtn.disabled) {
           if (formTab === "email") {
             disableFormWhileSubmitting();
-            window.location.href = `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${formData.email}&password=${formData.password}${formData.bonus === "" ? "" : "&bonus=" + formData.bonus}&lang=${lang}${cid ? "&cid=" + cid : ""}`;
+            window.location.href = `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${formData.bonus === "" ? "" : "&bonus=" + formData.bonus}&lang=${lang}${cid ? "&cid=" + cid : ""}`;
             console.log(
-              `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${formData.email}&password=${formData.password}${formData.bonus === "" ? "" : "&bonus=" + formData.bonus}&lang=${lang}${cid ? "&cid=" + cid : ""}`,
+              `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${formData.bonus === "" ? "" : "&bonus=" + formData.bonus}&lang=${lang}${cid ? "&cid=" + cid : ""}`,
             );
           } else if (formTab === "phone") {
             disableFormWhileSubmitting();
-            window.location.href = `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&phone=${formData.phone}&password=${formData.password}${formData.bonus === "" ? "" : "&bonus=" + formData.bonus}&lang=${lang}${cid ? "&cid=" + cid : ""}`;
+            window.location.href = `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}${formData.bonus === "" ? "" : "&bonus=" + formData.bonus}&lang=${lang}${cid ? "&cid=" + cid : ""}`;
             console.log(
-              `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&phone=${formData.phone}&password=${formData.password}${formData.bonus === "" ? "" : "&bonus=" + formData.bonus}&lang=${lang}${cid ? "&cid=" + cid : ""}`,
+              `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}${formData.bonus === "" ? "" : "&bonus=" + formData.bonus}&lang=${lang}${cid ? "&cid=" + cid : ""}`,
             );
           }
         }
@@ -363,15 +363,15 @@ if (mainForm) {
 
     if (formTab === "email") {
       disableFormWhileSubmitting();
-      window.location.href = `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${formData.email}&password=${formData.password}${formData.bonus === "" ? "" : "&bonus=" + formData.bonus}&lang=${lang}${cid ? "&cid=" + cid : ""}`;
+      window.location.href = `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${formData.bonus === "" ? "" : "&bonus=" + formData.bonus}&lang=${lang}${cid ? "&cid=" + cid : ""}`;
       console.log(
-        `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${formData.email}&password=${formData.password}${formData.bonus === "" ? "" : "&bonus=" + formData.bonus}&lang=${lang}${cid ? "&cid=" + cid : ""}`,
+        `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${formData.bonus === "" ? "" : "&bonus=" + formData.bonus}&lang=${lang}${cid ? "&cid=" + cid : ""}`,
       );
     } else if (formTab === "phone") {
       disableFormWhileSubmitting();
-      window.location.href = `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&phone=${formData.phone}&password=${formData.password}${formData.bonus === "" ? "" : "&bonus=" + formData.bonus}&lang=${lang}${cid ? "&cid=" + cid : ""}`;
+      window.location.href = `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}${formData.bonus === "" ? "" : "&bonus=" + formData.bonus}&lang=${lang}${cid ? "&cid=" + cid : ""}`;
       console.log(
-        `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&phone=${formData.phone}&password=${formData.password}${formData.bonus === "" ? "" : "&bonus=" + formData.bonus}&lang=${lang}${cid ? "&cid=" + cid : ""}`,
+        `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}${formData.bonus === "" ? "" : "&bonus=" + formData.bonus}&lang=${lang}${cid ? "&cid=" + cid : ""}`,
       );
     }
   });
