@@ -52,7 +52,6 @@ async function determineLanguage() {
     KZ: "kz",
     KG: "kg",
   };
-
   lang = countryLangMap[location.countryCode] || "en";
 
   return lang;
