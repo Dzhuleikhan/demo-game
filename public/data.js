@@ -598,6 +598,7 @@ export const countryLanguagesMap = {
   PL: ["pl"],
   CZ: ["cs"],
   SI: ["sl"],
+  SE: ["sv"],
 };
 
 export const SupportedLanguages = [
@@ -621,4 +622,5 @@ export const SupportedLanguages = [
   "pl",
   "cs",
   "sl",
+  "sv",
 ];
