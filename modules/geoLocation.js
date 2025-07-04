@@ -5,12 +5,9 @@ export async function getLocation() {
     "https://apiip.net/api/check?accessKey=0439ba6e-6092-46c2-9aeb-8662065bc43c";
   let response = await fetch(url);
   let data = await response.json();
-  localStorage.setItem("preferredLanguage", data.countryCode.toLowerCase());
 
   return data;
 }
-
-export const geoData = await getLocation();
 
 // Checking language
 export const getSupportedLanguage = (countryCode) => {
@@ -24,3 +21,9 @@ export const getSupportedLanguage = (countryCode) => {
   }
   return "en";
 };
+
+export const geoData = await getLocation();
+localStorage.setItem(
+  "preferredLanguage",
+  getSupportedLanguage(geoData.countryCode),
+);
