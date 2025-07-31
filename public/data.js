@@ -530,6 +530,16 @@ export const countryCurrencyData = [
     spins: "200 FS",
     highrollerAmount: "2.200",
   },
+  {
+    countries: ["ZA", "NA", "LS", "SZ", "BW", "MZ", "AO", "MW", "ZM"],
+    countryCurrency: "ZAR",
+    countryCurrencySymbol: "R",
+    countryCurrencyFullName: "South African Rand",
+    countryCurrencyIcon: "./img/currencies/zar.svg",
+    amount: "88.000",
+    spins: "200 FS",
+    highrollerAmount: "3600",
+  },
 ];
 
 export const countryLanguagesMap = {
