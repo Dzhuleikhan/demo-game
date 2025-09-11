@@ -447,7 +447,6 @@ formSocialLinks.forEach((link) => {
       const lang = getSupportedLanguage(
         localStorage.getItem("preferredLanguage").toUpperCase(),
       );
-
       let currencyStoredData = localStorage.getItem("currencyData");
       let currencyData = JSON.parse(currencyStoredData);
       let currency = currencyData.abbr;
