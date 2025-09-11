@@ -16,6 +16,7 @@ fetchDomain(geoData.countryCode).then((domain) => {
   console.log("Domain fetched:", newDomain);
 });
 
+// Updating bonus value numbers
 function updatingBonusValueNumbers() {
   const dropd = document.querySelectorAll(".form-bonus-dropdown");
   dropd.forEach((drop) => {

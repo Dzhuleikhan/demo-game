@@ -163,7 +163,7 @@ export function updateUrl(key, value) {
 
 async function saveUserLanguage() {
   const location = await getLocation();
-  const lang = location.countryCode;-
+  const lang = location.countryCode;
 }
 saveUserLanguage();
 
