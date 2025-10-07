@@ -432,7 +432,7 @@ function submitForm(form, newDomain) {
         input.value.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)
       ) {
         email.classList.remove("non-valid");
-        formData.email = encodeURIComponent(input.value);
+        formData.email = input.value;
       } else {
         email.classList.add("non-valid");
         isValid = false;
