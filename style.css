@@ -1000,3 +1000,15 @@ main {
     height: auto;
   }
 }
+
+.bonus-wrapper {
+  background-color: #f4fd2b;
+}
+
+.bonus-input-dynamic span {
+  color: #f4fd2b;
+}
+
+.bonus-subtext {
+  color: #000000;
+}
