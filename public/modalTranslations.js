@@ -254,7 +254,6 @@ export const modalTranslations = {
     bonusSubtext: `<span class="bonus-sum-wager">WAGER YALNIZ <span class="bonus-sum-wager-amount">20</span>x</span>`,
     depositBonus: `bonus <span class="bonus-value"></span> <span class="bonus-currency"></span>-a qədər + <span class="bonus-spins"></span>`,
     depositBonus2: "Depozitə 400% 6000-ə qədər",
-    bonusSubtext: `<span class="bonus-sum-wager">(<span class="bonus-sum-wager-amount">20</span>x wager)</span>`,
     depositBonusDynamic: `Depozitsiz bonus <span class="bonus-sum-amount"></span> <span class="bonus-sum-currency"></span>`,
     phoneNumber: "Telefon nömrəsi",
     password: "Şifrə",
