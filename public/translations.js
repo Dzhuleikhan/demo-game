@@ -527,7 +527,7 @@ export const translations = {
                   məsuliyyətinizdir; <br />
                   - Xidmətdən istifadə nəticəsində əldə etdiyiniz kriptovalyutalara tətbiq oluna bilən bütün vergilərə görə məsuliyyət daşıyırsınız.`,
   },
-  kz: {
+  kk: {
     termsTitle1: `Жалпы ережелер мен шарттар`,
     termsParagraph1: `Бұл жалпы ережелер мен шарттар және төменде көрсетілген құжаттар ("Ережелер") қазіргі веб-сайтты ("Веб-сайт") және оған байланысты немесе қосылған қызметтерді (барлығы бірге "Қызмет") пайдалану үшін қолданылады. Осы ережелерді мұқият оқып шығуыңыз керек, өйткені олар Веб-сайтты пайдалану жөніндегі құқықтарыңыз бен міндеттемелеріңіз туралы маңызды ақпаратты қамтиды және сіз бен біз, яғни Веб-сайт арасында заңды міндетті келісім жасайды. Осы Веб-сайтты және/немесе Қызметті пайдалану арқылы сіз осы Ережелермен бірге кез келген уақытта жариялануы мүмкін өзгерістермен келісесіз. Егер сіз осы Ережелермен келіспесеңіз, Қызметке қол жеткізбеуді және Веб-сайтты пайдаланбауды ұсынасыз.`,
     termsTitle2: `1. Жалпы ережелер`,
@@ -1412,7 +1412,7 @@ export const translations = {
                       - Samodzielnie odpowiadasz za wszelkie podatki należne od kryptowalut
                       otrzymanych w ramach korzystania z Usługi.`,
   },
-  cz: {
+  cs: {
     termsTitle1: `Podmínky a Ujednání`,
     termsParagraph1: `Tyto podmínky a ujednání a níže uvedené dokumenty
                       („Podmínky“) se vztahují na používání této webové stránky

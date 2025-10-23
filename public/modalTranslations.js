@@ -274,7 +274,7 @@ export const modalTranslations = {
     step2Subtitle: `Şifrə yaradın və hesabınızın valyutasını seçin.`,
     passwordPlaceholder: "Şifrə",
   },
-  kz: {
+  kk: {
     // ? AUTH
     mainModalTitle: "Тіркелу",
     tabEmail: "E-mail",
@@ -936,7 +936,7 @@ export const modalTranslations = {
     step2Subtitle: `Utwórz hasło i wybierz <br /> walutę konta.`,
     passwordPlaceholder: "Hasło",
   },
-  cz: {
+  cs: {
     // ? AUTH
     mainModalTitle: "zaregistrovat se",
     tabEmail: "E-mail",
