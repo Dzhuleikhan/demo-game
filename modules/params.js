@@ -49,6 +49,16 @@ export function getUrlParameter(name) {
   return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
+// Function to remove a URL parameter by name
+export function removeUrlParameter(name) {
+  const url = new URL(window.location.href);
+
+  if (url.searchParams.has(name)) {
+    url.searchParams.delete(name);
+    window.history.replaceState({}, document.title, url.toString());
+  }
+}
+
 // Check if 'modal' parameter is present; if not, set it to 'normal'
 const modal = getUrlParameter("modal");
 

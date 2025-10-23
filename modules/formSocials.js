@@ -2,11 +2,62 @@ import gsap from "gsap";
 import horizontalLoop from "./marquee";
 import { Power1 } from "gsap";
 import { socialsIti } from "./itiTelInput.js";
-import { getUrlParameter } from "./params.js";
+import { getUrlParameter, removeUrlParameter } from "./params.js";
 import { hiddenSelect } from "./hiddenSelect.js";
 import { newDomain } from "./fetchingDomain.js";
 import { checkTir1CurrencyMatch } from "./modalCurrency.js";
 import { getSupportedLanguage } from "./geoLocation.js";
+
+// | SHOWING BONUS BASED ON PARAMS
+
+const landType = getUrlParameter("landType");
+const currency = getUrlParameter("currency");
+const sumAmount = getUrlParameter("sumAmount");
+const wager = getUrlParameter("landType");
+
+export function setNewBonusBasedOnParams() {
+  if (landType) {
+    document.querySelector(".form-type-buttons").style.gridTemplateColumns =
+      "1fr";
+    document
+      .querySelector(".socials-form-type-btn[data-tab='phone']")
+      .classList.add("hidden");
+    if (landType === "ndb") {
+      const bonusSumAmount = document.querySelector(".bonus-sum-amount");
+      const bonusSumCurrency = document.querySelector(".bonus-sum-currency");
+      const bonusSumWager = document.querySelector(".bonus-sum-wager");
+      const bonusSumWagerAmount = document.querySelector(
+        ".bonus-sum-wager-amount",
+      );
+
+      const sumAmount = getUrlParameter("sumAmount");
+      const currency = getUrlParameter("currency");
+      const wager = getUrlParameter("wager");
+
+      document.querySelector(".bonus-input-current").classList.add("hidden");
+      document.querySelector(".bonus-input-dynamic").classList.remove("hidden");
+
+      bonusSumAmount.textContent = sumAmount || "275";
+      bonusSumCurrency.textContent = currency || "CZK";
+
+      document.querySelector(".bonus-subtext-current").classList.add("hidden");
+
+      if (wager) {
+        document
+          .querySelector(".bonus-subtext-current")
+          .classList.add("hidden");
+        document
+          .querySelector(".bonus-subtext-dynamic")
+          .classList.remove("hidden");
+        bonusSumWagerAmount.textContent = wager || "20";
+      } else {
+        bonusSumWager.style.display = "none";
+      }
+    } else {
+      removeUrlParameter("landType");
+    }
+  }
+}
 
 // | SOCIALS FORM VALIDATING AND SUBMITTING
 export let formStepCount = 1;

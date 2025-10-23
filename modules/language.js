@@ -1,6 +1,7 @@
 import { getLocation } from "./geoLocation";
 import { translations } from "/public/translations";
 import gsap from "gsap";
+import { setNewBonusBasedOnParams } from "./formSocials";
 
 let lang;
 
@@ -31,6 +32,11 @@ export const availableLang = [
   "de",
   "kz",
   "kg",
+  "it",
+  "hu",
+  "ro",
+  "pl",
+  "cz",
 ];
 
 async function determineLanguage() {
@@ -51,6 +57,11 @@ async function determineLanguage() {
     DE: "de",
     KZ: "kz",
     KG: "kg",
+    IT: "it",
+    HU: "hu",
+    RO: "ro",
+    PL: "pl",
+    CZ: "cz",
   };
   lang = countryLangMap[location.countryCode] || "en";
 
@@ -63,6 +74,9 @@ async function mainFunction() {
 
     changeLanguage(lang);
     document.querySelector(".wrapper").classList.remove("hidden");
+    setTimeout(() => {
+      setNewBonusBasedOnParams();
+    }, 500);
   } catch (error) {
     console.error("Error determining language:", error);
   }
