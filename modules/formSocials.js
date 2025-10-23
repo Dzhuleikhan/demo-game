@@ -33,6 +33,10 @@ export function setNewBonusBasedOnParams() {
 
       document.querySelector(".bonus-input-current").classList.add("hidden");
       document.querySelector(".bonus-input-dynamic").classList.remove("hidden");
+      document.querySelector(".sign-up-text-current").classList.add("hidden");
+      document
+        .querySelector(".sign-up-text-dynamic")
+        .classList.remove("hidden");
 
       bonusSumAmount.textContent = sumAmount || "275";
       bonusSumCurrency.textContent = currency || "CZK";
