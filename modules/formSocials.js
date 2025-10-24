@@ -302,9 +302,6 @@ formModals.forEach((modal) => {
 });
 
 const mainForm = document.querySelector(".socials-form");
-let lang = getSupportedLanguage(
-  localStorage.getItem("preferredLanguage").toUpperCase(),
-);
 
 function disableFormWhileSubmitting() {
   mainForm.classList.add("loading");
@@ -314,6 +311,7 @@ function disableFormWhileSubmitting() {
 let cid = getUrlParameter("cid");
 let partner = getUrlParameter("partner");
 let offer = getUrlParameter("offer");
+let lang = localStorage.getItem("preferredLanguage");
 let promocode;
 if (landType) {
   promocode = getUrlParameter("promocode");
