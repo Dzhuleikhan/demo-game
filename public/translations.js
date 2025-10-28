@@ -795,7 +795,7 @@ export const translations = {
                       - Aldığınız kazançlarla ilgili olarak geçerli yasalar altında uygulanan herhangi bir verginin bildirilmesi ve hesaplanmasından tamamen siz sorumlusunuz; <br />
                       - Hizmetleri kullanarak kazandığınız kripto para birimlerine uygulanabilecek herhangi bir vergi için tamamen siz sorumlusunuz.`,
   },
-  ua: {
+  uk: {
     termsTitle1: `Умови та положення`,
     termsParagraph1: `Ці умови та положення та документи, на які є посилання нижче
                   ("Умови"), застосовуються до використання поточного вебсайту

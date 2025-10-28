@@ -635,4 +635,6 @@ export const SupportedLanguages = [
   "sl",
   "sv",
   "it",
+  "ru",
+  "uk",
 ];

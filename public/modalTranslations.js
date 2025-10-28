@@ -551,7 +551,7 @@ export const modalTranslations = {
     step2Subtitle: `Bir şifre oluşturun ve hesap para birimini seçin.`,
     passwordPlaceholder: "Şifre",
   },
-  ua: {
+  uk: {
     // ? AUTH
     mainModalTitle: "реєстрація",
     tabEmail: "Пошта",
