@@ -782,14 +782,6 @@ main {
 }
 
 .socials-form-group {
-  display: none;
-}
-
-.socials-form-group.active {
-  display: flex;
-}
-
-.socials-form-group {
   border: 2px solid transparent;
 }
 

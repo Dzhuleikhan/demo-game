@@ -5453,106 +5453,10 @@
                       </svg>
                     </p>
                   </div>
-                  <!-- Socials -->
-                  <div class="mt-[15px] space-y-[15px]">
-                    <a
-                      data-reg-type="facebook"
-                      href="#"
-                      class="socials-form-social-link flex items-center justify-center gap-[10px] rounded-xl bg-[#337FFF] p-4 transition-transform duration-300 hover:scale-[1.02] active:scale-[0.99]"
-                    >
-                      <img
-                        class="pointer-events-none"
-                        width="32"
-                        height="32"
-                        src="./img/facebook-logo.svg"
-                        alt="Facebook logo"
-                      />
-                      <span
-                        data-modal-translate="signUpWithFacebook"
-                        class="pointer-events-none text-lg font-bold tracking-tight"
-                        >Sign Up with Facebook</span
-                      >
-                    </a>
-                    <a
-                      data-reg-type="google"
-                      href="#"
-                      class="socials-form-social-link flex items-center justify-center gap-[10px] rounded-xl bg-white p-4 transition-transform duration-300 hover:scale-[1.02] active:scale-[0.99]"
-                    >
-                      <img
-                        class="pointer-events-none"
-                        width="32"
-                        height="32"
-                        src="./img/google.svg"
-                        alt="Google icon"
-                      />
-                      <span
-                        data-modal-translate="signUpWithGoogle"
-                        class="pointer-events-none text-lg font-bold tracking-tight text-[#0f0f0f]"
-                        >Sign Up with Google</span
-                      >
-                    </a>
-                  </div>
-                  <!-- Form type tabs -->
-                  <div class="form-type-buttons mt-[15px] grid grid-cols-2">
-                    <div
-                      data-tab="email"
-                      class="socials-form-type-btn active group relative flex cursor-pointer items-center justify-center gap-[5px] border-b border-[#5D6A69] p-5"
-                    >
-                      <svg
-                        class="pointer-events-none stroke-[#f0f0f0] transition group-hover:stroke-[#FAD303]"
-                        width="25"
-                        height="24"
-                        viewBox="0 0 25 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M3.5 7C3.5 6.46957 3.71071 5.96086 4.08579 5.58579C4.46086 5.21071 4.96957 5 5.5 5H19.5C20.0304 5 20.5391 5.21071 20.9142 5.58579C21.2893 5.96086 21.5 6.46957 21.5 7M3.5 7V17C3.5 17.5304 3.71071 18.0391 4.08579 18.4142C4.46086 18.7893 4.96957 19 5.5 19H19.5C20.0304 19 20.5391 18.7893 20.9142 18.4142C21.2893 18.0391 21.5 17.5304 21.5 17V7M3.5 7L12.5 13L21.5 7"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </svg>
-                      <span
-                        class="sign-up-text-current pointer-events-none text-lg font-bold tracking-tight text-[#f0f0f0] transition-colors group-hover:text-[#FAD303]"
-                        >E-Mail</span
-                      >
-                      <span
-                        data-modal-translate="signUpWithEmail"
-                        class="sign-up-text-dynamic pointer-events-none hidden text-lg font-bold tracking-tight text-[#f0f0f0] transition-colors group-hover:text-[#FAD303]"
-                        >Sign-Up with E-Mail</span
-                      >
-                    </div>
-                    <div
-                      data-tab="phone"
-                      class="socials-form-type-btn group relative flex cursor-pointer items-center justify-center gap-[5px] border-b border-[#5D6A69] p-5"
-                    >
-                      <svg
-                        class="pointer-events-none stroke-[#f0f0f0] transition group-hover:stroke-[#FAD303]"
-                        width="25"
-                        height="24"
-                        viewBox="0 0 25 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M11.5 4H13.5M12.5 17V17.01M6.5 5C6.5 4.46957 6.71071 3.96086 7.08579 3.58579C7.46086 3.21071 7.96957 3 8.5 3H16.5C17.0304 3 17.5391 3.21071 17.9142 3.58579C18.2893 3.96086 18.5 4.46957 18.5 5V19C18.5 19.5304 18.2893 20.0391 17.9142 20.4142C17.5391 20.7893 17.0304 21 16.5 21H8.5C7.96957 21 7.46086 20.7893 7.08579 20.4142C6.71071 20.0391 6.5 19.5304 6.5 19V5Z"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </svg>
-                      <span
-                        data-modal-translate="phone"
-                        class="pointer-events-none text-lg font-bold tracking-tight text-[#f0f0f0] transition-colors group-hover:text-[#FAD303]"
-                        >Phone</span
-                      >
-                    </div>
-                  </div>
                   <!-- Inputs -->
-                  <div class="form-tab-content mt-[15px]">
+                  <div class="form-tab-content mt-[15px] grid gap-[15px]">
                     <div
-                      class="socials-form-group active socials-form-group-email relative h-[64px] items-end rounded-xl bg-white px-5 pb-[11px]"
+                      class="socials-form-group socials-form-group-email relative flex h-[64px] items-end rounded-xl bg-white px-5 pb-[11px]"
                     >
                       <input
                         class="email-input w-full bg-transparent text-lg font-bold tracking-tight text-[#755EEB] outline-none"
@@ -5590,7 +5494,7 @@
                       </div>
                     </div>
                     <div
-                      class="socials-form-group socials-form-group-phone relative h-[64px] flex-col gap-[5px] rounded-xl bg-white px-3 py-[10px]"
+                      class="socials-form-group socials-form-group-phone relative flex h-[64px] flex-col gap-[5px] rounded-xl bg-white px-3 py-[10px]"
                     >
                       <span
                         data-modal-translate="phoneNumber"

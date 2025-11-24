@@ -27,7 +27,7 @@ export const modalTranslations = {
     // ? SOCIALS
     signUpEasySteps: "Sign Up in 3 Easy Steps",
     completeToClaimGift: "Complete them to claim your gift.",
-    signUpWithEmail: "Sign-Up with E-mail",
+    signUpWithEmail: "E-mail",
     signUpWithGoogle: "Sign Up with Google",
     signUpWithFacebook: "Sign Up with Facebook",
     phone: "Phone",
@@ -82,7 +82,7 @@ export const modalTranslations = {
     // ? SOCIALS
     signUpEasySteps: "Регистрация в 3 простых шага",
     completeToClaimGift: "Завершите их, чтобы получить подарок.",
-    signUpWithEmail: "Регистрация с E-mail",
+    signUpWithEmail: "E-mail",
     signUpWithGoogle: "Зарегистрироваться через Google",
     signUpWithFacebook: "Зарегистрироваться через Facebook",
     phone: "Телефон",
@@ -137,7 +137,7 @@ export const modalTranslations = {
     // ? SOCIALS
     signUpEasySteps: "Regístrate en 3 sencillos pasos",
     completeToClaimGift: "Complétalos para reclamar tu regalo.",
-    signUpWithEmail: "Registrarse con E-mail",
+    signUpWithEmail: "E-mail",
     signUpWithGoogle: "Regístrate con Google",
     signUpWithFacebook: "Regístrate con Facebook",
     phone: "Teléfono",
@@ -192,7 +192,7 @@ export const modalTranslations = {
     // ? SOCIALS
     signUpEasySteps: "Cadastre-se em 3 passos fáceis",
     completeToClaimGift: "Complete-os para ganhar seu presente.",
-    signUpWithEmail: "Inscrever-se com E-mail",
+    signUpWithEmail: "E-mail",
     signUpWithGoogle: "Cadastre-se com Google",
     signUpWithFacebook: "Cadastre-se com Facebook",
     phone: "Telefone",
@@ -247,7 +247,7 @@ export const modalTranslations = {
     // ? SOCIALS
     signUpEasySteps: "3 asan addımla qeydiyyatdan keçin",
     completeToClaimGift: "Tamamlayın və hədiyyənizi alın.",
-    signUpWithEmail: "E-mail ilə qeydiyyat",
+    signUpWithEmail: "E-mail",
     signUpWithGoogle: "Google ilə qeydiyyatdan keçin",
     signUpWithFacebook: "Facebook ilə qeydiyyatdan keçin",
     phone: "Telefon",
@@ -302,7 +302,7 @@ export const modalTranslations = {
     // ? SOCIALS
     signUpEasySteps: "3 қарапайым қадамда тіркелу",
     completeToClaimGift: "Оларды аяқтап, сыйлығыңызды алыңыз.",
-    signUpWithEmail: "E-mail арқылы тіркелу",
+    signUpWithEmail: "E-mail",
     signUpWithGoogle: "Google арқылы тіркелу",
     signUpWithFacebook: "Facebook арқылы тіркелу",
     phone: "Телефон",
@@ -357,7 +357,7 @@ export const modalTranslations = {
     // ? SOCIALS
     signUpEasySteps: "3 oson qadamda roʻyxatdan oʻting",
     completeToClaimGift: "Ularni tugating va sovgʻangizni oling.",
-    signUpWithEmail: "E-mail orqali ro‘yxatdan o‘tish",
+    signUpWithEmail: "E-mail",
     signUpWithGoogle: "Google orqali roʻyxatdan oʻtish",
     signUpWithFacebook: "Facebook orqali roʻyxatdan oʻtish",
     phone: "Telefon",
@@ -412,7 +412,7 @@ export const modalTranslations = {
     // ? SOCIALS
     signUpEasySteps: "Inscrivez-vous en 3 étapes simples",
     completeToClaimGift: "Complétez-les pour recevoir votre cadeau.",
-    signUpWithEmail: "S'inscrire avec E-mail",
+    signUpWithEmail: "E-mail",
     signUpWithGoogle: "Inscrivez-vous avec Google",
     signUpWithFacebook: "Inscrivez-vous avec Facebook",
     phone: "Téléphone",
@@ -468,7 +468,7 @@ export const modalTranslations = {
     // ? SOCIALS
     signUpEasySteps: "Registrieren Sie sich in 3 einfachen Schritten",
     completeToClaimGift: "Schließen Sie sie ab, um Ihr Geschenk zu erhalten.",
-    signUpWithEmail: "Mit E-Mail anmelden",
+    signUpWithEmail: "E-Mail",
     signUpWithGoogle: "Mit Google registrieren",
     signUpWithFacebook: "Mit Facebook registrieren",
     phone: "Telefon",
@@ -524,7 +524,7 @@ export const modalTranslations = {
     // ? SOCIALS
     signUpEasySteps: "3 kolay adımda kayıt olun",
     completeToClaimGift: "Tamamlayın ve ödülünüzü alın.",
-    signUpWithEmail: "E-posta ile kaydol",
+    signUpWithEmail: "E-posta",
     signUpWithGoogle: "Google ile kayıt olun",
     signUpWithFacebook: "Facebook ile kayıt olun",
     phone: "Telefon",
@@ -579,7 +579,7 @@ export const modalTranslations = {
     // ? SOCIALS
     signUpEasySteps: "Реєстрація в 3 простих кроки",
     completeToClaimGift: "Завершіть їх, щоб отримати подарунок.",
-    signUpWithEmail: "Реєстрація через E-mail",
+    signUpWithEmail: "E-mail",
     signUpWithGoogle: "Зареєструватися через Google",
     signUpWithFacebook: "Зареєструватися через Facebook",
     phone: "Телефон",
@@ -634,7 +634,7 @@ export const modalTranslations = {
     // ? SOCIALS
     signUpEasySteps: "৩টি সহজ ধাপে নিবন্ধন",
     completeToClaimGift: "উপহার পেতে এগুলো সম্পূর্ণ করুন।",
-    signUpWithEmail: "E-mail দিয়ে সাইন আপ করুন",
+    signUpWithEmail: "E-mail",
     signUpWithGoogle: "গুগলের মাধ্যমে নিবন্ধন করুন",
     signUpWithFacebook: "ফেসবুকের মাধ্যমে নিবন্ধন করুন",
     phone: "ফোন",
@@ -689,7 +689,7 @@ export const modalTranslations = {
     // ? SOCIALS
     signUpEasySteps: "Daftar dalam 3 Langkah Mudah",
     completeToClaimGift: "Selesaikan untuk mendapatkan hadiah Anda",
-    signUpWithEmail: "Daftar dengan E-mail",
+    signUpWithEmail: "E-mail",
     signUpWithGoogle: "Daftar dengan Google",
     signUpWithFacebook: "Daftar dengan Facebook",
     phone: "Telepon",
@@ -744,7 +744,7 @@ export const modalTranslations = {
     // ? SOCIALS
     signUpEasySteps: "Registrati in 3 semplici passaggi",
     completeToClaimGift: "Completa i passaggi per richiedere il tuo regalo.",
-    signUpWithEmail: "Iscriviti con E-mail",
+    signUpWithEmail: "E-mail",
     signUpWithGoogle: "Registrati con Google",
     signUpWithFacebook: "Registrati con Facebook",
     phone: "Telefono",
@@ -799,7 +799,7 @@ export const modalTranslations = {
     // ? SOCIALS
     signUpEasySteps: "Regisztrálj 3 egyszerű lépésben",
     completeToClaimGift: "Teljesítsd őket a ajándékodért.",
-    signUpWithEmail: "Regisztráció E-maillel",
+    signUpWithEmail: "E-mail",
     signUpWithGoogle: "Regisztráció Google-lal",
     signUpWithFacebook: "Regisztráció Facebook-kal",
     phone: "Telefon",
@@ -854,7 +854,7 @@ export const modalTranslations = {
     // ? SOCIALS
     signUpEasySteps: "Înregistrează-te în 3 pași simpli",
     completeToClaimGift: "Finalizează-i pentru a revendica cadoul.",
-    signUpWithEmail: "Înscrie-te cu E-mail",
+    signUpWithEmail: "E-mail",
     signUpWithGoogle: "Înregistrează-te cu Google",
     signUpWithFacebook: "Înregistrează-te cu Facebook",
     phone: "Telefon",
@@ -909,7 +909,7 @@ export const modalTranslations = {
     // ? SOCIALS
     signUpEasySteps: "Zarejestruj się w 3 prostych krokach",
     completeToClaimGift: "Wykonaj je, aby odebrać prezent.",
-    signUpWithEmail: "Zarejestruj się za pomocą E-mail",
+    signUpWithEmail: "E-mail",
     signUpWithGoogle: "Zarejestruj się przez Google",
     signUpWithFacebook: "Zarejestruj się przez Facebook",
     phone: "Telefon",
@@ -964,7 +964,7 @@ export const modalTranslations = {
     // ? SOCIALS
     signUpEasySteps: "Zaregistrujte se ve 3 jednoduchých krocích",
     completeToClaimGift: "Dokončete je a získejte svůj dárek.",
-    signUpWithEmail: "Registrace pomocí E-mail",
+    signUpWithEmail: "E-mail",
     signUpWithGoogle: "Registrovat se přes Google",
     signUpWithFacebook: "Registrovat se přes Facebook",
     phone: "Telefon",
