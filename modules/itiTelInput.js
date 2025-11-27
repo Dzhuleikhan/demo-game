@@ -17,12 +17,12 @@ export const authIti = intlTelInput(authPhoneInput, {
   separateDialCode: true,
   useFullscreenPopup: false,
   autoPlaceholder: "polite",
-  geoIpLookup: geoIpLookup,
+  geoIpLookup,
 });
 export const socialsIti = intlTelInput(socialsPhoneInput, {
   initialCountry: "auto",
   separateDialCode: true,
   useFullscreenPopup: false,
   autoPlaceholder: "polite",
-  geoIpLookup: geoIpLookup,
+  geoIpLookup,
 });
