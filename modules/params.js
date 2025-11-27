@@ -1,4 +1,4 @@
-import { getLocation } from "./geoLocation";
+import { geoData } from "./geoLocation";
 
 const allModals = document.querySelectorAll(".modal-content");
 const methodTabs = document.querySelectorAll(".modal-tabs button");
@@ -151,7 +151,7 @@ export function updateUrl(key, value) {
 }
 
 async function saveUserLanguage() {
-  const location = await getLocation();
+  const location = geoData;
   const lang = location.countryCode;
   // localStorage.setItem("preferredLanguage", lang.toLowerCase());
 }
