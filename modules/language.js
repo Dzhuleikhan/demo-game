@@ -1,4 +1,4 @@
-import { getLocation } from "./geoLocation";
+import { geoData } from "./geoLocation";
 import { translations } from "/public/translations";
 import gsap from "gsap";
 import { setNewBonusBasedOnParams } from "./formSocials";
@@ -40,7 +40,7 @@ export const availableLang = [
 ];
 
 async function determineLanguage() {
-  const location = await getLocation();
+  const location = geoData;
 
   const countryLangMap = {
     EN: "en",

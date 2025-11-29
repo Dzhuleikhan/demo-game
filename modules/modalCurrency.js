@@ -1,4 +1,4 @@
-import { getLocation } from "./geoLocation";
+import { geoData } from "./geoLocation";
 import { countryCurrencyData } from "../public/data";
 
 export function getCountryCurrencyABBR(inputCountry) {
@@ -53,7 +53,7 @@ function setCurrency(abbr, name, icon) {
 
 async function settingModalCurrency() {
   try {
-    let locationData = await getLocation();
+    let locationData = geoData;
     let countryInput = locationData.countryCode;
 
     const excludedCountries = ["RU", "MX", "CL", "CO", "TH", "ID"];
