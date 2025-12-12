@@ -74,8 +74,13 @@ async function mainFunction() {
 
     changeLanguage(lang);
     document.querySelector(".wrapper").classList.remove("hidden");
+
+    let currencyStoredData = localStorage.getItem("currencyData");
+    let currencyData = JSON.parse(currencyStoredData);
+    let currency = currencyData.abbr;
+
     setTimeout(() => {
-      setNewBonusBasedOnParams();
+      setNewBonusBasedOnParams(currency);
     }, 500);
   } catch (error) {
     console.error("Error determining language:", error);

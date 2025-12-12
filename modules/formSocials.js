@@ -2,61 +2,109 @@ import gsap from "gsap";
 import horizontalLoop from "./marquee";
 import { Power1 } from "gsap";
 import { socialsIti } from "./itiTelInput.js";
-import { getUrlParameter, removeUrlParameter } from "./params.js";
+import {
+  getUrlParameter,
+  removeUrlParameter,
+  addUrlParameter,
+} from "./params.js";
 import { hiddenSelect } from "./hiddenSelect.js";
 import { newDomain } from "./fetchingDomain.js";
 import { checkTir1CurrencyMatch } from "./modalCurrency.js";
-import { getSupportedLanguage } from "./geoLocation.js";
+import { geoData, getSupportedLanguage } from "./geoLocation.js";
 
 // | SHOWING BONUS BASED ON PARAMS
 
-const landType = getUrlParameter("landType");
+const bonusSumAndWager = [
+  { currency: "EUR", amount: 20 },
+  { currency: "USD", amount: 20 },
+  { currency: "CAD", amount: 30 },
+  { currency: "NZD", amount: 35 },
+  { currency: "AUD", amount: 30 },
+  { currency: "ARS", amount: 30000 },
+  { currency: "COP", amount: 75000 },
+  { currency: "CLP", amount: 25000 },
+  { currency: "MXN", amount: 365 },
+  { currency: "BRL", amount: 100 },
+  { currency: "TRY", amount: 850 },
+  { currency: "INR", amount: 1800 },
+  { currency: "AZN", amount: 35 },
+  { currency: "UZS", amount: 200000 },
+  { currency: "IDR", amount: 300000 },
+  { currency: "UAH", amount: 850 },
+  { currency: "BDT", amount: 2500 },
+  { currency: "KGS", amount: 1750 },
+  { currency: "KZT", amount: 10000 },
+  { currency: "HUF", amount: 6500 },
+  { currency: "DKK", amount: 130 },
+  { currency: "CHF", amount: 15 },
+  { currency: "NOK", amount: 200 },
+  { currency: "PLN", amount: 70 },
+  { currency: "RON", amount: 85 },
+  { currency: "CZK", amount: 400 },
+  { currency: "ZAR", amount: 350 },
+];
 
-export function setNewBonusBasedOnParams() {
+function getAmountForCurrency(currencyCode) {
+  const item = bonusSumAndWager.find((p) => p.currency === currencyCode);
+  return item ? item.amount : 20;
+}
+
+function getCurrencyOrDefault(currencyCode) {
+  const exists = bonusSumAndWager.some((p) => p.currency === currencyCode);
+  return exists ? currencyCode : "EUR";
+}
+
+const modalType = getUrlParameter("modal");
+
+if (modalType === "socials") {
+  addUrlParameter("landType", "ndb");
+}
+
+export function setNewBonusBasedOnParams(currencyCode) {
+  const landType = getUrlParameter("landType");
   if (landType) {
     document.querySelector(".form-type-buttons").style.gridTemplateColumns =
       "1fr";
     document
       .querySelector(".socials-form-type-btn[data-tab='phone']")
       .classList.add("hidden");
-    if (landType === "ndb") {
-      const bonusSumAmount = document.querySelector(".bonus-sum-amount");
-      const bonusSumCurrency = document.querySelector(".bonus-sum-currency");
-      const bonusSumWager = document.querySelector(".bonus-sum-wager");
-      const bonusSumWagerAmount = document.querySelector(
-        ".bonus-sum-wager-amount",
-      );
 
-      const sumAmount = getUrlParameter("sumAmount");
-      const currency = getUrlParameter("currency");
-      const wager = getUrlParameter("wager");
+    addUrlParameter("currency", getCurrencyOrDefault(currencyCode));
+    addUrlParameter("sumAmount", getAmountForCurrency(currencyCode));
+    addUrlParameter("wager", 20);
 
-      document.querySelector(".bonus-input-current").classList.add("hidden");
-      document.querySelector(".bonus-input-dynamic").classList.remove("hidden");
-      document.querySelector(".sign-up-text-current").classList.add("hidden");
-      document
-        .querySelector(".sign-up-text-dynamic")
-        .classList.remove("hidden");
+    const bonusSumAmount = document.querySelector(".bonus-sum-amount");
+    const bonusSumCurrency = document.querySelector(".bonus-sum-currency");
+    const bonusSumWager = document.querySelector(".bonus-sum-wager");
+    const bonusSumWagerAmount = document.querySelector(
+      ".bonus-sum-wager-amount",
+    );
 
-      bonusSumAmount.textContent = sumAmount || "275";
-      bonusSumCurrency.textContent = currency || "CZK";
+    const sumAmount = getUrlParameter("sumAmount");
+    const currency = getUrlParameter("currency");
+    const wager = getUrlParameter("wager");
 
+    document.querySelector(".bonus-input-current").classList.add("hidden");
+    document.querySelector(".bonus-input-dynamic").classList.remove("hidden");
+    document.querySelector(".sign-up-text-current").classList.add("hidden");
+    document.querySelector(".sign-up-text-dynamic").classList.remove("hidden");
+
+    bonusSumAmount.textContent = sumAmount;
+    bonusSumCurrency.textContent = currency;
+
+    document.querySelector(".bonus-subtext-current").classList.add("hidden");
+
+    if (wager) {
       document.querySelector(".bonus-subtext-current").classList.add("hidden");
-
-      if (wager) {
-        document
-          .querySelector(".bonus-subtext-current")
-          .classList.add("hidden");
-        document
-          .querySelector(".bonus-subtext-dynamic")
-          .classList.remove("hidden");
-        bonusSumWagerAmount.textContent = wager || "20";
-      } else {
-        bonusSumWager.style.display = "none";
-      }
+      document
+        .querySelector(".bonus-subtext-dynamic")
+        .classList.remove("hidden");
+      bonusSumWagerAmount.textContent = wager || "20";
     } else {
-      removeUrlParameter("landType");
+      bonusSumWager.style.display = "none";
     }
+  } else {
+    removeUrlParameter(landType);
   }
 }
 
@@ -312,10 +360,10 @@ let cid = getUrlParameter("cid");
 let partner = getUrlParameter("partner");
 let offer = getUrlParameter("offer");
 let lang = localStorage.getItem("preferredLanguage");
-let promocode;
-if (landType) {
-  promocode = getUrlParameter("promocode");
-}
+let promocode = getUrlParameter("promocode");
+// if (landType) {
+//   promocode = getUrlParameter("promocode");
+// }
 
 if (mainForm) {
   mainForm.addEventListener("keydown", (e) => {
