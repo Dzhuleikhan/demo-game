@@ -402,13 +402,13 @@ main {
 }
 
 .checkbox:hover .checkbox-content::before {
-  background-image: url("../img/unckecked.svg");
+  background-image: url("https://3344112-img.b-cdn.net/graphic/landings/authFormImages/unchecked.svg");
   background-repeat: no-repeat;
   background-size: contain;
 }
 
 .checkbox-input:checked+.checkbox-content::before {
-  background: url("../img/ckecked.svg"), #f4fd2b;
+  background: url("https://3344112-img.b-cdn.net/graphic/landings/authFormImages/checked.svg"), #f4fd2b;
   background-repeat: no-repeat;
   background-size: contain;
   border: none;
@@ -595,8 +595,7 @@ main {
 }
 
 .next-deposit {
-  background: url("../img/next-deposit-bg.webp"),
-    linear-gradient(180deg,
+  background: linear-gradient(180deg,
       rgba(20, 130, 255, 0.4) 0%,
       rgba(20, 130, 255, 0.4) 100%);
   background-repeat: no-repeat;
@@ -609,8 +608,7 @@ main {
 }
 
 .your-winning {
-  background: url("../img/your-winning-bg.webp"),
-    linear-gradient(180deg,
+  background: linear-gradient(180deg,
       rgba(78, 217, 55, 0.4) 0%,
       rgba(24, 94, 13, 0.4) 100%);
   background-repeat: no-repeat;
@@ -841,7 +839,7 @@ main {
 }
 
 .checkbox .checkbox-input:checked+.checkbox-content::before {
-  background: url("../img/checked.svg") #f4fd2b;
+  background: url("https://3344112-img.b-cdn.net/graphic/landings/authFormImages/checked.svg") #f4fd2b;
   background-repeat: no-repeat;
   background-position: center;
 }
