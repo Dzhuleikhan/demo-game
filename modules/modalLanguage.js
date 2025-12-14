@@ -44,8 +44,10 @@ async function setModalLanguage() {
   try {
     const location = geoData;
     changeLanguage(location.countryCode.toLowerCase());
-    setPaymentMethods(paymentCountries, location.countryCode.toLowerCase());
-    settingBonusValueAndAmount(location.countryCode.toLowerCase());
+    setTimeout(() => {
+      settingBonusValueAndAmount(location.countryCode.toLowerCase());
+      setPaymentMethods(paymentCountries, location.countryCode.toLowerCase());
+    }, 500);
   } catch (error) {
     console.log(error);
     changeLanguage("en");

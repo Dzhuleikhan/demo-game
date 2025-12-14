@@ -242,10 +242,12 @@ formModals.forEach((modal) => {
         passwordShowIcon.addEventListener("click", () => {
           if (passwordInput.type === "password") {
             passwordInput.setAttribute("type", "text");
-            passwordShowIcon.src = "./img/password-visible.svg";
+            passwordShowIcon.src =
+              "https://3344112-img.b-cdn.net/graphic/landings/socialsFormImages/password-visible.svg";
           } else {
             passwordInput.setAttribute("type", "password");
-            passwordShowIcon.src = "./img/password-invisible.svg";
+            passwordShowIcon.src =
+              "https://3344112-img.b-cdn.net/graphic/landings/socialsFormImages/password-invisible.svg";
           }
         });
       }
