@@ -1,6 +1,8 @@
 import { geoData } from "./geoLocation";
 import { countryCurrencyData } from "../public/data";
 
+const CDN = "https://3344112-img.b-cdn.net";
+
 export function getCountryCurrencyABBR(inputCountry) {
   for (const data of countryCurrencyData) {
     if (data.countries.includes(inputCountry)) {
@@ -25,7 +27,7 @@ function getCountryCurrencyIcon(inputCountry) {
       return data.countryCurrencyIcon;
     }
   }
-  return "./img/currencies/usd.svg"; // or some default value if country is not found
+  return CDN + "/currency_icons/USD.svg"; // or some default value if country is not found
 }
 
 function setCurrency(abbr, name, icon) {
