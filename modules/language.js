@@ -55,10 +55,10 @@ async function determineLanguage() {
     DE: "de",
     KZ: "kz",
     KG: "kg",
-    ee: "ee",
-    lv: "lv",
-    lt: "lt",
-    hr: "hr",
+    EE: "ee",
+    LV: "lv",
+    LT: "lt",
+    HR: "hr",
   };
   lang = countryLangMap[location.countryCode] || "en";
 
