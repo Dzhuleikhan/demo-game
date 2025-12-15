@@ -37,6 +37,10 @@ export const availableLang = [
   "ro",
   "pl",
   "cs",
+  "ee",
+  "lv",
+  "lt",
+  "hr",
 ];
 
 async function determineLanguage() {
@@ -62,6 +66,10 @@ async function determineLanguage() {
     RO: "ro",
     PL: "pl",
     CZ: "cs",
+    EE: "ee",
+    LV: "lv",
+    LT: "lt",
+    HR: "hr",
   };
   lang = countryLangMap[location.countryCode] || "en";
 
