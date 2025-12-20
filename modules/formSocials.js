@@ -322,34 +322,12 @@ if (mainForm) {
           if (formTab === "email") {
             disableFormWhileSubmitting();
 
-            if (window.cioanalytics) {
-              window.cioanalytics.ready(function () {
-                window.cioanalytics.identify(formData.email, {
-                  email: formData.email,
-                  url: window.location.href,
-                });
-              });
-            } else {
-              console.error("Customer.io analytics not loaded yet.");
-            }
-
             window.location.href = `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
             console.log(
               `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`,
             );
           } else if (formTab === "phone") {
             disableFormWhileSubmitting();
-
-            if (window.cioanalytics) {
-              window.cioanalytics.ready(function () {
-                window.cioanalytics.identify(formData.phone, {
-                  phone: formData.phone,
-                  url: window.location.href,
-                });
-              });
-            } else {
-              console.error("Customer.io analytics not loaded yet.");
-            }
 
             window.location.href = `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
             console.log(
@@ -402,25 +380,6 @@ if (mainForm) {
     }
 
     disableFormWhileSubmitting();
-
-    if (window.cioanalytics) {
-      window.cioanalytics.ready(function () {
-        const primaryId = formData.email || formData.phone;
-
-        if (!primaryId) {
-          console.error("Identify: отсутствуют email и phone для отправки.");
-          return;
-        }
-
-        window.cioanalytics.identify(primaryId, {
-          email: formData.email || null,
-          phone: formData.phone || null,
-          url: window.location.href,
-        });
-      });
-    } else {
-      console.error("Customer.io analytics not loaded yet.");
-    }
 
     window.location.href = `https://${newDomain}/api/register?env=prod&type=email&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
     // console.log(
