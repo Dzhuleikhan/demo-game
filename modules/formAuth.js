@@ -534,34 +534,12 @@ function submitForm(form, newDomain) {
       if (formType === "email") {
         disableEmailForm();
 
-        if (window.cioanalytics) {
-          window.cioanalytics.ready(function () {
-            window.cioanalytics.identify(formData.email, {
-              email: formData.email,
-              url: window.location.href,
-            });
-          });
-        } else {
-          console.error("Customer.io analytics not loaded yet.");
-        }
-
         window.location.href = `https://${newDomain}/api/register?env=prod&type=${formType}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${formData.bonus === "0" ? "&bonus=0" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
         console.log(
           `https://${newDomain}/api/register?env=prod&type=${formType}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${formData.bonus === "0" ? "&bonus=0" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`,
         );
       } else if (formType === "phone") {
         disablePhoneForm();
-
-        if (window.cioanalytics) {
-          window.cioanalytics.ready(function () {
-            window.cioanalytics.identify(formData.phone, {
-              phone: formData.phone,
-              url: window.location.href,
-            });
-          });
-        } else {
-          console.error("Customer.io analytics not loaded yet.");
-        }
 
         window.location.href = `https://${newDomain}/api/register?env=prod&type=${formType}&currency=${formData.currency}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}${formData.bonus === "0" ? "&bonus=0" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
         console.log(
