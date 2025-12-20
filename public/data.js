@@ -682,7 +682,7 @@ export const countryLanguagesMap = {
   BD: ["bn"],
   ID: ["id"],
   CN: ["zh"],
-  DK: ["de"],
+  DK: ["dk"],
   NO: ["en"],
   RO: ["ro"],
   MD: ["ro"],
@@ -695,6 +695,8 @@ export const countryLanguagesMap = {
   LV: ["lv"],
   LT: ["lt"],
   HR: ["hr"],
+  FI: ["fi"],
+  BG: ["bg"],
 };
 
 export const SupportedLanguages = [
@@ -723,4 +725,7 @@ export const SupportedLanguages = [
   "lv",
   "lt",
   "hr",
+  "dk",
+  "fi",
+  "bg",
 ];
