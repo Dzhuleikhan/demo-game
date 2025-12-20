@@ -1640,4 +1640,142 @@ export const translations = {
                       - Samostalno ste odgovorni za prijavu i obračun svih poreza koji vam mogu biti primjenjivi prema relevantnim zakonima za bilo koje dobitke koje primite od nas; <br />
                       - Samostalno ste odgovorni za sve poreze koji mogu biti primjenjivi na kriptovalutu dodijeljenu vama putem korištenja Usluge.`,
   },
+  dk: {
+    termsTitle1: `Vilkår og Betingelser`,
+    termsParagraph1: `Disse vilkår og betingelser samt de dokumenter, der henvises til nedenfor
+                  ("Vilkårene") gælder for brugen af det nuværende websted ("Webstedet")
+                  og dets tilknyttede tjenester ("Tjenesten"). Du bør nøje gennemgå
+                  disse Vilkår, da de indeholder vigtig information om dine rettigheder og
+                  forpligtelser ved brug af Webstedet og udgør en bindende juridisk aftale
+                  mellem dig (kunden) og os (Webstedet). Ved at bruge Webstedet og/eller
+                  få adgang til Tjenesten, accepterer du at være bundet af disse Vilkår, herunder
+                  eventuelle ændringer, som kan offentliggøres fra tid til anden. Hvis du ikke accepterer
+                  Vilkårene, bør du afstå fra at bruge Tjenesten og Webstedet.`,
+    termsTitle2: `1. Generelle Vilkår`,
+    termsParagraph2: `Vi forbeholder os retten til at revidere og ændre Vilkårene (inklusive
+                  eventuelle dokumenter, der henvises til nedenfor) til enhver tid. Du bør periodisk
+                  besøge denne side for at gennemgå Vilkårene. Ændringer vil være bindende og træder i
+                  kraft straks efter offentliggørelse på Webstedet. Hvis du er uenig i ændringerne,
+                  skal du straks stoppe med at bruge Tjenesten. Din fortsatte brug af Webstedet efter
+                  offentliggørelse vil indikere, at du accepterer de ændrede Vilkår. Eventuelle uafsluttede
+                  væddemål inden ændringen træder i kraft vil være underlagt de tidligere Vilkår. Hvis
+                  Goldbets Vilkår opdateres, vil platformen informere dig og bede om din bekræftelse.`,
+    termsTitle3: `2. Dine Forpligtelser`,
+    termsParagraph3: `Du bekræfter, at når du får adgang til Webstedet og bruger Tjenesten: <br />
+                  3.1. Du er over 18 år eller har den lovlige alder, hvor spil er tilladt i din jurisdiktion.
+                  Vi forbeholder os retten til at kræve dokumentation for alder. <br />
+                  3.2. Du har juridisk kapacitet til at indgå bindende aftaler med os. <br />
+                  3.3. Du er ansvarlig for at sikre, at brugen af Webstedet og dets produkter ikke er ulovlig
+                  i dit land, og at spil ikke er forbudt i dit område. <br />
+                  3.4. Ved åbning af konto eller brug af Webstedet er det spillerens ansvar at kontrollere lovlighed. <br />
+                  3.5. Du er autoriseret bruger af den betalingsmetode, du anvender, og alle midler er lovlige. <br />
+                  3.6. Alle betalinger skal foretages i god tro, og du må ikke forsøge at tilbageføre betalinger. <br />
+                  3.7. Ved væddemål kan du miste nogle eller alle indskudte midler og bærer fuldt ansvar. <br />
+                  3.8. Du må ikke bruge information opnået ulovligt i dit land. <br />
+                  3.9. Du handler alene for dig selv, ikke på vegne af andre eller kommercielt. <br />
+                  3.10. Du må ikke forsøge at manipulere markeder eller Tjenesten på en måde, der skader integriteten. <br />
+                  3.11. Du skal generelt handle i god tro for alle væddemål. <br />
+                  3.12. Du eller dine tilknyttede parter er ikke registreret som Affiliate i vores program. <br />
+                  3.13. Du accepterer kun at give korrekte og sande oplysninger til Goldbet. <br />
+                  3.14. Du accepterer prisvolatilitet på kryptomarkedet under behandling af udbetalinger. <br />
+                  3.15. Du er mentalt kompetent og uden spilafhængighed. <br />
+                  3.16. Du må ikke bruge tredjepartssoftware eller udnytte fejl i platformen. <br />
+                  3.17. Alle oplysninger givet under registrering og aftalens varighed skal være sande og korrekte. <br />
+                  3.17.1. For ændringer skal du kontakte support; Goldbet kan kræve KYC-dokumenter efter eget skøn. <br />
+                  3.18. Du må ikke bruge tjenesten fra jurisdiktioner, hvor spil online eller live-spil er forbudt. <br />
+                  3.19. Du garanterer også: <br />
+                  - At du deltager på egne vegne; <br />
+                  - At du selv er ansvarlig for rapportering og skat af gevinster; <br />
+                  - At du selv er ansvarlig for skat på kryptovaluta modtaget gennem tjenesten.`,
+  },
+  fi: {
+    termsTitle1: `Ehdot ja säännöt`,
+    termsParagraph1: `Nämä ehdot ja alla viitatut asiakirjat ("Ehdot") koskevat tämän verkkosivuston ("Verkkosivusto") 
+                  ja siihen liittyvien palveluiden ("Palvelu") käyttöä. Tarkista nämä ehdot huolellisesti, 
+                  sillä ne sisältävät tärkeää tietoa oikeuksistasi ja velvollisuuksistasi Verkkosivuston 
+                  käytössä ja muodostavat sitovan sopimuksen sinun (asiakas) ja meidän (Verkkosivusto) välille. 
+                  Käyttämällä tätä Verkkosivustoa ja/tai pääsemällä Palveluun, olitpa sitten vieras tai rekisteröitynyt käyttäjä (“Tili”), 
+                  hyväksyt nämä Ehdot ja mahdolliset muutokset, jotka voidaan julkaista ajoittain. 
+                  Jos et hyväksy Ehtoja, sinun tulee pidättäytyä Palvelun käytöstä ja Verkkosivuston käytöstä.`,
+    termsTitle2: `1. Yleiset ehdot`,
+    termsParagraph2: `Pidätämme oikeuden muuttaa ja päivittää Ehtoja (mukaan lukien viitattuja asiakirjoja) milloin tahansa. 
+                  Suosittelemme, että tarkistat tämän sivun säännöllisesti pysyäksesi ajan tasalla. 
+                  Muutokset tulevat voimaan heti niiden julkaisemisen jälkeen Verkkosivustolla. 
+                  Jos et hyväksy muutoksia, sinun tulee lopettaa Palvelun käyttö välittömästi. 
+                  Jatkamalla Verkkosivuston käyttöä muutosten julkaisun jälkeen vahvistat hyväksyntäsi. 
+                  Ennen muutosten voimaantuloa asettamattomat panokset noudattavat aiempia Ehtoja. 
+                  Jos Goldbetin ehdot päivittyvät, alusta ilmoittaa sinulle ja pyytää hyväksyntääsi.`,
+    termsTitle3: `2. Velvollisuutesi`,
+    termsParagraph3: `Vakuutat, että Verkkosivuston käytön ja Palvelun käytön aikana: <br />
+                  3.1. Olet vähintään 18-vuotias tai lain sallimassa iässä rahapelaamiseen tai pelitoimintaan. Voimme pyytää ikätodistuksen milloin tahansa. <br />
+                  3.2. Sinulla on oikeus tehdä sitovia sopimuksia. Älä käytä Verkkosivustoa tai Palvelua, jos sinulla ei ole oikeuskelpoisuutta. <br />
+                  3.3. Ymmärrät, että Verkkosivuston käyttö ja sen tarjoamat tuotteet voivat olla laittomia tietyissä maissa. Vastuu lainmukaisuuden tarkistamisesta on sinulla. Et saa avata tai käyttää tiliä rajoitetuissa maissa, mukaan lukien mutta ei rajoittuen: Afganistan, Algeria, Australia, Valko-Venäjä, Bahrain, Belgia, Bhutan, Brunei, Keski-Afrikan tasavalta, Tšekki, Kuuba, Pohjois-Korea, Tanska, Viro, Ranska, Saksa, Iran, Israel, Italia, Jordania, Kuwait, Latvia, Liettua, Malta, Myanmar, Alankomaat, Norja, Oman, Palestiina, Pakistan, Qatar, Venäjä, Saudi-Arabia, Serbia, Slovenia, Somalia, Espanja, Sveitsi, Yhdysvallat, UAE ja muut rajoitetut alueet. <br />
+                  3.4. Vastuu tarkistaa rahapelaamisen laillisuus omassa maassasi on sinulla. <br />
+                  3.5. Olet maksutavan valtuutettu käyttäjä, ja kaikki tililläsi olevat varat ovat laillisia. <br />
+                  3.6. Tee maksut vilpittömästi; älä yritä peruuttaa maksua tai aiheuttaa kolmannen osapuolen peruuttavan maksun. <br />
+                  3.7. Panoksia tehdessäsi voit menettää osan tai kaikki varat, ja olet vastuussa niistä. <br />
+                  3.8. Älä käytä tietoa, joka on hankittu lainvastaisesti maassa, jossa panos asetettiin. <br />
+                  3.9. Toimit vain omissa nimissäsi, et toisen henkilön tai kaupalliseen tarkoitukseen. <br />
+                  3.10. Älä yritä manipuloida palvelun markkinoita tai elementtejä vilpillisesti tai haitallisesti. <br />
+                  3.11. Toimi vilpittömästi kaikissa panoksissa. <br />
+                  3.12. Sinä tai edustajasi ette ole rekisteröityneet kumppaniohjelmaan. <br />
+                  3.13. Hyväksyt antavasi vain oikeita ja totuudenmukaisia tietoja pyydettäessä. <br />
+                  3.14. Ymmärrät kryptovaluuttamarkkinoiden volatiliteetin ja hyväksyt mahdolliset hintamuutokset nostoja odottaessasi. <br />
+                  3.15. Olet henkisesti kykenevä ja et kärsi rahapeliriippuvuudesta. <br />
+                  3.16. Älä käytä kolmannen osapuolen ohjelmistoja tai hyödynnä ohjelmointivirheitä. <br />
+                  3.17. Kaikkien antamiesi tietojen tulee olla oikeita ja ajan tasalla; ilmoita muutoksista välittömästi. <br />
+                  3.17.1. Ymmärrät, että rekisteröinnin ja palvelun käytön aikana antamiasi tietoja ei voi muuttaa itse. Muutoksista ota yhteys tukeen. Goldbet voi pyytää KYC-asiakirjoja oman harkintansa mukaan. <br />
+                  3.18. Älä käytä palvelua maassa, jossa online-rahapelaaminen tai kasinopelit ovat kiellettyjä. <br />
+                  3.19. Lisäksi vakuutat, että: <br />
+                  - Osallistut palveluihin vain omissa nimissäsi; <br />
+                  - Olet vastuussa kaikista voitoista mahdollisesti määräytyvistä veroista; <br />
+                  - Olet vastuussa kaikista kryptovaluutoista maksettavista veroista, jotka saat palvelun kautta.`,
+  },
+  bg: {
+    termsTitle1: `Правила и условия`,
+    termsParagraph1: `Тези правила и условия, както и документите, на които се позовават ("Условия"), 
+                  се прилагат за използването на настоящия уебсайт ("Уебсайт") и свързаните с него услуги 
+                  ("Услуга"). Моля, прочетете внимателно тези Условия, тъй като те съдържат важна информация 
+                  относно вашите права и задължения при използването на Уебсайта и формират 
+                  задължително правно споразумение между вас (клиентът) и нас (Уебсайтът). 
+                  Използвайки този Уебсайт и/или достъпвайки Услугата, независимо дали сте гост или 
+                  регистриран потребител с акаунт (“Акаунт”), вие се съгласявате да бъдете обвързани 
+                  с тези Условия, включително с всички изменения, публикувани от време на време. 
+                  Ако не приемате тези Условия, трябва да се въздържате от достъп до Услугата и използване на Уебсайта.`,
+    termsTitle2: `1. Общи условия`,
+    termsParagraph2: `Запазваме правото да променяме и актуализираме Условията (включително всички 
+                  документи, към които се прави препратка) по всяко време. Препоръчваме ви 
+                  периодично да проверявате тази страница, за да сте наясно с актуалните Условия. 
+                  Промените стават обвързващи и влизат в сила веднага след публикуването им на Уебсайта. 
+                  Ако сте против някоя от промените, трябва незабавно да прекратите използването на Услугата. 
+                  Продължаването на използването на Уебсайта след публикуване на промените означава, 
+                  че приемате новите Условия. Всякакви неприключени залози преди влизането в сила на 
+                  новите Условия ще се уреждат според предишните Условия. Ако Условията на Goldbet бъдат актуализирани, 
+                  платформата ще ви уведоми и ще поиска вашето съгласие.`,
+    termsTitle3: `2. Вашите задължения`,
+    termsParagraph3: `Вие потвърждавате, че при достъп до Уебсайта и използване на Услугата: <br />
+                  3.1. Вие сте на възраст над 18 години или достигнали законната възраст за участие в хазарт според законодателството на вашата юрисдикция. Можем да поискаме доказателство за възрастта по всяко време. <br />
+                  3.2. Вие имате правоспособност да сключвате задължаващи договори. Не трябва да използвате Уебсайта или Услугата, ако нямате такава правоспособност. <br />
+                  3.3. Разбирате, че достъпът и използването на Уебсайта и предлаганите продукти може да са незаконни в определени държави. Отговорността за проверка на законността е ваша. Не разрешаваме откриване или използване на акаунти от жители на определени юрисдикции, включително, но не само: Афганистан, Алжир, Австралия, Беларус, Бахрейн, Белгия, Бутан, Бруней, Централноафриканска република, Чехия, Куба, Северна Корея, Дания, Естония, Франция, Германия, Иран, Израел, Италия, Йордания, Кувейт, Латвия, Литва, Малта, Мианмар, Нидерландия, Норвегия, Оман, Палестина, Пакистан, Катар, Русия, Саудитска Арабия, Сърбия, Словения, Сомалия, Испания, Швейцария, САЩ, Обединени арабски емирства и други ограничения. <br />
+                  3.4. Отговорността за проверка на законността на хазарта във вашата юрисдикция е ваша. <br />
+                  3.5. Вие сте упълномощен потребител на платежния метод, който използвате, и всички средства са легални. <br />
+                  3.6. Всички плащания трябва да се извършват добросъвестно; не опитвайте да анулирате плащане или да предприемате действия, които биха го обърнали. <br />
+                  3.7. При залагане можете да загубите част или всички средства, депозирани в Услугата, и носите пълна отговорност за това. <br />
+                  3.8. Не използвайте информация, придобита в нарушение на закона в страната, в която сте били при залагането. <br />
+                  3.9. Действате само от свое име и не за други лица или комерсиални цели. <br />
+                  3.10. Не се опитвайте да манипулирате пазари или елементи на Услугата по начин, който застрашава нейния интегритет. <br />
+                  3.11. Действате добросъвестно при всички залози. <br />
+                  3.12. Вие или вашите представители не сте регистрирани като партньор в Affiliate програмата. <br />
+                  3.13. Съгласявате се да предоставяте само верни и точни данни по всяко време. <br />
+                  3.14. Разбирате волатилността на криптовалутния пазар и приемате възможността цената на вашата валута да се промени по време на обработка на тегления. <br />
+                  3.15. Вие сте психически компетентни и нямате хазартна зависимост. <br />
+                  3.16. Не използвайте софтуер на трети страни или се възползвайте от грешки в платформата. <br />
+                  3.17. Всички предоставени данни трябва да са верни и точни, уведомявайте за промени незабавно. <br />
+                  3.17.1. Разбирате, че данните, въведени при регистрация и по време на използване на услугата, не могат да бъдат променяни по ваше решение. За промяна се обърнете към поддръжката. Goldbet може да поиска документи за KYC на свое усмотрение. <br />
+                  3.18. Не използвайте услугата, ако се намирате в юрисдикция, където онлайн хазартът или казино игрите са забранени. <br />
+                  3.19. Освен това гарантирате: <br />
+                  - Участвате само от свое име; <br />
+                  - Вие сте отговорни за деклариране и плащане на данъци върху печалбите; <br />
+                  - Вие носите отговорност за данъци върху криптовалути, получени чрез услугата.`,
+  },
 };
