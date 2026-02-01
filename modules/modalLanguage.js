@@ -5,6 +5,7 @@ import { geoData } from "./geoLocation";
 import { availableLang } from "./language";
 import { settingBonusValueAndAmount } from "./settingBonusValue";
 import { countryCurrencyData } from "../public/data";
+import { getUrlParameter } from "./params";
 
 function updateContent(lang) {
   if (!availableLang.includes(lang)) {
@@ -21,8 +22,9 @@ function updateContent(lang) {
 const preferredLanguage = localStorage.getItem("preferredLanguage");
 
 function changeLanguage(lang) {
-  if (preferredLanguage) {
-    updateContent(preferredLanguage);
+  const urlLang = getUrlParameter("lang");
+  if (urlLang && modalTranslations[urlLang]) {
+    updateContent(urlLang);
   } else {
     if (modalTranslations[lang]) {
       updateContent(lang);
