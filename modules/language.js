@@ -31,7 +31,6 @@ export const availableLang = [
   "pt",
   "de",
   "kk",
-  "kg",
   "it",
   "hu",
   "ro",
