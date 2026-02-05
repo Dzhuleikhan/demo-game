@@ -13,19 +13,19 @@ jobs:
       fail-fast: false
       matrix:
         site:
-          # - goldbet.wiki
+          - goldbet.wiki
           - promogb.com
-          # - goldbet.website
-          # - goldbet.click
-          # - goldbetio.com
-          # - goldbet.sbs
-          # - goldbet.monster
-          # - goldbet.lol
-          # - goldbet.cam
-          # - goldbet.cfd
-          # - goldbet.cyou
-          # - goldbet.fun
-        vps: [PRIMA, ORANGE, NJAL]
+          - goldbet.website
+          - goldbet.click
+          - goldbetio.com
+          - goldbet.sbs
+          - goldbet.monster
+          - goldbet.lol
+          - goldbet.cam
+          - goldbet.cfd
+          - goldbet.cyou
+          - goldbet.fun
+        vps: [HOSTKEY, PRIMA, ORANGE, NJAL]
 
     steps:
       - name: Checkout code
