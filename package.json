@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "gsap": "^3.12.5",
+    "inputmask": "^5.0.9",
     "intl-tel-input": "^23.6.1"
   }
 }
