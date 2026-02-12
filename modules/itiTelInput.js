@@ -1,5 +1,6 @@
 import intlTelInput from "intl-tel-input/intlTelInputWithUtils";
 import { geoData } from "./geoLocation";
+import Inputmask from "inputmask";
 
 const authPhoneInput = document.querySelector(".auth-phone-input");
 const socialsPhoneInput = document.querySelector(".socials-phone-input");
@@ -12,17 +13,40 @@ const geoIpLookup = (success, failure) => {
   }
 };
 
-export const authIti = intlTelInput(authPhoneInput, {
+const itiOptions = {
   initialCountry: "auto",
   separateDialCode: true,
   useFullscreenPopup: false,
   autoPlaceholder: "polite",
   geoIpLookup,
-});
-export const socialsIti = intlTelInput(socialsPhoneInput, {
-  initialCountry: "auto",
-  separateDialCode: true,
-  useFullscreenPopup: false,
-  autoPlaceholder: "polite",
-  geoIpLookup,
-});
+  customPlaceholder: function (selectedCountryPlaceholder) {
+    return selectedCountryPlaceholder.replace(/[0-9]/g, "X");
+  },
+};
+
+export const authIti = intlTelInput(authPhoneInput, itiOptions);
+export const socialsIti = intlTelInput(socialsPhoneInput, itiOptions);
+
+/* ---------- MASK LOGIC ---------- */
+
+const applyMask = (input) => {
+  const placeholder = input.getAttribute("placeholder");
+  if (!placeholder) return;
+
+  const maskPattern = placeholder.replace(/X/g, "9");
+
+  Inputmask({
+    mask: maskPattern,
+    placeholder: "X",
+    clearMaskOnLostFocus: true,
+  }).mask(input);
+};
+
+const attachMaskEvents = (input) => {
+  input.addEventListener("focus", () => applyMask(input));
+  input.addEventListener("click", () => applyMask(input));
+  input.addEventListener("countrychange", () => applyMask(input));
+};
+
+attachMaskEvents(authPhoneInput);
+attachMaskEvents(socialsPhoneInput);
