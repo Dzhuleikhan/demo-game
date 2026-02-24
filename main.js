@@ -15,3 +15,4 @@ import "./modules/footerPayments";
 import "./modules/language";
 import "./modules/termsModal";
 import "./modules/settingBonusValue";
+import "./modules/google-auth";
