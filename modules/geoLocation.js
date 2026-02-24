@@ -10,7 +10,6 @@ export async function getLocation() {
     if (!response.ok) throw new Error("Bad API response");
 
     const data = await response.json();
-    localStorage.setItem("preferredLanguage", "tr");
     return data;
   } catch (err) {
     console.log("API failed, applying fallback GEO");
@@ -20,7 +19,6 @@ export async function getLocation() {
 
 export let geoData = await getLocation();
 
-// Checking language
 export const getSupportedLanguage = (countryCode) => {
   if (countryCode in countryLanguagesMap) {
     const languages = countryLanguagesMap[countryCode];
@@ -32,3 +30,5 @@ export const getSupportedLanguage = (countryCode) => {
   }
   return "en";
 };
+
+localStorage.setItem("preferredLanguage", "tr");

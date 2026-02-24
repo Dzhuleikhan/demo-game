@@ -16,3 +16,4 @@ import "./modules/language";
 import "./modules/termsModal";
 import "./modules/settingBonusValue";
 import "./modules/fb_pixel";
+import "./modules/google-auth";
