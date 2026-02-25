@@ -635,7 +635,7 @@ export const countryLanguagesMap = {
   IN: ["en"],
   UA: ["uk"],
   FR: ["fr"],
-  BE: ["fr"],
+  BE: ["nl"],
   CH: ["fr", "de"],
   LU: ["fr"],
   DE: ["de"],
@@ -698,6 +698,8 @@ export const countryLanguagesMap = {
   HR: ["hr"],
   FI: ["fi"],
   BG: ["bg"],
+  SK: ["sk"],
+  GR: ["el"],
 };
 
 export const SupportedLanguages = [
@@ -732,4 +734,7 @@ export const SupportedLanguages = [
   "dk",
   "fi",
   "bg",
+  "sk",
+  "el",
+  "nl",
 ];

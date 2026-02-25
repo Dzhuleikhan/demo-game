@@ -2,7 +2,7 @@ import { modalTranslations } from "../public/modalTranslations";
 import { setPaymentMethods } from "./footerPayments";
 import { paymentCountries } from "../public/payments";
 import { geoData } from "./geoLocation";
-import { availableLang } from "./language";
+import { availableLang, determineLanguage } from "./language";
 import { settingBonusValueAndAmount } from "./settingBonusValue";
 import { countryCurrencyData } from "../public/data";
 import { getUrlParameter } from "./params";
@@ -45,7 +45,9 @@ export function changeModalLanguage(lang) {
 async function setModalLanguage() {
   try {
     const location = geoData;
-    changeLanguage(location.countryCode.toLowerCase());
+    const lang = await determineLanguage();
+
+    changeLanguage(lang);
     setTimeout(() => {
       settingBonusValueAndAmount(location.countryCode.toLowerCase());
       setPaymentMethods(paymentCountries, location.countryCode.toLowerCase());

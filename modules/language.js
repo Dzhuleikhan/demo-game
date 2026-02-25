@@ -44,9 +44,13 @@ export const availableLang = [
   "dk",
   "fi",
   "bg",
+  "sk",
+  "sl",
+  "el",
+  "nl",
 ];
 
-async function determineLanguage() {
+export async function determineLanguage() {
   const location = geoData;
 
   const countryLangMap = {
@@ -76,6 +80,12 @@ async function determineLanguage() {
     FI: "fi",
     DK: "dk",
     BG: "bg",
+    SK: "sk",
+    SI: "sl",
+    GR: "el",
+    AT: "de",
+    CH: "de",
+    BE: "nl",
   };
   lang = countryLangMap[location.countryCode] || "en";
 
