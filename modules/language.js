@@ -84,8 +84,8 @@ export async function determineLanguage() {
     SI: "sl",
     GR: "el",
     AT: "de",
-    CH: "de",
-    BE: "nl",
+    CH: "fr",
+    BE: "fr",
   };
   lang = countryLangMap[location.countryCode] || "en";
 
