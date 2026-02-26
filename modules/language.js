@@ -1,15 +1,25 @@
-import { geoData } from "./geoLocation";
+import { geoData, language } from "./geoLocation";
 import { translations } from "/public/translations";
 import gsap from "gsap";
 import { setNewBonusBasedOnParams } from "./formSocials";
-
-let lang;
+import { SupportedLanguages } from "../public/data";
+import { modalTranslations } from "../public/modalTranslations";
+import { settingBonusValueAndAmount } from "./settingBonusValue";
+import { setPaymentMethods } from "./footerPayments";
+import { paymentCountries } from "../public/payments";
 
 function updateContent(lang) {
-  const elements = document.querySelectorAll("[data-translate]");
-  elements.forEach((element) => {
+  const contentElements = document.querySelectorAll("[data-translate]");
+  contentElements.forEach((element) => {
     const key = element.getAttribute("data-translate");
     element.innerHTML = translations[lang][key];
+  });
+
+  const modalElements = document.querySelectorAll("[data-modal-translate]");
+  modalElements.forEach((element) => {
+    const key = element.getAttribute("data-modal-translate");
+    element.innerHTML =
+      modalTranslations[lang][key] || modalTranslations["en"][key];
   });
 }
 
@@ -17,93 +27,51 @@ function changeLanguage(lang) {
   updateContent(lang);
 }
 
-export const availableLang = [
-  "en",
-  "es",
-  "fr",
-  "az",
-  "uz",
-  "uk",
-  "ru",
-  "bd",
-  "tr",
-  "id",
-  "pt",
-  "de",
-  "kk",
-  "kg",
-  "it",
-  "hu",
-  "ro",
-  "pl",
-  "cs",
-  "ee",
-  "lv",
-  "lt",
-  "hr",
-  "dk",
-  "fi",
-  "bg",
-  "sk",
-  "sl",
-  "el",
-  "nl",
-];
+function getInitialLanguage(country, fallbackLang) {
+  const browserLang = navigator.language.split("-")[0];
+  const supportedLang = SupportedLanguages.includes(browserLang)
+    ? browserLang
+    : fallbackLang;
 
-export async function determineLanguage() {
-  const location = geoData;
-
-  const countryLangMap = {
-    EN: "en",
-    ES: "es",
-    FR: "fr",
-    AZ: "az",
-    UZ: "uz",
-    UA: "uk",
-    RU: "ru",
-    BD: "bd",
-    TR: "tr",
-    ID: "id",
-    PT: "pt",
-    DE: "de",
-    KZ: "kk",
-    KG: "kg",
-    IT: "it",
-    HU: "hu",
-    RO: "ro",
-    PL: "pl",
-    CZ: "cs",
-    EE: "ee",
-    LV: "lv",
-    LT: "lt",
-    HR: "hr",
-    FI: "fi",
-    DK: "dk",
-    BG: "bg",
-    SK: "sk",
-    SI: "sl",
-    GR: "el",
-    AT: "de",
-    CH: "fr",
-    BE: "fr",
-  };
-  lang = countryLangMap[location.countryCode] || "en";
-
-  return lang;
-}
-
-async function mainFunction() {
-  try {
-    lang = await determineLanguage();
-
-    changeLanguage(lang);
-    document.querySelector(".wrapper").classList.remove("hidden");
-    setTimeout(() => {
-      setNewBonusBasedOnParams();
-    }, 500);
-  } catch (error) {
-    console.error("Error determining language:", error);
+  if (country === "BE") {
+    if (supportedLang && browserLang !== "nl") {
+      return browserLang;
+    }
+    return "en";
   }
+  if (country === "CH") {
+    return supportedLang ?? "de";
+  }
+  if (country === "CA") {
+    return supportedLang ?? "en";
+  }
+  if (country === "CA") {
+    return supportedLang ?? "en";
+  }
+  if (country === "CY") {
+    return supportedLang ?? "el";
+  }
+  if (country === "LU") {
+    return supportedLang ?? "fr";
+  }
+  if (country === "EE") {
+    return supportedLang ?? "et";
+  }
+
+  return fallbackLang;
 }
-mainFunction();
+
+async function initLanguage() {
+  const initialLang = getInitialLanguage(geoData.countryCode, language);
+  changeLanguage(initialLang);
+
+  document.querySelector(".wrapper").classList.remove("hidden");
+  setTimeout(() => {
+    setNewBonusBasedOnParams();
+    settingBonusValueAndAmount(geoData.countryCode.toLowerCase());
+    setPaymentMethods(paymentCountries, geoData.countryCode.toLowerCase());
+  }, 500);
+}
+initLanguage();
+
 gsap.to(".preloader", { opacity: 0, duration: 0.5, delay: 1.5 });

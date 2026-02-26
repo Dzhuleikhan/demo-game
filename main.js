@@ -9,7 +9,6 @@ import "./modules/formAuth";
 import "./modules/formSocials";
 import "./modules/modalCurrency";
 import "./modules/params";
-import "./modules/modalLanguage";
 import "./modules/fetchingDomain";
 import "./modules/footerPayments";
 import "./modules/language";

@@ -991,7 +991,7 @@ export const modalTranslations = {
     step2Subtitle: `Vytvořte heslo a vyberte <br /> měnu účtu.`,
     passwordPlaceholder: "Heslo",
   },
-  ee: {
+  et: {
     // ? AUTH
     mainModalTitle: "registreeri",
     tabEmail: "E-post",

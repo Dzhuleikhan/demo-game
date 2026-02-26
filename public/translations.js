@@ -1504,7 +1504,7 @@ export const translations = {
                       - Sami odpovídáte za veškeré daně z kryptoměn, které vám byly uděleny
                       prostřednictvím používání Služby.`,
   },
-  ee: {
+  et: {
     termsTitle1: `Kasutustingimused`,
     termsParagraph1: `Need kasutustingimused ja allpool viidatud dokumendid
                       ("Tingimused") kehtivad selle veebisaidi ("Veebisait") ja sellega seotud või ühendatud teenuste
