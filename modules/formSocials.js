@@ -2,7 +2,11 @@ import gsap from "gsap";
 import horizontalLoop from "./marquee";
 import { Power1 } from "gsap";
 import { socialsIti } from "./itiTelInput.js";
-import { getUrlParameter, removeUrlParameter } from "./params.js";
+import {
+  getUrlParameter,
+  removeUrlParameter,
+  addUrlParameter,
+} from "./params.js";
 import { hiddenSelect } from "./hiddenSelect.js";
 import { newDomain } from "./fetchingDomain.js";
 import { checkTir1CurrencyMatch } from "./modalCurrency.js";
@@ -10,11 +14,67 @@ import { getSupportedLanguage } from "./geoLocation.js";
 
 // | SHOWING BONUS BASED ON PARAMS
 
+const bonusSumAndWager = [
+  { currency: "EUR", amount: 10 },
+  { currency: "USD", amount: 10 },
+  { currency: "CAD", amount: 15 },
+  { currency: "NZD", amount: 20 },
+  { currency: "AUD", amount: 15 },
+  { currency: "ARS", amount: 14000 },
+  { currency: "COP", amount: 36800 },
+  { currency: "CLP", amount: 10000 },
+  { currency: "MXN", amount: 200 },
+  { currency: "BRL", amount: 60 },
+  { currency: "TRY", amount: 450 },
+  { currency: "INR", amount: 950 },
+  { currency: "AZN", amount: 20 },
+  { currency: "UZS", amount: 121800 },
+  { currency: "IDR", amount: 169500 },
+  { currency: "UAH", amount: 450 },
+  { currency: "BDT", amount: 1300 },
+  { currency: "KGS", amount: 900 },
+  { currency: "KZT", amount: 4850 },
+  { currency: "HUF", amount: 3500 },
+  { currency: "DKK", amount: 70 },
+  { currency: "CHF", amount: 10 },
+  { currency: "NOK", amount: 100 },
+  { currency: "PLN", amount: 50 },
+  { currency: "RON", amount: 50 },
+  { currency: "CZK", amount: 200 },
+  { currency: "ZAR", amount: 200 },
+  { currency: "XOF", amount: 6000 },
+  { currency: "XAF", amount: 5700 },
+  { currency: "GHS", amount: 100 },
+  { currency: "EGP", amount: 550 },
+  { currency: "ZMW", amount: 200 },
+  { currency: "KES", amount: 1500 },
+  { currency: "MAD", amount: 100 },
+  { currency: "NGN", amount: 15000 },
+  { currency: "RWF", amount: 15000 },
+  { currency: "TZS", amount: 25000 },
+  { currency: "UGX", amount: 40000 },
+  { currency: "SLL", amount: 250 },
+];
+
+function getAmountForCurrency(currencyCode) {
+  const item = bonusSumAndWager.find((p) => p.currency === currencyCode);
+  return item ? item.amount : 20;
+}
+
+function getCurrencyOrDefault(currencyCode) {
+  const exists = bonusSumAndWager.some((p) => p.currency === currencyCode);
+  return exists ? currencyCode : "EUR";
+}
+
 const landType = getUrlParameter("landType");
 
-export function setNewBonusBasedOnParams() {
+export function setNewBonusBasedOnParams(currencyCode) {
   if (landType) {
     if (landType === "ndb") {
+      addUrlParameter("currency", getCurrencyOrDefault(currencyCode));
+      addUrlParameter("sumAmount", getAmountForCurrency(currencyCode));
+      addUrlParameter("wager", 20);
+
       const bonusSumAmount = document.querySelector(".bonus-sum-amount");
       const bonusSumCurrency = document.querySelector(".bonus-sum-currency");
       const bonusSumWager = document.querySelector(".bonus-sum-wager");
@@ -29,8 +89,8 @@ export function setNewBonusBasedOnParams() {
       document.querySelector(".bonus-input-current").classList.add("hidden");
       document.querySelector(".bonus-input-dynamic").classList.remove("hidden");
 
-      bonusSumAmount.textContent = sumAmount || "275";
-      bonusSumCurrency.textContent = currency || "CZK";
+      bonusSumAmount.textContent = sumAmount;
+      bonusSumCurrency.textContent = currency;
 
       document.querySelector(".bonus-subtext-current").classList.add("hidden");
 

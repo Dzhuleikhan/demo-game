@@ -21,17 +21,12 @@ export const availableLang = [
   "en",
   "es",
   "fr",
-  "az",
-  "uz",
   "uk",
   "ru",
   "bd",
-  "tr",
   "id",
   "pt",
   "de",
-  "kk",
-  "kg",
   "it",
   "hu",
   "ro",
@@ -44,6 +39,9 @@ export const availableLang = [
   "dk",
   "fi",
   "bg",
+  "sw",
+  "rw",
+  "ar",
 ];
 
 async function determineLanguage() {
@@ -53,17 +51,12 @@ async function determineLanguage() {
     EN: "en",
     ES: "es",
     FR: "fr",
-    AZ: "az",
-    UZ: "uz",
     UA: "uk",
     RU: "ru",
     BD: "bd",
-    TR: "tr",
     ID: "id",
     PT: "pt",
     DE: "de",
-    KZ: "kk",
-    KG: "kg",
     IT: "it",
     HU: "hu",
     RO: "ro",
@@ -76,6 +69,27 @@ async function determineLanguage() {
     FI: "fi",
     DK: "dk",
     BG: "bg",
+    KE: "sw",
+    TZ: "sw",
+    UG: "sw",
+    RW: "rw",
+    SA: "ar",
+    EG: "ar",
+    AE: "ar",
+    IQ: "ar",
+    JO: "ar",
+    KW: "ar",
+    QA: "ar",
+    BH: "ar",
+    OM: "ar",
+    YE: "ar",
+    LB: "ar",
+    SY: "ar",
+    LY: "ar",
+    SD: "ar",
+    TN: "ar",
+    DZ: "ar",
+    MA: "ar",
   };
   lang = countryLangMap[location.countryCode] || "en";
 
@@ -88,8 +102,13 @@ async function mainFunction() {
 
     changeLanguage(lang);
     document.querySelector(".wrapper").classList.remove("hidden");
+
+    let currencyStoredData = localStorage.getItem("currencyData");
+    let currencyData = JSON.parse(currencyStoredData);
+    let currency = currencyData.abbr;
+
     setTimeout(() => {
-      setNewBonusBasedOnParams();
+      setNewBonusBasedOnParams(currency);
     }, 500);
   } catch (error) {
     console.error("Error determining language:", error);

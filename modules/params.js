@@ -129,7 +129,7 @@ if (bonus) {
 }
 
 // Function to add a parameter to the URL
-function addUrlParameter(key, value) {
+export function addUrlParameter(key, value) {
   var url = new URL(window.location.href);
   url.searchParams.set(key, value);
   window.history.pushState({ path: url.href }, "", url.href);
