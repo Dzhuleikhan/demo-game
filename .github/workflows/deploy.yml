@@ -3,7 +3,7 @@ name: Deploy to VPS Servers
 on:
   push:
     branches:
-      - ndb_multigeo_standart_reg_fixed
+      - ndb_multigeo_standart_reg_fixed_10
 
 jobs:
   deploy:
@@ -65,4 +65,4 @@ jobs:
           username: ${{ secrets[format('FTP_USER_{0}', matrix.vps)] }}
           password: ${{ secrets[format('FTP_PASSWORD_{0}', matrix.vps)] }}
           local-dir: ./dist/
-          server-dir: /www/${{ matrix.site }}/goldbet/ndb/multigeo/
+          server-dir: /www/${{ matrix.site }}/goldbet/ndb/multigeo/10dollars/
