@@ -2,7 +2,7 @@
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  base: "https://landing-res.b-cdn.net/goldbet/ndb/",
+  base: "",
   esbuild: {
     supported: {
       "top-level-await": true,
