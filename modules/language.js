@@ -89,6 +89,7 @@ async function mainFunction() {
     lang = await determineLanguage();
 
     changeLanguage(lang);
+    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
     document.querySelector(".wrapper").classList.remove("hidden");
 
     let currencyStoredData = localStorage.getItem("currencyData");
