@@ -45,7 +45,7 @@ export function changeModalLanguage(lang) {
 async function setModalLanguage() {
   try {
     const location = geoData;
-    changeLanguage(location.countryCode.toLowerCase());
+    changeLanguage(localStorage.getItem("preferredLanguage") || location.countryCode.toLowerCase());
     setPaymentMethods(paymentCountries, location.countryCode.toLowerCase());
     settingBonusValueAndAmount(location.countryCode.toLowerCase());
   } catch (error) {
