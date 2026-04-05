@@ -4,12 +4,17 @@ import { paymentCountries } from "../public/payments";
 import { geoData } from "./geoLocation";
 import { availableLang } from "./language";
 import { settingBonusValueAndAmount } from "./settingBonusValue";
-import { countryCurrencyData } from "../public/data";
+
+function applyDirection(lang) {
+  document.documentElement.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
+  document.documentElement.setAttribute("lang", lang);
+}
 
 function updateContent(lang) {
   if (!availableLang.includes(lang)) {
     lang = "en";
   }
+  applyDirection(lang);
   const elements = document.querySelectorAll("[data-modal-translate]");
   elements.forEach((element) => {
     const key = element.getAttribute("data-modal-translate");

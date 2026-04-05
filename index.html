@@ -218,7 +218,7 @@
       </select> -->
         <!-- auth main -->
         <div
-          class="modal-content active modal-content-main hidden min-h-[700px] w-full max-w-[722px] grid-cols-[1fr_400px] rounded-2xl border border-white/10 bg-window1 tbl:min-w-max tbl:max-w-[500px] tbl:grid-cols-1 mobile:h-full mobile:min-h-[unset] mobile:w-full mobile:rounded-none mobile:border-none [&.active]:grid"
+          class="modal-content active modal-content-main hidden min-h-[700px] w-full max-w-[722px] grid-cols-[1fr_400px] overflow-hidden rounded-2xl border border-white/10 bg-window1 tbl:min-w-max tbl:max-w-[500px] tbl:grid-cols-1 mobile:h-full mobile:min-h-[unset] mobile:w-full mobile:rounded-none mobile:border-none [&.active]:grid"
         >
           <!-- left -->
           <div
@@ -428,7 +428,7 @@
                   class="relative flex items-center justify-center gap-1 overflow-hidden border-b-2 border-borderColor px-[11px] py-[10px] text-sm font-bold leading-[186%] text-white"
                 >
                   <svg
-                    class="fill-white"
+                    class="shrink-0 fill-white"
                     width="25"
                     height="24"
                     viewBox="0 0 25 24"
@@ -1153,7 +1153,8 @@
                         />
                       </svg>
                       <input
-                        class="w-full bg-transparent font-bold text-white outline-none placeholder:text-white/50"
+                        dir="ltr"
+                        class="w-full bg-transparent font-bold text-white outline-none placeholder:text-white/50 rtl:text-right"
                         name="email"
                         type="email"
                         placeholder="E-mail"
@@ -1216,18 +1217,19 @@
                         />
                       </svg>
                       <input
-                        class="auth-password-input bg-transparent font-bold text-white outline-none placeholder:text-white/50"
+                        dir="ltr"
+                        class="auth-password-input bg-transparent font-bold text-white outline-none placeholder:text-white/50 rtl:text-right"
                         name="password"
                         type="password"
                         placeholder=" "
                       />
                       <span
                         data-modal-translate="passwordPlaceholder"
-                        class="password-placeholder pointer-events-none absolute left-[45px] font-bold text-white/50"
+                        class="password-placeholder pointer-events-none absolute left-[45px] font-bold text-white/50 rtl:left-auto rtl:right-[45px]"
                         >Password</span
                       >
                       <div
-                        class="password-cta validation-cta absolute right-3 top-1/2 flex -translate-y-1/2 items-center gap-2"
+                        class="password-cta validation-cta absolute right-3 top-1/2 flex -translate-y-1/2 items-center gap-2 rtl:left-3 rtl:right-auto"
                       >
                         <div
                           data-modal-translate="wrongPassword"
@@ -1452,15 +1454,16 @@
                           />
                         </svg>
                         <input
+                          dir="ltr"
                           value=""
-                          class="auth-promocode-input promocode-input w-full bg-transparent font-bold outline-none placeholder:text-white/50"
+                          class="auth-promocode-input promocode-input w-full bg-transparent font-bold outline-none placeholder:text-white/50 rtl:text-right"
                           name="promocode"
                           type="text"
                           placeholder=" "
                         />
                         <span
                           data-modal-translate="promocodePlaceholder"
-                          class="pointer-events-none absolute left-[45px] font-bold text-white/50"
+                          class="pointer-events-none absolute left-[45px] font-bold text-white/50 rtl:left-auto rtl:right-[45px]"
                           >Promo-Code</span
                         >
                         <svg
@@ -1575,7 +1578,7 @@
                       />
                       <span
                         data-modal-translate="terms"
-                        class="checkbox-content relative block pl-7 text-sm font-bold leading-[186%] text-darkGray"
+                        class="checkbox-content relative block pl-7 text-sm font-bold leading-[186%] text-darkGray rtl:pr-7"
                       >
                         I agree to the
                         <a
@@ -2238,11 +2241,12 @@
                       </div>
                     </div>
                     <!-- Telephone -->
-                    <div class="auth-form-phone relative w-full">
+                    <div class="auth-form-phone relative w-full" dir="ltr">
                       <input
                         name="phone"
                         class="phone-input auth-phone-input w-full bg-transparent text-white"
                         type="tel"
+                        dir="ltr"
                       />
                       <div
                         class="form-phone-cta validation-cta absolute right-3 top-[13px] hidden"
@@ -2304,18 +2308,19 @@
                         />
                       </svg>
                       <input
-                        class="auth-password-input bg-transparent font-bold text-white outline-none placeholder:text-white/50"
+                        dir="ltr"
+                        class="auth-password-input bg-transparent font-bold text-white outline-none placeholder:text-white/50 rtl:text-right"
                         name="password"
                         type="password"
                         placeholder=" "
                       />
                       <span
                         data-modal-translate="passwordPlaceholder"
-                        class="password-placeholder pointer-events-none absolute left-[45px] font-bold text-white/50"
+                        class="password-placeholder pointer-events-none absolute left-[45px] font-bold text-white/50 rtl:left-auto rtl:right-[45px]"
                         >Password</span
                       >
                       <div
-                        class="password-cta validation-cta absolute right-3 top-1/2 flex -translate-y-1/2 items-center gap-2"
+                        class="password-cta validation-cta absolute right-3 top-1/2 flex -translate-y-1/2 items-center gap-2 rtl:left-3 rtl:right-auto"
                       >
                         <div
                           data-modal-translate="wrongPassword"
@@ -2540,15 +2545,16 @@
                           />
                         </svg>
                         <input
+                          dir="ltr"
                           value=""
-                          class="auth-promocode-input w-full bg-transparent font-bold outline-none placeholder:text-white/50"
+                          class="auth-promocode-input w-full bg-transparent font-bold outline-none placeholder:text-white/50 rtl:text-right"
                           name="promocode"
                           type="text"
                           placeholder=" "
                         />
                         <span
                           data-modal-translate="promocodePlaceholder"
-                          class="pointer-events-none absolute left-[45px] font-bold text-white/50"
+                          class="pointer-events-none absolute left-[45px] font-bold text-white/50 rtl:left-auto rtl:right-[45px]"
                           >Promo-Code</span
                         >
                         <svg
@@ -2663,7 +2669,7 @@
                       />
                       <span
                         data-modal-translate="terms"
-                        class="checkbox-content relative block pl-7 text-sm font-bold leading-[186%] text-darkGray"
+                        class="checkbox-content relative block pl-7 text-sm font-bold leading-[186%] text-darkGray rtl:pl-0 rtl:pr-7"
                       >
                         I agree to the
                         <a
@@ -3617,15 +3623,16 @@
                           />
                         </svg>
                         <input
+                          dir="ltr"
                           value=""
-                          class="auth-promocode-input promocode-input w-full bg-transparent font-bold outline-none placeholder:text-white/50"
+                          class="auth-promocode-input promocode-input w-full bg-transparent font-bold outline-none placeholder:text-white/50 rtl:text-right"
                           name="promocode"
                           type="text"
                           placeholder=" "
                         />
                         <span
                           data-modal-translate="promocodePlaceholder"
-                          class="pointer-events-none absolute left-[45px] font-bold text-white/50"
+                          class="pointer-events-none absolute left-[45px] font-bold text-white/50 rtl:left-auto rtl:right-[45px]"
                           >Promo-Code</span
                         >
                         <svg
@@ -3747,7 +3754,7 @@
                       />
                       <span
                         data-modal-translate="terms"
-                        class="checkbox-content relative block pl-7 text-sm font-bold leading-[186%] text-darkGray"
+                        class="checkbox-content relative block pl-7 text-sm font-bold leading-[186%] text-darkGray rtl:pl-0 rtl:pr-7"
                       >
                         I agree to the
                         <a
@@ -4571,15 +4578,16 @@
                           />
                         </svg>
                         <input
+                          dir="ltr"
                           value=""
-                          class="promocode-input auth-promocode-input w-full bg-transparent font-bold outline-none placeholder:text-white/50"
+                          class="promocode-input auth-promocode-input w-full bg-transparent font-bold outline-none placeholder:text-white/50 rtl:text-right"
                           name="promocode"
                           type="text"
                           placeholder=" "
                         />
                         <span
                           data-modal-translate="promocodePlaceholder"
-                          class="pointer-events-none absolute left-[45px] font-bold text-white/50"
+                          class="pointer-events-none absolute left-[45px] font-bold text-white/50 rtl:left-auto rtl:right-[45px]"
                           >Promo-Code</span
                         >
                         <svg
@@ -4694,7 +4702,7 @@
                       />
                       <span
                         data-modal-translate="terms"
-                        class="checkbox-content relative block pl-7 text-sm font-bold leading-[186%] text-darkGray"
+                        class="checkbox-content relative block pl-7 text-sm font-bold leading-[186%] text-darkGray rtl:pl-0 rtl:pr-7"
                       >
                         I agree to the
                         <a
@@ -4718,7 +4726,7 @@
         </div>
         <!-- auth social -->
         <div
-          class="modal-content modal-content-authSocial hidden min-h-[700px] w-full max-w-[722px] grid-cols-[1fr_400px] rounded-2xl border border-white/10 bg-window1 tbl:min-w-max tbl:max-w-[500px] tbl:grid-cols-1 mobile:h-full mobile:min-h-[unset] mobile:w-full mobile:rounded-none mobile:border-none [&.active]:grid"
+          class="modal-content modal-content-authSocial hidden min-h-[700px] w-full max-w-[722px] grid-cols-[1fr_400px] overflow-hidden rounded-2xl border border-white/10 bg-window1 tbl:min-w-max tbl:max-w-[500px] tbl:grid-cols-1 mobile:h-full mobile:min-h-[unset] mobile:w-full mobile:rounded-none mobile:border-none [&.active]:grid"
         >
           <!-- left -->
           <div
@@ -5823,15 +5831,15 @@
                           />
                         </svg>
                         <input
+                          dir="ltr"
                           value=""
-                          class="promocode-input auth-promocode-input w-full bg-transparent font-bold outline-none placeholder:text-white/50"
+                          class="promocode-input auth-promocode-input w-full bg-transparent font-bold outline-none placeholder:text-white/50 rtl:text-right"
                           name="promocode"
                           type="text"
-                          placeholder="Promo-Code"
                         />
                         <span
                           data-modal-translate="promocodePlaceholder"
-                          class="pointer-events-none absolute left-[45px] font-bold text-white/50"
+                          class="pointer-events-none absolute left-[45px] font-bold text-white/50 rtl:left-auto rtl:right-[45px]"
                           >Promo-Code</span
                         >
                         <svg
@@ -5953,7 +5961,7 @@
                       />
                       <span
                         data-modal-translate="terms"
-                        class="checkbox-content relative block pl-7 text-sm font-bold leading-[186%] text-darkGray"
+                        class="checkbox-content relative block pl-7 text-sm font-bold leading-[186%] text-darkGray rtl:pl-0 rtl:pr-7"
                       >
                         I agree to the
                         <a
@@ -6262,19 +6270,20 @@
                       class="socials-form-group active socials-form-group-email relative h-[64px] items-end rounded-xl bg-white px-5 pb-[11px]"
                     >
                       <input
-                        class="email-input w-full bg-transparent text-lg font-bold tracking-tight text-[#755EEB] outline-none"
+                        dir="ltr"
+                        class="email-input w-full bg-transparent text-lg font-bold tracking-tight text-[#755EEB] outline-none rtl:text-right"
                         type="email"
                         id="form-email"
                         placeholder=" "
                         name="email"
                       />
                       <label
-                        class="pointer-events-none absolute left-5 top-0 z-[2] flex h-full w-full items-center text-lg font-bold tracking-tight text-[#585858]"
+                        class="pointer-events-none absolute left-5 top-0 z-[2] flex h-full w-full items-center text-lg font-bold tracking-tight text-[#585858] rtl:left-auto rtl:right-5"
                         for="form-email"
                         >E-mail</label
                       >
                       <svg
-                        class="not-valid-icon absolute right-5 top-1/2 hidden -translate-y-1/2"
+                        class="not-valid-icon absolute right-5 top-1/2 hidden -translate-y-1/2 rtl:left-5 rtl:right-auto"
                         width="32"
                         height="32"
                         viewBox="0 0 32 32"
@@ -6291,23 +6300,25 @@
                       </svg>
                       <div
                         data-modal-translate="wrongEmail"
-                        class="tooltip absolute -right-4 bottom-[90%] z-30 hidden rounded-md bg-[#f0f0f0] px-2 py-[6px] text-sm font-normal leading-[120%] text-[#0f0f0f]"
+                        class="tooltip absolute -right-4 bottom-[90%] z-30 hidden rounded-md bg-[#f0f0f0] px-2 py-[6px] text-sm font-normal leading-[120%] text-[#0f0f0f] rtl:-left-8 rtl:right-auto"
                       >
                         Wrong email
                       </div>
                     </div>
                     <div
                       class="socials-form-group socials-form-group-phone relative h-[64px] flex-col gap-[5px] rounded-xl bg-white px-3 py-[10px]"
+                      dir="ltr"
                     >
                       <span
                         data-modal-translate="phoneNumber"
-                        class="block text-xs font-bold leading-none tracking-tight text-[#585858]"
+                        class="block text-xs font-bold leading-none tracking-tight text-[#585858] rtl:text-right"
                         >Phone Number</span
                       >
                       <input
                         class="phone-input socials-phone-input bg-transparent text-lg font-bold tracking-tight text-[#755EEB] outline-none"
                         type="phone"
                         name="phone"
+                        dir="ltr"
                       />
                       <svg
                         class="not-valid-icon absolute right-5 top-1/2 hidden -translate-y-1/2"
@@ -6340,7 +6351,7 @@
                   >
                     <span data-modal-translate="signUpBtn">Sign Up</span>
                     <svg
-                      class="pointer-events-none"
+                      class="pointer-events-none rtl:rotate-180"
                       width="24"
                       height="24"
                       viewBox="0 0 24 24"
@@ -6388,13 +6399,14 @@
                       >Password</span
                     >
                     <input
-                      class="password-input mt-1 bg-transparent text-lg font-bold tracking-tight text-[#755EEB] outline-none placeholder:text-[#755eeb]/30"
+                      dir="ltr"
+                      class="password-input mt-1 bg-transparent text-lg font-bold tracking-tight text-[#755EEB] outline-none placeholder:text-[#755eeb]/30 rtl:text-right"
                       type="password"
                       placeholder=""
                       name="password"
                     />
                     <svg
-                      class="not-valid-icon absolute right-[57px] top-1/2 hidden -translate-y-1/2"
+                      class="not-valid-icon absolute right-[57px] top-1/2 hidden -translate-y-1/2 rtl:left-[57px] rtl:right-auto"
                       width="32"
                       height="32"
                       viewBox="0 0 32 32"
@@ -6410,7 +6422,7 @@
                       />
                     </svg>
                     <img
-                      class="show-password-btn absolute right-5 top-1/2 -translate-y-1/2 cursor-pointer"
+                      class="show-password-btn absolute right-5 top-1/2 -translate-y-1/2 cursor-pointer rtl:left-5 rtl:right-auto"
                       width="32"
                       height="32"
                       src="https://3344112-img.b-cdn.net/graphic/landings/socialsFormImages/password-invisible.svg"
@@ -6418,7 +6430,7 @@
                     />
                     <div
                       data-modal-translate="atLeast6Chars"
-                      class="tooltip pointer-events-none absolute -right-2 bottom-[90%] z-30 hidden rounded-md bg-[#f0f0f0] px-2 py-[6px] text-sm font-normal leading-[120%] text-[#0f0f0f]"
+                      class="tooltip pointer-events-none absolute -right-2 bottom-[90%] z-30 hidden rounded-md bg-[#f0f0f0] px-2 py-[6px] text-sm font-normal leading-[120%] text-[#0f0f0f] rtl:left-6 rtl:right-auto"
                     >
                       At least 6 characters.
                     </div>
@@ -7073,7 +7085,7 @@
                     />
                     <span
                       data-modal-translate="terms"
-                      class="checkbox-content relative block pl-7 text-sm font-bold leading-tight text-[#8a95c1]"
+                      class="checkbox-content relative block pl-7 text-sm font-bold leading-tight text-[#8a95c1] rtl:pl-0 rtl:pr-7"
                     >
                       I agree to the
                       <a

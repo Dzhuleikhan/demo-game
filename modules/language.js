@@ -1,8 +1,12 @@
-import { geoData } from "./geoLocation";
 import { translations } from "/public/translations";
 import gsap from "gsap";
 
 let lang;
+
+function applyDirection(lang) {
+  document.documentElement.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
+  document.documentElement.setAttribute("lang", lang);
+}
 
 function updateContent(lang) {
   const elements = document.querySelectorAll("[data-translate]");
@@ -13,6 +17,7 @@ function updateContent(lang) {
 }
 
 function changeLanguage(lang) {
+  applyDirection(lang);
   updateContent(lang);
 }
 
@@ -20,60 +25,44 @@ export const availableLang = [
   "en",
   "es",
   "fr",
-  "az",
-  "uz",
-  "ua",
+  "uk",
   "ru",
-  "bd",
-  "tr",
-  "id",
   "pt",
   "de",
-  "kz",
-  "kg",
-  "ee",
+  "et",
   "lv",
   "lt",
   "hr",
-  "dk",
+  "da",
   "fi",
   "bg",
+  "ro",
+  "hu",
+  "pl",
+  "cs",
+  "sl",
+  "sv",
+  "el",
+  "ga",
+  "it",
+  "lb",
+  "mt",
+  "nl",
+  "sk",
+  "ar",
+  "zh",
+  "sw",
+  "rw",
 ];
 
-async function determineLanguage() {
-  const location = geoData;
-
-  const countryLangMap = {
-    EN: "en",
-    ES: "es",
-    FR: "fr",
-    AZ: "az",
-    UZ: "uz",
-    UA: "ua",
-    RU: "ru",
-    BD: "bd",
-    TR: "tr",
-    ID: "id",
-    PT: "pt",
-    DE: "de",
-    KZ: "kz",
-    KG: "kg",
-    EE: "ee",
-    LV: "lv",
-    LT: "lt",
-    HR: "hr",
-    FI: "fi",
-    DK: "dk",
-    BG: "bg",
-  };
-  lang = countryLangMap[location.countryCode] || "en";
-
-  return lang;
+function determineLanguage() {
+  const browserLang = (navigator.language || "en").split("-")[0].toLowerCase();
+  return availableLang.includes(browserLang) ? browserLang : "en";
 }
 
 async function mainFunction() {
   try {
-    lang = await determineLanguage();
+    lang = determineLanguage();
 
     changeLanguage(lang);
     document.querySelector(".wrapper").classList.remove("hidden");

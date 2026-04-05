@@ -11,14 +11,6 @@ const cid = getUrlParameter("cid");
 const partner = getUrlParameter("partner");
 const offer = getUrlParameter("offer");
 
-console.log(newDomain);
-console.log(currency);
-console.log(promocode);
-console.log(lang);
-console.log(cid);
-console.log(partner);
-console.log(offer);
-
 window.onload = function () {
   google.accounts.id.initialize({
     client_id:

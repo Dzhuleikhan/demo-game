@@ -6,7 +6,6 @@ import { getUrlParameter } from "./params.js";
 import { hiddenSelect } from "./hiddenSelect.js";
 import { newDomain } from "./fetchingDomain.js";
 import { checkTir1CurrencyMatch } from "./modalCurrency.js";
-import { getSupportedLanguage } from "./geoLocation.js";
 
 // | SOCIALS FORM VALIDATING AND SUBMITTING
 export let formStepCount = 1;
@@ -252,9 +251,7 @@ formModals.forEach((modal) => {
 });
 
 const mainForm = document.querySelector(".socials-form");
-let lang = getSupportedLanguage(
-  localStorage.getItem("preferredLanguage").toUpperCase(),
-);
+let lang = localStorage.getItem("preferredLanguage") || "en";
 
 function disableFormWhileSubmitting() {
   mainForm.classList.add("loading");
@@ -406,9 +403,7 @@ formSocialLinks.forEach((link) => {
         .querySelector(".bonus-input")
         .getAttribute("data-bonus");
 
-      const lang = getSupportedLanguage(
-        localStorage.getItem("preferredLanguage").toUpperCase(),
-      );
+      const lang = localStorage.getItem("preferredLanguage") || "en";
 
       let currencyStoredData = localStorage.getItem("currencyData");
       let currencyData = JSON.parse(currencyStoredData);

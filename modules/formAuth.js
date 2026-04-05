@@ -4,7 +4,6 @@ import { hiddenSelect } from "./hiddenSelect";
 import { getUrlParameter, updateUrl } from "./params";
 import { newDomain } from "./fetchingDomain";
 import { checkTir1CurrencyMatch } from "./modalCurrency";
-import { getSupportedLanguage } from "./geoLocation";
 
 // | AUTH FORM VALIDATION AND SUBMITTING
 
@@ -13,26 +12,7 @@ const phoneForm = document.querySelector(".auth-form-type-phone");
 const socialForm = document.querySelectorAll(".auth-form-type-social");
 const oneClickForm = document.querySelector(".auth-form-type-oneclick");
 const termsCheckbox = document.querySelectorAll(".auth-terms-checkbox");
-const formsWrapper = document.querySelectorAll(".auth-form");
 
-formsWrapper.forEach((form) => {
-  if (form) {
-    let emailInput = form.querySelector("input[type='email']");
-    let telInput = form.querySelector("input[type='tel']");
-    if (emailInput) {
-      emailInput.addEventListener("input", () => {
-        localStorage.setItem("emailValue", emailInput.value);
-      });
-      emailInput.value = localStorage.getItem("emailValue");
-    }
-    if (telInput) {
-      telInput.addEventListener("input", () => {
-        localStorage.setItem("phoneValue", telInput.value);
-      });
-      telInput.value = localStorage.getItem("phoneValue");
-    }
-  }
-});
 
 // Validate email input
 function validateEmailInput() {
@@ -522,9 +502,7 @@ function submitForm(form, newDomain) {
 
     formData.bonus = checkTir1CurrencyMatch(formData.currency, formData.bonus);
 
-    let lang = getSupportedLanguage(
-      localStorage.getItem("preferredLanguage").toUpperCase(),
-    );
+    let lang = localStorage.getItem("preferredLanguage") || "en";
 
     let cid = getUrlParameter("cid");
     let partner = getUrlParameter("partner");

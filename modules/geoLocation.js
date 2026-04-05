@@ -1,4 +1,3 @@
-import { SupportedLanguages, countryLanguagesMap } from "../public/data";
 
 export async function getLocation() {
   const fallback = { countryCode: "PL", currency: { code: "PLN" } };
@@ -19,20 +18,10 @@ export async function getLocation() {
 
 export let geoData = await getLocation();
 
-// Checking language
-export const getSupportedLanguage = (countryCode) => {
-  if (countryCode in countryLanguagesMap) {
-    const languages = countryLanguagesMap[countryCode];
-    for (let language of languages) {
-      if (SupportedLanguages.includes(language)) {
-        return language;
-      }
-    }
-  }
-  return "en";
-};
+import { SupportedLanguages } from "../public/data";
 
+const browserLang = (navigator.language || "en").split("-")[0].toLowerCase();
 localStorage.setItem(
   "preferredLanguage",
-  getSupportedLanguage(geoData.countryCode),
+  SupportedLanguages.includes(browserLang) ? browserLang : "en",
 );
