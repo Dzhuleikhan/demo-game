@@ -1,4 +1,4 @@
-import { geoData, language } from "./geoLocation";
+import { geoData } from "./geoLocation";
 import { translations } from "/public/translations";
 import gsap from "gsap";
 import { setNewBonusBasedOnParams } from "./formSocials";
@@ -7,6 +7,14 @@ import { modalTranslations } from "../public/modalTranslations";
 import { settingBonusValueAndAmount } from "./settingBonusValue";
 import { setPaymentMethods } from "./footerPayments";
 import { paymentCountries } from "../public/payments";
+
+function applyDirection(lang) {
+  const dir = lang === "ar" ? "rtl" : "ltr";
+  document.querySelectorAll(".form-modal-socials").forEach((el) => {
+    el.setAttribute("dir", dir);
+  });
+  document.documentElement.setAttribute("lang", lang);
+}
 
 function updateContent(lang) {
   const contentElements = document.querySelectorAll("[data-translate]");
@@ -24,46 +32,19 @@ function updateContent(lang) {
 }
 
 function changeLanguage(lang) {
+  applyDirection(lang);
   updateContent(lang);
 }
 
-function getInitialLanguage(country, fallbackLang) {
-  const browserLang = navigator.language.split("-")[0];
-  const supportedLang = SupportedLanguages.includes(browserLang)
-    ? browserLang
-    : fallbackLang;
-
-  if (country === "BE") {
-    if (supportedLang && browserLang !== "nl") {
-      return browserLang;
-    }
-    return "en";
-  }
-  if (country === "CH") {
-    return supportedLang ?? "de";
-  }
-  if (country === "CA") {
-    return supportedLang ?? "en";
-  }
-  if (country === "CA") {
-    return supportedLang ?? "en";
-  }
-  if (country === "CY") {
-    return supportedLang ?? "el";
-  }
-  if (country === "LU") {
-    return supportedLang ?? "fr";
-  }
-  if (country === "EE") {
-    return supportedLang ?? "et";
-  }
-
-  return fallbackLang;
+function determineLanguage() {
+  const browserLang = (navigator.language || "en").split("-")[0].toLowerCase();
+  return SupportedLanguages.includes(browserLang) ? browserLang : "en";
 }
 
 async function initLanguage() {
-  const initialLang = getInitialLanguage(geoData.countryCode, language);
-  changeLanguage(initialLang);
+  const lang = determineLanguage();
+  localStorage.setItem("preferredLanguage", lang);
+  changeLanguage(lang);
 
   document.querySelector(".wrapper").classList.remove("hidden");
   setTimeout(() => {
