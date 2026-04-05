@@ -5479,7 +5479,8 @@
                       class="socials-form-group active socials-form-group-email relative h-[64px] items-end rounded-xl bg-white px-5 pb-[11px]"
                     >
                       <input
-                        class="email-input w-full bg-transparent text-lg font-bold tracking-tight text-[#755EEB] outline-none"
+                        dir="ltr"
+                        class="email-input w-full bg-transparent text-lg font-bold tracking-tight text-[#755EEB] outline-none rtl:text-right"
                         type="email"
                         id="form-email"
                         placeholder=" "
@@ -5508,20 +5509,22 @@
                       </svg>
                       <div
                         data-modal-translate="wrongEmail"
-                        class="tooltip absolute -right-4 bottom-[90%] z-30 hidden rounded-md bg-[#f0f0f0] px-2 py-[6px] text-sm font-normal leading-[120%] text-[#0f0f0f] rtl:-left-4 rtl:right-auto"
+                        class="tooltip absolute -right-4 bottom-[90%] z-30 hidden rounded-md bg-[#f0f0f0] px-2 py-[6px] text-sm font-normal leading-[120%] text-[#0f0f0f] rtl:-left-8 rtl:right-auto"
                       >
                         Wrong email
                       </div>
                     </div>
                     <div
+                      dir="ltr"
                       class="socials-form-group socials-form-group-phone relative h-[64px] flex-col gap-[5px] rounded-xl bg-white px-3 py-[10px]"
                     >
                       <span
                         data-modal-translate="phoneNumber"
-                        class="block text-xs font-bold leading-none tracking-tight text-[#585858]"
+                        class="block text-xs font-bold leading-none tracking-tight text-[#585858] rtl:text-right"
                         >Phone Number</span
                       >
                       <input
+                        dir="ltr"
                         class="phone-input socials-phone-input bg-transparent text-lg font-bold tracking-tight text-[#755EEB] outline-none"
                         type="phone"
                         name="phone"
@@ -5605,7 +5608,8 @@
                       >Password</span
                     >
                     <input
-                      class="password-input mt-1 bg-transparent text-lg font-bold tracking-tight text-[#755EEB] outline-none placeholder:text-[#755eeb]/30"
+                      dir="ltr"
+                      class="password-input mt-1 bg-transparent text-lg font-bold tracking-tight text-[#755EEB] outline-none placeholder:text-[#755eeb]/30 rtl:text-right"
                       type="password"
                       placeholder=""
                       name="password"
@@ -5635,7 +5639,7 @@
                     />
                     <div
                       data-modal-translate="atLeast6Chars"
-                      class="tooltip pointer-events-none absolute -right-2 bottom-[90%] z-30 hidden rounded-md bg-[#f0f0f0] px-2 py-[6px] text-sm font-normal leading-[120%] text-[#0f0f0f] rtl:left-4 rtl:right-auto"
+                      class="tooltip pointer-events-none absolute -right-2 bottom-[90%] z-30 hidden rounded-md bg-[#f0f0f0] px-2 py-[6px] text-sm font-normal leading-[120%] text-[#0f0f0f] rtl:left-6 rtl:right-auto"
                     >
                       At least 6 characters.
                     </div>
@@ -6271,7 +6275,7 @@
                     />
                     <span
                       data-modal-translate="terms"
-                      class="checkbox-content relative block pl-7 text-sm font-bold leading-tight text-[#8a95c1]"
+                      class="checkbox-content relative block pl-7 text-sm font-bold leading-tight text-[#8a95c1] rtl:pl-0 rtl:pr-7"
                     >
                       I agree to the
                       <a

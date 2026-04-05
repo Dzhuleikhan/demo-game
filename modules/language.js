@@ -1,107 +1,99 @@
 import { geoData } from "./geoLocation";
 import { translations } from "/public/translations";
+import { modalTranslations } from "../public/modalTranslations";
+import { SupportedLanguages } from "../public/data";
 import gsap from "gsap";
 import { setNewBonusBasedOnParams } from "./formSocials";
+import { settingBonusValueAndAmount } from "./settingBonusValue";
+import { setPaymentMethods } from "./footerPayments";
+import { paymentCountries } from "../public/payments";
 
-let lang;
+export const availableLang = [
+  "en",
+  "bg",
+  "hu",
+  "el",
+  "da",
+  "ga",
+  "es",
+  "it",
+  "lv",
+  "lt",
+  "lb",
+  "mt",
+  "nl",
+  "de",
+  "pl",
+  "pt",
+  "ro",
+  "sk",
+  "sl",
+  "fi",
+  "fr",
+  "hr",
+  "cs",
+  "sv",
+  "ar",
+  "zh",
+  "uk",
+  "ru",
+  "sw",
+  "rw",
+];
+
+function applyDirection(lang) {
+  const dir = lang === "ar" ? "rtl" : "ltr";
+  document.querySelectorAll(".form-modal-socials").forEach((el) => {
+    el.setAttribute("dir", dir);
+  });
+  document.documentElement.setAttribute("lang", lang);
+  document.documentElement.dir = dir;
+}
 
 function updateContent(lang) {
-  const elements = document.querySelectorAll("[data-translate]");
-  elements.forEach((element) => {
+  const contentElements = document.querySelectorAll("[data-translate]");
+  contentElements.forEach((element) => {
     const key = element.getAttribute("data-translate");
-    element.innerHTML = translations[lang][key];
+    if (translations[lang]?.[key]) {
+      element.innerHTML = translations[lang][key];
+    }
+  });
+
+  const modalElements = document.querySelectorAll("[data-modal-translate]");
+  modalElements.forEach((element) => {
+    const key = element.getAttribute("data-modal-translate");
+    element.innerHTML =
+      modalTranslations[lang]?.[key] || modalTranslations["en"][key];
   });
 }
 
 function changeLanguage(lang) {
+  applyDirection(lang);
   updateContent(lang);
 }
 
-export const availableLang = [
-  "en",
-  "es",
-  "fr",
-  "uk",
-  "ru",
-  "bd",
-  "id",
-  "pt",
-  "de",
-  "kg",
-  "it",
-  "hu",
-  "ro",
-  "pl",
-  "cs",
-  "sw",
-  "rw",
-  "ar",
-];
-
-async function determineLanguage() {
-  const location = geoData;
-
-  const countryLangMap = {
-    EN: "en",
-    ES: "es",
-    FR: "fr",
-    UA: "uk",
-    RU: "ru",
-    BD: "bd",
-    ID: "id",
-    PT: "pt",
-    DE: "de",
-    KG: "kg",
-    IT: "it",
-    HU: "hu",
-    RO: "ro",
-    PL: "pl",
-    CZ: "cs",
-    TZ: "sw",
-    KE: "sw",
-    UG: "sw",
-    RW: "rw",
-    SA: "ar",
-    AE: "ar",
-    EG: "ar",
-    IQ: "ar",
-    JO: "ar",
-    KW: "ar",
-    LB: "ar",
-    LY: "ar",
-    MA: "ar",
-    OM: "ar",
-    QA: "ar",
-    SD: "ar",
-    SY: "ar",
-    TN: "ar",
-    YE: "ar",
-    BH: "ar",
-    DZ: "ar",
-  };
-  lang = countryLangMap[location.countryCode] || "en";
-
-  return lang;
+function determineLanguage() {
+  const browserLang = (navigator.language || "en").split("-")[0].toLowerCase();
+  return SupportedLanguages.includes(browserLang) ? browserLang : "en";
 }
 
-async function mainFunction() {
+async function initLanguage() {
   try {
-    lang = await determineLanguage();
-
+    const lang = determineLanguage();
+    localStorage.setItem("preferredLanguage", lang);
     changeLanguage(lang);
-    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+
     document.querySelector(".wrapper").classList.remove("hidden");
 
-    let currencyStoredData = localStorage.getItem("currencyData");
-    let currencyData = JSON.parse(currencyStoredData);
-    let currency = currencyData.abbr;
-
     setTimeout(() => {
-      setNewBonusBasedOnParams(currency);
+      setNewBonusBasedOnParams();
+      settingBonusValueAndAmount(geoData.countryCode.toLowerCase());
+      setPaymentMethods(paymentCountries, geoData.countryCode.toLowerCase());
     }, 500);
   } catch (error) {
-    console.error("Error determining language:", error);
+    console.error("Error initializing language:", error);
   }
 }
-mainFunction();
+initLanguage();
+
 gsap.to(".preloader", { opacity: 0, duration: 0.5, delay: 1.5 });
