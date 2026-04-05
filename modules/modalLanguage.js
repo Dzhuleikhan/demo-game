@@ -7,10 +7,20 @@ import { settingBonusValueAndAmount } from "./settingBonusValue";
 import { countryCurrencyData } from "../public/data";
 import { getUrlParameter } from "./params";
 
+function applyDirection(lang) {
+  const dir = lang === "ar" ? "rtl" : "ltr";
+  document.documentElement.setAttribute("dir", dir);
+  document.documentElement.setAttribute("lang", lang);
+  document.querySelectorAll(".form-modal-socials").forEach((el) => {
+    el.setAttribute("dir", dir);
+  });
+}
+
 function updateContent(lang) {
   if (!availableLang.includes(lang)) {
     lang = "en";
   }
+  applyDirection(lang);
   const elements = document.querySelectorAll("[data-modal-translate]");
   elements.forEach((element) => {
     const key = element.getAttribute("data-modal-translate");
@@ -45,7 +55,8 @@ export function changeModalLanguage(lang) {
 async function setModalLanguage() {
   try {
     const location = geoData;
-    changeLanguage(location.countryCode.toLowerCase());
+    const browserLang = (navigator.language || "en").split("-")[0].toLowerCase();
+    changeLanguage(availableLang.includes(browserLang) ? browserLang : "en");
     setTimeout(() => {
       settingBonusValueAndAmount(location.countryCode.toLowerCase());
       setPaymentMethods(paymentCountries, location.countryCode.toLowerCase());
