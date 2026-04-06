@@ -20,6 +20,7 @@ export async function getLocation() {
 export let geoData = await getLocation();
 
 // Checking language
+// Returns matched language or null if country/language not in our list
 export const getSupportedLanguage = (countryCode) => {
   if (countryCode in countryLanguagesMap) {
     const languages = countryLanguagesMap[countryCode];
@@ -29,10 +30,5 @@ export const getSupportedLanguage = (countryCode) => {
       }
     }
   }
-  return "en";
+  return null;
 };
-
-localStorage.setItem(
-  "preferredLanguage",
-  getSupportedLanguage(geoData.countryCode),
-);

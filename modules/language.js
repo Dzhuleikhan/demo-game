@@ -1,4 +1,4 @@
-import { geoData } from "./geoLocation";
+import { geoData, getSupportedLanguage } from "./geoLocation";
 import { translations } from "/public/translations";
 import { modalTranslations } from "../public/modalTranslations";
 import { SupportedLanguages } from "../public/data";
@@ -79,7 +79,8 @@ function determineLanguage() {
 
 async function initLanguage() {
   try {
-    const lang = determineLanguage();
+    const geoLang = getSupportedLanguage(geoData.countryCode);
+    const lang = geoLang !== null ? geoLang : determineLanguage();
     localStorage.setItem("preferredLanguage", lang);
     changeLanguage(lang);
 
