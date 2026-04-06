@@ -86,7 +86,11 @@ async function initLanguage() {
     document.querySelector(".wrapper").classList.remove("hidden");
 
     setTimeout(() => {
-      setNewBonusBasedOnParams();
+      const storedCurrency = localStorage.getItem("currencyData");
+      const currencyCode = storedCurrency
+        ? JSON.parse(storedCurrency).abbr
+        : "EUR";
+      setNewBonusBasedOnParams(currencyCode);
       settingBonusValueAndAmount(geoData.countryCode.toLowerCase());
       setPaymentMethods(paymentCountries, geoData.countryCode.toLowerCase());
     }, 500);
