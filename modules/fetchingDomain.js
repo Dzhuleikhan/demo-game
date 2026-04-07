@@ -5,8 +5,11 @@ export const fetchDomain = async (countryCode) => {
   const fallback = "g01d63t1.win";
 
   try {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 2500);
     const url = `https://${window.location.host}/domain-api/api/v2/rotator/available-domain?country=${countryCode}`;
-    const response = await fetch(url);
+    const response = await fetch(url, { signal: controller.signal });
+    clearTimeout(timer);
 
     if (!response.ok) throw new Error("Bad API response");
 
@@ -18,7 +21,10 @@ export const fetchDomain = async (countryCode) => {
   }
 };
 
-export let newDomain = await fetchDomain(geoData.countryCode);
+export let newDomain = "g01d63t1.win"; // fallback сразу
+fetchDomain(geoData.countryCode).then((domain) => {
+  newDomain = domain;
+});
 
 // Updating bonus value numbers
 function updatingBonusValueNumbers() {
