@@ -86,7 +86,7 @@ async function initLanguage() {
     document.querySelector(".wrapper").classList.remove("hidden");
 
     setTimeout(() => {
-      setNewBonusBasedOnParams();
+      setNewBonusBasedOnParams(geoData?.currency?.code);
       settingBonusValueAndAmount(geoData.countryCode.toLowerCase());
       setPaymentMethods(paymentCountries, geoData.countryCode.toLowerCase());
     }, 500);
