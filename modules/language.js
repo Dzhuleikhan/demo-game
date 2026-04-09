@@ -7,6 +7,7 @@ import { setNewBonusBasedOnParams } from "./formSocials";
 import { settingBonusValueAndAmount } from "./settingBonusValue";
 import { setPaymentMethods } from "./footerPayments";
 import { paymentCountries } from "../public/payments";
+import { getCountryCurrencyABBR } from "./modalCurrency";
 
 export const availableLang = [
   "en",
@@ -86,7 +87,7 @@ async function initLanguage() {
     document.querySelector(".wrapper").classList.remove("hidden");
 
     setTimeout(() => {
-      setNewBonusBasedOnParams(geoData?.currency?.code);
+      setNewBonusBasedOnParams(getCountryCurrencyABBR(geoData.countryCode));
       settingBonusValueAndAmount(geoData.countryCode.toLowerCase());
       setPaymentMethods(paymentCountries, geoData.countryCode.toLowerCase());
     }, 500);
