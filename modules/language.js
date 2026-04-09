@@ -1,7 +1,6 @@
-import { geoData } from "./geoLocation";
+import { geoData, getSupportedLanguage } from "./geoLocation";
 import { translations } from "/public/translations";
 import { modalTranslations } from "../public/modalTranslations";
-import { SupportedLanguages } from "../public/data";
 import gsap from "gsap";
 import { setNewBonusBasedOnParams } from "./formSocials";
 import { settingBonusValueAndAmount } from "./settingBonusValue";
@@ -40,6 +39,7 @@ export const availableLang = [
   "ru",
   "sw",
   "rw",
+  "nb",
 ];
 
 function applyDirection(lang) {
@@ -74,8 +74,7 @@ function changeLanguage(lang) {
 }
 
 function determineLanguage() {
-  const browserLang = (navigator.language || "en").split("-")[0].toLowerCase();
-  return SupportedLanguages.includes(browserLang) ? browserLang : "en";
+  return getSupportedLanguage(geoData.countryCode);
 }
 
 async function initLanguage() {

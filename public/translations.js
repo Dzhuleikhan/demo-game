@@ -2372,4 +2372,87 @@ export const translations = {
                       - ushinzwe imisoro; <br />
                       - ushinzwe imisoro ya crypto.`,
   },
+  nb: {
+    termsTitle1: `Vilkår og betingelser`,
+    termsParagraph1: `Disse vilkårene og betingelsene og dokumentene som det henvises til nedenfor
+                      ("Vilkårene") gjelder for bruken av det nåværende nettstedet ("Nettstedet")
+                      og dets relaterte eller tilknyttede tjenester
+                      (samlet kalt "Tjenesten"). Du bør nøye gjennomgå
+                      disse vilkårene da de inneholder viktig informasjon om
+                      dine rettigheter og forpliktelser ved bruk av Nettstedet
+                      og utgjør en bindende juridisk avtale mellom deg – vår kunde
+                      ("Kunden") og oss ("Nettstedet"). Ved å bruke dette
+                      Nettstedet og/eller få tilgang til Tjenesten, enten du er en
+                      gjest eller en registrert bruker med en konto (“Konto”), godtar
+                      du å være bundet av disse vilkårene, sammen med eventuelle endringer
+                      som kan bli publisert fra tid til annen. Hvis du ikke godtar
+                      disse vilkårene, bør du avstå fra å få tilgang til Tjenesten og
+                      bruke Nettstedet.`,
+    termsTitle2: `1. Generelle vilkår`,
+    termsParagraph2: `Vi forbeholder oss retten til å revidere og endre vilkårene (inkludert
+                      eventuelle dokumenter det henvises til og som er lenket nedenfor) når som helst. Du
+                      bør besøke denne siden jevnlig for å gjennomgå vilkårene.
+                      Endringer vil være bindende og tre i kraft umiddelbart
+                      etter publisering på dette Nettstedet. Hvis du motsetter deg
+                      slike endringer, må du umiddelbart slutte å bruke Tjenesten.
+                      Din fortsatte bruk av Nettstedet etter slik publisering
+                      innebærer at du godtar å være bundet av vilkårene slik de er
+                      endret. Eventuelle spill som ikke er avgjort før de endrede
+                      vilkårene trer i kraft, vil være underlagt de tidligere gjeldende vilkårene. Hvis
+                      vilkårene og betingelsene til Goldbet oppdateres, vil
+                      plattformen varsle deg og be deg bekrefte ditt samtykke.`,
+    termsTitle3: `2. Dine forpliktelser`,
+    termsParagraph3: `Du erkjenner at til enhver tid når du får tilgang til Nettstedet
+                      og bruker Tjenesten: <br />
+                      3.1. Du er over 18 år, eller har nådd den lovlige alderen hvor pengespill eller
+                      spillaktiviteter er tillatt i henhold til loven eller jurisdiksjonen
+                      som gjelder for deg. Vi forbeholder oss retten til å be om dokumentasjon på alder når som helst. <br />
+                      3.2. Du har rettslig handleevne og kan inngå en bindende juridisk avtale med oss.
+                      Du må ikke få tilgang til Nettstedet eller bruke Tjenesten dersom du ikke har slik handleevne. <br />
+                      3.3. Du er klar over at retten til å få tilgang til og bruke
+                      Nettstedet og eventuelle produkter som tilbys der, kan anses
+                      som ulovlig i enkelte land. Vi er ikke i stand til å verifisere lovligheten av tjenesten i hver enkelt jurisdiksjon,
+                      derfor er det ditt ansvar å avgjøre om din tilgang til og bruk av vårt nettsted er i samsvar med gjeldende lover i ditt land,
+                      og du garanterer overfor oss at pengespill ikke er ulovlig i territoriet der du bor. Av
+                      ulike juridiske eller kommersielle grunner tillater vi ikke at kontoer åpnes eller brukes av kunder bosatt i enkelte jurisdiksjoner, inkludert, men ikke begrenset til: Afghanistan,
+                      Algerie, Antigua og Barbuda, Australia, Belarus, Bahrain,
+                      Belgia, Bhutan, Brunei, Den sentralafrikanske republikk, Tsjad, Elfenbenskysten,
+                      Kroatia, Cuba, Tsjekkia, Den demokratiske folkerepublikken Korea (Nord-Korea),
+                      Den demokratiske republikken Kongo, Danmark, Estland, Frankrike, Hellas, Guinea-Bissau,
+                      Ungarn, Iran, Irak, Island, Israel, Italia, Jordan, Kuwait,
+                      Latvia, Liberia, Litauen, Malta, Myanmar, Nederland,
+                      Nederlandske Antiller (Curacao, Sint Maarten, Bonaire, Sint
+                      Eustatius og Saba, Aruba), Norge, Oman, Palestina,
+                      Pakistan, Qatar, Russland, Saba, Saint Martin, Saudi-Arabia,
+                      Serbia, Slovenia, Somalia, Spania, Sveits, Den syriske arabiske republikk,
+                      Sudan, Trinidad og Tobago, Tyrkia, Ukraina, Storbritannia,
+                      Tyskland, Unionen av Komorene, De forente arabiske emirater,
+                      USA (og dets avhengigheter, militærbaser og territorier, dvs. U.S. Minor Outlying Islands, U.S. Virgin Islands),
+                      Vanuatu, Jemen, Zimbabwe, eller andre begrensede jurisdiksjoner ("Begrenset jurisdiksjon") som vi fra tid til annen oppgir.
+                      Ved å bruke Nettstedet bekrefter du at du ikke er bosatt i en Begrenset jurisdiksjon. <br />
+                      3.4. Når du forsøker å opprette en konto eller bruke Nettstedet,
+                      er det spillerens ansvar å kontrollere om pengespill er lovlig i den aktuelle jurisdiksjonen. <br />
+                      3.5. Du er den autoriserte brukeren av betalingsmetoden du benytter, og alle midler på kontoen din som brukes innen Tjenesten er lovlige. <br />
+                      3.6. Du må foreta alle betalinger til oss i god tro og ikke
+                      forsøke å reversere en betaling eller foreta handlinger som fører til at en slik betaling blir reversert av en tredjepart. <br />
+                      3.7. Når du plasserer spill, kan du tape deler av eller hele beløpet du har satt inn i henhold til disse vilkårene, og du vil være fullt ansvarlig for dette tapet. <br />
+                      3.8. Når du plasserer spill, må du ikke bruke informasjon
+                      som er innhentet i strid med gjeldende lovgivning i landet du befant deg i da spillet ble plassert. <br />
+                      3.9. Du handler ikke på vegne av en annen part eller for kommersielle formål,
+                      men utelukkende på egne vegne som privatperson. <br />
+                      3.10. Du må ikke forsøke å manipulere noe marked eller element innen Tjenesten i ond tro eller på en måte som påvirker integriteten til Tjenesten eller oss negativt. <br />
+                      3.11. Du må generelt handle i god tro ved bruk av Tjenesten til enhver tid og for alle spill gjort gjennom Tjenesten. <br />
+                      3.12. Du, eller dine ansatte, arbeidsgivere, agenter eller familiemedlemmer, er ikke registrert som en affiliate i vårt affiliateprogram. <br />
+                      3.13. Når du bruker Goldbet samtykker du til å kun gi oss sanne, reelle og objektive opplysninger både som standard og når vi ber om det. <br />
+                      3.14. Du forstår volatiliteten i kryptomarkedet og aksepterer muligheten for at verdien av din valuta kan endre seg mens du venter på uttak eller mens uttaket behandles av vår risikodepartement. <br />
+                      3.15. Du er mentalt kompetent og lider ikke av spilleavhengighet. Dersom en person med et slikt problem bruker nettstedet, ligger ansvaret utelukkende hos vedkommende. <br />
+                      3.16. Du godtar å ikke bruke tredjepartsprogramvare i noen deler av Goldbet og heller ikke utnytte feil i spill eller funksjoner på plattformen. <br />
+                      3.17. Du garanterer at all informasjon du gir oss fra registreringstidspunktet og gjennom hele avtaleperioden er sann, fullstendig og korrekt, og at du umiddelbart vil varsle oss om endringer i slik informasjon. <br />
+                      3.17.1. Du bekrefter at informasjonen som er oppgitt ved registrering og under bruk av Tjenesten ikke kan endres etter eget ønske. For å endre informasjon må du kontakte kundestøtte. Goldbet kan kreve dokumentasjon for KYC-verifisering ved slike endringer. <br />
+                      3.18. Du garanterer at du ikke vil bruke våre tjenester mens du befinner deg i en jurisdiksjon som forbyr online spill og/eller casinospill og/eller live-spill. <br />
+                      3.19. Du garanterer også at: <br />
+                      - Du deltar i Tjenesten på egne vegne og ikke på vegne av andre; <br />
+                      - Du er eneansvarlig for å rapportere og betale eventuelle skatter som gjelder for gevinster du mottar fra oss i henhold til gjeldende lover; <br />
+                      - Du er eneansvarlig for eventuelle skatter som kan påløpe på kryptovaluta du mottar gjennom bruk av Tjenesten.`,
+  },
 };
