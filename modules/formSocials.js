@@ -35,7 +35,7 @@ const bonusSumAndWager = [
   { currency: "KGS", amount: 2500 },
   { currency: "KZT", amount: 15000 },
   { currency: "HUF", amount: 6500 },
-  { currency: "DKK", amount: 150 },
+  { currency: "DKK", amount: 200 },
   { currency: "CHF", amount: 15 },
   { currency: "NOK", amount: 300 },
   { currency: "PLN", amount: 70 },
