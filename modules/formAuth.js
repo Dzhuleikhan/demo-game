@@ -5,6 +5,7 @@ import { getUrlParameter, updateUrl } from "./params";
 import { newDomain } from "./fetchingDomain";
 import { checkTir1CurrencyMatch } from "./modalCurrency";
 import { getSupportedLanguage } from "./geoLocation";
+import { isDisposableEmail } from "./disposableEmail";
 
 // | AUTH FORM VALIDATION AND SUBMITTING
 
@@ -50,7 +51,7 @@ function validateEmailInput() {
         formEmail.classList.remove("non-valid");
       } else {
         formEmail.querySelector(".validation-cta").classList.remove("hidden");
-        if (inputValue.match(emailRegEx)) {
+        if (inputValue.match(emailRegEx) && !isDisposableEmail(inputValue)) {
           console.log("valid");
           formEmail.classList.remove("non-valid");
           formEmail.classList.add("valid");
@@ -429,7 +430,8 @@ function submitForm(form, newDomain) {
       let input = email.querySelector("input");
 
       if (
-        input.value.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)
+        input.value.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/) &&
+        !isDisposableEmail(input.value)
       ) {
         email.classList.remove("non-valid");
         formData.email = input.value;

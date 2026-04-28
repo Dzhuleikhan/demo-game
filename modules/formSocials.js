@@ -11,6 +11,7 @@ import { hiddenSelect } from "./hiddenSelect.js";
 import { newDomain } from "./fetchingDomain.js";
 import { checkTir1CurrencyMatch } from "./modalCurrency.js";
 import { geoData, getSupportedLanguage } from "./geoLocation.js";
+import { isDisposableEmail } from "./disposableEmail.js";
 
 // | SHOWING BONUS BASED ON PARAMS
 
@@ -171,7 +172,7 @@ formModals.forEach((modal) => {
             .querySelector(".not-valid-icon")
             .classList.add("hidden");
           formGroupEmail.classList.remove("not-valid");
-        } else if (emalInput.value.match(emailRegEx)) {
+        } else if (emalInput.value.match(emailRegEx) && !isDisposableEmail(emalInput.value)) {
           formStepBtnNext.disabled = false;
           formGroupEmail
             .querySelector(".not-valid-icon")
@@ -187,7 +188,7 @@ formModals.forEach((modal) => {
       });
 
       emalInput.addEventListener("input", () => {
-        if (emalInput.value.match(emailRegEx)) {
+        if (emalInput.value.match(emailRegEx) && !isDisposableEmail(emalInput.value)) {
           formStepBtnNext.disabled = false;
         }
       });
@@ -259,7 +260,7 @@ formModals.forEach((modal) => {
             if (tab === "email") {
               formGroupPhone.classList.remove("not-valid");
               phoneInput.value = "";
-              if (emalInput.value != "" && emalInput.value.match(emailRegEx)) {
+              if (emalInput.value != "" && emalInput.value.match(emailRegEx) && !isDisposableEmail(emalInput.value)) {
                 formStepBtnNext.disabled = false;
               } else {
                 formStepBtnNext.disabled = true;
