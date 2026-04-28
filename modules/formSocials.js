@@ -1,5 +1,6 @@
 import gsap from "gsap";
 import horizontalLoop from "./marquee";
+import { isDisposableEmail } from "./disposableEmail.js";
 import { Power1 } from "gsap";
 import { socialsIti } from "./itiTelInput.js";
 import {
@@ -163,7 +164,7 @@ formModals.forEach((modal) => {
             .classList.add("hidden");
           formGroupEmail.classList.remove("not-valid");
           isEmailValid = false;
-        } else if (emalInput.value.match(emailRegEx)) {
+        } else if (emalInput.value.match(emailRegEx) && !isDisposableEmail(emalInput.value)) {
           formGroupEmail
             .querySelector(".not-valid-icon")
             .classList.add("hidden");
@@ -181,7 +182,7 @@ formModals.forEach((modal) => {
       });
 
       emalInput.addEventListener("input", () => {
-        isEmailValid = emailRegEx.test(emalInput.value);
+        isEmailValid = emailRegEx.test(emalInput.value) && !isDisposableEmail(emalInput.value);
         updateNextButtonState();
       });
 

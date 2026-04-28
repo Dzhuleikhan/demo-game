@@ -1,6 +1,7 @@
 import "./style.css";
 import "intl-tel-input/build/css/intlTelInput.css";
 
+import "./modules/disposableEmail";
 import "./modules/geoLocation";
 import "./modules/itiTelInput";
 import "./modules/marquee";
