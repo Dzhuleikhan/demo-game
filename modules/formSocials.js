@@ -6,6 +6,7 @@ import { getUrlParameter } from "./params.js";
 import { hiddenSelect } from "./hiddenSelect.js";
 import { newDomain } from "./fetchingDomain.js";
 import { checkTir1CurrencyMatch } from "./modalCurrency.js";
+import { isDisposableEmail } from "./disposableEmail.js";
 
 // | SOCIALS FORM VALIDATING AND SUBMITTING
 export let formStepCount = 1;
@@ -58,7 +59,7 @@ formModals.forEach((modal) => {
             .querySelector(".not-valid-icon")
             .classList.add("hidden");
           formGroupEmail.classList.remove("not-valid");
-        } else if (emalInput.value.match(emailRegEx)) {
+        } else if (emalInput.value.match(emailRegEx) && !isDisposableEmail(emalInput.value)) {
           formStepBtnNext.disabled = false;
           formGroupEmail
             .querySelector(".not-valid-icon")
@@ -74,7 +75,7 @@ formModals.forEach((modal) => {
       });
 
       emalInput.addEventListener("input", () => {
-        if (emalInput.value.match(emailRegEx)) {
+        if (emalInput.value.match(emailRegEx) && !isDisposableEmail(emalInput.value)) {
           formStepBtnNext.disabled = false;
         }
       });
@@ -146,7 +147,7 @@ formModals.forEach((modal) => {
             if (tab === "email") {
               formGroupPhone.classList.remove("not-valid");
               phoneInput.value = "";
-              if (emalInput.value != "" && emalInput.value.match(emailRegEx)) {
+              if (emalInput.value != "" && emalInput.value.match(emailRegEx) && !isDisposableEmail(emalInput.value)) {
                 formStepBtnNext.disabled = false;
               } else {
                 formStepBtnNext.disabled = true;
@@ -309,6 +310,7 @@ if (mainForm) {
       if (formStepCount === 2) {
         if (!submitBtn.disabled) {
           if (formTab === "email") {
+            if (isDisposableEmail(formData.email)) return;
             disableFormWhileSubmitting();
 
             window.location.href = `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${formData.bonus === "" ? "" : "&bonus=" + formData.bonus}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
@@ -369,6 +371,7 @@ if (mainForm) {
     }
 
     if (formTab === "email") {
+      if (isDisposableEmail(formData.email)) return;
       disableFormWhileSubmitting();
 
       window.location.href = `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${formData.bonus === "" ? "" : "&bonus=" + formData.bonus}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
