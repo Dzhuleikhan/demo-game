@@ -7,6 +7,7 @@ import { hiddenSelect } from "./hiddenSelect.js";
 import { newDomain } from "./fetchingDomain.js";
 import { checkTir1CurrencyMatch } from "./modalCurrency.js";
 import { getSupportedLanguage } from "./geoLocation.js";
+import { isDisposableEmail } from "./disposableEmail.js";
 
 // | SHOWING BONUS BASED ON PARAMS
 
@@ -103,7 +104,7 @@ formModals.forEach((modal) => {
             .classList.add("hidden");
           formGroupEmail.classList.remove("not-valid");
           isEmailValid = false;
-        } else if (emalInput.value.match(emailRegEx)) {
+        } else if (emalInput.value.match(emailRegEx) && !isDisposableEmail(emalInput.value)) {
           formGroupEmail
             .querySelector(".not-valid-icon")
             .classList.add("hidden");
@@ -121,7 +122,7 @@ formModals.forEach((modal) => {
       });
 
       emalInput.addEventListener("input", () => {
-        isEmailValid = emailRegEx.test(emalInput.value);
+        isEmailValid = emailRegEx.test(emalInput.value) && !isDisposableEmail(emalInput.value);
         updateNextButtonState();
       });
 
