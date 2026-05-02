@@ -6,8 +6,15 @@ import { getUrlParameter, removeUrlParameter } from "./params.js";
 import { hiddenSelect } from "./hiddenSelect.js";
 import { newDomain } from "./fetchingDomain.js";
 import { checkTir1CurrencyMatch } from "./modalCurrency.js";
-import { getSupportedLanguage } from "./geoLocation.js";
+import { geoData, getSupportedLanguage } from "./geoLocation.js";
 import { isDisposableEmail } from "./disposableEmail.js";
+
+const PHONE_ONLY_COUNTRIES = ["DE", "AT"];
+const isPhoneOnlyMode = PHONE_ONLY_COUNTRIES.includes(geoData.countryCode);
+
+if (isPhoneOnlyMode) {
+  document.querySelector(".socials-form-group-email")?.classList.add("hidden");
+}
 
 // | SHOWING BONUS BASED ON PARAMS
 
@@ -90,41 +97,48 @@ formModals.forEach((modal) => {
       );
       const emalInput = formGroupEmail.querySelector(".email-input");
 
-      let isEmailValid = false;
+      let isEmailValid = isPhoneOnlyMode;
       let isPhoneValid = false;
 
       function updateNextButtonState() {
         formStepBtnNext.disabled = !(isEmailValid && isPhoneValid);
       }
 
-      emalInput.addEventListener("focusout", () => {
-        if (emalInput.value === "") {
-          formGroupEmail
-            .querySelector(".not-valid-icon")
-            .classList.add("hidden");
-          formGroupEmail.classList.remove("not-valid");
-          isEmailValid = false;
-        } else if (emalInput.value.match(emailRegEx) && !isDisposableEmail(emalInput.value)) {
-          formGroupEmail
-            .querySelector(".not-valid-icon")
-            .classList.add("hidden");
-          formGroupEmail.classList.remove("not-valid");
-          isEmailValid = true;
-        } else {
-          formGroupEmail.classList.add("not-valid");
-          formGroupEmail
-            .querySelector(".not-valid-icon")
-            .classList.remove("hidden");
-          isEmailValid = false;
-        }
+      if (!isPhoneOnlyMode) {
+        emalInput.addEventListener("focusout", () => {
+          if (emalInput.value === "") {
+            formGroupEmail
+              .querySelector(".not-valid-icon")
+              .classList.add("hidden");
+            formGroupEmail.classList.remove("not-valid");
+            isEmailValid = false;
+          } else if (
+            emalInput.value.match(emailRegEx) &&
+            !isDisposableEmail(emalInput.value)
+          ) {
+            formGroupEmail
+              .querySelector(".not-valid-icon")
+              .classList.add("hidden");
+            formGroupEmail.classList.remove("not-valid");
+            isEmailValid = true;
+          } else {
+            formGroupEmail.classList.add("not-valid");
+            formGroupEmail
+              .querySelector(".not-valid-icon")
+              .classList.remove("hidden");
+            isEmailValid = false;
+          }
 
-        updateNextButtonState();
-      });
+          updateNextButtonState();
+        });
 
-      emalInput.addEventListener("input", () => {
-        isEmailValid = emailRegEx.test(emalInput.value) && !isDisposableEmail(emalInput.value);
-        updateNextButtonState();
-      });
+        emalInput.addEventListener("input", () => {
+          isEmailValid =
+            emailRegEx.test(emalInput.value) &&
+            !isDisposableEmail(emalInput.value);
+          updateNextButtonState();
+        });
+      }
 
       // Phone validation
       const formGroupPhone = formStep1.querySelector(
@@ -382,10 +396,12 @@ if (mainForm) {
 
     disableFormWhileSubmitting();
 
-    window.location.href = `https://${newDomain}/api/register?env=prod&type=email&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
-    // console.log(
-    //   `https://${newDomain}/api/register?env=prod&type=email&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`,
-    // );
+    const registerUrl = isPhoneOnlyMode
+      ? `https://${newDomain}/api/register?env=prod&type=phone&currency=${formData.currency}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`
+      : `https://${newDomain}/api/register?env=prod&type=email&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
+
+    window.location.href = registerUrl;
+    console.log(registerUrl);
   });
 }
 
