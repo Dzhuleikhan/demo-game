@@ -13,6 +13,9 @@ import { checkTir1CurrencyMatch } from "./modalCurrency.js";
 import { geoData, getSupportedLanguage } from "./geoLocation.js";
 import { isDisposableEmail } from "./disposableEmail.js";
 
+const PHONE_ONLY_COUNTRIES = ["DE", "AT"];
+const isPhoneOnlyMode = PHONE_ONLY_COUNTRIES.includes(geoData.countryCode);
+
 // | SHOWING BONUS BASED ON PARAMS
 
 const bonusSumAndWager = [
@@ -78,9 +81,30 @@ export function setNewBonusBasedOnParams(currencyCode) {
   if (landType) {
     document.querySelector(".form-type-buttons").style.gridTemplateColumns =
       "1fr";
-    document
-      .querySelector(".socials-form-type-btn[data-tab='phone']")
-      .classList.add("hidden");
+
+    if (isPhoneOnlyMode) {
+      const emailTabBtn = document.querySelector(
+        ".socials-form-type-btn[data-tab='email']",
+      );
+      const phoneTabBtn = document.querySelector(
+        ".socials-form-type-btn[data-tab='phone']",
+      );
+      const emailGroup = document.querySelector(".socials-form-group-email");
+      const phoneGroup = document.querySelector(".socials-form-group-phone");
+
+      emailTabBtn.classList.add("hidden");
+      emailTabBtn.classList.remove("active");
+      phoneTabBtn.classList.remove("hidden");
+      phoneTabBtn.classList.add("active");
+
+      emailGroup.classList.remove("active");
+      emailGroup.classList.add("hidden");
+      phoneGroup.classList.add("active");
+    } else {
+      document
+        .querySelector(".socials-form-type-btn[data-tab='phone']")
+        .classList.add("hidden");
+    }
 
     addUrlParameter("currency", getCurrencyOrDefault(currencyCode));
     addUrlParameter("sumAmount", getAmountForCurrency(currencyCode));
@@ -143,7 +167,7 @@ const formModals = document.querySelectorAll(".form-modal-socials");
 
 let formTabParam = getUrlParameter("method-type");
 
-let formTab = formTabParam === "phone" ? "phone" : "email";
+let formTab = isPhoneOnlyMode || formTabParam === "phone" ? "phone" : "email";
 
 formModals.forEach((modal) => {
   if (modal) {
@@ -172,7 +196,10 @@ formModals.forEach((modal) => {
             .querySelector(".not-valid-icon")
             .classList.add("hidden");
           formGroupEmail.classList.remove("not-valid");
-        } else if (emalInput.value.match(emailRegEx) && !isDisposableEmail(emalInput.value)) {
+        } else if (
+          emalInput.value.match(emailRegEx) &&
+          !isDisposableEmail(emalInput.value)
+        ) {
           formStepBtnNext.disabled = false;
           formGroupEmail
             .querySelector(".not-valid-icon")
@@ -188,7 +215,10 @@ formModals.forEach((modal) => {
       });
 
       emalInput.addEventListener("input", () => {
-        if (emalInput.value.match(emailRegEx) && !isDisposableEmail(emalInput.value)) {
+        if (
+          emalInput.value.match(emailRegEx) &&
+          !isDisposableEmail(emalInput.value)
+        ) {
           formStepBtnNext.disabled = false;
         }
       });
@@ -260,7 +290,11 @@ formModals.forEach((modal) => {
             if (tab === "email") {
               formGroupPhone.classList.remove("not-valid");
               phoneInput.value = "";
-              if (emalInput.value != "" && emalInput.value.match(emailRegEx) && !isDisposableEmail(emalInput.value)) {
+              if (
+                emalInput.value != "" &&
+                emalInput.value.match(emailRegEx) &&
+                !isDisposableEmail(emalInput.value)
+              ) {
                 formStepBtnNext.disabled = false;
               } else {
                 formStepBtnNext.disabled = true;
@@ -487,14 +521,14 @@ if (mainForm) {
     if (formTab === "email") {
       disableFormWhileSubmitting();
 
-      window.location.href = `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
+      // window.location.href = `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
       console.log(
         `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`,
       );
     } else if (formTab === "phone") {
       disableFormWhileSubmitting();
 
-      window.location.href = `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
+      // window.location.href = `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
       console.log(
         `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`,
       );
