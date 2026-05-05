@@ -724,7 +724,8 @@ export const countryLanguagesMap = {
   LB: ["ar"],
   TZ: ["sw"],
   KE: ["sw"],
-  UG: ["sw"],
+  UG: ["lm"],
+  ET: ["am"],
   RW: ["rw"],
 };
 
@@ -759,5 +760,7 @@ export const SupportedLanguages = [
   "sk",
   "ar",
   "sw",
+  "am",
+  "lm",
   "rw",
 ];

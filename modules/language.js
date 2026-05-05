@@ -52,6 +52,8 @@ export const availableLang = [
   "ar",
   "zh",
   "sw",
+  "am",
+  "lm",
   "rw",
 ];
 
@@ -140,7 +142,8 @@ export const countryLangMap = {
   TW: "zh",
   TZ: "sw",
   KE: "sw",
-  UG: "sw",
+  UG: "lm",
+  ET: "am",
   RW: "rw",
 };
 
