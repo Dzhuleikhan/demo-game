@@ -2401,7 +2401,7 @@ export const translations = {
 3.18. በተከለከሉ አገሮች መጠቀም አይፈቀድም።  
 3.19. ሁሉንም ታክስ እርስዎ ብቻ ትከፍላለህ።`,
   },
-  lg: {
+  lm: {
     termsTitle1: `Amateeka n’Obukwakkulizo`,
     termsParagraph1: `Amateeka gano gakola ku mukutu guno n’empeereza zonna ezikwatagana nayo. Bw’okozesa omukutu guno okkiriziganya n’amateeka gano.`,
 
