@@ -1703,4 +1703,126 @@ export const modalTranslations = {
     step2Subtitle: `创建密码并选择 <br />您的账户货币。`,
     passwordPlaceholder: "密码",
   },
+  am: {
+    // ? AUTH
+    mainModalTitle: "ይመዝገቡ",
+    tabEmail: "ኢ-ሜይል",
+    tabPhone: "ስልክ",
+    tabSocial: "ሶሻል",
+    tabOneClick: "በአንድ ጠቅታ",
+    yourCurrency: "የእርስዎ ገንዘብ",
+    yourWelcomeBonus: "የእንኳን ደህና መጡ ቦነስ",
+    havePromoCode: "የፕሮሞ ኮድ አለኝ",
+    signUpBtn: "ይመዝገቡ",
+    chooseSocialBtn: "ሶሻል ይምረጡ",
+    terms: `ከ <a href="https://dev1.goldbet.io/terms-and-conditions" class="text-white underline underline-offset-4" >ውሎች እና ሁኔታዎች</a></span> ጋር እስማማለሁ`,
+
+    wrongEmail: "የተሳሳተ ኢ-ሜይል",
+    wrongPassword: "ቢያንስ 6 ፊደላት",
+    wrongNumber: "የተሳሳተ ቁጥር",
+    bonusOnNextDeposit: "በሚቀጥለው ዲፖዚት ላይ ቦነስ",
+    activated: "ተነቅቷል",
+    quickReg: "ፈጣን ምዝገባ",
+    regWithEmail: "በኢ-ሜይል ይመዝገቡ",
+    yourWinning: "የእርስዎ ድል",
+    signUpToClaim: "ሽልማትዎን ለማግኘት ይመዝገቡ",
+    passwordPlaceholder: "የይለፍ ቃል",
+    promocodePlaceholder: "ፕሮሞ ኮድ",
+
+    depositBonus: `የእንኳን ደህና መጡ ቦነስ <span class="bonus-value"></span> <span class="bonus-currency"></span> + <span class="bonus-spins"></span>`,
+
+    signUpEasySteps: "በ3 ቀላል ደረጃዎች ይመዝገቡ",
+    completeToClaimGift: "ሽልማትዎን ለማግኘት ያጠናቅቁ።",
+
+    signUpWithEmail: "ኢ-ሜይል",
+    signUpWithGoogle: "በGoogle ይመዝገቡ",
+    signUpWithFacebook: "በFacebook ይመዝገቡ",
+
+    phone: "ስልክ",
+    signUpBtn: "ይመዝገቡ",
+
+    promoApplied: "ቦነስ ተተግብሯል",
+    bonusName: "የዌልካም ካሲኖ ቦነስ",
+    bonusSubtext: `<span class="bonus-sum-wager">የ20x ውድድር ብቻ</span>`,
+
+    depositBonus2: "400% በዲፖዚት እስከ 6000",
+    depositBonusDynamic: `ያለ ዲፖዚት ቦነስ <span class="bonus-sum-amount"></span> <span class="bonus-sum-currency"></span>`,
+
+    phoneNumber: "የስልክ ቁጥር",
+    password: "የይለፍ ቃል",
+    minSymbols: "ቢያንስ 6 ፊደላት",
+    atLeast6Chars: "ቢያንስ 6 ፊደላት",
+    currency: "ገንዘብ",
+
+    startPlaying: "መጫወት ይጀምሩ",
+    areYouSure: `እርግጠኛ ነዎት? <br /> እድገትዎ ይጠፋል`,
+    keepRegistering: "ምዝገባ ይቀጥሉ",
+    returnToWebsite: "ወደ ድህረ ገጽ ተመለሱ",
+
+    step2Title: `ቦነስዎን ለማግኘት <br /> የመጨረሻ ደረጃ`,
+    step2Subtitle: `የይለፍ ቃል ይፍጠሩ እና <br /> ገንዘብ ይምረጡ`,
+
+    passwordPlaceholder: "የይለፍ ቃል",
+  },
+  lm: {
+    // ? AUTH
+    mainModalTitle: "Wewandiise",
+    tabEmail: "E-mail",
+    tabPhone: "Essimu",
+    tabSocial: "Social",
+    tabOneClick: "Okunyiga omulundi gumu",
+    yourCurrency: "Ssente zo",
+    yourWelcomeBonus: "Bonasi yo ey’okwaniriza",
+    havePromoCode: "Nina promo-code",
+    signUpBtn: "Wewandiise",
+    chooseSocialBtn: "Londa social",
+    terms: `Nzikiriziganya n’ebiragiro <a href="https://dev1.goldbet.io/terms-and-conditions" class="text-white underline underline-offset-4" >Terms and Conditions</a></span>`,
+
+    wrongEmail: "E-mail si ntuufu",
+    wrongPassword: "Wakiri ennukuta 6",
+    wrongNumber: "Ennamba si ntuufu",
+    bonusOnNextDeposit: "Bonasi ku deposit eddako",
+    activated: "Ekakasa",
+    quickReg: "Okwewandiisa okwangu",
+    regWithEmail: "Wewandiise ne E-mail",
+    yourWinning: "Obuwanguzi bwo",
+    signUpToClaim: "Wewandiise ofune ekirabo",
+    passwordPlaceholder: "Password",
+    promocodePlaceholder: "Promo-code",
+
+    depositBonus: `Bonasi ey’okwaniriza <span class="bonus-value"></span> <span class="bonus-currency"></span> + <span class="bonus-spins"></span>`,
+
+    signUpEasySteps: "Wewandiise mu mitendera 3 egyangu",
+    completeToClaimGift: "Maliriza ofune ekirabo.",
+
+    signUpWithEmail: "E-mail",
+    signUpWithGoogle: "Wewandiise ne Google",
+    signUpWithFacebook: "Wewandiise ne Facebook",
+
+    phone: "Essimu",
+    signUpBtn: "Wewandiise",
+
+    promoApplied: "Bonasi eteekeddwa",
+    bonusName: "WELCOME CASINO BONUS",
+    bonusSubtext: `<span class="bonus-sum-wager">Wager 20x yokka</span>`,
+
+    depositBonus2: "400% ku deposit okutuuka ku 6000",
+    depositBonusDynamic: `No deposit bonus <span class="bonus-sum-amount"></span> <span class="bonus-sum-currency"></span>`,
+
+    phoneNumber: "Ennamba y’essimu",
+    password: "Password",
+    minSymbols: "Wakiri ennukuta 6",
+    atLeast6Chars: "Wakiri ennukuta 6",
+    currency: "Ssente",
+
+    startPlaying: "Tandika okuzannya",
+    areYouSure: `Okakasa? <br /> Ekyo ky’okola kijja kubula`,
+    keepRegistering: "Weeyongere okwewandiisa",
+    returnToWebsite: "Ddayo ku mukutu",
+
+    step2Title: `Ekisembayo <br /> okufuna bonasi yo`,
+    step2Subtitle: `Tonda password era londa <br /> ssente zo`,
+
+    passwordPlaceholder: "Password",
+  },
 };
