@@ -39,6 +39,8 @@ export const availableLang = [
   "ru",
   "sw",
   "rw",
+  "am",
+  "lm",
 ];
 
 function applyDirection(lang) {
