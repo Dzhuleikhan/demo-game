@@ -2372,4 +2372,62 @@ export const translations = {
                       - ushinzwe imisoro; <br />
                       - ushinzwe imisoro ya crypto.`,
   },
+  am: {
+    termsTitle1: `ውሎች እና ሁኔታዎች`,
+    termsParagraph1: `እነዚህ ውሎች እና ሁኔታዎች እና ከታች የተጠቀሱ ሰነዶች ("ውሎች") በአሁኑ ድረ ገጽ ("ድረ ገጽ") እና ከዚህ ጋር የተያያዙ ወይም የተገናኙ አገልግሎቶች ("አገልግሎት") ላይ ይተገበራሉ። እባክዎ በጥንቃቄ ይመልከቱ። ይህ በእርስዎ እና በእኛ መካከል ሕጋዊ ስምምነት ነው። በመጠቀም እነዚህን ውሎች ትቀበላለህ።`,
+
+    termsTitle2: `1. አጠቃላይ ውሎች`,
+    termsParagraph2: `ውሎቹን በማንኛውም ጊዜ ለመለወጥ መብት አለን። በድረ ገጽ ላይ ከተለጠፉ በኋላ በቀጥታ ተፈጻሚ ይሆናሉ። ካልተስማሙ መጠቀም አቁሙ።`,
+
+    termsTitle3: `2. ግዴታዎችዎ`,
+    termsParagraph3: `3.1. እርስዎ 18 ዓመት በላይ ነዎት ወይም ሕጋዊ ዕድሜ ላይ ነዎት።  
+3.2. ሕጋዊ ኃይል አለዎት።  
+3.3. አገልግሎቱ በአንዳንድ አገሮች ሕገ ወጥ ሊሆን ይችላል። እርስዎ ተጠያቂ ነዎት።  
+3.4. እርስዎ በአገርዎ ሕግ መሰረት ጨዋታ ሕጋዊ መሆኑን ማረጋገጥ አለብዎት።  
+3.5. ክፍያ መንገድ ሕጋዊ ባለቤት ነዎት።  
+3.6. ክፍያ መመለስ አይፈቀድም።  
+3.7. ገንዘብ ሊጠፋ ይችላል።  
+3.8. ሕገ ወጥ መረጃ መጠቀም አይፈቀድም።  
+3.9. ለራስዎ ብቻ ትጠቀማለህ።  
+3.10. ስርዓት ማጭበርበር አይፈቀድም።  
+3.11. በቅን መንገድ መጠቀም አለብዎት።  
+3.12. ከAffiliate ፕሮግራም ጋር አይያዙም።  
+3.13. እውነተኛ መረጃ መስጠት አለብዎት።  
+3.14. የcrypto ዋጋ ሊለወጥ ይችላል።  
+3.15. የጨዋታ ችግኝ ካለ እርስዎ ተጠያቂ ነዎት።  
+3.16. ሶፍትዌር መጠቀም አይፈቀድም።  
+3.17. መረጃ እውነተኛ መሆን አለበት።  
+3.17.1. መረጃ መቀየር በsupport ብቻ ይቻላል።  
+3.18. በተከለከሉ አገሮች መጠቀም አይፈቀድም።  
+3.19. ሁሉንም ታክስ እርስዎ ብቻ ትከፍላለህ።`,
+  },
+  lg: {
+    termsTitle1: `Amateeka n’Obukwakkulizo`,
+    termsParagraph1: `Amateeka gano gakola ku mukutu guno n’empeereza zonna ezikwatagana nayo. Bw’okozesa omukutu guno okkiriziganya n’amateeka gano.`,
+
+    termsTitle2: `1. Amateeka Agawamu`,
+    termsParagraph2: `Tulina eddembe okukyusa amateeka gano. Enkyukakyuka zikola amangu ddala nga ziteekeddwa ku mukutu. Bw’otakkiriza, leka okukozesa.`,
+
+    termsTitle3: `2. Obuvunaanyizibwa bwo`,
+    termsParagraph3: `3.1. Oli wa myaka 18 oba okusingawo.  
+3.2. Oli alina obusobozi bw’amateeka.  
+3.3. Empeereza eyinza obutakkirizibwa mu nsi ezimu.  
+3.4. Kakaasa nti okukozesa kikkirizibwa mu nsi yo.  
+3.5. Oli nannyini w’ensimbi z’okozesa.  
+3.6. Okusaba okuzza ssente emabega tekikkirizibwa.  
+3.7. Osobola okufiirwa ssente zo.  
+3.8. Tokozesa bimanyiddwa mu mateeka amabi.  
+3.9. Tokozesa ku lwa muntu omulala.  
+3.10. Tokola kulimba mukutu.  
+3.11. Kozesa mu ngeri ennuŋŋamu.  
+3.12. Tokkirizibwa mu Affiliate program.  
+3.13. Wa data entuufu.  
+3.14. Crypto esobola okukyuka mu bbeeyi.  
+3.15. Obuvunaanyizibwa ku mukwano gw’okuzannya buli ku ggwe.  
+3.16. Tokozesa software ya bantu abalala.  
+3.17. Buli data gy’owa eteekwa kuba ntuufu.  
+3.17.1. Okukyusa data kiyita mu support yokka.  
+3.18. Tokozesa mu bitundu ebikugirwa.  
+3.19. Osasula omusolo gwonna ogukwata ku buwanguzi bwo.`,
+  },
 };
