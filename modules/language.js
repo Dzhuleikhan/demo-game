@@ -53,6 +53,8 @@ export const availableLang = [
   "zh",
   "sw",
   "rw",
+  "am",
+  "lg",
 ];
 
 export const countryLangMap = {
@@ -140,8 +142,9 @@ export const countryLangMap = {
   TW: "zh",
   TZ: "sw",
   KE: "sw",
-  UG: "sw",
+  UG: "lg",
   RW: "rw",
+  ET: "am",
 };
 
 function determineLanguage() {
