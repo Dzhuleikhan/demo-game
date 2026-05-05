@@ -2372,4 +2372,64 @@ export const translations = {
                       - ushinzwe imisoro; <br />
                       - ushinzwe imisoro ya crypto.`,
   },
+  am: {
+    termsTitle1: `የአጠቃቀም ውሎች እና ሁኔታዎች`,
+    termsParagraph1: `እነዚህ የአጠቃቀም ውሎች እና ከታች የተጠቀሱ ሰነዶች (እነዚህ "ውሎች") በዚህ ድር ጣቢያ ("ድር ጣቢያ") እና ከእሱ ጋር የተያያዙ ወይም የተገናኙ አገልግሎቶች (በአጠቃላይ "አገልግሎት") ላይ ይተገበራሉ። ይህን ውሎች በጥንቃቄ መመርመር አለብዎት፣ ምክንያቱም የድር ጣቢያውን አጠቃቀም ስለ መብቶችዎ እና ግዴታዎችዎ አስፈላጊ መረጃ ይዟሉ። እነዚህ ውሎች በእርስዎ (ደንበኛው "ደንበኛ") እና በእኛ (ድር ጣቢያው) መካከል የሚያስገድድ የህጋዊ ስምምነት ናቸው። ይህን ድር ጣቢያ በመጠቀም እና/ወይም አገልግሎቱን በመግባት፣ እንግዳ ወይም የመለያ ባለቤት ተመዝጋቢ ቢሆኑም ("መለያ")፣ እነዚህን ውሎች ለመከተል እንደምትስማሙ ትገልጻላችሁ፣ ከጊዜ ወደ ጊዜ ሊታተሙ የሚችሉ ማሻሻያዎችን ጨምሮ። እነዚህን ውሎች ካልተቀበሉ አገልግሎቱን መጠቀም እና ድር ጣቢያውን መግባት መቆም አለብዎት።`,
+
+    termsTitle2: `1. አጠቃላይ ውሎች`,
+    termsParagraph2: `እኛ ውሎችን (ከታች የተጠቀሱ ሰነዶችን ጨምሮ) በማንኛውም ጊዜ ለመለወጥ እና ለማሻሻል መብት አለን። ይህን ገጽ በየጊዜው መጎብኘት አለብዎት። ማሻሻያዎች በዚህ ድር ጣቢያ ላይ ከተታተሙ በኋላ በቀጥታ ይተገበራሉ። እንዲህ ለውጦችን ካልተቀበሉ አገልግሎቱን መጠቀም አለብዎት። ድር ጣቢያውን በመጠቀም ቀጥለው ማለት ለማሻሻያዎቹ መስማማት ማለት ነው። ከለውጥ በፊት ያልተወሰኑ ቢት ውርዶች በቀድሞ ውሎች ይተገበራሉ። የGoldbet ውሎች ከተሻሻሉ መድረኩ ያሳውቃል እና ስምምነትዎን እንዲያረጋግጡ ይጠይቃል።`,
+
+    termsTitle3: `2. የእርስዎ ግዴታዎች`,
+    termsParagraph3: `ድር ጣቢያውን በመግባት እና አገልግሎቱን በመጠቀም ሁልጊዜ እንዲህ ትገልጻላችሁ፡ <br />
+                      3.1. እርስዎ 18 ዓመት በላይ ነዎት ወይም በህግ የተፈቀደ ዕድሜ ውስጥ ነዎት። ዕድሜ ማረጋገጫ ሰነዶችን ማቅረብ እንዲጠየቁ መብት አለን። <br />
+                      3.2. ህጋዊ አቅም አለዎት እና ህጋዊ ስምምነት መግባት ይችላሉ። ህጋዊ አቅም ከሌለዎት ድር ጣቢያውን መግባት የለብዎትም። <br />
+                      3.3. ድር ጣቢያውን መግባት በአንዳንድ አገሮች ህጋዊ አይሆንም ሊባል ይችላል። በሁሉም ክልሎች ህጋዊነት ማረጋገጥ አንችልም። ስለዚህ በአገርዎ ህግ መሠረት ማስረጃ መስጠት እርስዎ ኃላፊነት ነው። ከታች የተጠቀሱ አገሮች ተገድበዋል (እንዲሁም ሌሎች የሚለወጡ ክልሎች): Afghanistan, Algeria, Antigua & Barbuda, Australia, Belarus, Bahrain, Belgium, Bhutan, Brunei, Central African Republic, Chad, Côte d'Ivoire, Croatia, Cuba, Czech Republic, Democratic People’s Republic of Korea (North Korea), Democratic Republic of the Congo, Denmark, Estonia, France, Greece, Guinea-Bissau, Hungary, Iran, Iraq, Iceland, Israel, Italy, Jordan, Kuwait, Latvia, Liberia, Lithuania, Malta, Myanmar, Netherlands, Netherlands Antilles (Curacao, Sint Maarten, Bonaire, Sint Eustatius, and Saba, Aruba), Norway, Oman, Palestine, Pakistan, Qatar, Russia, Saba, Saint Martin, Saudi Arabia, Serbia, Slovenia, Somalia, Spain, Switzerland, Syrian Arab Republic, Sudan, Trinidad and Tobago, Turkey, Ukraine, United Kingdom, Germany, Union of Comoros, United Arab Emirates, United States (and its dependencies, military bases and territories i.e. U.S. Minor Outlying Islands, U.S. Virgin Islands), Vanuatu, Yemen, Zimbabwe. <br />
+                      3.4. መለያ ሲከፍቱ ወይም ድር ጣቢያውን ሲጠቀሙ በክልሉ ህጋዊነት ማረጋገጥ የተጫዋቹ ኃላፊነት ነው። <br />
+                      3.5. እርስዎ የሚጠቀሙት ክፍያ መንገድ ባለቤት ነዎት እና በመለያዎ ያሉ ገንዘቦች ህጋዊ ናቸው። <br />
+                      3.6. ክፍያዎችን በታማኝነት መክፈል አለብዎት እና ክፍያ ለመመለስ አይሞክሩ። <br />
+                      3.7. በቁማር ሲጫወቱ ገንዘብ ሊያጡ ይችላሉ እና ለዚህ እርስዎ ኃላፊ ነዎት። <br />
+                      3.8. በህግ የተከለከለ መረጃ በመጠቀም መወራረድ አይችሉም። <br />
+                      3.9. ለሌላ ሰው ወይም ለንግድ አይደለም፣ በግል ስምዎ ብቻ ነው። <br />
+                      3.10. ስርዓቱን ለመቆጣጠር አይሞክሩ። <br />
+                      3.11. በሁሉም ጊዜ በታማኝነት ይጠቀሙ። <br />
+                      3.12. እርስዎ ወይም ቤተሰብዎ አባላት በAffiliate ፕሮግራም አይመዘገቡም። <br />
+                      3.13. ትክክለኛ መረጃ ብቻ ይስጡ። <br />
+                      3.14. የcrypto ገበያ መለዋወጥን ትረዱ እና ተቀብለዋል። <br />
+                      3.15. ስነ-ልቦናዊ ችግር የለብዎትም። <br />
+                      3.16. 3ኛ ወገን ሶፍትዌር አይጠቀሙ። <br />
+                      3.17. የሚሰጡት መረጃ ትክክል ነው። <br />
+                      3.17.1. በመመዝገብ የገባው መረጃ በቀጥታ አይለወጥም። <br />
+                      3.18. በተከለከለ ክልል አይጠቀሙ። <br />
+                      3.19. በግብር እርስዎ ኃላፊ ነዎት።`,
+  },
+  lm: {
+    termsTitle1: `Ebisaanyizo n'obukwakkulizo`,
+    termsParagraph1: `Ebisaanyizo bino n'ebiwandiiko ebiragiddwa wansi ("Ebisaanyizo") bikola ku mukutu guno ("Omukutu") n'obuweereza obukwatagana nabwo ("Obuweereza"). Osaanidde okusoma ebisaanyizo bino n'obwegendereza kubanga birimu ebikwata ku ddembe lyo n'obuvunaanyizibwa bwo mu kukozesa omukutu guno. Ebisaanyizo bino bikola ng'endagaano ey'obuwandiike wakati wo (omukozesa "Client") naffe (omukutu). Bw'okozesa omukutu guno oba obuweereza, okkiriza okugoberera ebisaanyizo bino nga mwotadde n'ebikyusiddwa ebiyinza okuteekebwawo. Bw'otokiriza, tosemeza kukozesa mukutu guno.`,
+
+    termsTitle2: `1. Ebisaanyizo eby'awamu`,
+    termsParagraph2: `Tulina eddembe okukyusa ebisaanyizo bino mu buli kaseera. Olina okulambula omuko guno buli kaseera. Enkyukakyuka zijja kutandika okukola amangu ddala nga zifulumye ku mukutu. Bw'otakkaanya, leka okukozesa obuweereza. Okukozesa omukutu guno oluvannyuma lw'enkyukakyuka kitegeeza okukkiriza ebisaanyizo ebipya. Emizeezo egitali gimaliddwa gigoberera ebisaanyizo ebyasooka. Bw'ebisaanyizo bya Goldbet bikyusiddwa, omukutu gujja kukutegeeza era gukusabe okukakasa okukkiriza.`,
+
+    termsTitle3: `2. Obuvunaanyizibwa bwo`,
+    termsParagraph3: `Okiriza nti bw'oyingira ku mukutu era okozesa obuweereza, buli kiseera: <br />
+                      3.1. Oli waggulu w'emyaka 18 oba mu myaka egikkirizibwa mu mateeka agakwata ku gambling mu kitundu kyo. Tusobola okukusaba okuwa obujulizi bw'emyaka. <br />
+                      3.2. Olina obusobozi bw'amateeka okuyingira mu ndagaano. <br />
+                      3.3. Okimanyi nti okukozesa omukutu kuno mu nsi ezimu kiyinza okuba ekimenya amateeka. Afganistan, Algeria, Antigua & Barbuda, Australia, Belarus, Bahrain, Belgium, Bhutan, Brunei, Central African Republic, Chad, Côte d'Ivoire, Croatia, Cuba, Czech Republic, Democratic People’s Republic of Korea (North Korea), Democratic Republic of the Congo, Denmark, Estonia, France, Greece, Guinea-Bissau, Hungary, Iran, Iraq, Iceland, Israel, Italy, Jordan, Kuwait, Latvia, Liberia, Lithuania, Malta, Myanmar, Netherlands, Netherlands Antilles (Curacao, Sint Maarten, Bonaire, Sint Eustatius, and Saba, Aruba), Norway, Oman, Palestine, Pakistan, Qatar, Russia, Saba, Saint Martin, Saudi Arabia, Serbia, Slovenia, Somalia, Spain, Switzerland, Syrian Arab Republic, Sudan, Trinidad and Tobago, Turkey, Ukraine, United Kingdom, Germany, Union of Comoros, United Arab Emirates, United States (and its dependencies, military bases and territories i.e. U.S. Minor Outlying Islands, U.S. Virgin Islands), Vanuatu, Yemen, Zimbabwe n'ebirala ebiyinza okukugirwa ("Restricted Jurisdiction"). <br />
+                      3.4. Olina okukebera oba gambling ekkirizibwa mu kitundu kyo. <br />
+                      3.5. Oli nannyini ku nkola y'okusasula gy'okozesa. <br />
+                      3.6. Osasula mu bwesigwa. <br />
+                      3.7. Oyinza okulwawo oba okufiirwa ssente zo. <br />
+                      3.8. Tokozesa bumanyi bumenyese amateeka. <br />
+                      3.9. Tokolera ku lwa muntu omulala. <br />
+                      3.10. Totayiza mukutu. <br />
+                      3.11. Kola mu bwesigwa. <br />
+                      3.12. Totali mu Affiliate program yaffe. <br />
+                      3.13. Owa data entuufu. <br />
+                      3.14. Okimanyi volatile ya crypto. <br />
+                      3.15. Oli mulamu mu mutwe ku gambling. <br />
+                      3.16. Tokozesa software ya 3rd party. <br />
+                      3.17. Data yonna gye owa ntuufu. <br />
+                      3.17.1. Data teyakyuka nga weggulawo account, webaako contact support. <br />
+                      3.18. Tokozesa mukutu mu bifo ebigaaniddwa. <br />
+                      3.19. Olina obuvunaanyizibwa ku tax.`,
+  },
 };

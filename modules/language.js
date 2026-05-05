@@ -53,6 +53,8 @@ export const availableLang = [
   "zh",
   "sw",
   "rw",
+  "am",
+  "lm",
 ];
 
 function determineLanguage() {

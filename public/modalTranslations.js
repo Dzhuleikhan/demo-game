@@ -1610,4 +1610,128 @@ export const modalTranslations = {
     step2Subtitle: `Shyiraho ijambo ry'ibanga kandi uhitemo <br /> ifaranga rya konti yawe.`,
     passwordPlaceholder: "Ijambo ry'ibanga",
   },
+  am: {
+    // ? AUTH
+    mainModalTitle: "መመዝገብ",
+    tabEmail: "ኢሜይል",
+    tabPhone: "ስልክ",
+    tabSocial: "ማህበራዊ",
+    tabOneClick: "በአንድ ጠቅታ",
+    yourCurrency: "ምንዛሬ",
+    yourWelcomeBonus: "የእንኳን ደህና መጡ ቦነስ",
+    havePromoCode: "የፕሮሞ ኮድ አለኝ",
+    signUpBtn: "ተመዝገብ",
+    chooseSocialBtn: "ማህበራዊ ምረጥ",
+    terms: `እኔ እስማማለሁ ከ <a href="https://dev1.goldbet.io/terms-and-conditions" class="text-white underline underline-offset-4" >የአገልግሎት ውሎች</a></span>`,
+
+    wrongEmail: "የተሳሳተ ኢሜይል",
+    wrongPassword: "ቢያንስ 6 ፊደላት",
+    wrongNumber: "የተሳሳተ ቁጥር",
+    bonusOnNextDeposit: "በሚቀጥለው ተቀማጭ ላይ ቦነስ",
+    activated: "ተነቃቅቷል",
+    quickReg: "ፈጣን ምዝገባ",
+    regWithEmail: "በኢሜይል ተመዝገብ",
+    yourWinning: "የእርስዎ ድል",
+    signUpToClaim: "ሽልማትዎን ለመቀበል ይመዝገቡ",
+    passwordPlaceholder: "የይለፍ ቃል",
+    promocodePlaceholder: "ፕሮሞ ኮድ",
+
+    depositBonus: `የእንኳን ደህና መጡ ቦነስ <span class="bonus-value"></span> <span class="bonus-currency"></span> + <span class="bonus-spins"></span>`,
+
+    // ? SOCIALS
+    signUpEasySteps: "በ3 ቀላል ደረጃዎች ተመዝገብ",
+    completeToClaimGift: "ሽልማትዎን ለመቀበል ያጠናቅቁ",
+    signUpWithGoogle: "በGoogle ተመዝገብ",
+    signUpWithFacebook: "በFacebook ተመዝገብ",
+    phone: "ስልክ",
+
+    wrongEmail: "የተሳሳተ ኢሜይል",
+    wrongNumber: "የተሳሳተ ቁጥር",
+    signUpBtn: "ተመዝገብ",
+
+    promoApplied: "ቦነስ ተተግብሯል",
+    bonusName: "የእንኳን ደህና መጡ የካሲኖ ቦነስ",
+
+    depositBonus: `የእንኳን ደህና መጡ ቦነስ <span class="bonus-value"></span> <span class="bonus-currency"></span> + <span class="bonus-spins"></span>`,
+
+    depositBonus2: "በተቀማጭ ላይ እስከ 6000 ድረስ 400%",
+    phoneNumber: "የስልክ ቁጥር",
+    password: "የይለፍ ቃል",
+    minSymbols: "ቢያንስ 6 ምልክቶች",
+    atLeast6Chars: "ቢያንስ 6 ፊደላት",
+    currency: "ምንዛሬ",
+
+    terms: `እኔ እስማማለሁ ከ <a href="https://dev1.goldbet.io/terms-and-conditions" class="text-white underline underline-offset-4" >የአገልግሎት ውሎች</a></span>`,
+
+    startPlaying: "መጫወት ጀምር",
+    areYouSure: `እርግጠኛ ነዎት? <br /> የእርስዎ ሂደት ይጠፋል`,
+    keepRegistering: "ምዝገባውን ቀጥል",
+    returnToWebsite: "ወደ ድር ጣቢያ ተመለስ",
+    step2Title: `አንድ የመጨረሻ ደረጃ <br /> ቦነስዎን ለመቀበል`,
+    step2Subtitle: `የይለፍ ቃል ፍጠር እና የመለያ ምንዛሬዎን ይምረጡ`,
+
+    passwordPlaceholder: "የይለፍ ቃል",
+  },
+  lm: {
+    // ? AUTH
+    mainModalTitle: "Wewandiisa",
+    tabEmail: "E-mail",
+    tabPhone: "Essimu",
+    tabSocial: "Social",
+    tabOneClick: "Okunyiga omulundi gumu",
+    yourCurrency: "Ssente zo",
+    yourWelcomeBonus: "Bonus y'okwaniriza",
+    havePromoCode: "Nina promo-code",
+    signUpBtn: "Wewandiisa",
+    chooseSocialBtn: "Londa social",
+    terms: `Nze nzikiriza <a href="https://dev1.goldbet.io/terms-and-conditions" class="text-white underline underline-offset-4" >Ebisaanyizo n'obukwakkulizo</a></span>`,
+
+    wrongEmail: "Email etali ntuufu",
+    wrongPassword: "Waakiri ennukuta 6",
+    wrongNumber: "Namba etali ntuufu",
+    bonusOnNextDeposit: "Bonus ku deposit eddako",
+    activated: "Etandikiddwa",
+    quickReg: "Okwewandiisa amangu",
+    regWithEmail: "Wewandiise ne email",
+    yourWinning: "Obuwanguzi bwo",
+    signUpToClaim: "Wewandiise ofune ekirabo kyo",
+    passwordPlaceholder: "Password",
+    promocodePlaceholder: "Promo-code",
+
+    depositBonus: `Bonus y'okwaniriza <span class="bonus-value"></span> <span class="bonus-currency"></span> + <span class="bonus-spins"></span>`,
+
+    // ? SOCIALS
+    signUpEasySteps: "Wewandiise mu mitendera 3 egyangu",
+    completeToClaimGift: "Maliriza okufuna ekirabo kyo",
+    signUpWithGoogle: "Wewandiise ne Google",
+    signUpWithFacebook: "Wewandiise ne Facebook",
+    phone: "Essimu",
+
+    wrongEmail: "Email etali ntuufu",
+    wrongNumber: "Namba etali ntuufu",
+    signUpBtn: "Wewandiisa",
+
+    promoApplied: "Bonus eteekeddwako",
+    bonusName: "BONUS YA CASINO EY'OKWANIRIZA",
+
+    depositBonus: `Bonus y'okwaniriza <span class="bonus-value"></span> <span class="bonus-currency"></span> + <span class="bonus-spins"></span>`,
+
+    depositBonus2: "400% ku deposit okutuuka ku 6000",
+    phoneNumber: "Namba y'essimu",
+    password: "Password",
+    minSymbols: "Waakiri ennukuta 6",
+    atLeast6Chars: "Waakiri ennukuta 6",
+    currency: "Ssente",
+
+    terms: `Nze nzikiriza <a href="https://dev1.goldbet.io/terms-and-conditions" class="text-white underline underline-offset-4" >Ebisaanyizo n'obukwakkulizo</a></span>`,
+
+    startPlaying: "Tandika okuzannya",
+    areYouSure: `Okakasa? <br /> Ebikolebwa byo bijja okusangulwawo`,
+    keepRegistering: "Genda mu maaso n'okwewandiisa",
+    returnToWebsite: "Ddayo ku mukutu",
+    step2Title: `Ekiddako ekisembayo <br /> okufuna bonus yo`,
+    step2Subtitle: `Tonda password era londa ssente za akawunti yo`,
+
+    passwordPlaceholder: "Password",
+  },
 };
