@@ -56,7 +56,17 @@ async function setModalLanguage() {
   try {
     const location = geoData;
     const browserLang = (navigator.language || "en").split("-")[0].toLowerCase();
-    changeLanguage(availableLang.includes(browserLang) ? browserLang : "en");
+
+    let lang;
+    if (location.countryCode === "NG") {
+      const nigerianLangs = ["ha", "yo", "ig"];
+      lang = nigerianLangs.includes(browserLang) ? browserLang : "ha";
+    } else if (location.countryCode === "GH") {
+      lang = "tw";
+    } else {
+      lang = availableLang.includes(browserLang) ? browserLang : "en";
+    }
+    changeLanguage(lang);
     setTimeout(() => {
       settingBonusValueAndAmount(location.countryCode.toLowerCase());
       setPaymentMethods(paymentCountries, location.countryCode.toLowerCase());

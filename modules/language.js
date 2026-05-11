@@ -1,6 +1,7 @@
 import { translations } from "/public/translations";
 import gsap from "gsap";
 import { setNewBonusBasedOnParams } from "./formSocials";
+import { geoData } from "./geoLocation";
 
 function applyDirection(lang) {
   const dir = lang === "ar" ? "rtl" : "ltr";
@@ -55,6 +56,10 @@ export const availableLang = [
   "am",
   "lm",
   "rw",
+  "ha",
+  "yo",
+  "ig",
+  "tw",
 ];
 
 export const countryLangMap = {
@@ -145,10 +150,22 @@ export const countryLangMap = {
   UG: "lm",
   ET: "am",
   RW: "rw",
+  NG: "ha",
+  GH: "tw",
 };
 
 function determineLanguage() {
   const browserLang = (navigator.language || "en").split("-")[0].toLowerCase();
+  const countryCode = geoData?.countryCode;
+
+  if (countryCode === "NG") {
+    const nigerianLangs = ["ha", "yo", "ig"];
+    return nigerianLangs.includes(browserLang) ? browserLang : "ha";
+  }
+  if (countryCode === "GH") {
+    return "tw";
+  }
+
   return availableLang.includes(browserLang) ? browserLang : "en";
 }
 

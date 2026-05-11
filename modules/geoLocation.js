@@ -27,6 +27,10 @@ export let geoData = await getLocation();
 export const getSupportedLanguage = (countryCode) => {
   if (countryCode in countryLanguagesMap) {
     const languages = countryLanguagesMap[countryCode];
+    const browserLang = (navigator.language || "en").split("-")[0].toLowerCase();
+    if (languages.includes(browserLang) && SupportedLanguages.includes(browserLang)) {
+      return browserLang;
+    }
     for (let language of languages) {
       if (SupportedLanguages.includes(language)) {
         return language;
