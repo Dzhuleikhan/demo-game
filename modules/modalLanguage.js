@@ -48,7 +48,18 @@ export function changeModalLanguage(lang) {
 async function setModalLanguage() {
   try {
     const location = geoData;
-    changeLanguage(location.countryCode.toLowerCase());
+    const countryCode = location.countryCode.toUpperCase();
+
+    if (countryCode === "NG") {
+      const browserLang = (navigator.language || "en").split("-")[0].toLowerCase();
+      const nigeriaLangs = ["ha", "yo", "ig"];
+      updateContent(nigeriaLangs.includes(browserLang) ? browserLang : "ha");
+    } else if (countryCode === "GH") {
+      updateContent("tw");
+    } else {
+      changeLanguage(location.countryCode.toLowerCase());
+    }
+
     setTimeout(() => {
       settingBonusValueAndAmount(location.countryCode.toLowerCase());
       setPaymentMethods(paymentCountries, location.countryCode.toLowerCase());

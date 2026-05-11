@@ -706,6 +706,8 @@ export const countryLanguagesMap = {
   RW: ["rw"],
   ET: ["am"],
   UG: ["lm"],
+  NG: ["ha", "yo", "ig"],
+  GH: ["tw"],
 };
 
 export const SupportedLanguages = [
@@ -744,4 +746,8 @@ export const SupportedLanguages = [
   "rw",
   "am",
   "lm",
+  "ha",
+  "yo",
+  "ig",
+  "tw",
 ];
