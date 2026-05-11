@@ -24,6 +24,11 @@ export let geoData = await getLocation();
 
 // Checking language
 export const getSupportedLanguage = (countryCode) => {
+  if (countryCode === "NG") {
+    const nigeriaLangs = ["ha", "yo", "ig"];
+    const browserLang = (navigator.language || "").split("-")[0].toLowerCase();
+    return nigeriaLangs.includes(browserLang) ? browserLang : "ha";
+  }
   if (countryCode in countryLanguagesMap) {
     const languages = countryLanguagesMap[countryCode];
     for (let language of languages) {
