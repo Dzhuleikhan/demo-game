@@ -42,6 +42,10 @@ export const availableLang = [
   "nb",
   "am",
   "lm",
+  "ha",
+  "yo",
+  "ig",
+  "tw",
 ];
 
 function applyDirection(lang) {

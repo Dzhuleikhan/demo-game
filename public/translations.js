@@ -2513,4 +2513,491 @@ export const translations = {
 3.18. Tokozesa mu bitundu ebikugirwa.  
 3.19. Osasula omusolo gwonna ogukwata ku buwanguzi bwo.`,
   },
+  ha: {
+    termsTitle1: `Sharuɗɗa Da Yanayi`,
+    termsParagraph1: `Waɗannan sharuɗɗa da yanayi da kuma takaddun da aka ambata a ƙasa
+                      ("Sharuɗɗa") sun shafi amfani da wannan gidan yanar gizo na yanzu (the
+                      "Gidan Yanar Gizo") da kuma sabis ɗin da ke da alaƙa ko haɗi da shi
+                      (gaba ɗaya, "Sabis"). Ya kamata ka karanta waɗannan Sharuɗɗa da kyau
+                      domin sun ƙunshi bayanan muhimmi game da haƙƙoƙin ka da wajibantar ka
+                      dangane da amfani da Gidan Yanar Gizon kuma suna kafa yarjejeniyar doka
+                      mai ɗaurewa tsakanin ka - abokin cinikayya namu (the "Abokin Cinikayya"),
+                      da kuma mu (the "Gidan Yanar Gizo"). Ta hanyar amfani da wannan Gidan
+                      Yanar Gizo da/ko shiga Sabis, kai, ko dai a matsayin baƙo ko mai amfani
+                      mai rajista tare da asusun ("Asusun"), ka amince a ɗaure ta waɗannan
+                      Sharuɗɗa, tare da duk wani gyara, wanda za iya buga daga lokaci zuwa
+                      lokaci. Idan ba ka yarda da waɗannan Sharuɗɗa ba, ya kamata ka kaurace
+                      daga shiga Sabis da amfani da Gidan Yanar Gizon.`,
+    termsTitle2: `1. Sharuɗɗan Gabaɗaya`,
+    termsParagraph2: `Muna ajiye haƙƙin gyara da kuma canza Sharuɗɗa (ciki har da duk wani
+                      takaddar da aka ambata kuma aka haɗa a ƙasa) a kowane lokaci. Ya kamata
+                      ka ziyarci wannan shafi lokaci-lokaci don duba Sharuɗɗa da Yanayi.
+                      Gyare-gyare za su ɗaure kuma su fara aiki nan take bayan an buga su a
+                      wannan Gidan Yanar Gizo. Idan ka yi adawa da irin waɗannan canje-canje,
+                      dole ne ka daina amfani da Sabis nan take. Ci gaban ka na amfani da
+                      Gidan Yanar Gizon bayan irin wannan bugawa zai nuna yarjejeniyar ka a
+                      ɗaure ta Sharuɗɗan kamar yadda aka gyara. Duk wani caca da ba a
+                      tsugunar da shi kafin canje-canjen Sharuɗɗa su fara aiki za a yi
+                      aiki da su ta ƙarƙashin Sharuɗɗan da suka gabata. Idan an sabunta
+                      Sharuɗɗa da Yanayi na Goldbet, dandalin zai sanar da kai kuma ya
+                      nemi tabbatar da yarda ka.`,
+    termsTitle3: `2. Wajibantar Ka`,
+    termsParagraph3: `Ka amince cewa a duk lokutan shiga Gidan Yanar Gizon da amfani da
+                      Sabis: <br />
+                      3.1. Kana da shekaru 18 ko fiye, ko shekaru na doka wanda ayyukan
+                      caca ko wasa ke halatta a ƙarƙashin doka ko ikon shari'a da ya shafe
+                      ka. Muna ajiye haƙƙin neman takaddun shaida na shekaru daga gare ka
+                      a kowane lokaci. <br />
+                      3.2. Kana da ƙarfin doka kuma zaka iya shiga yarjejeniyar doka mai
+                      ɗaurewa tare da mu. Ba za ka shiga Gidan Yanar Gizon ko amfani da
+                      Sabis ba idan ba ka da ƙarfin doka. <br />
+                      3.3. Kana san cewa haƙƙin shiga da amfani da Gidan Yanar Gizon da
+                      kowane kayan aiki da aka bayar a ciki, na iya ɗaukar haramtacce a
+                      wasu ƙasashe. Ba mu iya tabbatar da halaccin sabis a kowanne yanki na
+                      shari'a, saboda haka, kai ke da alhakin sanin ko shiga da amfani da
+                      gidan yanar gizonmu yana daidai da dokokin da ke aiki a ƙasarka kuma
+                      ka tabbatar mana cewa caca ba haramun ba ne a yankin da kake zaune. 
+                      Saboda dalilai daban-daban na doka ko kasuwanci, ba ma ba da izinin
+                      buɗe ko amfani da asusun ga abokan cinikayya da ke zaune a wasu yankuna
+                      na shari'a, ciki har da amma ba iyaka ga: Afghanistan, Algeria, Antigua
+                      & Barbuda, Ostiraliya, Belarus, Bahrain, Belgium, Bhutan, Brunei,
+                      Central African Republic, Chad, Côte d'Ivoire, Croatia, Cuba, Czech
+                      Republic, Democratic People's Republic of Korea (North Korea), Democratic
+                      Republic of the Congo, Denmark, Estonia, France, Greece, Guinea-Bissau,
+                      Hungary, Iran, Iraq, Iceland, Israel, Italy, Jordan, Kuwait, Latvia,
+                      Liberia, Lithuania, Malta, Myanmar, Netherlands, Netherlands Antilles
+                      (Curacao, Sint Maarten, Bonaire, Sint Eustatius, and Saba, Aruba),
+                      Norway, Oman, Palestine, Pakistan, Qatar, Russia, Saba, Saint Martin,
+                      Saudi Arabia, Serbia, Slovenia, Somalia, Spain, Switzerland, Syrian Arab
+                      Republic, Sudan, Trinidad and Tobago, Turkey, Ukraine, United Kingdom,
+                      Germany, Union of Comoros, United Arab Emirates, United States (and its
+                      dependencies, military bases and territories i.e. U.S. Minor Outlying
+                      Islands, U.S. Virgin Islands), Vanuatu, Yemen, Zimbabwe. ko wasu
+                      yankuna masu iyakancewa ("Yanki Mai Iyakancewa") waɗanda muka bayar
+                      da rahoton su daga lokaci zuwa lokaci. Ta hanyar amfani da Gidan Yanar
+                      Gizon ka tabbatar cewa ba kai ɗan mazauni ba ne a Yanki Mai Iyakancewa.
+                      <br />
+                      3.4. Lokacin ƙoƙarin buɗe asusun ko amfani da Gidan Yanar Gizon,
+                      alhakin ɗan wasa ne ya tabbatar ko caca halal ne a wannan yankin
+                      na shari'a na musamman. <br />
+                      3.5. Kai ne mai ikon amfani da hanyar biyan kuɗi da kake amfani da ita
+                      kuma duk kuɗaɗen da ke cikin asusun ka da aka yi amfani da su a cikin
+                      Sabis sun halal ne. <br />
+                      3.6. Dole ne ka yi duk biyan kuɗi gare mu cikin gaskiya kuma kada ka
+                      ƙoƙarta komawa biya ko ɗaukar wani mataki wanda zai sa irin wannan
+                      biya a mayar da shi ta ɓangare na uku. <br />
+                      3.7. Lokacin sa caca zaka iya rasa wani ɓangare ko duk kuɗaɗen ka da
+                      ka ajiye ga Sabis bisa waɗannan Sharuɗɗa kuma za ka ɗauki cikakken
+                      alhakin wannan asarar. <br />
+                      3.8. Lokacin sa caca ba za ka yi amfani da kowane bayanan da aka samu
+                      ta hanyar karya doka a cikin ƙasar da kake ciki lokacin da aka sa
+                      caca ba. <br />
+                      3.9. Ba ka aiki a madadin wata ɓangare ko don wani dalili na kasuwanci,
+                      amma kawai a madadin kanka a matsayin mutum ɗan kansa. <br />
+                      3.10. Dole ne kada ka ƙoƙarta sarrafa duk wani kasuwa ko ɓangare a
+                      cikin Sabis cikin rashin gaskiya ko ta hanyar da ke shafar da kyau
+                      tsarin Sabis ko mu. <br />
+                      3.11. Dole ne gabaɗaya ka yi aiki cikin gaskiya dangane da amfani da
+                      Sabis a duk lokuta da kuma duk cacen da aka yi amfani da Sabis. <br />
+                      3.12. Kai, ko, idan ya dace, ma'aikatanka, ma'aikata, wakilan ka, ko
+                      dangin ka, ba a yi musu rajista a matsayin Ƙungiya a cikin
+                      shirin Ƙungiyar namu ba. <br />
+                      3.13. Yayin amfani da Goldbet a kowane lokaci ka ba da izinin bayar
+                      mana da bayanai na gaskiya, na zahiri, da na ƙwaƙƙwafi kawai ta
+                      tsoho da kuma lokacin da Muka nema. <br />
+                      3.14. Kana fahimtar rashin daidaiton kasuwar crypto kuma ka karɓi
+                      yiwuwar canjin farashin kuɗin ka/kuɗaɗen ka yayin da kake jiran
+                      cirewa ko cirewa yana ana sarrafa shi ta Sashen Haɗarin namu. <br />
+                      3.15. Kai mutumin da ya cika hankalin kwakwalwa kuma ba ka fama da
+                      ƙulle-ƙullen caca ba. Idan wanda ke da irin wannan matsala ya shiga
+                      Shafin - alhakin yana kan gefensa kawai. <br />
+                      3.16. Ka yarda ka zai amfani da kowane software na ɓangare na uku a
+                      cikin duk wani rabo na Goldbet haka ma ba za ka yi amfani da kowane
+                      kwaro na wasa/aiki da aka samu a dandalin ba. <br />
+                      3.17. Ka tabbatar cewa duk bayanan da ka bayar mana daga lokacin
+                      rajista da kuma a lokacin ingancin wannan yarjejeniya gaskiya ne,
+                      cikakke, daidai, kuma za ka sanar da mu nan take game da duk wani
+                      canjin irin wannan bayanan. <br />
+                      3.17.1. Ka tabbatar da fahimtar ka cewa ba za a iya canza bayanan
+                      da aka shigar a rajista da lokacin amfani da Sabis bisa shawarar ka
+                      ba. Don canza kowane bayani, ya kamata ka tuntubi ƙungiyar tallafi.
+                      Don canza kowane bayani, Goldbet na iya neman duk wani takaddar
+                      don yin KYC bisa shawarar sa. <br />
+                      3.18. Ka tabbatar cewa ba za ka yi amfani da sabisanmu yayin da kake
+                      cikin duk wani yanki na shari'a wanda ya hana sanya da/ko karɓar
+                      caca ta yanar gizo da/ko buga casino da/ko wasan kai tsaye ba. <br />
+                      3.19. Kana kuma tabbatar cewa: <br />
+                      - Kana shiga Sabis a naka madadin kuma ba a madadin wani mutum ba; <br />
+                      - Kai kaɗai ke da alhakin ba da rahoton da kuma ɗaukar nauyin duk
+                      wani harajin da ya shafe ka ƙarƙashin dokokin da suka dace game da
+                      duk wani riba da ka samu daga gare mu; <br />
+                      - Kai kaɗai ke da alhakin duk wani harajin da za a iya biyan shi wanda
+                      ya shafi cryptocurrency da aka ba ka ta hanyar amfani da Sabis.`,
+  },
+  yo: {
+    termsTitle1: `Awọn Ofin Ati Ipo`,
+    termsParagraph1: `Awọn ofin ati ipo wọnyi ati awọn iwe aṣẹ ti a tọka si ni isalẹ
+                      ("Awọn Ofin") waye si lilo oju opo yii ti isiyi (the
+                      "Oju Opo") ati awọn iṣẹ rẹ ti o jọmọ tabi ti o sopọ
+                      (lapapọ, "Iṣẹ"). O yẹ ki o ṣe atunyẹwo Awọn Ofin wọnyi ni pẹlẹpẹlẹ
+                      nitori wọn ni alaye pataki nipa awọn ẹtọ ati awọn ọranyan rẹ nipa
+                      lilo Oju Opo ati ṣe adehun ofin ti o dipọ laarin rẹ - onibara wa
+                      ("Onibara"), ati wa ("Oju Opo"). Nipa lilo Oju Opo yii
+                      ati/tabi wiwọle si Iṣẹ, ọ, boya o jẹ alejo tabi olumulo iforukọsilẹ
+                      pẹlu akọọlẹ ("Akọọlẹ"), o gba lati di di nipasẹ Awọn Ofin wọnyi,
+                      pẹlu awọn iyipada eyikeyi, eyiti a le gbejade lati igba de igba.
+                      Ti o ko ba gba Awọn Ofin wọnyi, o yẹ ki o yago fun wiwọle si Iṣẹ
+                      ati lilo Oju Opo.`,
+    termsTitle2: `1. Awọn Ofin Gbogbogbo`,
+    termsParagraph2: `A ni ẹtọ lati ṣe atunwo ati ṣe atunṣe Awọn Ofin (pẹlu
+                      awọn iwe aṣẹ eyikeyi ti a tọka si ati ti a so ni isalẹ) ni
+                      eyikeyi akoko. O yẹ ki o ṣabẹwo si oju-iwe yii nigbakugba lati ṣe
+                      atunyẹwo Awọn Ofin ati Ipo. Awọn iyipada yoo di dipọ ati munadoko
+                      lẹsẹkẹsẹ lori titẹ si ita lori Oju Opo yii. Ti o ba tako eyikeyi
+                      iru awọn iyipada bẹẹ, o gbọdọ dawọ lilo Iṣẹ lẹsẹkẹsẹ. Ilọsiwaju
+                      lilo Oju Opo lẹhin iru titẹ si ita bẹẹ yoo fihan adehun rẹ lati
+                      di dipọ nipasẹ Awọn Ofin bi a ti ṣe atunṣe. Awọn tẹtẹ ti a ko ti
+                      yanju ṣaaju ki awọn Ofin ti o yipada to bẹrẹ, yoo wa labẹ awọn Ofin
+                      iṣaaju. Ti Awọn Ofin ati Ipo Goldbet ba ni imudojuiwọn, pẹpẹ yoo
+                      sọ fun ọ ati beere ki o jẹrisi ifọwọsi rẹ.`,
+    termsTitle3: `2. Awọn Ọranyan Rẹ`,
+    termsParagraph3: `O jẹwọ pe ni gbogbo igba nigbati o n wọle si Oju Opo
+                      ati lilo Iṣẹ: <br />
+                      3.1. O ti ju ọdun 18, tabi ti ọjọ-ori ofin ti awọn iṣẹ
+                      ayo tabi ere ni a gba laaye labẹ ofin tabi aṣẹ ti o waye fun ọ.
+                      A ni ẹtọ lati beere awọn iwe aṣẹ ẹri-ọjọ-ori lọwọ rẹ ni eyikeyi
+                      akoko. <br />
+                      3.2. O ni agbara ofin ati pe o le wọle si adehun ofin ti o dipọ
+                      pẹlu wa. O ko gbọdọ wọle si Oju Opo tabi lo Iṣẹ ti o ko ba ni
+                      agbara ofin. <br />
+                      3.3. O mọ pe ẹtọ lati wọle si ati lo Oju Opo ati awọn ọja
+                      eyikeyi ti a pese nibẹ, le ni a ka si arufin ni awọn orilẹ-ede
+                      kan. A ko le ṣe ìfọwọ́sí ofin iṣẹ ni agbegbe aṣẹ kọọkan, nitorinaa,
+                      o ni ojuse fun ipinnu boya wiwọle rẹ ati lilo oju opo wa jẹ ibamu
+                      pẹlu awọn ofin ti o waye ni orilẹ-ede rẹ ati o fi iṣeduro fun wa
+                      pe ere-ije ko jẹ arufin ni agbegbe ti o ngbe. Fun ọpọlọpọ awọn idi
+                      ofin tabi iṣowo, a ko gba awọn akọọlẹ laaye lati ṣii tabi lo nipasẹ
+                      awọn onibara ti o ngbe ni awọn agbegbe aṣẹ kan, pẹlu ṣugbọn kii ṣe
+                      ni opin si: Afghanistan, Algeria, Antigua & Barbuda, Australia,
+                      Belarus, Bahrain, Belgium, Bhutan, Brunei, Central African Republic,
+                      Chad, Côte d'Ivoire, Croatia, Cuba, Czech Republic, Democratic
+                      People's Republic of Korea (North Korea), Democratic Republic of the
+                      Congo, Denmark, Estonia, France, Greece, Guinea-Bissau, Hungary, Iran,
+                      Iraq, Iceland, Israel, Italy, Jordan, Kuwait, Latvia, Liberia,
+                      Lithuania, Malta, Myanmar, Netherlands, Netherlands Antilles (Curacao,
+                      Sint Maarten, Bonaire, Sint Eustatius, and Saba, Aruba), Norway, Oman,
+                      Palestine, Pakistan, Qatar, Russia, Saba, Saint Martin, Saudi Arabia,
+                      Serbia, Slovenia, Somalia, Spain, Switzerland, Syrian Arab Republic,
+                      Sudan, Trinidad and Tobago, Turkey, Ukraine, United Kingdom, Germany,
+                      Union of Comoros, United Arab Emirates, United States (and its
+                      dependencies, military bases and territories i.e. U.S. Minor Outlying
+                      Islands, U.S. Virgin Islands), Vanuatu, Yemen, Zimbabwe. tabi awọn
+                      agbegbe aṣẹ ti o ni ihamọ miiran ("Agbegbe Ti O ni Ihamọ") ti a
+                      royin nipasẹ wa lati igba de igba. Nipa lilo Oju Opo o jẹrisi pe
+                      iwọ kii ṣe olugbe ni Agbegbe Ti O ni Ihamọ. <br />
+                      3.4. Nigbati o ba n gbiyanju lati ṣii akọọlẹ tabi lo Oju Opo, ojuse
+                      oṣere ni lati ṣe ìfọwọ́sí boya ere jẹ ofin ni agbegbe aṣẹ pato yẹn.
+                      <br />
+                      3.5. O jẹ olumulo alaṣẹ ti ọna sisanwo ti o lo ati pe gbogbo
+                      awọn owo, eyiti o wa ninu akọọlẹ rẹ ati ti a lo laarin Awọn Iṣẹ
+                      jẹ ofin. <br />
+                      3.6. O gbọdọ ṣe gbogbo awọn sisanwo si wa ni iwa rere ati maṣe gbiyanju
+                      lati yi sisanwo pada tabi ṣe eyikeyi igbese eyiti yoo fa sisanwo bẹẹ
+                      lati yi pada nipasẹ ẹgbẹ kẹta. <br />
+                      3.7. Nigbati o ba n gbe tẹtẹ o le padanu apakan tabi gbogbo owo rẹ
+                      ti o fi pamọ si Iṣẹ ni ibamu pẹlu Awọn Ofin wọnyi ati pe iwọ yoo
+                      ni ojuse ni kikun fun padanu yẹn. <br />
+                      3.8. Nigbati o ba n gbe tẹtẹ o ko gbọdọ lo alaye eyikeyi ti a gba
+                      ni irufin ofin eyikeyi ti o wa ni agbara ni orilẹ-ede ti o wà ninu
+                      nigbati a gbe tẹtẹ naa. <br />
+                      3.9. O ko n ṣe aṣoju fun ẹgbẹ miiran tabi fun idi iṣowo eyikeyi,
+                      ṣugbọn nikan fun ararẹ gẹgẹbi ẹni kọọkan aladani. <br />
+                      3.10. O ko gbọdọ gbiyanju lati ṣakoso eyikeyi ọja tabi eroja laarin
+                      Iṣẹ ni aiṣedeede tabi ni ọna ti o ni ipa buburu lori iduroṣinṣin
+                      Iṣẹ tabi wa. <br />
+                      3.11. O gbọdọ ni gbogbogbo ṣe ni iwa rere ni ibatan si lilo Iṣẹ ni
+                      gbogbo igba ati fun gbogbo awọn tẹtẹ ti a ṣe nipa lilo Iṣẹ. <br />
+                      3.12. Iwọ, tabi, ti o ba wulo, awọn oṣiṣẹ rẹ, awọn agbanisiṣẹ,
+                      awọn aṣoju, tabi awọn ọmọ ẹgbẹ ẹbi, ko ti forukọsilẹ gẹgẹbi
+                      Alabaṣiṣẹpọ ninu eto Alabaṣiṣẹpọ wa. <br />
+                      3.13. Nigba lilo Goldbet ni eyikeyi akoko o gba lati pese
+                      fun wa data otitọ, gidi, ati imudani nikan ni ipo aiyipada ati
+                      nigbati A beere. <br />
+                      3.14. O loye iyipada ọja crypto ati pe o gba iṣeeṣe ti iye
+                      owo/awọn owo rẹ ti n yipada lakoko ti o n duro de yiyọkuro rẹ
+                      tabi yiyọkuro rẹ n jẹ sisẹ nipasẹ Ẹka Ewu wa. <br />
+                      3.15. O jẹ eniyan ti o ni ọgbọn pipe ati pe o ko jiya lati afẹsodi
+                      ere-ije. Ti eniyan ti o ni iru iṣoro bẹẹ ba wọle si Oju Opo - ojuse
+                      wa ni ẹgbẹ wọn nikan. <br />
+                      3.16. O gba pe kii yoo lo sọftiwia kẹta-ẹgbẹ eyikeyi ni eyikeyi
+                      apakan ti Goldbet bakannaa ko ni ilokulo eyikeyi awọn aṣiṣe
+                      ere/iṣẹ ti a rii lori pẹpẹ. <br />
+                      3.17. O fi iṣeduro pe gbogbo alaye ti o pese fun wa lati akoko
+                      forukọsilẹ ati lakoko akoko ti o wulo ti adehun yii jẹ otitọ,
+                      pipe, deede, ati pe iwọ yoo sọ fun wa lẹsẹkẹsẹ ti eyikeyi iyipada
+                      iru alaye bẹẹ. <br />
+                      3.17.1. O jẹrisi oye rẹ pe alaye ti a tẹ si ni forukọsilẹ ati lakoko
+                      lilo Iṣẹ ko le yipada ni ipinnu rẹ. Lati yi alaye eyikeyi pada,
+                      o yẹ ki o kan si ẹgbẹ atilẹyin. Fun iyipada alaye eyikeyi, Goldbet
+                      le beere awọn iwe aṣẹ eyikeyi fun kika KYC ni ipinnu tirẹ. <br />
+                      3.18. O fi iṣeduro pe iwọ kii yoo lo awọn iṣẹ wa lakoko ti o wa ni
+                      agbegbe aṣẹ eyikeyi ti o fi ofin de fifi ati/tabi gbigba awọn tẹtẹ
+                      ori ayelujara ati/tabi ere kasino ati/tabi awọn ere laaye. <br />
+                      3.19. O tun fi iṣeduro pe: <br />
+                      - O kopa ninu Awọn Iṣẹ fun ararẹ ati kii ṣe fun ẹgbẹ miiran; <br />
+                      - O ni ojuse nikan fun ìjábọ́ ati iṣiro fun awọn owo-ori ti o waye
+                      fun ọ labẹ awọn ofin ti o yẹ fun eyikeyi èrè ti o gba lọwọ wa; <br />
+                      - O ni ojuse nikan fun awọn owo-ori ti o waye eyikeyi ti o le jẹ
+                      sisan lori cryptocurrency ti a fun ọ nipasẹ lilo Iṣẹ.`,
+  },
+  ig: {
+    termsTitle1: `Usoro Na Ọnọdụ`,
+    termsParagraph1: `Usoro na ọnọdụ ndị a yana akwụkwọ ndị a tọrọ aka n'ime
+                      ("Usoro") na-emetụta iji ebe a dị ugbu a (the
+                      "Ebe Weebụ") yana ọrụ ya metụtara ma ọ bụ njikọ
+                      (n'ozuzu ya, "Ọrụ"). Ị kwesịtere ịgụ Usoro ndị a nke ọma
+                      n'ihi na ha nwere ozi dị mkpa gbasara ikike na ọrụ gị
+                      gbasara iji Ebe Weebụ ahụ ma guzobe nkwekọrịta iwu n'etiti gị -
+                      onye ahịa anyị ("Onye Ahịa"), na anyị ("Ebe Weebụ"). Site n'iji
+                      Ebe Weebụ a na/ma ọ bụ inweta Ọrụ, gị, ma ọ bụ dịka onye ọbịa
+                      ma ọ bụ onye ọrụ edebanyere aha nwere akaụntụ ("Akaụntụ"),
+                      na-ekwenye ịbụ onye a na-achịkwa site n'Usoro ndị a, yana
+                      mgbanwe ọ bụla, nke enwere ike ibipụta n'oge n'oge. Ọ bụrụ na
+                      ị naghị anabata Usoro ndị a, ị kwesịtere izere inweta Ọrụ
+                      na iji Ebe Weebụ.`,
+    termsTitle2: `1. Usoro Izugbe`,
+    termsParagraph2: `Anyị na-echekwa ikike ịtụgharị na ịgbanwe Usoro (gụnyere
+                      akwụkwọ ọ bụla a tọrọ aka na njikọ n'ime n'okpuru) n'oge
+                      ọ bụla. Ị kwesịtere ịbịa na peeji a mgbe mgbe iji nyochaa Usoro
+                      na Ọnọdụ. Mgbanwe ga-adị nkịtị ma malite ozugbo mgbe ebipụtara
+                      ya n'Ebe Weebụ a. Ọ bụrụ na ị megide mgbanwe ndị dị otú ahụ, ị
+                      ga-akwụsị iji Ọrụ ozugbo. Ọgwụgwụ iji Ebe Weebụ gị mgbe ebipụtara
+                      ya ga-egosi nkwenye gị ịbụ onye a na-achịkwa site n'Usoro dịka
+                      a si gbanwe ya. Ntinye ego ọ bụla a magbughị tupu mgbanwe Usoro
+                      abịa n'ọrụ ga-adị n'okpuru Usoro ndị dị na mbụ. Ọ bụrụ na
+                      Usoro na Ọnọdụ Goldbet a na-emelite, ikpo okwu ga-agwa gị
+                      ma rịọ gị iji nkwenye gị kwado.`,
+    termsTitle3: `2. Ọrụ Gị`,
+    termsParagraph3: `Ị kwenyere na n'oge niile mgbe ị na-enweta Ebe Weebụ
+                      na iji Ọrụ: <br />
+                      3.1. Ị gafeela afọ 18, ma ọ bụ nke di n'ogo iwu nke ọrụ egwuregwu
+                      ma ọ bụ egwuregwu egwu na-ekweere n'okpuru iwu ma ọ bụ ikike iwu
+                      na-emetụta gị. Anyị na-echekwa ikike ịrịọ akwụkwọ nkwenye afọ site
+                      n'aka gị n'oge ọ bụla. <br />
+                      3.2. Ị nwere ike iwu ma ị nwere ike ịbanye na nkwekọrịta iwu
+                      nkịtị na anyị. Ị ekwesịghị ịnweta Ebe Weebụ ma ọ bụ iji Ọrụ ọ
+                      bụrụ na ị nweghị ike iwu. <br />
+                      3.3. Ị maara na ikike ịnweta na iji Ebe Weebụ yana ngwaahịa ọ bụla
+                      a na-enye ebe ahụ, enwere ike ịlele ya dịka iwu meghere ya n'obodo
+                      ụfọdụ. Anyị enweghị ike ike iji nyochaa iwu ọrụ n'ikike ọ bụla
+                      n'ikike, ya mere, ị dị n'ọrụ iji chepụta ma ịnweta na iji
+                      saịtị anyị dị n'usoro na iwu ndị dị n'ikike na mba gị, ị na-egosi
+                      anyị na egwuregwu abụghị iwu meghere ya n'mpaghara ị bi. N'ihi
+                      ọtụtụ ihe kpatara iwu ma ọ bụ azụmaahịa, anyị anaghị enye ohere
+                      emeghachi akaụntụ ma ọ bụ ndi ahịa bi n'mpaghara ụfọdụ n'ikike
+                      iji, gụnyere mana ọ bụghị naanị: Afghanistan, Algeria, Antigua &
+                      Barbuda, Australia, Belarus, Bahrain, Belgium, Bhutan, Brunei,
+                      Central African Republic, Chad, Côte d'Ivoire, Croatia, Cuba,
+                      Czech Republic, Democratic People's Republic of Korea (North Korea),
+                      Democratic Republic of the Congo, Denmark, Estonia, France, Greece,
+                      Guinea-Bissau, Hungary, Iran, Iraq, Iceland, Israel, Italy, Jordan,
+                      Kuwait, Latvia, Liberia, Lithuania, Malta, Myanmar, Netherlands,
+                      Netherlands Antilles (Curacao, Sint Maarten, Bonaire, Sint Eustatius,
+                      and Saba, Aruba), Norway, Oman, Palestine, Pakistan, Qatar, Russia,
+                      Saba, Saint Martin, Saudi Arabia, Serbia, Slovenia, Somalia, Spain,
+                      Switzerland, Syrian Arab Republic, Sudan, Trinidad and Tobago, Turkey,
+                      Ukraine, United Kingdom, Germany, Union of Comoros, United Arab
+                      Emirates, United States (and its dependencies, military bases and
+                      territories i.e. U.S. Minor Outlying Islands, U.S. Virgin Islands),
+                      Vanuatu, Yemen, Zimbabwe. ma ọ bụ mpaghara n'ikike ndị ọzọ
+                      nwere ihe nchachi ("Mpaghara N'ikike Nwere Ihe Nchachi") anyị na-ekwu
+                      maka ha n'oge n'oge. Site n'iji Ebe Weebụ ị na-ekwenye na ị bụghị
+                      onye bi na Mpaghara N'ikike Nwere Ihe Nchachi. <br />
+                      3.4. Mgbe ị na-agbalị imeghe akaụntụ ma ọ bụ iji Ebe Weebụ,
+                      ọrụ onye na-egwu egwu bụ ịnweta ma ọ bụrụ na egwuregwu bụ iwu na
+                      mpaghara n'ikike ahụ. <br />
+                      3.5. Ị bụ onye ọrụ kwere ka nke ụzọ ịkwụ ụgwọ ị na-eji, yana
+                      ego niile, nke dị n'akaụntụ gị, iji n'ime Ọrụ bụ nke iwu kwere.
+                      <br />
+                      3.6. Ị ga-eme ịkwụ ụgwọ niile nye anyị n'ezi n'ụlọ ezi obi ma
+                      ịgbalịghị ịtụgharị ịkwụ ụgwọ e mere ma ọ bụ ịme ihe ọ bụla
+                      nke ga-eme ka akụkụ nke atọ tụgharịa ịkwụ ụgwọ ahụ. <br />
+                      3.7. Mgbe ị na-atụ ntinye ego ị nwere ike ịtafu ụfọdụ ma ọ bụ ego
+                      gị niile etinyere na Ọrụ dị n'usoro Usoro ndị a, ị ga-anabata
+                      ọrụ nke ifu ahu nile. <br />
+                      3.8. Mgbe ị na-atụ ntinye ego ị ekwesịghị iji ozi ọ bụla enwetara
+                      n'ịgọ iwu ọ bụla dị n'ọrụ n'obodo ị nọ mgbe e tụrụ ntinye ego ahụ.
+                      <br />
+                      3.9. Ị naghị eme n'ụzọ nke onye ọzọ ma ọ bụ maka ebumnuche azụmahịa
+                      ọ bụla, kama naanị n'aha gị dịka nnọọ ọchịchọ nke onye. <br />
+                      3.10. Ị ekwesịghị igbalị iji achịkwa ọchịchọ ọ bụla ma ọ bụ
+                      ihe ọ bụla n'ime Ọrụ n'ezi obi ọjọọ ma ọ bụ n'ụzọ na-emetụta
+                      ọdịmma nke Ọrụ ma ọ bụ anyị ọjọọ. <br />
+                      3.11. Ị ga-eme n'ụzọ ezi obi n'ozuzu ya gbasara iji Ọrụ n'oge
+                      niile yana maka ntinye ego niile e mere n'iji Ọrụ. <br />
+                      3.12. Gị, ma ọ bụ, ọ bụrụ na ọ bụ ya, ndị ọrụ gị, ndị ọrụ gị,
+                      ndị nnọchianya, ma ọ bụ ndị otu ezinụlọ, adebanyeghị aha dịka
+                      Onye Mmekọ na mmemme Onye Mmekọ anyị. <br />
+                      3.13. Mgbe ị na-eji Goldbet n'oge ọ bụla ị na-ekwenye ịnye
+                      anyị naanị data eziokwu, ọzụzụ, yana ihe n'ụzọ kwesị n'ọnọdụ
+                      ndabara na mgbe Anyị rịọrọ ya. <br />
+                      3.14. Ị ghọta ụdị ọgbụgba nke ahịa crypto, ị na-anabata
+                      ohere nke ọnụ ahịa ego gị/ego gị ị na-agbanwe mgbe ị na-atọ
+                      ụzọ maka iwepu gị ma ọ bụ iwepu gị na-eme site n'Ngalaba
+                      Ihe Ize Ndụ anyị. <br />
+                      3.15. Ị bụ onye nwere uche zuru okè, ị na-arịa ọrịa mgbakasị
+                      n'egwuregwu egwu. Ọ bụrụ na onye nwere nsogbu dị otú ahụ banyere
+                      na Saịtị - ọrụ dị naanị n'akụkụ ha. <br />
+                      3.16. Ị na-ekwenye iji ngwanrọ nke nke atọ ọ bụla n'akụkụ
+                      ọ bụla nke Goldbet ma eleghee maka ọ bụla ajọ-eme
+                      egwuregwu/ọrụ a chọtara n'ikpo okwu. <br />
+                      3.17. Ị na-egosi na ozi niile ị na-enye anyị site n'oge
+                      ịdebanye aha yana n'oge ikike nke nkwekọrịta a bụ eziokwu,
+                      ọpụrụiche, ziri ezi, yana na ị ga-agwa anyị ozugbo maka mgbanwe
+                      ọ bụla nke ozi dị otú ahụ. <br />
+                      3.17.1. Ị na-kwenye nghọta gị na ozi etinyere na ịdebanye aha
+                      na n'oge iji Ọrụ enweghị ike ịgbanwe n'echiche gị. Iji gbanwe ozi
+                      ọ bụla, ị kwesịtere ikpọtụ otu nkwado. Maka mgbanwe ozi ọ bụla,
+                      Goldbet nwere ike ịrịọ akwụkwọ ọ bụla maka ịgafe KYC n'echiche
+                      ya. <br />
+                      3.18. Ị na-egosi na ị agaghị eji ọrụ anyị mgbe ị nọ na mpaghara
+                      n'ikike ọ bụla nke machibidoro itinye na/ma ọ bụ ịnabata ntinye
+                      ego n'ịntanetị yana/ma ọ bụ igwu egwu casino yana/ma ọ bụ egwuregwu
+                      ndị dị ndụ. <br />
+                      3.19. Ị na-egosi yana: <br />
+                      - Ị na-etinye aka na Ọrụ n'aha gị yana ọ bụghị n'aha onye ọzọ; <br />
+                      - Ị bụ naanị ọrụ maka ịkọ na ịgbakọ maka ụtụ isi ọ bụla
+                      na-emetụta gị n'okpuru iwu ndị kwesịtere maka ego ọ bụla ị nwetara
+                      site n'aka anyị; <br />
+                      - Ị bụ naanị ọrụ maka ụtụ isi ndị kwesịtere ọ bụla nke enwere
+                      ike ịkwụ n'cryptocurrency anyị nyere gị site n'iji Ọrụ.`,
+  },
+  tw: {
+    termsTitle1: `Mmara Ne Nneyɛe`,
+    termsParagraph1: `Mmara ne nneyɛe yi ne nsɛm nhyehyɛe a wɔka ho asɛm wɔ ase
+                      ("Mmara") di kan ma website a ɛwɔ hɔ yi (the
+                      "Website") ne nnwuma a ɛwɔ ho anaa nkabom
+                      (nyinaa ka ho, "Nnwuma") no. Ɛsɛ sɛ wohwɛ Mmara yi yiye
+                      efisɛ ɛwɔ nsɛm a ɛho hia fa wo hokwan ne wo nneyɛe ho
+                      fa Website no fa ho a na ɛyɛ mmara nkwankyerɛ a ɛkyekyere
+                      wo - yɛn onipa (the "Onipa"), ne yɛn (the "Website")
+                      ntam. Sɛ wode Website yi di dwuma na/anaa wohunu Nnwuma no a,
+                      wo, sɛ ɔhɔhoɔ anaa onipa a wɔde ato ase wɔ account ("Account")
+                      biara mu, wogree sɛ Mmara yi na wɔde wo kyekyere, ne nnwuma
+                      ntotoe biara ho, a wɔbetumi ade adi bere biara. Sɛ wonni Mmara
+                      yi ho dwetɛ a, ɛsɛ sɛ woyɛ ahwɛ kwan de Nnwuma no, na
+                      wnhyɛ Website no so.`,
+    termsTitle2: `1. Mmara Titiriw`,
+    termsParagraph2: `Yɛwɔ hokwan sɛ yɛsesa na yɛsane kyerɛw Mmara (gye
+                      nsɛm nhyehyɛe biara a wɔka ho asɛm ne nkabom wɔ ase) bere
+                      biara. Ɛsɛ sɛ wobɛbɛhwɛ page yi bere biara akyi sɛ wobɛhwɛ Mmara ne
+                      Nneyɛe. Nnwuma ntotoe bɛyɛ nkwankyerɛ na ɛbɛbɔ mu ntɛm ntɛm
+                      wɔ sɛ wɔde adi to Website yi so. Sɛ wodi nsɛm ntotoe no ho
+                      dwetɛ a, ɛsɛ sɛ wo gyae Nnwuma no di dwuma ntɛm ntɛm. Sɛ
+                      wode Website no di dwuma toa so wɔ saa ntotoe akyi a, ɛkyerɛ
+                      sɛ wogree sɛ Mmara a wɔasesa no na wɔde wo kyekyere. Ayɛde
+                      biara a wɔanyi ase wɔ Mmara a wɔasakyerɛ no ansa na ɛbɔ mu
+                      no bɛhwɛ ase mmara a ɛdii kan no ase. Sɛ Goldbet Mmara ne
+                      Nneyɛe no asesa a, platform no bɛka akyerɛ wo na abisa wo sɛ
+                      wo gree no.`,
+    termsTitle3: `2. Wo Nneyɛe`,
+    termsParagraph3: `Wogye di sɛ bere biara a wohyɛ Website no so na wode
+                      Nnwuma no di dwuma: <br />
+                      3.1. Wowu mfeɛ 18, anaa ɛyɛ mfeɛ kronkron a mmara ma ho kwan
+                      sɛ wɔtumi di agoro anaa agoro nnwuma wɔ mmara anaa maamuu ase
+                      a ɛka wo ho. Yɛwɔ hokwan sɛ yɛbisa wo mfeɛ adanse nhyehyɛe bere
+                      biara. <br />
+                      3.2. Wowɔ mmara tumi na wobetumi de wo ho bɔ nkwankyerɛ mmara
+                      mu ne yɛn. Ɛnsɛ sɛ wohyɛ Website no so anaa wode Nnwuma no di
+                      dwuma sɛ wonnwɔ mmara tumi a. <br />
+                      3.3. Wonim sɛ hokwan sɛ wohyɛ Website no so na wode nnwuma
+                      biara a wɔde aye ahwɛ wɔ hɔ di dwuma, ɛtumi yɛ mmara a ɛgyina
+                      mu wɔ amanaman bi mu. Yɛntumi nhwɛ mmara a ɛwɔ nnwuma no ho
+                      wɔ maamuu biara biara mu, enti wo na ɛfata sɛ wubue sɛ
+                      wohyɛ yɛn website so na wode di dwuma yɛ nea mmara a ɛwɔ wo
+                      man mu kyerɛ no, na wode wo ho bɔ ase ma yɛn sɛ agoro nnwuma
+                      ɛnyɛ mmara a ɛgyina mu wɔ asase a wote hɔ no mu. Ɛfiri nsɛm
+                      pii a ɛwɔ mmara anaa dwumadi ho, yɛnnye accounts ho kwan sɛ
+                      wubue anaa de di dwuma ma akyiredi-foɔ a wɔte maamuu bi mu,
+                      a emu ka: Afghanistan, Algeria, Antigua & Barbuda, Australia,
+                      Belarus, Bahrain, Belgium, Bhutan, Brunei, Central African
+                      Republic, Chad, Côte d'Ivoire, Croatia, Cuba, Czech Republic,
+                      Democratic People's Republic of Korea (North Korea), Democratic
+                      Republic of the Congo, Denmark, Estonia, France, Greece,
+                      Guinea-Bissau, Hungary, Iran, Iraq, Iceland, Israel, Italy,
+                      Jordan, Kuwait, Latvia, Liberia, Lithuania, Malta, Myanmar,
+                      Netherlands, Netherlands Antilles (Curacao, Sint Maarten,
+                      Bonaire, Sint Eustatius, and Saba, Aruba), Norway, Oman,
+                      Palestine, Pakistan, Qatar, Russia, Saba, Saint Martin, Saudi
+                      Arabia, Serbia, Slovenia, Somalia, Spain, Switzerland, Syrian
+                      Arab Republic, Sudan, Trinidad and Tobago, Turkey, Ukraine,
+                      United Kingdom, Germany, Union of Comoros, United Arab Emirates,
+                      United States (and its dependencies, military bases and
+                      territories i.e. U.S. Minor Outlying Islands, U.S. Virgin
+                      Islands), Vanuatu, Yemen, Zimbabwe. anaa maamuu a wɔakyerɛ no
+                      ("Maamuu A Wɔakyerɛ No") a yɛde adi ho asɛm bere biara. Sɛ
+                      wode Website no di dwuma a, woyɛ adanse sɛ wo nyɛ wɔ Maamuu
+                      A Wɔakyerɛ No mu. <br />
+                      3.4. Sɛ wotɔ so de account bue anaa wode Website no di dwuma
+                      a, ɛyɛ agoro-ni no nneyɛe sɛ ɔhwɛ sɛ agoro nnwuma yɛ mmara
+                      a ɛwɔ maamuu kronkron no mu. <br />
+                      3.5. Woyɛ onipa a wɔde ho kwan ama a ma sika kwan a wode di
+                      dwuma no, na sika nyinaa a ɛwɔ wo account mu na wɔde di dwuma
+                      wɔ Nnwuma mu no nyɛ mmara a ɛwɔ mu. <br />
+                      3.6. Ɛsɛ sɛ wotua ka nyinaa ma yɛn wɔ ɔdɔ ne onipa akoma mu
+                      na wonhwɛ kwan sɛ wobɛsane tua biara anaa woyɛ biribi biara
+                      a ɛbɛma maamuu ɔkwan so bɛsane tua saa tua no. <br />
+                      3.7. Bere a wode sika toa agoro a, wobetumi ahu mfaso bi anaa
+                      wo sika nyinaa a wode ahyɛ Nnwuma no mu, a ɛfata Mmara yi
+                      ase, na wubɛyɛ nea ɔmane no nkoaa responsible. <br />
+                      3.8. Bere a wode sika toa agoro a, ɛnsɛ sɛ wode nsɛm biara a
+                      wɔnyaa no ama mmara a ɛwɔ man a wowɔ mu no di a wɔtoa agoro no
+                      bere no mu. <br />
+                      3.9. Woreyɛ nneyɛe maa onipa foforɔ anaa dwumadi nsɛm biara ho,
+                      na mmom wo ankasa ho nkoaa dinn sɛ onipa. <br />
+                      3.10. Ɛnsɛ sɛ wohwɛ kwan sɛ wobɛkyerɛkyerɛ ahwɛ biara anaa
+                      part biara a ɛwɔ Nnwuma no mu wɔ nkontompo ntam anaa ɔkwan
+                      a ɛmaa Nnwuma no anaa yɛn mu yɛ bɔne. <br />
+                      3.11. Ɛsɛ sɛ woyɛ wɔ ɔdɔ ne onipa akoma mu dodow a ɛfata
+                      wɔ Nnwuma no fa ho na ɔtoa so yɛ no maa ayɛde nyinaa a wɔde
+                      Nnwuma no di no. <br />
+                      3.12. Wo, anaa, sɛ ɛbɛyɛ a, wo nkoa, wɔn a wɔhyɛ wo ase,
+                      wo nkoa, anaa wo fibɔ-firi n'anuonyam, wɔde won ankasa to ase
+                      dinn sɛ Affiliate wɔ yɛn Affiliate program mu. <br />
+                      3.13. Bere a wode Goldbet di dwuma bere biara, wogree sɛ
+                      wobɛma yɛn data a ɛyɛ nokware, a ɛwɔ mu, ne a ɛtim mu nkoaa
+                      wɔ state a ɛwɔ mu ne bere a Yɛbisa no. <br />
+                      3.14. Wohu crypto market no wobete ne nso wogree sɛ wobɛyɛ
+                      sɛ wo sika/sika no bɛtumi asesa bere a worɛtwɛn wo withdrawal
+                      anaa wo withdrawal no yɛ hɔ yɛ wɔ yɛn Danger Department no mu.
+                      <br />
+                      3.15. Woyɛ onipa a n'adwene wɔ mu na wonsuro agoro adwuma mu.
+                      Sɛ onipa a ɔwɔ saa asɛm yi bɛhyɛ Site no so a, nea ɛfata wɔ
+                      no nkoaa ho. <br />
+                      3.16. Wogree sɛ wobɛde software a ɛfiri baabi foforɔ biara wɔ
+                      Goldbet nkyekyem biara mu biara nnwuma, na wommu agoro biara
+                      anaa nhyehyɛe biara a wobɛhu wɔ platform no so. <br />
+                      3.17. Woyɛ adanse sɛ nsɛm nyinaa a wode ama yɛn firi kyerɛwde
+                      ho bere fiase na wɔ saa apam yi mu bere nyinaa mu yɛ nokware,
+                      mu pa, tenenee, na wobɛka ama yɛn ntɛm ntɛm fa saa nsɛm biara
+                      a sɛsae. <br />
+                      3.17.1. Woyɛ adanse sɛ wohu sɛ nsɛm a wɔde toa ase wɔ
+                      kyerɛwde ho ne Nnwuma no di dwuma bere ntumi nsesa wɔ wo
+                      gyinae mu. Sɛ wobɛsesa nsɛm biara a, ɛsɛ sɛ wokɔ kyerɛ
+                      nkurowkyɛ kuo no. Sɛ wobɛsesa nsɛm biara a, Goldbet betumi
+                      abisa nhyehyɛe biara ma KYC agyinabea wɔ ne sigyinae mu.
+                      <br />
+                      3.18. Woyɛ adanse sɛ wobɛde yɛn nnwuma di dwuma wɔ maamuu
+                      biara a ɛbɔ, a ɛtoɔ ne mmara a ɛgye toa ase ne/anaa agye
+                      sika toa ase wɔ internet so ne/anaa casino nnwuma ne/anaa
+                      nnwuma a wɔde di tete tete no. <br />
+                      3.19. Woyɛ adanse bio sɛ: <br />
+                      - Wotaa Nnwuma no ho wɔ wo nkoaa ho na emfa onipa foforɔ ho;
+                      <br />
+                      - Wo nkoaa na ɛfata sɛ wobɛka ase mmara biara fa wo ho a ɛbefata
+                      wo ase mmara a ɛwɔ mu ho maa sika biara a wonyaa firi yɛn; <br />
+                      - Wo nkoaa na ɛfata sɛ wobɛtua ɔpɛn biara a ɛfata a wɔbetumi de
+                      atua fa cryptocurrency a wɔde ama wo wɔ Nnwuma no di dwuma bere
+                      no so.`,
+  },
 };
