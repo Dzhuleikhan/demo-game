@@ -893,6 +893,22 @@ main {
   opacity: 0.6;
 }
 
+.login-btn .login-loading-icon {
+  display: none;
+}
+
+.login-btn.loading {
+  pointer-events: none;
+}
+
+.login-btn.loading span {
+  display: none;
+}
+
+.login-btn.loading .login-loading-icon {
+  display: block;
+}
+
 /* SOCIALS END */
 
 .red-arrow {

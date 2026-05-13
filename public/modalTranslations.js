@@ -53,6 +53,8 @@ export const modalTranslations = {
     step2Title: `One Last Step <br /> to Claim Your Bonus`,
     step2Subtitle: `Create a password and select <br /> your account currency.`,
     passwordPlaceholder: "Password",
+    loginBtn: "Log In",
+    alreadyHaveAnAccount: "Already have an account?",
   },
   ru: {
     // ? AUTH
@@ -108,6 +110,8 @@ export const modalTranslations = {
     step2Title: `Один последний шаг, чтобы получить бонус`,
     step2Subtitle: `Создайте пароль и выберите валюту вашего аккаунта.`,
     passwordPlaceholder: "Пароль",
+    loginBtn: "Войти",
+    alreadyHaveAnAccount: "Уже есть аккаунт?",
   },
   es: {
     // ? AUTH
@@ -163,6 +167,8 @@ export const modalTranslations = {
     step2Title: `Un último paso para reclamar tu bono`,
     step2Subtitle: `Crea una contraseña y selecciona la moneda de tu cuenta.`,
     passwordPlaceholder: "Contraseña",
+    loginBtn: "Iniciar sesión",
+    alreadyHaveAnAccount: "¿Ya tienes una cuenta?",
   },
   pt: {
     // ? AUTH
@@ -218,6 +224,8 @@ export const modalTranslations = {
     step2Title: `Um último passo para reivindicar seu bônus`,
     step2Subtitle: `Crie uma senha e selecione a moeda da sua conta.`,
     passwordPlaceholder: "Senha",
+    loginBtn: "Entrar",
+    alreadyHaveAnAccount: "Já tens uma conta?",
   },
   fr: {
     // ? AUTH
@@ -273,6 +281,8 @@ export const modalTranslations = {
     step2Title: `Une dernière étape pour réclamer votre bonus`,
     step2Subtitle: `Créez un mot de passe et sélectionnez la devise de votre compte.`,
     passwordPlaceholder: "Mot de passe",
+    loginBtn: "Se connecter",
+    alreadyHaveAnAccount: "Déjà un compte ?",
   },
   de: {
     // ? AUTH
@@ -330,6 +340,8 @@ export const modalTranslations = {
     step2Title: `Ein letzter Schritt, um Ihren Bonus zu erhalten`,
     step2Subtitle: `Erstellen Sie ein Passwort und wählen Sie die Währung Ihres Kontos.`,
     passwordPlaceholder: "Passwort",
+    loginBtn: "Anmelden",
+    alreadyHaveAnAccount: "Bereits ein Konto?",
   },
   uk: {
     // ? AUTH
@@ -385,6 +397,8 @@ export const modalTranslations = {
     step2Title: `Один останній крок, щоб отримати бонус`,
     step2Subtitle: `Створіть пароль і виберіть валюту вашого акаунта.`,
     passwordPlaceholder: "Пароль",
+    loginBtn: "Увійти",
+    alreadyHaveAnAccount: "Вже є акаунт?",
   },
   it: {
     // ? AUTH
@@ -440,6 +454,8 @@ export const modalTranslations = {
     step2Title: `Un ultimo passaggio <br /> per richiedere il tuo bonus`,
     step2Subtitle: `Crea una password e seleziona <br /> la valuta del tuo account.`,
     passwordPlaceholder: "Password",
+    loginBtn: "Accedi",
+    alreadyHaveAnAccount: "Hai già un account?",
   },
   hu: {
     // ? AUTH
@@ -495,6 +511,8 @@ export const modalTranslations = {
     step2Title: `Még egy lépés <br /> a bónuszod igényléséhez`,
     step2Subtitle: `Hozz létre egy jelszót és válassz <br /> számlapénznemet.`,
     passwordPlaceholder: "Jelszó",
+    loginBtn: "Bejelentkezés",
+    alreadyHaveAnAccount: "Már van fiókod?",
   },
   ro: {
     // ? AUTH
@@ -550,6 +568,8 @@ export const modalTranslations = {
     step2Title: `Încă un pas <br /> pentru a revendica bonusul tău`,
     step2Subtitle: `Creează o parolă și selectează <br /> moneda contului tău.`,
     passwordPlaceholder: "Parolă",
+    loginBtn: "Autentificare",
+    alreadyHaveAnAccount: "Ai deja un cont?",
   },
   pl: {
     // ? AUTH
@@ -605,6 +625,8 @@ export const modalTranslations = {
     step2Title: `Jeszcze jeden krok <br /> aby odebrać swój bonus`,
     step2Subtitle: `Utwórz hasło i wybierz <br /> walutę konta.`,
     passwordPlaceholder: "Hasło",
+    loginBtn: "Zaloguj się",
+    alreadyHaveAnAccount: "Masz już konto?",
   },
   cs: {
     // ? AUTH
@@ -660,6 +682,8 @@ export const modalTranslations = {
     step2Title: `Ještě jeden krok <br /> k získání bonusu`,
     step2Subtitle: `Vytvořte heslo a vyberte <br /> měnu účtu.`,
     passwordPlaceholder: "Heslo",
+    loginBtn: "Přihlásit se",
+    alreadyHaveAnAccount: "Již máš účet?",
   },
   et: {
     // ? AUTH
@@ -715,6 +739,8 @@ export const modalTranslations = {
     step2Title: `Viimane samm <br /> oma boonuse saamiseks`,
     step2Subtitle: `Loo parool ja vali <br /> oma konto valuuta.`,
     passwordPlaceholder: "Parool",
+    loginBtn: "Logi sisse",
+    alreadyHaveAnAccount: "Sul on juba konto?",
   },
   lv: {
     // ? AUTH
@@ -770,6 +796,8 @@ export const modalTranslations = {
     step2Title: `Pēdējais solis <br /> lai saņemtu savu bonusu`,
     step2Subtitle: `Izveidojiet paroli un izvēlieties <br /> savu konta valūtu.`,
     passwordPlaceholder: "Parole",
+    loginBtn: "Pieteikties",
+    alreadyHaveAnAccount: "Jau ir konts?",
   },
   lt: {
     // ? AUTH
@@ -825,6 +853,8 @@ export const modalTranslations = {
     step2Title: `Paskutinis žingsnis <br /> kad gautumėte premiją`,
     step2Subtitle: `Sukurkite slaptažodį ir pasirinkite <br /> savo sąskaitos valiutą.`,
     passwordPlaceholder: "Slaptažodis",
+    loginBtn: "Prisijungti",
+    alreadyHaveAnAccount: "Jau turi paskyrą?",
   },
   hr: {
     // ? AUTH
@@ -880,6 +910,8 @@ export const modalTranslations = {
     step2Title: `Posljednji korak <br /> za preuzimanje vašeg bonusa`,
     step2Subtitle: `Stvorite lozinku i odaberite <br /> valutu svog računa.`,
     passwordPlaceholder: "Lozinka",
+    loginBtn: "Prijava",
+    alreadyHaveAnAccount: "Već imaš račun?",
   },
   da: {
     // ? AUTH
@@ -935,6 +967,8 @@ export const modalTranslations = {
     step2Title: `Ét sidste skridt <br /> for at få din bonus`,
     step2Subtitle: `Opret en adgangskode og vælg <br /> din kontovaluta.`,
     passwordPlaceholder: "Adgangskode",
+    loginBtn: "Log ind",
+    alreadyHaveAnAccount: "Har du allerede en konto?",
   },
   fi: {
     // ? AUTH
@@ -990,6 +1024,8 @@ export const modalTranslations = {
     step2Title: `Viimeinen askel <br /> lunastaaksesi bonuksesi`,
     step2Subtitle: `Luo salasana ja valitse <br /> tilisi valuutta.`,
     passwordPlaceholder: "Salasana",
+    loginBtn: "Kirjaudu sisään",
+    alreadyHaveAnAccount: "Onko sinulla jo tili?",
   },
   bg: {
     // ? AUTH
@@ -1045,6 +1081,8 @@ export const modalTranslations = {
     step2Title: `Последна стъпка <br /> за да получите бонуса си`,
     step2Subtitle: `Създайте парола и изберете <br /> валутата на акаунта си.`,
     passwordPlaceholder: "Парола",
+    loginBtn: "Влезте",
+    alreadyHaveAnAccount: "Вече имаш акаунт?",
   },
   sk: {
     // ? AUTH
@@ -1100,6 +1138,8 @@ export const modalTranslations = {
     step2Title: `Posledný krok <br /> na získanie bonusu`,
     step2Subtitle: `Vytvorte heslo a vyberte <br /> menu svojho účtu.`,
     passwordPlaceholder: "Heslo",
+    loginBtn: "Prihlásiť sa",
+    alreadyHaveAnAccount: "Už máš účet?",
   },
   sl: {
     // ? AUTH
@@ -1155,6 +1195,8 @@ export const modalTranslations = {
     step2Title: `Še zadnji korak <br /> za prevzem bonusa`,
     step2Subtitle: `Ustvarite geslo in izberite <br /> valuto računa.`,
     passwordPlaceholder: "Geslo",
+    loginBtn: "Prijava",
+    alreadyHaveAnAccount: "Že imaš račun?",
   },
   el: {
     // ? AUTH
@@ -1210,6 +1252,8 @@ export const modalTranslations = {
     step2Title: `Ένα Τελευταίο Βήμα <br /> για να διεκδικήσετε το μπόνους σας`,
     step2Subtitle: `Δημιουργήστε έναν κωδικό και επιλέξτε <br /> το νόμισμα του λογαριασμού σας.`,
     passwordPlaceholder: "Κωδικός",
+    loginBtn: "Σύνδεση",
+    alreadyHaveAnAccount: "Έχεις ήδη λογαριασμό;",
   },
   nl: {
     // ? AUTH
@@ -1265,6 +1309,8 @@ export const modalTranslations = {
     step2Title: `Nog één stap <br /> om uw bonus te claimen`,
     step2Subtitle: `Maak een wachtwoord aan en kies <br /> uw accountvaluta.`,
     passwordPlaceholder: "Wachtwoord",
+    loginBtn: "Inloggen",
+    alreadyHaveAnAccount: "Al een account?",
   },
   zh: {
     // ? AUTH
@@ -1320,6 +1366,8 @@ export const modalTranslations = {
     step2Title: `最后一步 <br /> 领取您的奖金`,
     step2Subtitle: `创建密码并选择 <br /> 您的账户货币`,
     passwordPlaceholder: "密码",
+    loginBtn: "登录",
+    alreadyHaveAnAccount: "已有账户?",
   },
   nb: {
     // ? AUTH
@@ -1375,6 +1423,8 @@ export const modalTranslations = {
     step2Title: `Én siste steg <br /> for å hente bonusen`,
     step2Subtitle: `Lag et passord og velg <br /> din kontovaluta`,
     passwordPlaceholder: "Passord",
+    loginBtn: "Logg inn",
+    alreadyHaveAnAccount: "Har du allerede en konto?",
   },
   sv: {
     // ? AUTH
@@ -1430,6 +1480,8 @@ export const modalTranslations = {
     step2Title: `Ett sista steg <br /> för att hämta din bonus`,
     step2Subtitle: `Skapa ett lösenord och välj <br /> din kontovaluta`,
     passwordPlaceholder: "Lösenord",
+    loginBtn: "Logga in",
+    alreadyHaveAnAccount: "Har du redan ett konto?",
   },
   ga: {
     // ? AUTH
@@ -1485,6 +1537,8 @@ export const modalTranslations = {
     step2Title: `Céim dheireanach amháin <br /> chun do bónas a éileamh`,
     step2Subtitle: `Cruthaigh focal faire agus roghnaigh <br /> do airgeadra cuntais`,
     passwordPlaceholder: "Focal faire",
+    loginBtn: "Logáil isteach",
+    alreadyHaveAnAccount: "An bhfuil cuntas agat cheana féin?",
   },
   lb: {
     // ? AUTH
@@ -1540,6 +1594,8 @@ export const modalTranslations = {
     step2Title: `Nach eng lescht Schrëtt <br /> fir Äre Bonus ze kréien`,
     step2Subtitle: `Maacht e Passwuert a wielt <br /> Är Kontowährung`,
     passwordPlaceholder: "Passwuert",
+    loginBtn: "Aloggen",
+    alreadyHaveAnAccount: "Hutt Dir schonn e Kont?",
   },
   mt: {
     // ? AUTH
@@ -1595,6 +1651,8 @@ export const modalTranslations = {
     step2Title: `L-aħħar Pass <br /> biex titlob il-bonus tiegħek`,
     step2Subtitle: `Oħloq password u agħżel <br /> il-munita tal-kont tiegħek`,
     passwordPlaceholder: "Password",
+    loginBtn: "Idħol",
+    alreadyHaveAnAccount: "Diġà għandek kont?",
   },
   ar: {
     // ? AUTH
@@ -1650,6 +1708,8 @@ export const modalTranslations = {
     step2Title: `خطوة أخيرة <br /> للمطالبة بمكافأتك`,
     step2Subtitle: `قم بإنشاء كلمة مرور واختر <br /> عملة حسابك`,
     passwordPlaceholder: "كلمة المرور",
+    loginBtn: "تسجيل الدخول",
+    alreadyHaveAnAccount: "هل لديك حساب بالفعل؟",
   },
   sw: {
     // ? AUTH
@@ -1705,6 +1765,8 @@ export const modalTranslations = {
     step2Title: `Hatua ya Mwisho Pekee <br /> Kudai Bonasi Yako`,
     step2Subtitle: `Tengeneza neno la siri na chagua <br /> sarafu ya akaunti yako`,
     passwordPlaceholder: "Neno la siri",
+    loginBtn: "Ingia",
+    alreadyHaveAnAccount: "Una akaunti tayari?",
   },
   rw: {
     // ? AUTH
@@ -1760,6 +1822,8 @@ export const modalTranslations = {
     step2Title: `Intambwe ya nyuma gusa <br /> kugirango ubone bonus yawe`,
     step2Subtitle: `Hanga ijambo ry’ibanga hanyuma uhitemo <br /> ifaranga rya konti yawe`,
     passwordPlaceholder: "Ijambo ry’ibanga",
+    loginBtn: "Injira",
+    alreadyHaveAnAccount: "Ufite konti?",
   },
   am: {
     // ? AUTH
@@ -1815,6 +1879,8 @@ export const modalTranslations = {
     step2Title: `የመጨረሻ ደረጃ <br /> ቦነስዎን ለመቀበል`,
     step2Subtitle: `ፓስዎርድ ይፍጠሩ እና <br /> ምንዛሬዎን ይምረጡ.`,
     passwordPlaceholder: "ፓስዎርድ",
+    loginBtn: "ግባ",
+    alreadyHaveAnAccount: "ቀድሞውኑ አካውንት አለዎ?",
   },
   lm: {
     // ? AUTH
@@ -1870,6 +1936,8 @@ export const modalTranslations = {
     step2Title: `Ekiddako ekisembayo <br /> okufuna bonus yo`,
     step2Subtitle: `Tonda password era olonde <br /> ssente zo.`,
     passwordPlaceholder: "Password",
+    loginBtn: "Yingira",
+    alreadyHaveAnAccount: "Olina akawunti?",
   },
   ha: {
     // ? AUTH
@@ -1924,6 +1992,8 @@ export const modalTranslations = {
     step2Title: `Mataki na ƙarshe <br /> don karɓar bonus ɗinka`,
     step2Subtitle: `Ƙirƙiri kalmar sirri kuma zaɓi <br /> kudin asusun ka.`,
     passwordPlaceholder: "Kalmar sirri",
+    loginBtn: "Shiga",
+    alreadyHaveAnAccount: "Kana da asusu?",
   },
   yo: {
     // ? AUTH
@@ -1978,6 +2048,8 @@ export const modalTranslations = {
     step2Title: `Igbese Ikẹhin <br /> láti gba bonus rẹ`,
     step2Subtitle: `Ṣẹ̀dá ọrọigbaniwọle ki o yan <br /> kudi àkọọ́lẹ̀ rẹ.`,
     passwordPlaceholder: "Ọrọigbaniwọle",
+    loginBtn: "Wọ̀lé",
+    alreadyHaveAnAccount: "Ṣé o ti ní àkọọ́lẹ̀ tẹ́lẹ̀?",
   },
   ig: {
     // ? AUTH
@@ -2032,6 +2104,8 @@ export const modalTranslations = {
     step2Title: `Nzọụkwụ ikpeazụ <br /> iji nweta bonus gị`,
     step2Subtitle: `Mepụta okwuntughe ma họrọ <br /> ego akaụntụ gị.`,
     passwordPlaceholder: "Okwu nzuzo",
+    loginBtn: "Banye",
+    alreadyHaveAnAccount: "Ị nwere akaụntụ?",
   },
   tw: {
     // ? AUTH
@@ -2086,5 +2160,7 @@ export const modalTranslations = {
     step2Title: `Anammɔn a etwa to <br /> na woanya bonus`,
     step2Subtitle: `Bɔ ahintasɛm na paw <br /> wo akontaabu sika.`,
     passwordPlaceholder: "Ahintasɛm",
+    loginBtn: "Log in",
+    alreadyHaveAnAccount: "Wowɔ akontaa dedaw?",
   },
 };
