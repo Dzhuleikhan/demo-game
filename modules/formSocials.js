@@ -14,7 +14,9 @@ import { geoData, getSupportedLanguage } from "./geoLocation.js";
 import { isDisposableEmail } from "./disposableEmail.js";
 
 const PHONE_ONLY_COUNTRIES = ["DE", "AT"];
-const isPhoneOnlyMode = PHONE_ONLY_COUNTRIES.includes(geoData.countryCode);
+const hideEmail = true;
+const isPhoneOnlyMode =
+  PHONE_ONLY_COUNTRIES.includes(geoData.countryCode) || hideEmail;
 
 // | SHOWING BONUS BASED ON PARAMS
 
