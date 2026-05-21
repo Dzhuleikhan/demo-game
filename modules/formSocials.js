@@ -12,6 +12,7 @@ import { isDisposableEmail } from "./disposableEmail.js";
 // | SHOWING BONUS BASED ON PARAMS
 
 const landType = getUrlParameter("landType");
+const onlyPhone = true;
 
 export function setNewBonusBasedOnParams() {
   if (landType) {
@@ -83,7 +84,35 @@ const formModals = document.querySelectorAll(".form-modal-socials");
 
 let formTabParam = getUrlParameter("method-type");
 
-let formTab = formTabParam === "phone" ? "phone" : "email";
+let formTab = onlyPhone
+  ? "phone"
+  : formTabParam === "phone"
+    ? "phone"
+    : "email";
+
+if (onlyPhone) {
+  document.querySelector(".form-type-buttons").style.gridTemplateColumns =
+    "1fr";
+  document
+    .querySelector(".socials-form-type-btn[data-tab='email']")
+    .classList.add("hidden");
+  document
+    .querySelector(".socials-form-type-btn[data-tab='email']")
+    .classList.remove("active");
+  document
+    .querySelector(".socials-form-type-btn[data-tab='phone']")
+    .classList.add("active");
+  document
+    .querySelector(".socials-form-group-email")
+    .classList.remove("active");
+  document.querySelector(".socials-form-group-phone").classList.add("active");
+} else {
+  document.querySelector(".form-type-buttons").style.gridTemplateColumns =
+    "1fr";
+  document
+    .querySelector(".socials-form-type-btn[data-tab='phone']")
+    .classList.add("hidden");
+}
 
 formModals.forEach((modal) => {
   if (modal) {
