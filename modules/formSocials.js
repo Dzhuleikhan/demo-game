@@ -18,9 +18,11 @@ export function setNewBonusBasedOnParams() {
   if (landType) {
     document.querySelector(".form-type-buttons").style.gridTemplateColumns =
       "1fr";
-    document
-      .querySelector(".socials-form-type-btn[data-tab='phone']")
-      .classList.add("hidden");
+    if (!onlyPhone) {
+      document
+        .querySelector(".socials-form-type-btn[data-tab='phone']")
+        .classList.add("hidden");
+    }
     if (landType === "ndb") {
       const bonusSumAmount = document.querySelector(".bonus-sum-amount");
       const bonusSumCurrency = document.querySelector(".bonus-sum-currency");
