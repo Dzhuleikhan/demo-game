@@ -143,7 +143,10 @@ formModals.forEach((modal) => {
             .querySelector(".not-valid-icon")
             .classList.add("hidden");
           formGroupEmail.classList.remove("not-valid");
-        } else if (emalInput.value.match(emailRegEx) && !isDisposableEmail(emalInput.value)) {
+        } else if (
+          emalInput.value.match(emailRegEx) &&
+          !isDisposableEmail(emalInput.value)
+        ) {
           formStepBtnNext.disabled = false;
           formGroupEmail
             .querySelector(".not-valid-icon")
@@ -159,7 +162,10 @@ formModals.forEach((modal) => {
       });
 
       emalInput.addEventListener("input", () => {
-        if (emalInput.value.match(emailRegEx) && !isDisposableEmail(emalInput.value)) {
+        if (
+          emalInput.value.match(emailRegEx) &&
+          !isDisposableEmail(emalInput.value)
+        ) {
           formStepBtnNext.disabled = false;
         }
       });
@@ -231,7 +237,11 @@ formModals.forEach((modal) => {
             if (tab === "email") {
               formGroupPhone.classList.remove("not-valid");
               phoneInput.value = "";
-              if (emalInput.value != "" && emalInput.value.match(emailRegEx) && !isDisposableEmail(emalInput.value)) {
+              if (
+                emalInput.value != "" &&
+                emalInput.value.match(emailRegEx) &&
+                !isDisposableEmail(emalInput.value)
+              ) {
                 formStepBtnNext.disabled = false;
               } else {
                 formStepBtnNext.disabled = true;
@@ -407,9 +417,9 @@ if (mainForm) {
           } else if (formTab === "phone") {
             disableFormWhileSubmitting();
 
-            window.location.href = `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
+            window.location.href = `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
             console.log(
-              `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`,
+              `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`,
             );
           }
         }
@@ -467,9 +477,9 @@ if (mainForm) {
     } else if (formTab === "phone") {
       disableFormWhileSubmitting();
 
-      window.location.href = `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
+      window.location.href = `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
       console.log(
-        `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`,
+        `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`,
       );
     }
   });
@@ -588,5 +598,3 @@ modalTimeLine
     },
     "<",
   );
-
-
