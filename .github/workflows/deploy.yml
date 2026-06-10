@@ -3,7 +3,7 @@ name: Deploy to VPS Servers
 on:
   push:
     branches:
-      - ndb_multigeo_standart_reg_fixed_30
+      - ndb_multigeo_standart_reg_fixed_50
 
 jobs:
   deploy:
@@ -13,10 +13,10 @@ jobs:
       fail-fast: false
       matrix:
         site:
+          - promogb.com
           - goldv2k8.xyz
           - goldx7p3.xyz
           - goldbet.wiki
-          - promogb.com
           - goldv5s3w.xyz
           - golds3s22.xyz
           - golds0h7.xyz
@@ -77,4 +77,4 @@ jobs:
           username: ${{ secrets[format('FTP_USER_{0}', matrix.vps)] }}
           password: ${{ secrets[format('FTP_PASSWORD_{0}', matrix.vps)] }}
           local-dir: ./dist/
-          server-dir: /www/${{ matrix.site }}/goldbet/ndb/multigeo/30/
+          server-dir: /www/${{ matrix.site }}/goldbet/ndb/multigeo/50/
