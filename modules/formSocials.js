@@ -110,7 +110,7 @@ export function setNewBonusBasedOnParams(currencyCode) {
 
     addUrlParameter("currency", getCurrencyOrDefault(currencyCode));
     addUrlParameter("sumAmount", getAmountForCurrency(currencyCode));
-    addUrlParameter("wager", 20);
+    addUrlParameter("wager", 25);
 
     const bonusSumAmount = document.querySelector(".bonus-sum-amount");
     const bonusSumCurrency = document.querySelector(".bonus-sum-currency");
@@ -138,7 +138,7 @@ export function setNewBonusBasedOnParams(currencyCode) {
       document
         .querySelector(".bonus-subtext-dynamic")
         .classList.remove("hidden");
-      bonusSumWagerAmount.textContent = wager || "20";
+      bonusSumWagerAmount.textContent = wager || "25";
     } else {
       bonusSumWager.style.display = "none";
     }
