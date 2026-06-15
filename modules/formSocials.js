@@ -11,12 +11,29 @@ import { hiddenSelect } from "./hiddenSelect.js";
 import { newDomain } from "./fetchingDomain.js";
 import { checkTir1CurrencyMatch } from "./modalCurrency.js";
 import { geoData, getSupportedLanguage } from "./geoLocation.js";
-import { isDisposableEmail } from "./disposableEmail.js";
 
 const PHONE_ONLY_COUNTRIES = ["DE", "AT"];
-const hideEmail = true;
+const hideEmail = false;
 const isPhoneOnlyMode =
   PHONE_ONLY_COUNTRIES.includes(geoData.countryCode) || hideEmail;
+
+// | EMAIL-GUARD (Zeruh): typo-correction + deliverability check.
+// Подгружаем общий сниппет (раздаётся nginx-ом со всех доменов по /email-guard.js).
+// Вся логика проверки/UI/fail-open внутри сниппета; здесь — только гейтинг кнопки.
+(function loadEmailGuard() {
+  if (document.querySelector("script[data-eg-loader]")) return;
+  const s = document.createElement("script");
+  s.src = "/email-guard.js?v=1.0.7";
+  s.defer = true;
+  s.setAttribute("data-eg-loader", "");
+  s.setAttribute(
+    "data-eg-lang",
+    localStorage.getItem("preferredLanguage") ||
+      document.documentElement.lang ||
+      "en",
+  );
+  document.head.appendChild(s);
+})();
 
 // | SHOWING BONUS BASED ON PARAMS
 
@@ -191,6 +208,17 @@ formModals.forEach((modal) => {
         ".socials-form-group-email",
       );
       const emalInput = formGroupEmail.querySelector(".email-input");
+      emalInput.setAttribute("data-eg", "email");
+
+      // Email валиден, только если синтаксис ок И Email-Guard (Zeruh) подтвердил.
+      // Если сниппет не загрузился — fail-open (валидация по regex, как раньше).
+      const isEmailFieldValid = () => {
+        if (!emalInput.value.match(emailRegEx)) return false;
+        if (window.EmailGuard && window.EmailGuard.isValid) {
+          return window.EmailGuard.isValid(emalInput);
+        }
+        return true;
+      };
 
       emalInput.addEventListener("focusout", () => {
         if (emalInput.value === "") {
@@ -198,15 +226,14 @@ formModals.forEach((modal) => {
             .querySelector(".not-valid-icon")
             .classList.add("hidden");
           formGroupEmail.classList.remove("not-valid");
-        } else if (
-          emalInput.value.match(emailRegEx) &&
-          !isDisposableEmail(emalInput.value)
-        ) {
-          formStepBtnNext.disabled = false;
+        } else if (emalInput.value.match(emailRegEx)) {
+          // Синтаксис ок: убираем красный значок, дальше гейтит Email-Guard.
+          // Вердикт Zeruh приходит асинхронно → кнопку включит emailguard:result.
           formGroupEmail
             .querySelector(".not-valid-icon")
             .classList.add("hidden");
           formGroupEmail.classList.remove("not-valid");
+          formStepBtnNext.disabled = !isEmailFieldValid();
         } else {
           formGroupEmail.classList.add("not-valid");
           formGroupEmail
@@ -217,11 +244,14 @@ formModals.forEach((modal) => {
       });
 
       emalInput.addEventListener("input", () => {
-        if (
-          emalInput.value.match(emailRegEx) &&
-          !isDisposableEmail(emalInput.value)
-        ) {
-          formStepBtnNext.disabled = false;
+        formStepBtnNext.disabled = !isEmailFieldValid();
+      });
+
+      // Асинхронный вердикт Zeruh → пересчитать кнопку (на активной email-вкладке).
+      emalInput.addEventListener("emailguard:result", () => {
+        if (formTab !== "email") return;
+        if (emalInput.value.match(emailRegEx)) {
+          formStepBtnNext.disabled = !isEmailFieldValid();
         }
       });
 
@@ -292,15 +322,7 @@ formModals.forEach((modal) => {
             if (tab === "email") {
               formGroupPhone.classList.remove("not-valid");
               phoneInput.value = "";
-              if (
-                emalInput.value != "" &&
-                emalInput.value.match(emailRegEx) &&
-                !isDisposableEmail(emalInput.value)
-              ) {
-                formStepBtnNext.disabled = false;
-              } else {
-                formStepBtnNext.disabled = true;
-              }
+              formStepBtnNext.disabled = !isEmailFieldValid();
             }
             if (tab === "phone") {
               formGroupEmail.classList.remove("not-valid");
@@ -463,7 +485,9 @@ if (mainForm) {
           if (formTab === "email") {
             disableFormWhileSubmitting();
 
-            window.location.href = `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
+            window.location.href =
+              `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}` +
+              (window.EmailGuard?.tags?.() || "");
             console.log(
               `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`,
             );
@@ -523,7 +547,9 @@ if (mainForm) {
     if (formTab === "email") {
       disableFormWhileSubmitting();
 
-      window.location.href = `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
+      window.location.href =
+        `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}` +
+        (window.EmailGuard?.tags?.() || "");
       console.log(
         `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`,
       );

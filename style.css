@@ -1017,3 +1017,9 @@ main {
 .bonus-subtext {
   color: #000000;
 }
+
+.eg-hint {
+  font-size: 14px !important;
+  margin-top: 10px !important;
+  text-align: center;
+}
