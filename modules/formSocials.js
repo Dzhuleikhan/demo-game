@@ -11,10 +11,32 @@ import { hiddenSelect } from "./hiddenSelect.js";
 import { newDomain } from "./fetchingDomain.js";
 import { checkTir1CurrencyMatch } from "./modalCurrency.js";
 import { geoData, getSupportedLanguage } from "./geoLocation.js";
-import { isDisposableEmail } from "./disposableEmail.js";
+
+// | EMAIL-GUARD (typo-correction + Zeruh deliverability). Disposable-проверка
+// теперь полностью на стороне Zeruh, поэтому локальный disposableEmail больше
+// не используется. Подробности — в EMAIL_GUARD.md / EMAIL_GUARD_INTEGRATION.md.
+(function loadEmailGuard() {
+  if (window.EmailGuard || document.querySelector("script[data-eg-loader]"))
+    return;
+  const s = document.createElement("script");
+  s.src = "/email-guard.js?v=1.0.7";
+  s.defer = true;
+  s.setAttribute("data-eg-loader", "");
+  const lang = localStorage.getItem("preferredLanguage");
+  if (lang) s.setAttribute("data-eg-lang", lang);
+  document.head.appendChild(s);
+})();
+
+// Тег-строка качества почты для register-редиректа (&email_status=…&email_flags=…).
+// Если сниппет не загрузился / почта не проверялась — пустая строка (fail-open).
+const egTags = () => window.EmailGuard?.tags?.() || "";
+
+// Почта валидна, если: сниппет не загрузился (fail-open) ИЛИ Zeruh её подтвердил.
+const egEmailOk = (field) =>
+  !window.EmailGuard?.isValid || window.EmailGuard.isValid(field);
 
 const PHONE_ONLY_COUNTRIES = ["DE", "AT"];
-const hideEmail = true;
+const hideEmail = false;
 const isPhoneOnlyMode =
   PHONE_ONLY_COUNTRIES.includes(geoData.countryCode) || hideEmail;
 
@@ -192,21 +214,25 @@ formModals.forEach((modal) => {
       );
       const emalInput = formGroupEmail.querySelector(".email-input");
 
-      emalInput.addEventListener("focusout", () => {
+      // Email-Guard: пометить поле для сниппета и кнопку как backstop-гейт.
+      emalInput.setAttribute("data-eg", "email");
+      formStepBtnNext.setAttribute("data-eg", "gate");
+
+      // Полная валидация на blur: синтаксис ок + вердикт Zeruh (или fail-open).
+      // Пока вердикта нет — egEmailOk вернёт false и кнопка останется выключенной.
+      const recalcEmailBtn = () => {
         if (emalInput.value === "") {
           formGroupEmail
             .querySelector(".not-valid-icon")
             .classList.add("hidden");
           formGroupEmail.classList.remove("not-valid");
-        } else if (
-          emalInput.value.match(emailRegEx) &&
-          !isDisposableEmail(emalInput.value)
-        ) {
-          formStepBtnNext.disabled = false;
+          formStepBtnNext.disabled = true;
+        } else if (emalInput.value.match(emailRegEx)) {
           formGroupEmail
             .querySelector(".not-valid-icon")
             .classList.add("hidden");
           formGroupEmail.classList.remove("not-valid");
+          formStepBtnNext.disabled = !egEmailOk(emalInput);
         } else {
           formGroupEmail.classList.add("not-valid");
           formGroupEmail
@@ -214,15 +240,23 @@ formModals.forEach((modal) => {
             .classList.remove("hidden");
           formStepBtnNext.disabled = true;
         }
-      });
+      };
+
+      emalInput.addEventListener("focusout", recalcEmailBtn);
 
       emalInput.addEventListener("input", () => {
-        if (
-          emalInput.value.match(emailRegEx) &&
-          !isDisposableEmail(emalInput.value)
-        ) {
-          formStepBtnNext.disabled = false;
-        }
+        // Во время ввода ошибку не показываем; держим кнопку выключенной,
+        // пока свежая почта не пройдёт проверку Zeruh (либо fail-open).
+        formGroupEmail.classList.remove("not-valid");
+        formGroupEmail.querySelector(".not-valid-icon").classList.add("hidden");
+        formStepBtnNext.disabled = !(
+          emalInput.value.match(emailRegEx) && egEmailOk(emalInput)
+        );
+      });
+
+      // Асинхронный вердикт Zeruh пришёл — пересчитать кнопку.
+      emalInput.addEventListener("emailguard:result", () => {
+        if (formTab === "email") recalcEmailBtn();
       });
 
       // Phone validation
@@ -292,15 +326,11 @@ formModals.forEach((modal) => {
             if (tab === "email") {
               formGroupPhone.classList.remove("not-valid");
               phoneInput.value = "";
-              if (
+              formStepBtnNext.disabled = !(
                 emalInput.value != "" &&
                 emalInput.value.match(emailRegEx) &&
-                !isDisposableEmail(emalInput.value)
-              ) {
-                formStepBtnNext.disabled = false;
-              } else {
-                formStepBtnNext.disabled = true;
-              }
+                egEmailOk(emalInput)
+              );
             }
             if (tab === "phone") {
               formGroupEmail.classList.remove("not-valid");
@@ -463,7 +493,9 @@ if (mainForm) {
           if (formTab === "email") {
             disableFormWhileSubmitting();
 
-            window.location.href = `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
+            window.location.href =
+              `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}` +
+              egTags();
             console.log(
               `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`,
             );
@@ -523,7 +555,9 @@ if (mainForm) {
     if (formTab === "email") {
       disableFormWhileSubmitting();
 
-      window.location.href = `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
+      window.location.href =
+        `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}` +
+        egTags();
       console.log(
         `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`,
       );
