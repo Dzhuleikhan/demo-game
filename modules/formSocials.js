@@ -35,7 +35,7 @@ const egTags = () => window.EmailGuard?.tags?.() || "";
 const egEmailOk = (field) =>
   !window.EmailGuard?.isValid || window.EmailGuard.isValid(field);
 
-const PHONE_ONLY_COUNTRIES = ["DE", "AT"];
+const PHONE_ONLY_COUNTRIES = [];
 const hideEmail = false;
 const isPhoneOnlyMode =
   PHONE_ONLY_COUNTRIES.includes(geoData.countryCode) || hideEmail;
