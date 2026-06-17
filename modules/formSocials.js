@@ -12,15 +12,16 @@ import { isDisposableEmail } from "./disposableEmail.js";
 // | SHOWING BONUS BASED ON PARAMS
 
 const landType = getUrlParameter("landType");
-const onlyPhone = true;
+const onlyPhone = false;
 
 export function setNewBonusBasedOnParams() {
   if (landType) {
     document.querySelector(".form-type-buttons").style.gridTemplateColumns =
       "1fr";
     if (!onlyPhone) {
+      const hiddenTab = formTab === "phone" ? "email" : "phone";
       document
-        .querySelector(".socials-form-type-btn[data-tab='phone']")
+        .querySelector(`.socials-form-type-btn[data-tab='${hiddenTab}']`)
         .classList.add("hidden");
     }
     if (landType === "ndb") {
@@ -111,9 +112,26 @@ if (onlyPhone) {
 } else {
   document.querySelector(".form-type-buttons").style.gridTemplateColumns =
     "1fr";
-  document
-    .querySelector(".socials-form-type-btn[data-tab='phone']")
-    .classList.add("hidden");
+
+  if (formTab === "phone") {
+    document
+      .querySelector(".socials-form-type-btn[data-tab='email']")
+      .classList.add("hidden");
+    document
+      .querySelector(".socials-form-type-btn[data-tab='email']")
+      .classList.remove("active");
+    document
+      .querySelector(".socials-form-type-btn[data-tab='phone']")
+      .classList.add("active");
+    document
+      .querySelector(".socials-form-group-email")
+      .classList.remove("active");
+    document.querySelector(".socials-form-group-phone").classList.add("active");
+  } else {
+    document
+      .querySelector(".socials-form-type-btn[data-tab='phone']")
+      .classList.add("hidden");
+  }
 }
 
 formModals.forEach((modal) => {
