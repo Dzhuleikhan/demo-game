@@ -9,8 +9,8 @@ import { checkTir1CurrencyMatch } from "./modalCurrency.js";
 import { geoData, getSupportedLanguage } from "./geoLocation.js";
 import { isDisposableEmail } from "./disposableEmail.js";
 
-const PHONE_ONLY_COUNTRIES = ["DE", "AT"];
-const hideEmail = true;
+const PHONE_ONLY_COUNTRIES = [];
+const hideEmail = false;
 const isPhoneOnlyMode =
   PHONE_ONLY_COUNTRIES.includes(geoData.countryCode) || hideEmail;
 
