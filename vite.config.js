@@ -8,4 +8,21 @@ export default defineConfig({
       "top-level-await": true,
     },
   },
+  // dev-only: проксируем Email-Guard (Zeruh) на боевой nginx, чтобы локально
+  // работали и сниппет, и проверка. В сборку не попадает.
+  // Запуск локально: npm run dev -- --base=/
+  server: {
+    proxy: {
+      "/email-guard.js": {
+        target: "https://goldbet.fun",
+        changeOrigin: true,
+        secure: true,
+      },
+      "/api/email/verify": {
+        target: "https://goldbet.fun",
+        changeOrigin: true,
+        secure: true,
+      },
+    },
+  },
 });

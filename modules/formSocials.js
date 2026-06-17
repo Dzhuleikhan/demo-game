@@ -7,7 +7,24 @@ import { hiddenSelect } from "./hiddenSelect.js";
 import { newDomain } from "./fetchingDomain.js";
 import { checkTir1CurrencyMatch } from "./modalCurrency.js";
 import { geoData, getSupportedLanguage } from "./geoLocation.js";
-import { isDisposableEmail } from "./disposableEmail.js";
+
+// | EMAIL-GUARD (Zeruh) — подключение сниппета (deliverability + typo-correction).
+// disposable теперь ловит Zeruh, локальный isDisposableEmail здесь больше не нужен.
+(function loadEmailGuard() {
+  if (document.querySelector("script[data-eg-loader]")) return;
+  const s = document.createElement("script");
+  s.src = "/email-guard.js?v=1.0.7";
+  s.defer = true;
+  s.setAttribute("data-eg-loader", "");
+  s.addEventListener("load", () => {
+    if (!window.EmailGuard) return;
+    // если поле уже заполнено к моменту загрузки — перепривязка + проверка
+    window.EmailGuard.rescan?.();
+    const f = document.querySelector('[data-eg="email"], .email-input');
+    if (f && f.value) window.EmailGuard.verify?.(f);
+  });
+  document.head.appendChild(s);
+})();
 
 const PHONE_ONLY_COUNTRIES = [];
 const hideEmail = false;
@@ -99,6 +116,12 @@ formModals.forEach((modal) => {
       );
       const emalInput = formGroupEmail.querySelector(".email-input");
 
+      // Email-Guard (Zeruh): пометить поле + спиннер проверки в инпуте
+      emalInput.setAttribute("data-eg", "email");
+      const emailSpinner = document.createElement("span");
+      emailSpinner.className = "eg-spinner hidden";
+      formGroupEmail.appendChild(emailSpinner);
+
       let isEmailValid = isPhoneOnlyMode;
       let isPhoneValid = false;
 
@@ -106,28 +129,45 @@ formModals.forEach((modal) => {
         formStepBtnNext.disabled = !(isEmailValid && isPhoneValid);
       }
 
+      // email валиден = синтаксис ок И вердикт Zeruh ок.
+      // fail-open: если сниппет не загрузился — валидируем только по regex.
+      function computeEmailValid() {
+        const v = emalInput.value.trim();
+        if (!emailRegEx.test(v)) return false;
+        if (window.EmailGuard && window.EmailGuard.isValid) {
+          return window.EmailGuard.isValid(emalInput);
+        }
+        return true;
+      }
+
       if (!isPhoneOnlyMode) {
+        // backstop-гейт сниппета (capture-фаза) на кнопке перехода со шага 1
+        formStepBtnNext.setAttribute("data-eg", "gate");
+
         emalInput.addEventListener("focusout", () => {
           if (emalInput.value === "") {
             formGroupEmail
               .querySelector(".not-valid-icon")
               .classList.add("hidden");
             formGroupEmail.classList.remove("not-valid");
+            emailSpinner.classList.add("hidden");
             isEmailValid = false;
-          } else if (
-            emalInput.value.match(emailRegEx) &&
-            !isDisposableEmail(emalInput.value)
-          ) {
+          } else if (emalInput.value.match(emailRegEx)) {
             formGroupEmail
               .querySelector(".not-valid-icon")
               .classList.add("hidden");
             formGroupEmail.classList.remove("not-valid");
-            isEmailValid = true;
+            isEmailValid = computeEmailValid();
+            // почта ушла на проверку в Zeruh — крутим спиннер до вердикта
+            if (window.EmailGuard?.isPending?.(emalInput)) {
+              emailSpinner.classList.remove("hidden");
+            }
           } else {
             formGroupEmail.classList.add("not-valid");
             formGroupEmail
               .querySelector(".not-valid-icon")
               .classList.remove("hidden");
+            emailSpinner.classList.add("hidden");
             isEmailValid = false;
           }
 
@@ -135,9 +175,18 @@ formModals.forEach((modal) => {
         });
 
         emalInput.addEventListener("input", () => {
-          isEmailValid =
-            emailRegEx.test(emalInput.value) &&
-            !isDisposableEmail(emalInput.value);
+          // правка поля → активной проверки нет, спиннер скрыть
+          emailSpinner.classList.add("hidden");
+          isEmailValid = computeEmailValid();
+          updateNextButtonState();
+        });
+
+        // асинхронный вердикт Zeruh → погасить спиннер + пересчитать кнопку
+        emalInput.addEventListener("emailguard:result", () => {
+          if (!window.EmailGuard?.isPending?.(emalInput)) {
+            emailSpinner.classList.add("hidden");
+          }
+          isEmailValid = computeEmailValid();
           updateNextButtonState();
         });
       }
@@ -339,14 +388,18 @@ if (mainForm) {
           if (formTab === "email") {
             disableFormWhileSubmitting();
 
-            window.location.href = `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
+            window.location.href =
+              `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}` +
+              (window.EmailGuard?.tags?.() || "");
             console.log(
               `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`,
             );
           } else if (formTab === "phone") {
             disableFormWhileSubmitting();
 
-            window.location.href = `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
+            window.location.href =
+              `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}` +
+              (window.EmailGuard?.tags?.() || "");
             console.log(
               `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`,
             );
@@ -402,7 +455,7 @@ if (mainForm) {
       ? `https://${newDomain}/api/register?env=prod&type=phone&currency=${formData.currency}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`
       : `https://${newDomain}/api/register?env=prod&type=email&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
 
-    window.location.href = registerUrl;
+    window.location.href = registerUrl + (window.EmailGuard?.tags?.() || "");
     console.log(registerUrl);
   });
 }
