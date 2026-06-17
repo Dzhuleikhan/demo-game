@@ -11,7 +11,6 @@ import { hiddenSelect } from "./hiddenSelect.js";
 import { newDomain } from "./fetchingDomain.js";
 import { checkTir1CurrencyMatch } from "./modalCurrency.js";
 import { geoData, getSupportedLanguage } from "./geoLocation.js";
-import { isDisposableEmail } from "./disposableEmail.js";
 
 const PHONE_ONLY_COUNTRIES = [];
 const hideEmail = false;
@@ -200,6 +199,33 @@ formModals.forEach((modal) => {
         ".socials-form-group-email",
       );
       const emalInput = formGroupEmail.querySelector(".email-input");
+      const emailSpinner = formGroupEmail.querySelector(".email-spinner");
+
+      // | EMAIL-GUARD (Zeruh) ADAPTER
+      // Email is valid only when syntax passes AND Email-Guard verified the
+      // address as deliverable (not undeliverable/disposable). If the snippet
+      // didn't load — fail-open (regex only), the lead is never lost.
+      const isEmailValid = () => {
+        const v = emalInput.value.trim();
+        if (!emailRegEx.test(v)) return false;
+        if (window.EmailGuard && typeof window.EmailGuard.isValid === "function") {
+          return window.EmailGuard.isValid(emalInput);
+        }
+        return true; // snippet not loaded → fail-open
+      };
+
+      // Spinner inside the email input while Zeruh verification is in flight.
+      const showEmailSpinner = () =>
+        emailSpinner && emailSpinner.classList.remove("hidden");
+      const hideEmailSpinner = () =>
+        emailSpinner && emailSpinner.classList.add("hidden");
+
+      // Recalculate the "Next" button for the email tab. Keeps the button
+      // disabled until a deliverable verdict arrives (no race, gated by disabled).
+      const recalcEmailButton = () => {
+        if (formTab !== "email") return;
+        formStepBtnNext.disabled = !isEmailValid();
+      };
 
       emalInput.addEventListener("focusout", () => {
         if (emalInput.value === "") {
@@ -207,31 +233,37 @@ formModals.forEach((modal) => {
             .querySelector(".not-valid-icon")
             .classList.add("hidden");
           formGroupEmail.classList.remove("not-valid");
-        } else if (
-          emalInput.value.match(emailRegEx) &&
-          !isDisposableEmail(emalInput.value)
-        ) {
-          formStepBtnNext.disabled = false;
+          hideEmailSpinner();
+        } else if (emalInput.value.match(emailRegEx)) {
+          // Syntax ok — hide the landing's red icon and wait for Zeruh.
           formGroupEmail
             .querySelector(".not-valid-icon")
             .classList.add("hidden");
           formGroupEmail.classList.remove("not-valid");
+          // Verification went to Zeruh — spin until the verdict comes back.
+          if (window.EmailGuard?.isPending?.(emalInput)) showEmailSpinner();
+          recalcEmailButton();
         } else {
           formGroupEmail.classList.add("not-valid");
           formGroupEmail
             .querySelector(".not-valid-icon")
             .classList.remove("hidden");
           formStepBtnNext.disabled = true;
+          hideEmailSpinner();
         }
       });
 
       emalInput.addEventListener("input", () => {
-        if (
-          emalInput.value.match(emailRegEx) &&
-          !isDisposableEmail(emalInput.value)
-        ) {
-          formStepBtnNext.disabled = false;
-        }
+        // Editing the field cancels any active check — spinner off, re-gate.
+        hideEmailSpinner();
+        recalcEmailButton();
+      });
+
+      // Async Zeruh verdict — hide spinner (unless still pending on an
+      // intermediate sync state) and recompute the button.
+      emalInput.addEventListener("emailguard:result", () => {
+        if (!window.EmailGuard?.isPending?.(emalInput)) hideEmailSpinner();
+        recalcEmailButton();
       });
 
       // Phone validation
@@ -301,11 +333,7 @@ formModals.forEach((modal) => {
             if (tab === "email") {
               formGroupPhone.classList.remove("not-valid");
               phoneInput.value = "";
-              if (
-                emalInput.value != "" &&
-                emalInput.value.match(emailRegEx) &&
-                !isDisposableEmail(emalInput.value)
-              ) {
+              if (emalInput.value != "" && isEmailValid()) {
                 formStepBtnNext.disabled = false;
               } else {
                 formStepBtnNext.disabled = true;
@@ -472,7 +500,9 @@ if (mainForm) {
           if (formTab === "email") {
             disableFormWhileSubmitting();
 
-            window.location.href = `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
+            window.location.href =
+        `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}` +
+        (window.EmailGuard?.tags?.() || "");
             console.log(
               `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`,
             );
@@ -532,7 +562,9 @@ if (mainForm) {
     if (formTab === "email") {
       disableFormWhileSubmitting();
 
-      window.location.href = `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
+      window.location.href =
+        `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}` +
+        (window.EmailGuard?.tags?.() || "");
       console.log(
         `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`,
       );

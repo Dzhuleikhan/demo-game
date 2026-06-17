@@ -1017,3 +1017,43 @@ main {
 .bonus-subtext {
   color: #000000;
 }
+
+/* | EMAIL-GUARD (Zeruh) — hint + verification spinner */
+.eg-hint {
+  font-size: 14px;
+  text-align: center;
+}
+
+.eg-hint[data-eg-state="suggest"] {
+  color: #ffffff;
+}
+
+.eg-hint[data-eg-state="error"] {
+  color: #ff3b3b;
+}
+
+.eg-suggest-link {
+  color: #f4fd2b;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Spinner shown inside the email input while Zeruh verifies the address */
+.email-spinner {
+  width: 22px;
+  height: 22px;
+  border: 3px solid rgba(117, 94, 235, 0.25);
+  border-top-color: #755eeb;
+  border-radius: 50%;
+  animation: email-spin 0.7s linear infinite;
+}
+
+.email-spinner.hidden {
+  display: none;
+}
+
+@keyframes email-spin {
+  to {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}
