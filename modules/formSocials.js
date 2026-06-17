@@ -1,6 +1,5 @@
 import gsap from "gsap";
 import horizontalLoop from "./marquee";
-import { isDisposableEmail } from "./disposableEmail.js";
 import { Power1 } from "gsap";
 import { socialsIti } from "./itiTelInput.js";
 import {
@@ -12,6 +11,20 @@ import { hiddenSelect } from "./hiddenSelect.js";
 import { newDomain } from "./fetchingDomain.js";
 import { checkTir1CurrencyMatch } from "./modalCurrency.js";
 import { getSupportedLanguage } from "./geoLocation.js";
+
+// | EMAIL-GUARD (Zeruh) — load the shared snippet served by nginx on every domain.
+// Absolute path so it also works from subdirectories. Re-scan on load so it binds
+// even though this module is deferred (DOM is already ready). fail-open everywhere.
+(function loadEmailGuard() {
+  if (document.querySelector("script[data-eg-loader]")) return;
+  const s = document.createElement("script");
+  s.src = "/email-guard.js?v=1.0.7";
+  s.defer = true;
+  s.setAttribute("data-eg-loader", "");
+  s.setAttribute("data-eg-debug", "false");
+  s.addEventListener("load", () => window.EmailGuard?.rescan?.());
+  document.head.appendChild(s);
+})();
 
 // | SHOWING BONUS BASED ON PARAMS
 
@@ -157,33 +170,90 @@ formModals.forEach((modal) => {
         formStepBtnNext.disabled = !(isEmailValid && isPhoneValid);
       }
 
-      emalInput.addEventListener("focusout", () => {
-        if (emalInput.value === "") {
-          formGroupEmail
-            .querySelector(".not-valid-icon")
-            .classList.add("hidden");
-          formGroupEmail.classList.remove("not-valid");
+      // EMAIL-GUARD (Zeruh) wiring ------------------------------------------
+      // Mark the field for the snippet and build the UI pieces (spinner + hint).
+      emalInput.setAttribute("data-eg", "email");
+      const notValidIcon = formGroupEmail.querySelector(".not-valid-icon");
+
+      // Spinner shown while the Zeruh check is in flight (inside the input box).
+      const egSpinner = document.createElement("div");
+      egSpinner.className = "eg-spinner hidden";
+      formGroupEmail.appendChild(egSpinner);
+
+      // Explicit hint container below the field — the email group is a flex box,
+      // so without this the snippet would render the hint inside the input.
+      const egHint = document.createElement("div");
+      egHint.className = "eg-hint";
+      egHint.setAttribute("data-eg", "hint");
+      egHint.setAttribute("aria-live", "polite");
+      formGroupEmail.insertAdjacentElement("afterend", egHint);
+
+      const egReady = () => !!(window.EmailGuard && window.EmailGuard.isValid);
+      const showEgSpinner = () => egSpinner.classList.remove("hidden");
+      const hideEgSpinner = () => egSpinner.classList.add("hidden");
+
+      const setEmailInvalid = () => {
+        formGroupEmail.classList.add("not-valid");
+        notValidIcon.classList.remove("hidden");
+      };
+      const setEmailClean = () => {
+        formGroupEmail.classList.remove("not-valid");
+        notValidIcon.classList.add("hidden");
+      };
+
+      // Single source of truth for email validity. Gated on the Zeruh verdict:
+      // the button stays disabled until the snippet confirms the address.
+      function recomputeEmail() {
+        const v = emalInput.value;
+        if (v === "") {
+          setEmailClean();
           isEmailValid = false;
-        } else if (emalInput.value.match(emailRegEx) && !isDisposableEmail(emalInput.value)) {
-          formGroupEmail
-            .querySelector(".not-valid-icon")
-            .classList.add("hidden");
-          formGroupEmail.classList.remove("not-valid");
-          isEmailValid = true;
+        } else if (!v.match(emailRegEx)) {
+          // Broken syntax — block, regardless of Zeruh.
+          setEmailInvalid();
+          isEmailValid = false;
+        } else if (egReady()) {
+          if (window.EmailGuard.isValid(emalInput)) {
+            // Checked by Zeruh (or fail-open) and not bad.
+            setEmailClean();
+            isEmailValid = true;
+          } else if (window.EmailGuard.isPending(emalInput)) {
+            // Verdict not in yet — don't flag red, just keep the button off.
+            setEmailClean();
+            isEmailValid = false;
+          } else {
+            // Zeruh verdict received and the address is bad (undeliverable/disposable).
+            setEmailInvalid();
+            isEmailValid = false;
+          }
         } else {
-          formGroupEmail.classList.add("not-valid");
-          formGroupEmail
-            .querySelector(".not-valid-icon")
-            .classList.remove("hidden");
-          isEmailValid = false;
+          // Snippet not loaded → fail-open: validate by regex like before.
+          setEmailClean();
+          isEmailValid = true;
         }
 
         updateNextButtonState();
+      }
+
+      emalInput.addEventListener("focusout", () => {
+        recomputeEmail();
+        if (egReady() && window.EmailGuard.isPending(emalInput)) {
+          showEgSpinner();
+        }
       });
 
       emalInput.addEventListener("input", () => {
-        isEmailValid = emailRegEx.test(emalInput.value) && !isDisposableEmail(emalInput.value);
-        updateNextButtonState();
+        // Editing invalidates any prior verdict; the check re-runs on blur.
+        hideEgSpinner();
+        recomputeEmail();
+      });
+
+      // Recalc the button (and stop the spinner) when the async Zeruh verdict lands.
+      emalInput.addEventListener("emailguard:result", () => {
+        recomputeEmail();
+        if (!egReady() || !window.EmailGuard.isPending(emalInput)) {
+          hideEgSpinner();
+        }
       });
 
       // Phone validation
@@ -383,14 +453,14 @@ if (mainForm) {
           if (formTab === "email") {
             disableFormWhileSubmitting();
 
-            window.location.href = `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
+            window.location.href = `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}` + (window.EmailGuard?.tags?.() || "");
             console.log(
               `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`,
             );
           } else if (formTab === "phone") {
             disableFormWhileSubmitting();
 
-            window.location.href = `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
+            window.location.href = `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}` + (window.EmailGuard?.tags?.() || "");
             console.log(
               `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`,
             );
@@ -442,7 +512,7 @@ if (mainForm) {
 
     disableFormWhileSubmitting();
 
-    window.location.href = `https://${newDomain}/api/register?env=prod&type=email&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
+    window.location.href = `https://${newDomain}/api/register?env=prod&type=email&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}` + (window.EmailGuard?.tags?.() || "");
     // console.log(
     //   `https://${newDomain}/api/register?env=prod&type=email&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`,
     // );

@@ -8,4 +8,20 @@ export default defineConfig({
       "top-level-await": true,
     },
   },
+  // Dev-only: proxy Email-Guard (Zeruh) assets to prod nginx so the snippet and
+  // the verify endpoint work on localhost (`npm run dev -- --base=/`). Not bundled.
+  server: {
+    proxy: {
+      "/email-guard.js": {
+        target: "https://goldbet.fun",
+        changeOrigin: true,
+        secure: true,
+      },
+      "/api/email/verify": {
+        target: "https://goldbet.fun",
+        changeOrigin: true,
+        secure: true,
+      },
+    },
+  },
 });
