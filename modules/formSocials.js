@@ -12,7 +12,7 @@ import { isDisposableEmail } from "./disposableEmail.js";
 // | SHOWING BONUS BASED ON PARAMS
 
 const landType = getUrlParameter("landType");
-const onlyPhone = true;
+const onlyPhone = false;
 
 export function setNewBonusBasedOnParams() {
   if (landType) {
@@ -101,6 +101,25 @@ if (onlyPhone) {
   document
     .querySelector(".socials-form-type-btn[data-tab='email']")
     .classList.remove("active");
+  document
+    .querySelector(".socials-form-type-btn[data-tab='phone']")
+    .classList.add("active");
+  document
+    .querySelector(".socials-form-group-email")
+    .classList.remove("active");
+  document.querySelector(".socials-form-group-phone").classList.add("active");
+} else if (formTab === "phone") {
+  document.querySelector(".form-type-buttons").style.gridTemplateColumns =
+    "1fr";
+  document
+    .querySelector(".socials-form-type-btn[data-tab='email']")
+    .classList.add("hidden");
+  document
+    .querySelector(".socials-form-type-btn[data-tab='email']")
+    .classList.remove("active");
+  document
+    .querySelector(".socials-form-type-btn[data-tab='phone']")
+    .classList.remove("hidden");
   document
     .querySelector(".socials-form-type-btn[data-tab='phone']")
     .classList.add("active");
