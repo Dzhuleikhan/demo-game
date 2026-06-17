@@ -106,7 +106,12 @@ export function setNewBonusBasedOnParams(currencyCode) {
     document.querySelector(".form-type-buttons").style.gridTemplateColumns =
       "1fr";
 
-    if (isPhoneOnlyMode) {
+    // method-type=phone должен вести себя как phone-only режим:
+    // показываем телефонную вкладку как единственный заголовок.
+    const isPhoneTab =
+      isPhoneOnlyMode || getUrlParameter("method-type") === "phone";
+
+    if (isPhoneTab) {
       const emailTabBtn = document.querySelector(
         ".socials-form-type-btn[data-tab='email']",
       );
