@@ -9,6 +9,13 @@
     />
     <title>Goldbet</title>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <!-- Email-Guard (Zeruh): typo-correction + deliverability. Scoped to socials form via data-eg="email". -->
+    <script
+      defer
+      src="/email-guard.js?v=1.0.7"
+      data-eg-email-selector="[data-eg=&quot;email&quot;]"
+      data-eg-debug="false"
+    ></script>
   </head>
   <body class="relative select-none overscroll-none">
     <div class="wrapper relative hidden min-h-screen w-full">
@@ -6258,6 +6265,7 @@
                     >
                       <input
                         dir="ltr"
+                        data-eg="email"
                         class="email-input w-full bg-transparent text-lg font-bold tracking-tight text-[#755EEB] outline-none rtl:text-right"
                         type="email"
                         id="form-email"
@@ -6285,6 +6293,10 @@
                           stroke-linejoin="round"
                         />
                       </svg>
+                      <span
+                        class="email-spinner absolute right-5 top-1/2 hidden -translate-y-1/2 rtl:left-5 rtl:right-auto"
+                        aria-hidden="true"
+                      ></span>
                       <div
                         data-modal-translate="wrongEmail"
                         class="tooltip absolute -right-4 bottom-[90%] z-30 hidden rounded-md bg-[#f0f0f0] px-2 py-[6px] text-sm font-normal leading-[120%] text-[#0f0f0f] rtl:-left-8 rtl:right-auto"
@@ -6334,6 +6346,7 @@
                   <!-- Step Button -->
                   <button
                     disabled
+                    data-eg="gate"
                     class="form-step-btn form-step-btn-1 btn-disabled form-step-btn-next mt-[15px] grid w-full cursor-pointer grid-cols-[1fr_auto] gap-1 rounded-2xl bg-[#F4FD2B] px-[14px] py-5 text-center text-lg font-bold tracking-tight text-[#0f0f0f]"
                   >
                     <span data-modal-translate="signUpBtn">Sign Up</span>

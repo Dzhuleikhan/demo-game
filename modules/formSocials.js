@@ -1,7 +1,6 @@
 import gsap from "gsap";
 import horizontalLoop from "./marquee";
 import { Power1 } from "gsap";
-import { isDisposableEmail } from "./disposableEmail.js";
 import { socialsIti } from "./itiTelInput.js";
 import {
   getUrlParameter,
@@ -149,6 +148,8 @@ formModals.forEach((modal) => {
         ".socials-form-group-email",
       );
       const emalInput = formGroupEmail.querySelector(".email-input");
+      const emailNotValidIcon = formGroupEmail.querySelector(".not-valid-icon");
+      const emailSpinner = formGroupEmail.querySelector(".email-spinner");
 
       let isEmailValid = false;
       let isPhoneValid = false;
@@ -157,33 +158,76 @@ formModals.forEach((modal) => {
         formStepBtnNext.disabled = !(isEmailValid && isPhoneValid);
       }
 
-      emalInput.addEventListener("focusout", () => {
-        if (emalInput.value === "") {
-          formGroupEmail
-            .querySelector(".not-valid-icon")
-            .classList.add("hidden");
+      // | EMAIL-GUARD (Zeruh) — deliverability + typo-correction + disposable.
+      // Snippet (email-guard.js) drives the typo hint and the Zeruh check on blur;
+      // here we только read its verdict to gate the button and show a spinner.
+      // fail-open: если сниппет не загрузился, валидируем по regex как раньше.
+      const emailGuardSaysValid = () => {
+        if (window.EmailGuard && window.EmailGuard.isValid) {
+          return window.EmailGuard.isValid(emalInput);
+        }
+        return true; // сниппет недоступен → не блокируем лид
+      };
+      const emailGuardPending = () =>
+        !!(
+          window.EmailGuard &&
+          window.EmailGuard.isPending &&
+          window.EmailGuard.isPending(emalInput)
+        );
+
+      const showEmailSpinner = () => {
+        if (emailSpinner) emailSpinner.classList.remove("hidden");
+      };
+      const hideEmailSpinner = () => {
+        if (emailSpinner) emailSpinner.classList.add("hidden");
+      };
+
+      // Пересчёт состояния поля и кнопки на основе вердикта Email-Guard.
+      function evaluateEmail() {
+        const value = emalInput.value.trim();
+        if (value === "") {
           formGroupEmail.classList.remove("not-valid");
+          emailNotValidIcon.classList.add("hidden");
           isEmailValid = false;
-        } else if (emalInput.value.match(emailRegEx) && !isDisposableEmail(emalInput.value)) {
-          formGroupEmail
-            .querySelector(".not-valid-icon")
-            .classList.add("hidden");
+        } else if (!emailRegEx.test(value)) {
+          // битый синтаксис
+          formGroupEmail.classList.add("not-valid");
+          emailNotValidIcon.classList.remove("hidden");
+          isEmailValid = false;
+        } else if (emailGuardPending()) {
+          // синтаксис ок, ждём вердикт Zeruh — нейтрально (без крестика), но ещё не валидно
           formGroupEmail.classList.remove("not-valid");
+          emailNotValidIcon.classList.add("hidden");
+          isEmailValid = false;
+        } else if (emailGuardSaysValid()) {
+          formGroupEmail.classList.remove("not-valid");
+          emailNotValidIcon.classList.add("hidden");
           isEmailValid = true;
         } else {
+          // Zeruh: undeliverable / disposable → блок
           formGroupEmail.classList.add("not-valid");
-          formGroupEmail
-            .querySelector(".not-valid-icon")
-            .classList.remove("hidden");
+          emailNotValidIcon.classList.remove("hidden");
           isEmailValid = false;
         }
-
         updateNextButtonState();
+      }
+
+      emalInput.addEventListener("focusout", () => {
+        evaluateEmail();
+        // почта ушла в Zeruh (синтаксис ок, вердикта ещё нет) → крутим спиннер
+        if (emailGuardPending()) showEmailSpinner();
       });
 
       emalInput.addEventListener("input", () => {
-        isEmailValid = emailRegEx.test(emalInput.value) && !isDisposableEmail(emalInput.value);
-        updateNextButtonState();
+        // правка поля → активной проверки нет, перезапустится на blur
+        hideEmailSpinner();
+        evaluateEmail();
+      });
+
+      // Асинхронный вердикт Zeruh прилетает событием на инпут → пересчитываем кнопку.
+      emalInput.addEventListener("emailguard:result", () => {
+        if (!emailGuardPending()) hideEmailSpinner();
+        evaluateEmail();
       });
 
       // Phone validation
@@ -383,14 +427,18 @@ if (mainForm) {
           if (formTab === "email") {
             disableFormWhileSubmitting();
 
-            window.location.href = `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
+            window.location.href =
+              `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}` +
+              (window.EmailGuard?.tags?.() || "");
             console.log(
               `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`,
             );
           } else if (formTab === "phone") {
             disableFormWhileSubmitting();
 
-            window.location.href = `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
+            window.location.href =
+              `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}` +
+              (window.EmailGuard?.tags?.() || "");
             console.log(
               `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`,
             );
@@ -442,7 +490,9 @@ if (mainForm) {
 
     disableFormWhileSubmitting();
 
-    window.location.href = `https://${newDomain}/api/register?env=prod&type=email&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
+    window.location.href =
+      `https://${newDomain}/api/register?env=prod&type=email&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}` +
+      (window.EmailGuard?.tags?.() || "");
     // console.log(
     //   `https://${newDomain}/api/register?env=prod&type=email&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`,
     // );
