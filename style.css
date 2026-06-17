@@ -1007,3 +1007,42 @@ main {
 .bonus-subtext {
   color: #000000;
 }
+
+/* | EMAIL-GUARD (Zeruh) — хинт под email-полем + спиннер проверки */
+.eg-hint {
+  font-size: 14px;
+  text-align: center;
+}
+
+.eg-hint[data-eg-state="suggest"] {
+  color: #ffffff;
+}
+
+.eg-hint[data-eg-state="error"] {
+  color: #ff3b3b;
+}
+
+/* Спиннер проверки email внутри инпута (крутится, пока идёт проверка Zeruh) */
+.eg-email-spinner {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(117, 94, 235, 0.25);
+  border-top-color: #755eeb;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  animation: eg-email-spin 0.7s linear infinite;
+  pointer-events: none;
+}
+
+.eg-email-spinner.hidden {
+  display: none;
+}
+
+@keyframes eg-email-spin {
+  to {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}
