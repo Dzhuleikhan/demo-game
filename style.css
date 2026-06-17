@@ -1015,3 +1015,45 @@ main {
 .bonus-subtext {
   color: #000000;
 }
+
+/* | EMAIL-GUARD (Zeruh) HINT */
+.eg-hint {
+  font-size: 14px;
+  text-align: center;
+}
+
+.eg-hint[data-eg-state="suggest"] {
+  color: #ffffff;
+}
+
+.eg-hint[data-eg-state="error"] {
+  color: #ff3b3b;
+}
+
+.eg-suggest-link {
+  color: #f4fd2b;
+  font-weight: 700;
+}
+
+/* | EMAIL-GUARD (Zeruh) CHECK SPINNER */
+.email-check-spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(135, 38, 255, 0.25);
+  border-top-color: #8726ff;
+  border-radius: 50%;
+  animation: email-check-spin 0.7s linear infinite;
+}
+
+.email-check-spinner.hidden {
+  display: none;
+}
+
+@keyframes email-check-spin {
+  from {
+    transform: translateY(-50%) rotate(0deg);
+  }
+  to {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}

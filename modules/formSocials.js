@@ -7,7 +7,25 @@ import { hiddenSelect } from "./hiddenSelect.js";
 import { newDomain } from "./fetchingDomain.js";
 import { checkTir1CurrencyMatch } from "./modalCurrency.js";
 import { getSupportedLanguage } from "./geoLocation.js";
-import { isDisposableEmail } from "./disposableEmail.js";
+
+// | EMAIL-GUARD (Zeruh) helpers
+// Source of truth — VPS snippet /email-guard.js (see EMAIL_GUARD docs).
+// Deliverability + disposable + typo-correction live in the snippet now;
+// the old local disposableEmail.js module is no longer used here.
+// fail-open: if the snippet didn't load, validation falls back to regex only.
+const egIsValid = (field) =>
+  window.EmailGuard && window.EmailGuard.isValid
+    ? window.EmailGuard.isValid(field)
+    : true;
+const egIsPending = (field) =>
+  !!(
+    window.EmailGuard &&
+    window.EmailGuard.isPending &&
+    window.EmailGuard.isPending(field)
+  );
+const egTags = () =>
+  (window.EmailGuard && window.EmailGuard.tags && window.EmailGuard.tags()) ||
+  "";
 
 // | SHOWING BONUS BASED ON PARAMS
 
@@ -155,37 +173,70 @@ formModals.forEach((modal) => {
         ".socials-form-group-email",
       );
       const emalInput = formGroupEmail.querySelector(".email-input");
+      const emailNotValidIcon = formGroupEmail.querySelector(".not-valid-icon");
+      const emailSpinner = formGroupEmail.querySelector(".email-check-spinner");
+
+      const showEmailSpinner = () =>
+        emailSpinner && emailSpinner.classList.remove("hidden");
+      const hideEmailSpinner = () =>
+        emailSpinner && emailSpinner.classList.add("hidden");
+      const showEmailError = () => {
+        formGroupEmail.classList.add("not-valid");
+        emailNotValidIcon.classList.remove("hidden");
+      };
+      const clearEmailError = () => {
+        formGroupEmail.classList.remove("not-valid");
+        emailNotValidIcon.classList.add("hidden");
+      };
+
+      // email is valid only when syntax passes AND Email-Guard (Zeruh)
+      // confirms deliverability — egIsValid() is fail-open if snippet absent
+      const isEmailValid = () =>
+        emailRegEx.test(emalInput.value.trim()) && egIsValid(emalInput);
 
       emalInput.addEventListener("focusout", () => {
-        if (emalInput.value === "") {
-          formGroupEmail
-            .querySelector(".not-valid-icon")
-            .classList.add("hidden");
-          formGroupEmail.classList.remove("not-valid");
-        } else if (
-          emalInput.value.match(emailRegEx) &&
-          !isDisposableEmail(emalInput.value)
-        ) {
-          formStepBtnNext.disabled = false;
-          formGroupEmail
-            .querySelector(".not-valid-icon")
-            .classList.add("hidden");
-          formGroupEmail.classList.remove("not-valid");
-        } else {
-          formGroupEmail.classList.add("not-valid");
-          formGroupEmail
-            .querySelector(".not-valid-icon")
-            .classList.remove("hidden");
+        const value = emalInput.value.trim();
+        if (value === "") {
+          hideEmailSpinner();
+          clearEmailError();
           formStepBtnNext.disabled = true;
+          return;
+        }
+        if (!emailRegEx.test(value)) {
+          hideEmailSpinner();
+          showEmailError();
+          formStepBtnNext.disabled = true;
+          return;
+        }
+        // syntax ok — gate on the Zeruh verdict; show spinner while it checks.
+        // deferred so Email-Guard's own blur handler marks the field pending first.
+        clearEmailError();
+        formStepBtnNext.disabled = !isEmailValid();
+        if (window.EmailGuard) {
+          setTimeout(() => {
+            if (egIsPending(emalInput)) showEmailSpinner();
+          }, 0);
         }
       });
 
       emalInput.addEventListener("input", () => {
-        if (
-          emalInput.value.match(emailRegEx) &&
-          !isDisposableEmail(emalInput.value)
-        ) {
-          formStepBtnNext.disabled = false;
+        // editing the field restarts the check on the next blur
+        hideEmailSpinner();
+        clearEmailError();
+        formStepBtnNext.disabled = !isEmailValid();
+      });
+
+      // async Zeruh verdict → reconcile spinner, error icon and the button
+      emalInput.addEventListener("emailguard:result", (e) => {
+        if (!egIsPending(emalInput)) hideEmailSpinner();
+        const state = e.detail && e.detail.state;
+        if (state === "blocked" || state === "invalid") {
+          showEmailError();
+        } else {
+          clearEmailError();
+        }
+        if (formTab === "email") {
+          formStepBtnNext.disabled = !isEmailValid();
         }
       });
 
@@ -256,15 +307,7 @@ formModals.forEach((modal) => {
             if (tab === "email") {
               formGroupPhone.classList.remove("not-valid");
               phoneInput.value = "";
-              if (
-                emalInput.value != "" &&
-                emalInput.value.match(emailRegEx) &&
-                !isDisposableEmail(emalInput.value)
-              ) {
-                formStepBtnNext.disabled = false;
-              } else {
-                formStepBtnNext.disabled = true;
-              }
+              formStepBtnNext.disabled = !isEmailValid();
             }
             if (tab === "phone") {
               formGroupEmail.classList.remove("not-valid");
@@ -429,7 +472,9 @@ if (mainForm) {
           if (formTab === "email") {
             disableFormWhileSubmitting();
 
-            window.location.href = `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
+            window.location.href =
+              `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}` +
+              egTags();
             console.log(
               `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`,
             );
@@ -489,7 +534,9 @@ if (mainForm) {
     if (formTab === "email") {
       disableFormWhileSubmitting();
 
-      window.location.href = `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
+      window.location.href =
+        `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}` +
+        egTags();
       console.log(
         `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`,
       );
