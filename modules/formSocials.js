@@ -13,8 +13,8 @@ import { checkTir1CurrencyMatch } from "./modalCurrency.js";
 import { geoData, getSupportedLanguage } from "./geoLocation.js";
 import { isDisposableEmail } from "./disposableEmail.js";
 
-const PHONE_ONLY_COUNTRIES = ["DE", "AT"];
-const hideEmail = true;
+const PHONE_ONLY_COUNTRIES = [];
+const hideEmail = false;
 const isPhoneOnlyMode =
   PHONE_ONLY_COUNTRIES.includes(geoData.countryCode) || hideEmail;
 
@@ -84,16 +84,17 @@ export function setNewBonusBasedOnParams(currencyCode) {
     document.querySelector(".form-type-buttons").style.gridTemplateColumns =
       "1fr";
 
-    if (isPhoneOnlyMode) {
-      const emailTabBtn = document.querySelector(
-        ".socials-form-type-btn[data-tab='email']",
-      );
-      const phoneTabBtn = document.querySelector(
-        ".socials-form-type-btn[data-tab='phone']",
-      );
-      const emailGroup = document.querySelector(".socials-form-group-email");
-      const phoneGroup = document.querySelector(".socials-form-group-phone");
+    const emailTabBtn = document.querySelector(
+      ".socials-form-type-btn[data-tab='email']",
+    );
+    const phoneTabBtn = document.querySelector(
+      ".socials-form-type-btn[data-tab='phone']",
+    );
+    const emailGroup = document.querySelector(".socials-form-group-email");
+    const phoneGroup = document.querySelector(".socials-form-group-phone");
 
+    if (isPhoneOnlyMode || formTabParam === "phone") {
+      // Show phone only
       emailTabBtn.classList.add("hidden");
       emailTabBtn.classList.remove("active");
       phoneTabBtn.classList.remove("hidden");
@@ -101,11 +102,19 @@ export function setNewBonusBasedOnParams(currencyCode) {
 
       emailGroup.classList.remove("active");
       emailGroup.classList.add("hidden");
+      phoneGroup.classList.remove("hidden");
       phoneGroup.classList.add("active");
     } else {
-      document
-        .querySelector(".socials-form-type-btn[data-tab='phone']")
-        .classList.add("hidden");
+      // Show email only
+      phoneTabBtn.classList.add("hidden");
+      phoneTabBtn.classList.remove("active");
+      emailTabBtn.classList.remove("hidden");
+      emailTabBtn.classList.add("active");
+
+      phoneGroup.classList.remove("active");
+      phoneGroup.classList.add("hidden");
+      emailGroup.classList.remove("hidden");
+      emailGroup.classList.add("active");
     }
 
     addUrlParameter("currency", getCurrencyOrDefault(currencyCode));
