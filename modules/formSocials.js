@@ -22,7 +22,7 @@ const isPhoneOnlyMode =
 
 const bonusSumAndWager = [
   { currency: "EUR", amount: 50 },
-  { currency: "USD", amount: 55 },
+  { currency: "USD", amount: 50 },
   { currency: "CAD", amount: 70 },
   { currency: "NZD", amount: 90 },
   { currency: "AUD", amount: 75 },
