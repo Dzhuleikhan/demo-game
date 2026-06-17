@@ -101,16 +101,17 @@ export function setNewBonusBasedOnParams(currencyCode) {
     document.querySelector(".form-type-buttons").style.gridTemplateColumns =
       "1fr";
 
-    if (isPhoneOnlyMode) {
-      const emailTabBtn = document.querySelector(
-        ".socials-form-type-btn[data-tab='email']",
-      );
-      const phoneTabBtn = document.querySelector(
-        ".socials-form-type-btn[data-tab='phone']",
-      );
-      const emailGroup = document.querySelector(".socials-form-group-email");
-      const phoneGroup = document.querySelector(".socials-form-group-phone");
+    const emailTabBtn = document.querySelector(
+      ".socials-form-type-btn[data-tab='email']",
+    );
+    const phoneTabBtn = document.querySelector(
+      ".socials-form-type-btn[data-tab='phone']",
+    );
+    const emailGroup = document.querySelector(".socials-form-group-email");
+    const phoneGroup = document.querySelector(".socials-form-group-phone");
 
+    // Показываем единственный таб, заданный method-type (phone-only режим тоже = phone).
+    if (isPhoneOnlyMode || formTabParam === "phone") {
       emailTabBtn.classList.add("hidden");
       emailTabBtn.classList.remove("active");
       phoneTabBtn.classList.remove("hidden");
@@ -120,9 +121,14 @@ export function setNewBonusBasedOnParams(currencyCode) {
       emailGroup.classList.add("hidden");
       phoneGroup.classList.add("active");
     } else {
-      document
-        .querySelector(".socials-form-type-btn[data-tab='phone']")
-        .classList.add("hidden");
+      phoneTabBtn.classList.add("hidden");
+      phoneTabBtn.classList.remove("active");
+      emailTabBtn.classList.remove("hidden");
+      emailTabBtn.classList.add("active");
+
+      phoneGroup.classList.remove("active");
+      phoneGroup.classList.add("hidden");
+      emailGroup.classList.add("active");
     }
 
     addUrlParameter("currency", getCurrencyOrDefault(currencyCode));
