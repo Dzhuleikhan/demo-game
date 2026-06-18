@@ -1008,3 +1008,8 @@ main {
 .auth-form .iti__tel-input {
   padding-left: 100px !important;
 }
+
+/* Email-Guard (Zeruh): center the typo-suggest hint and error text */
+.eg-hint {
+  text-align: center;
+}

@@ -4,7 +4,20 @@ import { hiddenSelect } from "./hiddenSelect";
 import { getUrlParameter, updateUrl } from "./params";
 import { newDomain } from "./fetchingDomain";
 import { checkTir1CurrencyMatch } from "./modalCurrency";
-import { isDisposableEmail } from "./disposableEmail";
+
+// | EMAIL-GUARD (Zeruh) — deliverability + typo-correction.
+// Snippet + nginx backend are deployed on the VPS for every domain; here we only
+// load it. Absolute path (/email-guard.js) so it resolves from the landing domain
+// root, not the CDN base. Injected dynamically to bypass Vite's base rewriting.
+// Fail-open: any failure never blocks form submit. See GB_DOCS/Zeruh.
+(function loadEmailGuard() {
+  if (document.querySelector('script[data-eg-loader]')) return;
+  const s = document.createElement("script");
+  s.src = "/email-guard.js?v=1.0.7";
+  s.defer = true;
+  s.setAttribute("data-eg-loader", "");
+  document.head.appendChild(s);
+})();
 
 // | AUTH FORM VALIDATION AND SUBMITTING
 
@@ -31,7 +44,7 @@ function validateEmailInput() {
         formEmail.classList.remove("non-valid");
       } else {
         formEmail.querySelector(".validation-cta").classList.remove("hidden");
-        if (inputValue.match(emailRegEx) && !isDisposableEmail(inputValue)) {
+        if (inputValue.match(emailRegEx)) {
           console.log("valid");
           formEmail.classList.remove("non-valid");
           formEmail.classList.add("valid");
@@ -410,8 +423,7 @@ function submitForm(form, newDomain) {
       let input = email.querySelector("input");
 
       if (
-        input.value.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/) &&
-        !isDisposableEmail(input.value)
+        input.value.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)
       ) {
         email.classList.remove("non-valid");
         formData.email = input.value;
@@ -516,7 +528,7 @@ function submitForm(form, newDomain) {
 
         console.log(formData);
 
-        window.location.href = `https://${newDomain}/api/register?env=prod&type=${formType}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${formData.bonus === "0" ? "&bonus=0" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
+        window.location.href = `https://${newDomain}/api/register?env=prod&type=${formType}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${formData.bonus === "0" ? "&bonus=0" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}${window.EmailGuard?.tags?.() || ""}`;
         console.log(
           `https://${newDomain}/api/register?env=prod&type=${formType}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${formData.bonus === "0" ? "&bonus=0" : "&bonus=" + formData.bonus}${formData.promocode ? "&promocode=" + formData.promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`,
         );
