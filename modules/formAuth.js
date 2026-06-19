@@ -4,6 +4,22 @@ import { hiddenSelect } from "./hiddenSelect";
 import { getUrlParameter, updateUrl } from "./params";
 import { newDomain } from "./fetchingDomain";
 import { checkTir1CurrencyMatch } from "./modalCurrency";
+import {
+  checkPhoneAvailability,
+  getPhoneStatus,
+  phoneTakenMessage,
+} from "./phoneAvailability";
+import {
+  checkEmailAvailability,
+  getEmailStatus,
+  emailTakenMessage,
+} from "./emailAvailability";
+
+// Availability ("занятость") alert updaters. Declared at module scope so a single
+// <html lang> MutationObserver (bottom of file) can re-translate BOTH alerts on
+// language change. Reassigned inside the email/phone blocks below; no-ops until then.
+let updateEmailAlert = () => {};
+let updatePhoneAlert = () => {};
 
 // | EMAIL-GUARD (Zeruh) — deliverability + typo-correction.
 // Snippet + nginx backend are deployed on the VPS for every domain; here we only
@@ -36,6 +52,29 @@ function validateEmailInput() {
     const emailRegEx =
       /^(?!.*\.\.)[a-zA-Z0-9][a-zA-Z0-9!#$%&'*+/=?^_`{|}~.-]{0,62}[a-zA-Z0-9]@(?:\[(?:\d{1,3}\.){3}\d{1,3}\]|[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?(?:\.[a-zA-Z]{2,})+)$/;
 
+    // Availability ("занятость") alert lives as a sibling AFTER the flex .auth-form-email
+    // box (a <p> inside the flex row would render inline), so resolve via the parent.
+    const emailAlertEl =
+      formEmail.parentElement?.querySelector(".auth-email-alert");
+    // Show the "email is taken" message only on a definitive available:false
+    // (format must pass; pending/errored/free → hidden, fail-open).
+    updateEmailAlert = () => {
+      if (!emailAlertEl) return;
+      const v = formEmailInput.value.trim();
+      const st = getEmailStatus(v);
+      const taken =
+        !!v &&
+        emailRegEx.test(v) &&
+        st &&
+        !st.pending &&
+        !st.errored &&
+        st.available === false;
+      emailAlertEl.textContent = taken
+        ? emailTakenMessage(document.documentElement.lang || "en")
+        : "";
+      emailAlertEl.classList.toggle("hidden", !taken);
+    };
+
     // formEmailInput.addEventListener("input", () => {
     function emailInputValidate() {
       let inputValue = formEmailInput.value.toLowerCase();
@@ -47,13 +86,35 @@ function validateEmailInput() {
         if (inputValue.match(emailRegEx)) {
           console.log("valid");
           formEmail.classList.remove("non-valid");
-          formEmail.classList.add("valid");
+          // Format OK, but DON'T flash the green check yet — wait for the
+          // availability verdict. Otherwise a taken e-mail keeps a green tick
+          // until (and unless) the async check flips it. Stay neutral meanwhile.
+          formEmail.classList.remove("valid");
+          const checkedEmail = formEmailInput.value;
+          checkEmailAvailability(checkedEmail).then((st) => {
+            // Value changed while in flight → ignore this stale verdict.
+            if (formEmailInput.value !== checkedEmail) return;
+            if (st && st.available === false) {
+              formEmail.classList.add("non-valid"); // занято → красный
+              formEmail.classList.remove("valid");
+            } else if (st && st.available === true) {
+              formEmail.classList.add("valid"); // свободно → зелёная галочка
+              formEmail.classList.remove("non-valid");
+            } else {
+              // errored/timeout → fail-open: остаёмся нейтральными, без зелёной
+              // галочки (submit добьёт проверку как backstop).
+              formEmail.classList.remove("valid");
+              formEmail.classList.remove("non-valid");
+            }
+            updateEmailAlert();
+          });
         } else {
           console.log("not valid");
           formEmail.classList.remove("valid");
           formEmail.classList.add("non-valid");
         }
       }
+      updateEmailAlert();
     }
     // });
 
@@ -62,6 +123,14 @@ function validateEmailInput() {
       formEmail.classList.remove("valid");
       formEmail.classList.remove("non-valid");
     });
+    // Editing the address invalidates any shown verdict → hide stale alert.
+    formEmailInput.addEventListener("input", updateEmailAlert);
+    // Email-Guard (Zeruh) typo-correction rewrites the value programmatically
+    // (e.g. gmial.com → gmail.com) WITHOUT a blur, so emailInputValidate never
+    // re-runs and the field keeps the stale green tick from the old address.
+    // Re-validate on its verdict event so the corrected address goes through
+    // the availability check too.
+    formEmailInput.addEventListener("emailguard:result", emailInputValidate);
   }
 }
 validateEmailInput();
@@ -194,6 +263,28 @@ if (phoneForm) {
   const phone = phoneForm.querySelector(".auth-form-phone");
   const input = phone.querySelector("input[name='phone']");
 
+  // E.164 ("+<dialCode><digits>") — the key both the API and the cache use.
+  const phoneE164 = () =>
+    `+${authIti.getSelectedCountryData().dialCode}${input.value.replace(/\D/g, "")}`;
+  // Alert lives as a sibling AFTER the bordered .auth-form-phone box (so the
+  // text sits below the input, not inside the frame), so resolve via the parent.
+  const phoneAlertEl = phone.parentElement?.querySelector(".auth-phone-alert");
+  // Show the "number is taken" message only on a definitive available:false.
+  updatePhoneAlert = () => {
+    if (!phoneAlertEl) return;
+    const st = getPhoneStatus(phoneE164());
+    const taken =
+      authIti.isValidNumber() &&
+      st &&
+      !st.pending &&
+      !st.errored &&
+      st.available === false;
+    phoneAlertEl.textContent = taken
+      ? phoneTakenMessage(document.documentElement.lang || "en")
+      : "";
+    phoneAlertEl.classList.toggle("hidden", !taken);
+  };
+
   function validatePhoneNumber() {
     if (!input.value.trim()) {
       phone.classList.remove("non-valid");
@@ -201,7 +292,28 @@ if (phoneForm) {
       return false;
     } else if (authIti.isValidNumber()) {
       phone.classList.remove("non-valid");
-      phone.classList.add("valid");
+      // Format OK, but DON'T flash the green check yet — wait for the
+      // availability verdict (same reasoning as e-mail above). Stay neutral.
+      phone.classList.remove("valid");
+      const checkedE164 = phoneE164();
+      // (The .then only paints classes/alert — it never re-runs this function,
+      // so an errored/fail-open record can't trigger a retry loop.)
+      checkPhoneAvailability(checkedE164).then((st) => {
+        // Value changed while in flight → ignore this stale verdict.
+        if (phoneE164() !== checkedE164) return;
+        if (st && st.available === false) {
+          phone.classList.add("non-valid"); // занято → красный
+          phone.classList.remove("valid");
+        } else if (st && st.available === true) {
+          phone.classList.add("valid"); // свободно → зелёная галочка
+          phone.classList.remove("non-valid");
+        } else {
+          // errored/timeout → fail-open: нейтрально, без зелёной галочки.
+          phone.classList.remove("valid");
+          phone.classList.remove("non-valid");
+        }
+        updatePhoneAlert();
+      });
       return true;
     } else {
       phone.classList.add("non-valid");
@@ -215,6 +327,8 @@ if (phoneForm) {
     phone.classList.remove("non-valid");
     phone.classList.remove("valid");
   });
+  // Editing the number invalidates any shown verdict → hide stale alert.
+  input.addEventListener("input", updatePhoneAlert);
 }
 
 /**
@@ -357,7 +471,7 @@ formBonus.forEach((bonus) => {
  *  Submitting form
  */
 function submitForm(form, newDomain) {
-  form.addEventListener("submit", (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const socials = form.querySelector(".socials");
     const currency = form.querySelector(".form-currency");
@@ -522,6 +636,28 @@ function submitForm(form, newDomain) {
     let partner = getUrlParameter("partner");
     let offer = getUrlParameter("offer");
 
+    // Failover availability gate before redirect: if the field is otherwise valid,
+    // await the verdict. Definitive available:false → block + show alert, no redirect.
+    // Any error/timeout → fail-open (await ≤1.5s); backend `register` is the backstop.
+    if (isValid && formType === "phone" && formData.phone) {
+      const st = await checkPhoneAvailability(`+${formData.phone}`);
+      if (st && st.available === false) {
+        phone.classList.add("non-valid");
+        phone.classList.remove("valid");
+        updatePhoneAlert();
+        return;
+      }
+    }
+    if (isValid && formType === "email" && formData.email) {
+      const st = await checkEmailAvailability(formData.email);
+      if (st && st.available === false) {
+        email.classList.add("non-valid");
+        email.classList.remove("valid");
+        updateEmailAlert();
+        return;
+      }
+    }
+
     if (isValid) {
       if (formType === "email") {
         disableEmailForm();
@@ -562,6 +698,17 @@ submitForm(oneClickForm, newDomain);
 
 socialForm.forEach((socialForm) => {
   submitForm(socialForm, newDomain);
+});
+
+// Re-translate the availability alerts on language change. One observer drives
+// BOTH updaters — the alert text has no data-translate, so the regular i18n
+// pass never touches it (see LANDING_INTERGARION.md §4).
+new MutationObserver(() => {
+  updateEmailAlert();
+  updatePhoneAlert();
+}).observe(document.documentElement, {
+  attributes: true,
+  attributeFilter: ["lang"],
 });
 
 /**
