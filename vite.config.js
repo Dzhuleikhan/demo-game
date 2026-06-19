@@ -23,6 +23,17 @@ export default defineConfig({
         changeOrigin: true,
         secure: true,
       },
+      // Проверка занятости (NestJS-прокси отдаёт 201 — ориентируемся на тело).
+      "/api/phone/check-available": {
+        target: "https://goldbet.fun",
+        changeOrigin: true,
+        secure: true,
+      },
+      "/api/email/check-available": {
+        target: "https://goldbet.fun",
+        changeOrigin: true,
+        secure: true,
+      },
     },
   },
 });
