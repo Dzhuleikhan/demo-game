@@ -11,6 +11,23 @@ import { hiddenSelect } from "./hiddenSelect.js";
 import { newDomain } from "./fetchingDomain.js";
 import { checkTir1CurrencyMatch } from "./modalCurrency.js";
 import { getSupportedLanguage } from "./geoLocation.js";
+import {
+  checkPhoneAvailability,
+  getPhoneStatus,
+  phoneTakenMessage,
+} from "./phoneAvailability.js";
+import {
+  checkEmailAvailability,
+  getEmailStatus,
+  normalizeEmail,
+  emailTakenMessage,
+} from "./emailAvailability.js";
+
+// Язык для сообщений «занято» (у алертов нет data-translate — переводим из модуля).
+const takenAlertLang = () =>
+  document.documentElement.getAttribute("lang") ||
+  localStorage.getItem("preferredLanguage") ||
+  "en";
 
 // | SHOWING BONUS BASED ON PARAMS
 
@@ -182,6 +199,54 @@ formModals.forEach((modal) => {
         if (emailSpinner) emailSpinner.classList.add("hidden");
       };
 
+      // | EMAIL AVAILABILITY (наш API /api/email/check-available) — занятость в БД.
+      // Запускаем ТОЛЬКО после того, как пройдены формат и Zeruh (см. maybeCheckEmail).
+      // fail-open: блокируем кнопку только при однозначном available:false.
+      const currentEmail = () => normalizeEmail(emalInput.value);
+      const emailAlertEl = formStep1.querySelector(".socials-email-alert");
+      const emailAvailSpinnerEl = formStep1.querySelector(
+        ".socials-email-spinner",
+      );
+
+      // Сообщение «этот e-mail нельзя использовать» — только при однозначном «занято».
+      const updateEmailAlert = () => {
+        if (!emailAlertEl) return;
+        const st = getEmailStatus(currentEmail());
+        const taken =
+          emailRegEx.test(emalInput.value.trim()) &&
+          emailGuardSaysValid() &&
+          st &&
+          !st.pending &&
+          !st.errored &&
+          st.available === false;
+        emailAlertEl.textContent = taken
+          ? emailTakenMessage(takenAlertLang())
+          : "";
+        emailAlertEl.classList.toggle("hidden", !taken);
+      };
+
+      // Спиннер занятости почты — крутится, пока запись pending.
+      const updateEmailSpinner = () => {
+        if (!emailAvailSpinnerEl) return;
+        const st = getEmailStatus(currentEmail());
+        const checking =
+          emailRegEx.test(emalInput.value.trim()) &&
+          emailGuardSaysValid() &&
+          !!st &&
+          st.pending;
+        emailAvailSpinnerEl.classList.toggle("hidden", !checking);
+      };
+
+      // Запустить проверку занятости — только если формат ок и Zeruh не против.
+      const maybeCheckEmail = () => {
+        if (!emailRegEx.test(emalInput.value.trim()) || !emailGuardSaysValid())
+          return;
+        checkEmailAvailability(currentEmail()).then(() => {
+          evaluateEmail(); // пересчёт кнопки + алерт + спиннер по вердикту
+        });
+        updateEmailSpinner(); // запись уже pending → спиннер в тот же тик
+      };
+
       // Пересчёт состояния поля и кнопки на основе вердикта Email-Guard.
       function evaluateEmail() {
         const value = emalInput.value.trim();
@@ -200,9 +265,15 @@ formModals.forEach((modal) => {
           emailNotValidIcon.classList.add("hidden");
           isEmailValid = false;
         } else if (emailGuardSaysValid()) {
+          // синтаксис + Zeruh ок → гейт по занятости (наш API)
+          const st = getEmailStatus(currentEmail());
           formGroupEmail.classList.remove("not-valid");
           emailNotValidIcon.classList.add("hidden");
-          isEmailValid = true;
+          if (!st || st.pending)
+            isEmailValid = false; // ждём вердикт занятости
+          else if (st.errored)
+            isEmailValid = true; // fail-open
+          else isEmailValid = st.available === true; // занято → false (алерт)
         } else {
           // Zeruh: undeliverable / disposable → блок
           formGroupEmail.classList.add("not-valid");
@@ -210,12 +281,16 @@ formModals.forEach((modal) => {
           isEmailValid = false;
         }
         updateNextButtonState();
+        updateEmailAlert();
+        updateEmailSpinner();
       }
 
       emalInput.addEventListener("focusout", () => {
         evaluateEmail();
         // почта ушла в Zeruh (синтаксис ок, вердикта ещё нет) → крутим спиннер
         if (emailGuardPending()) showEmailSpinner();
+        // Фолбэк (Zeruh не загрузился) → запускаем проверку занятости на blur.
+        maybeCheckEmail();
       });
 
       emalInput.addEventListener("input", () => {
@@ -228,6 +303,8 @@ formModals.forEach((modal) => {
       emalInput.addEventListener("emailguard:result", () => {
         if (!emailGuardPending()) hideEmailSpinner();
         evaluateEmail();
+        // Zeruh подтвердил доставляемость → запускаем проверку занятости.
+        maybeCheckEmail();
       });
 
       // Phone validation
@@ -235,6 +312,37 @@ formModals.forEach((modal) => {
         ".socials-form-group-phone",
       );
       const phoneInput = formGroupPhone.querySelector(".phone-input");
+
+      // | PHONE AVAILABILITY (наш API /api/phone/check-available) — занятость в БД.
+      // E.164: +<dialCode><digits>. fail-open: блокируем только при available:false.
+      const phoneE164 = () =>
+        `+${socialsIti.getSelectedCountryData().dialCode}${phoneInput.value.replace(/\D/g, "")}`;
+      const phoneAlertEl = formStep1.querySelector(".socials-phone-alert");
+      const phoneAvailSpinnerEl = formStep1.querySelector(
+        ".socials-phone-spinner",
+      );
+
+      const updatePhoneAlert = () => {
+        if (!phoneAlertEl) return;
+        const st = getPhoneStatus(phoneE164());
+        const taken =
+          socialsIti.isValidNumber() &&
+          st &&
+          !st.pending &&
+          !st.errored &&
+          st.available === false;
+        phoneAlertEl.textContent = taken
+          ? phoneTakenMessage(takenAlertLang())
+          : "";
+        phoneAlertEl.classList.toggle("hidden", !taken);
+      };
+
+      const updatePhoneSpinner = () => {
+        if (!phoneAvailSpinnerEl) return;
+        const st = getPhoneStatus(phoneE164());
+        const checking = socialsIti.isValidNumber() && !!st && st.pending;
+        phoneAvailSpinnerEl.classList.toggle("hidden", !checking);
+      };
 
       function validatePhoneNumber() {
         if (phoneInput.value === "") {
@@ -250,11 +358,17 @@ formModals.forEach((modal) => {
             .classList.remove("hidden");
           isPhoneValid = false;
         } else if (socialsIti.isValidNumber()) {
+          // формат ок → гейт по занятости (проверка запускается на focusout)
+          const st = getPhoneStatus(phoneE164());
           formGroupPhone.classList.remove("not-valid");
           formGroupPhone
             .querySelector(".not-valid-icon")
             .classList.add("hidden");
-          isPhoneValid = true;
+          if (!st || st.pending)
+            isPhoneValid = false; // ждём вердикт занятости
+          else if (st.errored)
+            isPhoneValid = true; // fail-open
+          else isPhoneValid = st.available === true; // занято → false (алерт)
         } else {
           formGroupPhone.classList.add("not-valid");
           formGroupPhone
@@ -264,11 +378,75 @@ formModals.forEach((modal) => {
         }
 
         updateNextButtonState();
+        updatePhoneAlert();
+        updatePhoneSpinner();
       }
 
-      // Validating Phone input
-      phoneInput.addEventListener("focusout", validatePhoneNumber);
+      // Validating Phone input. Проверку занятости НЕ запускаем внутри
+      // validatePhoneNumber() (иначе .then ретраит errored-запись бесконечно) —
+      // вешаем на сам focusout (раз за blur).
+      phoneInput.addEventListener("focusout", () => {
+        validatePhoneNumber();
+        if (socialsIti.isValidNumber()) {
+          checkPhoneAvailability(phoneE164()).then(() => {
+            validatePhoneNumber(); // пересчёт кнопки + алерт + спиннер по вердикту
+          });
+          updatePhoneSpinner(); // запись уже pending → спиннер в тот же тик
+        }
+      });
       phoneInput.addEventListener("input", validatePhoneNumber);
+
+      // Смена страны меняет e164 → пересчитать формат/занятость и кнопку.
+      phoneInput.addEventListener("countrychange", validatePhoneNumber);
+
+      // Перевод уже показанных сообщений «занято» (почта/телефон) при смене языка.
+      // Один observer зовёт ОБА апдейтера (у алертов нет data-translate).
+      new MutationObserver(() => {
+        updateEmailAlert();
+        updatePhoneAlert();
+      }).observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ["lang"],
+      });
+
+      // Фейловер занятости на переходе шаг1→шаг2: если по почте/телефону нет
+      // однозначного вердикта (fail-open включил кнопку) — придержать переход,
+      // добить проверки и перейти только если ничего не занято. Регистрируется
+      // РАНЬШЕ штатного advance-хендлера ниже → при блоке перебивает его.
+      const isDefinitive = (st) =>
+        !!st && !st.pending && !st.errored && typeof st.available === "boolean";
+
+      formStepBtnNext.addEventListener("click", async (e) => {
+        const needEmail =
+          emailRegEx.test(emalInput.value.trim()) &&
+          emailGuardSaysValid() &&
+          !isDefinitive(getEmailStatus(currentEmail()));
+        const needPhone =
+          socialsIti.isValidNumber() &&
+          !isDefinitive(getPhoneStatus(phoneE164()));
+
+        if (!needEmail && !needPhone) return; // вердикты есть → штатный advance
+
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        const tasks = [];
+        if (needEmail) tasks.push(checkEmailAvailability(currentEmail()));
+        if (needPhone) tasks.push(checkPhoneAvailability(phoneE164()));
+        updateEmailSpinner();
+        updatePhoneSpinner();
+        await Promise.all(tasks);
+        evaluateEmail(); // пересчёт кнопки/алертов/спиннеров по вердиктам
+        validatePhoneNumber();
+
+        const emailTaken = getEmailStatus(currentEmail())?.available === false;
+        const phoneTaken = getPhoneStatus(phoneE164())?.available === false;
+        if (!emailTaken && !phoneTaken) {
+          formStepCount++;
+          changingFormSteps(formStepCount);
+          formStepBtnPrev.classList.remove("hidden");
+        }
+        // занято → остаёмся на шаге: алерт показан, кнопка станет disabled
+      });
 
       formStepBtnNext.addEventListener("click", (e) => {
         e.preventDefault();
