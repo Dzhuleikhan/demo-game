@@ -11,6 +11,17 @@ import { hiddenSelect } from "./hiddenSelect.js";
 import { newDomain } from "./fetchingDomain.js";
 import { checkTir1CurrencyMatch } from "./modalCurrency.js";
 import { getSupportedLanguage } from "./geoLocation.js";
+import {
+  checkPhoneAvailability,
+  getPhoneStatus,
+  phoneTakenMessage,
+} from "./phoneAvailability.js";
+import {
+  checkEmailAvailability,
+  getEmailStatus,
+  normalizeEmail,
+  emailTakenMessage,
+} from "./emailAvailability.js";
 
 // | EMAIL-GUARD (Zeruh) — load the shared snippet served by nginx on every domain.
 // Absolute path so it also works from subdirectories. Re-scan on load so it binds
@@ -201,6 +212,60 @@ formModals.forEach((modal) => {
         notValidIcon.classList.add("hidden");
       };
 
+      // --- Email availability (occupancy) wiring -------------------------
+      // Cache key = same normalization as the backend (trim + lowercase).
+      const currentEmail = () => normalizeEmail(emalInput.value);
+
+      // Syntax + Email-Guard (Zeruh) verdict OK — the precondition before we
+      // ever ask the availability API (don't poke dead/invalid addresses).
+      const emailGuardPass = () =>
+        emailRegEx.test(emalInput.value.trim()) &&
+        (!egReady() || window.EmailGuard.isValid(emalInput));
+
+      // Availability gate for the button: no record / pending → not valid yet
+      // (wait); errored → fail-open (valid); available===true → free; false → taken.
+      const emailAvailabilityOk = () => {
+        const st = getEmailStatus(currentEmail());
+        if (!st || st.pending) return false;
+        if (st.errored) return true;
+        return st.available === true;
+      };
+
+      // Occupancy alert (sits OUTSIDE the fixed-height group, see index.html).
+      const emailAlertEl = formStep1.querySelector(".socials-email-alert");
+      const updateEmailAlert = () => {
+        if (!emailAlertEl) return;
+        const st = getEmailStatus(currentEmail());
+        const taken =
+          emailGuardPass() &&
+          st &&
+          !st.pending &&
+          !st.errored &&
+          st.available === false;
+        emailAlertEl.textContent = taken
+          ? emailTakenMessage(document.documentElement.lang || "en")
+          : "";
+        emailAlertEl.classList.toggle("hidden", !taken);
+      };
+
+      // Occupancy spinner (own, separate from Zeruh's eg-spinner which runs first).
+      const emailSpinnerEl = formStep1.querySelector(".socials-email-spinner");
+      const updateEmailSpinner = () => {
+        if (!emailSpinnerEl) return;
+        const st = getEmailStatus(currentEmail());
+        const checking = emailGuardPass() && !!st && st.pending;
+        emailSpinnerEl.classList.toggle("hidden", !checking);
+      };
+
+      // Fire the availability check once Zeruh has passed; refresh UI on verdict.
+      const maybeCheckEmail = () => {
+        if (!emailGuardPass()) return;
+        checkEmailAvailability(currentEmail()).then(() => {
+          recomputeEmail();
+        });
+        updateEmailSpinner(); // record is pending synchronously → spinner shows same tick
+      };
+
       // Single source of truth for email validity. Gated on the Zeruh verdict:
       // the button stays disabled until the snippet confirms the address.
       function recomputeEmail() {
@@ -214,9 +279,9 @@ formModals.forEach((modal) => {
           isEmailValid = false;
         } else if (egReady()) {
           if (window.EmailGuard.isValid(emalInput)) {
-            // Checked by Zeruh (or fail-open) and not bad.
+            // Checked by Zeruh (or fail-open) and not bad → now gate on occupancy.
             setEmailClean();
-            isEmailValid = true;
+            isEmailValid = emailAvailabilityOk();
           } else if (window.EmailGuard.isPending(emalInput)) {
             // Verdict not in yet — don't flag red, just keep the button off.
             setEmailClean();
@@ -227,12 +292,14 @@ formModals.forEach((modal) => {
             isEmailValid = false;
           }
         } else {
-          // Snippet not loaded → fail-open: validate by regex like before.
+          // Snippet not loaded → fail-open on deliverability; still gate occupancy.
           setEmailClean();
-          isEmailValid = true;
+          isEmailValid = emailAvailabilityOk();
         }
 
         updateNextButtonState();
+        updateEmailAlert();
+        updateEmailSpinner();
       }
 
       emalInput.addEventListener("focusout", () => {
@@ -240,6 +307,8 @@ formModals.forEach((modal) => {
         if (egReady() && window.EmailGuard.isPending(emalInput)) {
           showEgSpinner();
         }
+        // Fallback occupancy trigger (when Zeruh is absent/already resolved).
+        maybeCheckEmail();
       });
 
       emalInput.addEventListener("input", () => {
@@ -254,6 +323,8 @@ formModals.forEach((modal) => {
         if (!egReady() || !window.EmailGuard.isPending(emalInput)) {
           hideEgSpinner();
         }
+        // Zeruh passed → kick the occupancy check (no-op if address is bad).
+        maybeCheckEmail();
       });
 
       // Phone validation
@@ -262,6 +333,49 @@ formModals.forEach((modal) => {
       );
       const phoneInput = formGroupPhone.querySelector(".phone-input");
 
+      // --- Phone availability (occupancy) wiring ------------------------
+      // E.164 for the API: +<dialCode><digits> (redirect URL uses it WITHOUT +).
+      const phoneE164 = () =>
+        `+${socialsIti.getSelectedCountryData().dialCode}${phoneInput.value.replace(
+          /\D/g,
+          "",
+        )}`;
+
+      // Availability gate: no record / pending → not valid yet (wait);
+      // errored → fail-open (valid); available===true → free; false → taken.
+      const phoneAvailOk = () => {
+        const st = getPhoneStatus(phoneE164());
+        if (!st || st.pending) return false;
+        if (st.errored) return true;
+        return st.available === true;
+      };
+
+      const phoneAlertEl = formStep1.querySelector(".socials-phone-alert");
+      const updatePhoneAlert = () => {
+        if (!phoneAlertEl) return;
+        const st = getPhoneStatus(phoneE164());
+        const taken =
+          socialsIti.isValidNumber() &&
+          st &&
+          !st.pending &&
+          !st.errored &&
+          st.available === false;
+        phoneAlertEl.textContent = taken
+          ? phoneTakenMessage(document.documentElement.lang || "en")
+          : "";
+        phoneAlertEl.classList.toggle("hidden", !taken);
+      };
+
+      const phoneSpinnerEl = formStep1.querySelector(".socials-phone-spinner");
+      const updatePhoneSpinner = () => {
+        if (!phoneSpinnerEl) return;
+        const st = getPhoneStatus(phoneE164());
+        const checking = socialsIti.isValidNumber() && !!st && st.pending;
+        phoneSpinnerEl.classList.toggle("hidden", !checking);
+      };
+
+      // Kept PURE (no check launch) — the check is fired from focusout so the
+      // `.then` re-run can't loop on an errored (fail-open) record.
       function validatePhoneNumber() {
         if (phoneInput.value === "") {
           formGroupPhone.classList.remove("not-valid");
@@ -276,11 +390,13 @@ formModals.forEach((modal) => {
             .classList.remove("hidden");
           isPhoneValid = false;
         } else if (socialsIti.isValidNumber()) {
+          // Format OK — enable only if not taken (occupancy gate). Don't flag
+          // the field red for "taken"; the alert <p> carries that message.
           formGroupPhone.classList.remove("not-valid");
           formGroupPhone
             .querySelector(".not-valid-icon")
             .classList.add("hidden");
-          isPhoneValid = true;
+          isPhoneValid = phoneAvailOk();
         } else {
           formGroupPhone.classList.add("not-valid");
           formGroupPhone
@@ -290,17 +406,73 @@ formModals.forEach((modal) => {
         }
 
         updateNextButtonState();
+        updatePhoneAlert();
+        updatePhoneSpinner();
       }
 
       // Validating Phone input
-      phoneInput.addEventListener("focusout", validatePhoneNumber);
+      phoneInput.addEventListener("focusout", () => {
+        validatePhoneNumber();
+        if (socialsIti.isValidNumber()) {
+          checkPhoneAvailability(phoneE164()).then(() => {
+            validatePhoneNumber(); // re-gate + refresh alert/spinner/button
+          });
+          updatePhoneSpinner(); // record pending synchronously → spinner same tick
+        }
+      });
       phoneInput.addEventListener("input", validatePhoneNumber);
 
-      formStepBtnNext.addEventListener("click", (e) => {
-        e.preventDefault();
+      const advanceToStep2 = () => {
         formStepCount++;
         changingFormSteps(formStepCount);
         formStepBtnPrev.classList.remove("hidden");
+      };
+
+      // Failover gate (runs BEFORE the advance handler below): if either channel
+      // lacks a definite verdict (no record / pending / errored→fail-open), finish
+      // the check on the way out and advance only when both fields are valid.
+      formStepBtnNext.addEventListener("click", (e) => {
+        const emailKey = currentEmail();
+        const phoneVal = phoneE164();
+        const emailSt = getEmailStatus(emailKey);
+        const phoneSt = getPhoneStatus(phoneVal);
+        const needEmail =
+          emailGuardPass() && (!emailSt || emailSt.pending || emailSt.errored);
+        const needPhone =
+          socialsIti.isValidNumber() &&
+          (!phoneSt || phoneSt.pending || phoneSt.errored);
+
+        if (!needEmail && !needPhone) return; // verdicts present → normal advance
+
+        e.preventDefault();
+        e.stopImmediatePropagation();
+
+        const jobs = [];
+        if (needEmail) jobs.push(checkEmailAvailability(emailKey));
+        if (needPhone) jobs.push(checkPhoneAvailability(phoneVal));
+        updateEmailSpinner();
+        updatePhoneSpinner();
+
+        Promise.all(jobs).then(() => {
+          recomputeEmail();
+          validatePhoneNumber();
+          if (isEmailValid && isPhoneValid) advanceToStep2();
+        });
+      });
+
+      formStepBtnNext.addEventListener("click", (e) => {
+        e.preventDefault();
+        advanceToStep2();
+      });
+
+      // Re-render occupancy alerts when the page language changes (one observer
+      // must call BOTH updaters — email and phone).
+      new MutationObserver(() => {
+        updateEmailAlert();
+        updatePhoneAlert();
+      }).observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ["lang"],
       });
       if (formStepBtnPrev) {
         formStepBtnPrev.addEventListener("click", () => {
