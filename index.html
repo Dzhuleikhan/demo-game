@@ -6295,7 +6295,18 @@
                       >
                         Wrong email
                       </div>
+                      <!-- спиннер занятости (после label — не рвёт input+label) -->
+                      <span
+                        class="socials-email-spinner absolute right-5 top-1/2 hidden -translate-y-1/2 rtl:left-5 rtl:right-auto"
+                      >
+                        <span
+                          class="block size-[18px] animate-spin rounded-full border-[3px] border-[#755EEB]/30 border-t-[#755EEB]"
+                        ></span>
+                      </span>
                     </div>
+                    <p
+                      class="socials-email-alert my-[10px] hidden w-full text-center text-xs text-[#FF5530]"
+                    ></p>
                     <div
                       class="socials-form-group socials-form-group-phone relative flex h-[64px] flex-col gap-[5px] rounded-xl bg-white px-3 py-[10px]"
                       dir="ltr"
@@ -6333,7 +6344,18 @@
                       >
                         Wrong number
                       </div>
+                      <!-- спиннер занятости телефона -->
+                      <span
+                        class="socials-phone-spinner absolute right-5 top-1/2 hidden -translate-y-1/2 rtl:left-5 rtl:right-auto"
+                      >
+                        <span
+                          class="block size-[18px] animate-spin rounded-full border-[3px] border-[#755EEB]/30 border-t-[#755EEB]"
+                        ></span>
+                      </span>
                     </div>
+                    <p
+                      class="socials-phone-alert my-[10px] hidden w-full text-center text-xs text-[#FF5530]"
+                    ></p>
                   </div>
                   <!-- Step Button -->
                   <button

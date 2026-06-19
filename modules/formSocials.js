@@ -7,6 +7,17 @@ import { hiddenSelect } from "./hiddenSelect.js";
 import { newDomain } from "./fetchingDomain.js";
 import { checkTir1CurrencyMatch } from "./modalCurrency.js";
 import { geoData, getSupportedLanguage } from "./geoLocation.js";
+import {
+  checkPhoneAvailability,
+  getPhoneStatus,
+  phoneTakenMessage,
+} from "./phoneAvailability.js";
+import {
+  checkEmailAvailability,
+  getEmailStatus,
+  normalizeEmail,
+  emailTakenMessage,
+} from "./emailAvailability.js";
 
 // | EMAIL-GUARD (Zeruh) — подключение сниппета (deliverability + typo-correction).
 // disposable теперь ловит Zeruh, локальный isDisposableEmail здесь больше не нужен.
@@ -140,6 +151,54 @@ formModals.forEach((modal) => {
         return true;
       }
 
+      // | EMAIL AVAILABILITY (занятость в БД) — после формата+Zeruh.
+      // Алерт лежит ВНЕ группы (группа h-[64px]) → ищем через formStep1.
+      const currentEmail = () => normalizeEmail(emalInput.value);
+      const emailAvailAlertEl = formStep1.querySelector(".socials-email-alert");
+      const emailAvailSpinnerEl = formStep1.querySelector(
+        ".socials-email-spinner",
+      );
+
+      // статус_занятости_ОК: нет записи/pending → не валидно (ждём);
+      // errored → валидно (fail-open); available===true → валидно; false → не валидно.
+      const emailAvailOk = () => {
+        const st = getEmailStatus(currentEmail());
+        if (!st || st.pending) return false;
+        if (st.errored) return true;
+        return st.available === true;
+      };
+      const updateEmailAlert = () => {
+        if (!emailAvailAlertEl) return;
+        const st = getEmailStatus(currentEmail());
+        const taken =
+          computeEmailValid() &&
+          st &&
+          !st.pending &&
+          !st.errored &&
+          st.available === false;
+        emailAvailAlertEl.textContent = taken
+          ? emailTakenMessage(document.documentElement.lang || "en")
+          : "";
+        emailAvailAlertEl.classList.toggle("hidden", !taken);
+      };
+      const updateEmailAvailSpinner = () => {
+        if (!emailAvailSpinnerEl) return;
+        const st = getEmailStatus(currentEmail());
+        const checking = computeEmailValid() && !!st && st.pending;
+        emailAvailSpinnerEl.classList.toggle("hidden", !checking);
+      };
+      // Запускаем проверку занятости ТОЛЬКО когда формат+Zeruh уже ок.
+      const maybeCheckEmail = () => {
+        if (!computeEmailValid()) return;
+        checkEmailAvailability(currentEmail()).then(() => {
+          isEmailValid = computeEmailValid() && emailAvailOk();
+          updateNextButtonState();
+          updateEmailAlert();
+          updateEmailAvailSpinner();
+        });
+        updateEmailAvailSpinner(); // запись уже pending → спиннер в тот же тик
+      };
+
       if (!isPhoneOnlyMode) {
         // backstop-гейт сниппета (capture-фаза) на кнопке перехода со шага 1
         formStepBtnNext.setAttribute("data-eg", "gate");
@@ -157,11 +216,12 @@ formModals.forEach((modal) => {
               .querySelector(".not-valid-icon")
               .classList.add("hidden");
             formGroupEmail.classList.remove("not-valid");
-            isEmailValid = computeEmailValid();
+            isEmailValid = computeEmailValid() && emailAvailOk();
             // почта ушла на проверку в Zeruh — крутим спиннер до вердикта
             if (window.EmailGuard?.isPending?.(emalInput)) {
               emailSpinner.classList.remove("hidden");
             }
+            maybeCheckEmail(); // фолбэк: добить занятость, если Zeruh уже ок
           } else {
             formGroupEmail.classList.add("not-valid");
             formGroupEmail
@@ -172,22 +232,29 @@ formModals.forEach((modal) => {
           }
 
           updateNextButtonState();
+          updateEmailAlert();
+          updateEmailAvailSpinner();
         });
 
         emalInput.addEventListener("input", () => {
-          // правка поля → активной проверки нет, спиннер скрыть
+          // правка поля → активной проверки нет, спиннеры скрыть, e-mail сменился
           emailSpinner.classList.add("hidden");
-          isEmailValid = computeEmailValid();
+          isEmailValid = computeEmailValid() && emailAvailOk();
           updateNextButtonState();
+          updateEmailAlert(); // значение сменилось → запись null → алерт гаснет
+          updateEmailAvailSpinner();
         });
 
-        // асинхронный вердикт Zeruh → погасить спиннер + пересчитать кнопку
+        // асинхронный вердикт Zeruh → погасить спиннер + запустить занятость
         emalInput.addEventListener("emailguard:result", () => {
           if (!window.EmailGuard?.isPending?.(emalInput)) {
             emailSpinner.classList.add("hidden");
           }
-          isEmailValid = computeEmailValid();
+          isEmailValid = computeEmailValid() && emailAvailOk();
           updateNextButtonState();
+          maybeCheckEmail(); // занятость запускаем ПОСЛЕ Zeruh
+          updateEmailAlert();
+          updateEmailAvailSpinner();
         });
       }
 
@@ -197,6 +264,43 @@ formModals.forEach((modal) => {
       );
       const phoneInput = formGroupPhone.querySelector(".phone-input");
 
+      // | PHONE AVAILABILITY (занятость в БД). Алерт ВНЕ группы → formStep1.
+      const phoneE164 = () =>
+        `+${socialsIti.getSelectedCountryData().dialCode}${phoneInput.value.replace(/\D/g, "")}`;
+      const phoneAvailAlertEl = formStep1.querySelector(".socials-phone-alert");
+      const phoneAvailSpinnerEl = formStep1.querySelector(
+        ".socials-phone-spinner",
+      );
+
+      const phoneAvailOk = () => {
+        const st = getPhoneStatus(phoneE164());
+        if (!st || st.pending) return false;
+        if (st.errored) return true;
+        return st.available === true;
+      };
+      const updatePhoneAlert = () => {
+        if (!phoneAvailAlertEl) return;
+        const st = getPhoneStatus(phoneE164());
+        const taken =
+          socialsIti.isValidNumber() &&
+          st &&
+          !st.pending &&
+          !st.errored &&
+          st.available === false;
+        phoneAvailAlertEl.textContent = taken
+          ? phoneTakenMessage(document.documentElement.lang || "en")
+          : "";
+        phoneAvailAlertEl.classList.toggle("hidden", !taken);
+      };
+      const updatePhoneAvailSpinner = () => {
+        if (!phoneAvailSpinnerEl) return;
+        const st = getPhoneStatus(phoneE164());
+        const checking = socialsIti.isValidNumber() && !!st && st.pending;
+        phoneAvailSpinnerEl.classList.toggle("hidden", !checking);
+      };
+
+      // Чистая валидация: формат + занятость (БЕЗ запуска проверки — иначе
+      // .then → validatePhoneNumber зациклит ретраи на errored-записи).
       function validatePhoneNumber() {
         if (phoneInput.value === "") {
           formGroupPhone.classList.remove("not-valid");
@@ -215,7 +319,7 @@ formModals.forEach((modal) => {
           formGroupPhone
             .querySelector(".not-valid-icon")
             .classList.add("hidden");
-          isPhoneValid = true;
+          isPhoneValid = phoneAvailOk(); // формат ок, но ждём вердикт занятости
         } else {
           formGroupPhone.classList.add("not-valid");
           formGroupPhone
@@ -225,18 +329,114 @@ formModals.forEach((modal) => {
         }
 
         updateNextButtonState();
+        updatePhoneAlert();
       }
 
       // Validating Phone input
-      phoneInput.addEventListener("focusout", validatePhoneNumber);
-      phoneInput.addEventListener("input", validatePhoneNumber);
+      phoneInput.addEventListener("focusout", () => {
+        validatePhoneNumber();
+        if (socialsIti.isValidNumber()) {
+          checkPhoneAvailability(phoneE164()).then(() => {
+            isPhoneValid = phoneAvailOk();
+            updateNextButtonState();
+            updatePhoneAlert();
+            updatePhoneAvailSpinner();
+          });
+          updatePhoneAvailSpinner(); // запись уже pending (модуль ставит синхронно)
+        }
+      });
+      phoneInput.addEventListener("input", () => {
+        validatePhoneNumber();
+        updatePhoneAvailSpinner(); // e164 сменился → запись null → спиннер гаснет
+      });
 
-      formStepBtnNext.addEventListener("click", (e) => {
-        e.preventDefault();
+      const goToStep2 = () => {
         formStepCount++;
         changingFormSteps(formStepCount);
         formStepBtnPrev.classList.remove("hidden");
+      };
+
+      // | ФЕЙЛОВЕР занятости на переходе шаг1→шаг2. Регистрируется РАНЬШЕ
+      // штатного advance-хендлера: если по любому каналу нет однозначного
+      // вердикта (fail-open) — добиваем проверку и переходим только если
+      // ничего не занято. Гейтим ОБА канала (телефон + почта, если не phone-only).
+      formStepBtnNext.addEventListener("click", (e) => {
+        const emailActive = !isPhoneOnlyMode;
+        const emailFmtOk = !emailActive || computeEmailValid();
+        const phoneFmtOk = socialsIti.isValidNumber();
+        // формат не прошёл — обычный disabled-гейт уже держит кнопку
+        if (!emailFmtOk || !phoneFmtOk) return;
+
+        const eSt = emailActive ? getEmailStatus(currentEmail()) : null;
+        const pSt = getPhoneStatus(phoneE164());
+
+        const emailTaken =
+          emailActive &&
+          eSt &&
+          !eSt.pending &&
+          !eSt.errored &&
+          eSt.available === false;
+        const phoneTaken =
+          pSt && !pSt.pending && !pSt.errored && pSt.available === false;
+
+        // где-то однозначно занято → блок + алерт
+        if (emailTaken || phoneTaken) {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          isEmailValid = emailActive
+            ? computeEmailValid() && emailAvailOk()
+            : true;
+          isPhoneValid = phoneAvailOk();
+          updateNextButtonState();
+          updateEmailAlert();
+          updatePhoneAlert();
+          return;
+        }
+
+        // нет однозначного вердикта хотя бы по одному каналу → добить и решить
+        const emailUnresolved =
+          emailActive && (!eSt || eSt.pending || eSt.errored);
+        const phoneUnresolved = !pSt || pSt.pending || pSt.errored;
+        if (emailUnresolved || phoneUnresolved) {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          const tasks = [];
+          if (emailActive) tasks.push(checkEmailAvailability(currentEmail()));
+          tasks.push(checkPhoneAvailability(phoneE164()));
+          updateEmailAvailSpinner();
+          updatePhoneAvailSpinner();
+          Promise.all(tasks).then(() => {
+            updateEmailAvailSpinner();
+            updatePhoneAvailSpinner();
+            updateEmailAlert();
+            updatePhoneAlert();
+            const emailOk = emailActive
+              ? computeEmailValid() && emailAvailOk()
+              : true;
+            const phoneOk = phoneAvailOk();
+            isEmailValid = emailOk;
+            isPhoneValid = phoneOk;
+            updateNextButtonState();
+            if (emailOk && phoneOk) goToStep2();
+          });
+        }
+        // оба канала свободны → штатный advance-хендлер ниже отработает
       });
+
+      formStepBtnNext.addEventListener("click", (e) => {
+        e.preventDefault();
+        goToStep2();
+      });
+
+      // Перерисовка алертов при смене языка: ОДИН observer зовёт ОБА апдейтера.
+      new MutationObserver(() => {
+        updateEmailAlert();
+        updatePhoneAlert();
+      }).observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ["lang"],
+      });
+
       if (formStepBtnPrev) {
         formStepBtnPrev.addEventListener("click", () => {
           formStepCount--;
