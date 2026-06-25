@@ -1057,3 +1057,14 @@ main {
     transform: translateY(-50%) rotate(360deg);
   }
 }
+
+/* Phone-Guard (IPQS): хинт ошибки сниппет вставляет сиблингом под полем.
+   Положительный margin-top (не наезжать на белый инпут), по центру, красный. */
+.pg-hint {
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  color: #ff5530;
+}

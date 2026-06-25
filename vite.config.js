@@ -23,6 +23,17 @@ export default defineConfig({
         changeOrigin: true,
         secure: false,
       },
+      // Phone-Guard (IPQS) snippet + verify endpoint — proxy to live nginx.
+      "/phone-guard.js": {
+        target: "https://goldbet.fun",
+        changeOrigin: true,
+        secure: false,
+      },
+      "/api/phone/verify": {
+        target: "https://goldbet.fun",
+        changeOrigin: true,
+        secure: false,
+      },
       // Availability (занятость) checks — same-origin proxy to live nginx.
       "/api/phone/check-available": {
         target: "https://goldbet.fun",

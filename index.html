@@ -11,6 +11,15 @@
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <!-- Email-Guard (Zeruh): typo-correction + deliverability check, fail-open -->
     <script defer src="/email-guard.js?v=1.0.7" data-eg-debug="false"></script>
+    <!-- phone-guard: проверка телефона (IPQS valid/active), fail-open. Скоуп-
+         селектор обязателен: соц-форма — type="phone", а на странице есть второе
+         input[type="tel"] (auth) → цепляемся ТОЛЬКО к data-pg="phone". -->
+    <script
+      defer
+      src="/phone-guard.js?v=1.0.1"
+      data-pg-debug="false"
+      data-pg-phone-selector="[data-pg='phone']"
+    ></script>
   </head>
   <body class="relative select-none overscroll-none">
     <div class="wrapper relative hidden min-h-screen w-full">
