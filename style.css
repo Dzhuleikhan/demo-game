@@ -792,12 +792,25 @@ main {
   border: 2px solid #ff5530;
 }
 
+/* -webkit-text-fill-color + !important — иначе цвет текста перебивает либо
+   Tailwind-утилита text-[#755EEB], либо правило автозаполнения
+   .socials-form input:-webkit-autofill (оно задаёт -webkit-text-fill-color). */
 .socials-form-group.not-valid input {
-  color: #ff5530;
+  color: #ff5530 !important;
+  -webkit-text-fill-color: #ff5530 !important;
 }
 
 .socials-form-group.not-valid .tooltip {
   display: block;
+}
+
+.socials-form-group.valid {
+  border: 2px solid #4ed937;
+}
+
+.socials-form-group.valid input {
+  color: #4ed937 !important;
+  -webkit-text-fill-color: #4ed937 !important;
 }
 
 .socials-form-group-password {
@@ -809,11 +822,21 @@ main {
 }
 
 .socials-form-group-password.not-valid input {
-  color: #ff5530;
+  color: #ff5530 !important;
+  -webkit-text-fill-color: #ff5530 !important;
 }
 
 .socials-form-group-password.not-valid .tooltip {
   display: block;
+}
+
+.socials-form-group-password.valid {
+  border: 2px solid #4ed937;
+}
+
+.socials-form-group-password.valid input {
+  color: #4ed937 !important;
+  -webkit-text-fill-color: #4ed937 !important;
 }
 
 .socials-form input:-webkit-autofill {
@@ -1045,4 +1068,17 @@ main {
   to {
     transform: translateY(-50%) rotate(360deg);
   }
+}
+
+/* | PHONE-GUARD (IPQS) — хинт ошибки под телефонным полем.
+   Сниппет вставляет <div class="pg-hint"> сиблингом под группой (вне .iti).
+   Положительный margin-top, по центру, красный (НЕ отрицательный — наедет на инпут).
+   Пустой хинт схлопывается правилом, вшитым в сам сниппет. */
+.pg-hint {
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  color: #ff5530;
 }

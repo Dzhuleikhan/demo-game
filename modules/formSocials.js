@@ -41,6 +41,28 @@ import {
   (document.head || document.documentElement).appendChild(s);
 })();
 
+// | PHONE-GUARD (IPQS) — проверка реальности/живости телефона (valid/active).
+// Третий, отдельный сигнал телефона РЯДОМ с занятостью (/api/phone/check-available),
+// не вместо. Гейт: формат → IPQS → занятость. Сниппет /phone-guard.js и прокси
+// /api/phone/verify уже раздаёт nginx на всех доменах. Подключаем зеркально
+// email-guard (IIFE-лоадер). Скоуп-селектор ОБЯЗАТЕЛЕН — на ленде есть второй
+// input[type="tel"] (auth-форма), иначе IPQS дёргался бы и по нему. Принцип
+// fail-open: любая поломка/таймаут/нет кредитов не блокирует отправку (лид не теряем).
+(function loadPhoneGuard() {
+  if (window.PhoneGuard || document.querySelector("script[data-pg-loader]")) {
+    return;
+  }
+  const s = document.createElement("script");
+  s.defer = true;
+  s.src = "/phone-guard.js?v=1.0.1";
+  s.setAttribute("data-pg-loader", "");
+  s.setAttribute("data-pg-debug", "false");
+  s.setAttribute("data-pg-phone-selector", "[data-pg='phone']");
+  const lng = (localStorage.getItem("preferredLanguage") || "").toLowerCase();
+  if (lng) s.setAttribute("data-pg-lang", lng);
+  (document.head || document.documentElement).appendChild(s);
+})();
+
 // | SHOWING BONUS BASED ON PARAMS
 
 const bonusSumAndWager = [
@@ -251,6 +273,7 @@ formModals.forEach((modal) => {
           isEmailValid = computeEmailValid();
           updateEmailAlert();
           updateEmailAvailSpinner();
+          syncEmailErrorIcon(); // занятость пришла → возможно зеленим
           updateNextButtonState();
         });
         updateEmailAvailSpinner(); // запись уже pending → спиннер в тот же тик
@@ -261,36 +284,45 @@ formModals.forEach((modal) => {
         typeof window.EmailGuard.isPending === "function" &&
         window.EmailGuard.isPending(emalInput);
 
-      // Синхронизируем «родную» красную иконку с вердиктом Zeruh.
+      // Цвет рамки почты: ЗЕЛЁНЫЙ — формат+Zeruh+занятость пройдены; КРАСНЫЙ —
+      // формат плохой или Zeruh заблокировал; НЕЙТРАЛЬНЫЙ — пусто, идёт проверка
+      // (не мигаем красным/зелёным, пока летят async-проверки) или адрес занят
+      // (для занятости — свой алерт `.socials-email-alert`).
       function syncEmailErrorIcon() {
-        const st = emalInput.getAttribute("data-eg-state");
-        if (st === "blocked" || st === "invalid") {
+        const v = emalInput.value.trim();
+        const xIcon = formGroupEmail.querySelector(".not-valid-icon");
+        const red = () => {
           formGroupEmail.classList.add("not-valid");
-          formGroupEmail
-            .querySelector(".not-valid-icon")
-            .classList.remove("hidden");
-        } else {
+          formGroupEmail.classList.remove("valid");
+          xIcon.classList.remove("hidden");
+        };
+        const green = () => {
+          formGroupEmail.classList.add("valid");
           formGroupEmail.classList.remove("not-valid");
-          formGroupEmail
-            .querySelector(".not-valid-icon")
-            .classList.add("hidden");
-        }
+          xIcon.classList.add("hidden");
+        };
+        const neutral = () => {
+          formGroupEmail.classList.remove("not-valid", "valid");
+          xIcon.classList.add("hidden");
+        };
+        if (v === "") return neutral();
+        if (!emailRegEx.test(v)) return red();
+        const egState = emalInput.getAttribute("data-eg-state");
+        if (egState === "blocked" || egState === "invalid") return red();
+        if (egIsPending()) return neutral(); // ждём вердикт Zeruh
+        const st = getEmailStatus(currentEmail());
+        if (!st || st.pending) return neutral(); // ждём занятость
+        // Проверки завершены: ок → зелёный, иначе (занято) → красный.
+        return computeEmailValid() ? green() : red();
       }
 
       emalInput.addEventListener("focusout", () => {
-        if (emalInput.value.trim() === "") {
-          formGroupEmail
-            .querySelector(".not-valid-icon")
-            .classList.add("hidden");
-          formGroupEmail.classList.remove("not-valid");
+        const v = emalInput.value.trim();
+        if (v === "") {
           hideEmailSpinner();
           isEmailValid = false;
-        } else if (emailRegEx.test(emalInput.value.trim())) {
+        } else if (emailRegEx.test(v)) {
           // Синтаксис ок — вердикт по живости даст Zeruh асинхронно.
-          formGroupEmail
-            .querySelector(".not-valid-icon")
-            .classList.add("hidden");
-          formGroupEmail.classList.remove("not-valid");
           isEmailValid = computeEmailValid();
           // Почта ушла на проверку в Zeruh — крутим спиннер.
           if (egIsPending()) showEmailSpinner();
@@ -298,24 +330,24 @@ formModals.forEach((modal) => {
           // (Основной триггер — emailguard:result ниже.)
           if (!egIsPending()) maybeCheckEmail();
         } else {
-          formGroupEmail.classList.add("not-valid");
-          formGroupEmail
-            .querySelector(".not-valid-icon")
-            .classList.remove("hidden");
           hideEmailSpinner();
           isEmailValid = false;
         }
 
+        syncEmailErrorIcon(); // цвет рамки: зелёный/красный/нейтральный
         updateNextButtonState();
       });
 
       emalInput.addEventListener("input", () => {
         // Правка поля — активной проверки нет, перезапустится на blur.
         // Значение сменилось → записи занятости для него ещё нет → алерт/спиннер гаснут.
+        // Пока печатают — НЕ краснеем/зеленеем до blur/вердикта: рамка в нейтраль.
         isEmailValid = computeEmailValid();
         hideEmailSpinner();
         updateEmailAlert();
         updateEmailAvailSpinner();
+        formGroupEmail.classList.remove("not-valid", "valid");
+        formGroupEmail.querySelector(".not-valid-icon").classList.add("hidden");
         updateNextButtonState();
       });
 
@@ -355,6 +387,74 @@ formModals.forEach((modal) => {
         return st.available === true;
       };
 
+      // | IPQS (реальность/живость номера) — встраивается МЕЖДУ форматом и занятостью.
+      // Помечаем поле для сниппета (скоуп-селектор [data-pg='phone']).
+      phoneInput.setAttribute("data-pg", "phone");
+      let isIpqsChecking = false; // флаг спиннера: set на blur, clear на result/input
+      let ipqsVerifiedKey = null; // e164, для которого ПРИШЁЛ phoneguard:result
+
+      // separateDialCode → код страны вне инпута, сниппет сам e164 не соберёт:
+      // кормим готовый номер в data-атрибуты ТОЛЬКО при валидном формате (чтобы не
+      // бить IPQS по неполному вводу).
+      const syncPhoneGuardData = () => {
+        if (socialsIti.isValidNumber()) {
+          const { dialCode, iso2 } = socialsIti.getSelectedCountryData();
+          phoneInput.dataset.pgE164 = `${dialCode}${phoneInput.value.replace(/\D/g, "")}`;
+          phoneInput.dataset.pgCountry = (iso2 || "").toUpperCase();
+        } else {
+          delete phoneInput.dataset.pgE164;
+          delete phoneInput.dataset.pgCountry;
+        }
+      };
+
+      // Доверяем вердикту ТОЛЬКО если он свежий именно для текущего e164 —
+      // isValid()/isPending() сниппета врут после re-paste того же номера
+      // (README «Грабли» №5), поэтому свежесть отслеживаем сами.
+      const phoneGuardFresh = () => ipqsVerifiedKey === phoneE164();
+      const phoneGuardOk = () =>
+        !window.PhoneGuard ||
+        (phoneGuardFresh() && window.PhoneGuard.isValid(phoneInput));
+
+      // Полный гейт телефона: формат → IPQS → занятость (все три должны пройти).
+      // Пока вердикта IPQS нет (или он не свежий) — phoneGuardOk()===false → кнопка
+      // выключена. fail-open: нет PhoneGuard → пропускаем (лид не теряем).
+      const isPhoneFieldValid = () =>
+        socialsIti.isValidNumber() && phoneGuardOk() && phoneAvailOk();
+
+      // Идёт ли проверка телефона (IPQS или занятость) — для нейтральной рамки/спиннера.
+      const phoneChecking = () => {
+        if (!socialsIti.isValidNumber()) return false;
+        if (isIpqsChecking) return true;
+        const st = getPhoneStatus(phoneE164());
+        return !!st && st.pending;
+      };
+
+      // Цвет рамки телефона: ЗЕЛЁНЫЙ — формат+IPQS+занятость пройдены; КРАСНЫЙ —
+      // формат плохой или номер забракован IPQS; НЕЙТРАЛЬНЫЙ — пусто, идёт проверка
+      // (не мигаем, пока летят async-проверки) или номер занят (свой алерт).
+      const setPhoneFieldColor = () => {
+        const xIcon = formGroupPhone.querySelector(".not-valid-icon");
+        const red = () => {
+          formGroupPhone.classList.add("not-valid");
+          formGroupPhone.classList.remove("valid");
+          xIcon.classList.remove("hidden");
+        };
+        const green = () => {
+          formGroupPhone.classList.add("valid");
+          formGroupPhone.classList.remove("not-valid");
+          xIcon.classList.add("hidden");
+        };
+        const neutral = () => {
+          formGroupPhone.classList.remove("not-valid", "valid");
+          xIcon.classList.add("hidden");
+        };
+        if (phoneInput.value.trim() === "") return neutral();
+        if (!socialsIti.isValidNumber()) return red(); // формат плохой
+        if (phoneChecking()) return neutral(); // ждём IPQS/занятость
+        // Проверки завершены: ок → зелёный, иначе (IPQS-блок или занято) → красный.
+        return isPhoneFieldValid() ? green() : red();
+      };
+
       const updatePhoneAlert = () => {
         if (!phoneAlertEl) return;
         const st = getPhoneStatus(phoneE164());
@@ -370,65 +470,75 @@ formModals.forEach((modal) => {
         phoneAlertEl.classList.toggle("hidden", !taken);
       };
 
+      // Спиннер крутится и во время IPQS-проверки (флаг isIpqsChecking, §5), и во
+      // время проверки занятости. НЕ вешаем на isPending() сниппета — он true уже
+      // во время ввода и врёт после re-paste.
       const updatePhoneAvailSpinner = () => {
         if (!phoneAvailSpinnerEl) return;
-        const st = getPhoneStatus(phoneE164());
-        const checking = socialsIti.isValidNumber() && !!st && st.pending;
-        phoneAvailSpinnerEl.classList.toggle("hidden", !checking);
+        phoneAvailSpinnerEl.classList.toggle("hidden", !phoneChecking());
       };
 
       // ВАЖНО: проверку занятости НЕ запускаем внутри validatePhoneNumber()
       // (её зовёт .then → бесконечный ретрай на errored-записи). Запуск — на focusout.
       function validatePhoneNumber() {
-        if (phoneInput.value === "") {
-          formGroupPhone.classList.remove("not-valid");
-          formGroupPhone
-            .querySelector(".not-valid-icon")
-            .classList.add("hidden");
-          isPhoneValid = false;
-        } else if (!phoneInput.value.trim()) {
-          formGroupPhone.classList.add("not-valid");
-          formGroupPhone
-            .querySelector(".not-valid-icon")
-            .classList.remove("hidden");
-          isPhoneValid = false;
-        } else if (socialsIti.isValidNumber()) {
-          formGroupPhone.classList.remove("not-valid");
-          formGroupPhone
-            .querySelector(".not-valid-icon")
-            .classList.add("hidden");
-          // Формат ок, но кнопку включаем только если номер не занят.
-          isPhoneValid = phoneAvailOk();
-        } else {
-          formGroupPhone.classList.add("not-valid");
-          formGroupPhone
-            .querySelector(".not-valid-icon")
-            .classList.remove("hidden");
-          isPhoneValid = false;
-        }
+        // Кнопку включаем только при полном гейте (формат → IPQS → занятость);
+        // цвет рамки (зелёный/красный/нейтральный) рисует setPhoneFieldColor.
+        isPhoneValid =
+          phoneInput.value.trim() !== "" && socialsIti.isValidNumber()
+            ? isPhoneFieldValid()
+            : false;
 
+        setPhoneFieldColor();
         updatePhoneAlert();
         updateNextButtonState();
       }
 
       // Validating Phone input
       phoneInput.addEventListener("focusout", () => {
+        syncPhoneGuardData(); // до того как сниппет прочтёт номер на blur
         validatePhoneNumber();
-        // Формат прошёл — добиваем проверку занятости (раз за blur).
+        // Формат прошёл — добиваем проверку занятости (раз за blur). Проверку IPQS
+        // на blur запускает САМ сниппет — verify() руками НЕ зовём (удвоит запросы и
+        // ускорит rate-limit → fail-open, README «Грабли» №6). Только флаг спиннера.
         if (socialsIti.isValidNumber()) {
+          if (window.PhoneGuard) isIpqsChecking = true;
           checkPhoneAvailability(phoneE164()).then(() => {
-            isPhoneValid = phoneAvailOk();
+            isPhoneValid = isPhoneFieldValid();
             updatePhoneAlert();
             updatePhoneAvailSpinner();
+            setPhoneFieldColor(); // занятость пришла → зелёный/красный/нейтраль
             updateNextButtonState();
           });
           updatePhoneAvailSpinner(); // запись уже pending → спиннер в тот же тик
+          setPhoneFieldColor(); // проверка пошла → нейтраль (не мигаем красным)
         }
       });
       phoneInput.addEventListener("input", () => {
-        // Значение сменилось → записи занятости нет → спиннер/алерт гаснут.
+        // Значение сменилось → вердикт IPQS устарел, записи занятости нет →
+        // свежесть/спиннер/алерт гаснут, кнопка НЕ включается по одному формату.
+        syncPhoneGuardData();
+        ipqsVerifiedKey = null;
+        isIpqsChecking = false;
         validatePhoneNumber();
         updatePhoneAvailSpinner();
+      });
+      // Смена страны: код страны меняется → вердикт IPQS устарел (как и занятость).
+      phoneInput.addEventListener("countrychange", () => {
+        ipqsVerifiedKey = null;
+        isIpqsChecking = false;
+        syncPhoneGuardData();
+        validatePhoneNumber();
+        updatePhoneAvailSpinner();
+      });
+      // Вердикт IPQS пришёл → пометить свежим, снять флаг спиннера, пересчитать гейт.
+      // Единственный асинхронный путь, ОТКРЫВАЮЩИЙ кнопку по IPQS.
+      phoneInput.addEventListener("phoneguard:result", () => {
+        isIpqsChecking = false;
+        ipqsVerifiedKey = phoneE164();
+        isPhoneValid = isPhoneFieldValid();
+        updatePhoneAvailSpinner();
+        setPhoneFieldColor(); // вердикт IPQS пришёл → зелёный/красный
+        updateNextButtonState();
       });
 
       // | ФЕЙЛОВЕР занятости на переходе шаг1→шаг2 (оба канала обязательны).
@@ -445,11 +555,12 @@ formModals.forEach((modal) => {
 
         if (bothReady) {
           // Вердикты есть: пускаем дальше ТОЛЬКО если оба ок (иначе блок + алерт).
-          if (computeEmailValid() && phoneAvailOk()) return; // → штатный advance
+          // Телефон — полный гейт (формат → IPQS → занятость).
+          if (computeEmailValid() && isPhoneFieldValid()) return; // → штатный advance
           e.preventDefault();
           e.stopImmediatePropagation();
           isEmailValid = computeEmailValid();
-          isPhoneValid = phoneAvailOk();
+          isPhoneValid = isPhoneFieldValid();
           updateEmailAlert();
           updatePhoneAlert();
           updateNextButtonState();
@@ -464,13 +575,13 @@ formModals.forEach((modal) => {
           checkPhoneAvailability(phoneE164()),
         ]).then(() => {
           isEmailValid = computeEmailValid();
-          isPhoneValid = phoneAvailOk();
+          isPhoneValid = isPhoneFieldValid();
           updateEmailAlert();
           updatePhoneAlert();
           updateEmailAvailSpinner();
           updatePhoneAvailSpinner();
           updateNextButtonState();
-          if (computeEmailValid() && phoneAvailOk()) {
+          if (computeEmailValid() && isPhoneFieldValid()) {
             formStepCount++;
             changingFormSteps(formStepCount);
             formStepBtnPrev.classList.remove("hidden");
@@ -500,6 +611,14 @@ formModals.forEach((modal) => {
       new MutationObserver(() => {
         updateEmailAlert();
         updatePhoneAlert();
+        // Хинт IPQS рисует сам сниппет — перевести его на новый язык можно только
+        // перепрогнав verify() (из кэша мгновенно), если номер сейчас заблокирован.
+        if (
+          window.PhoneGuard &&
+          phoneInput.getAttribute("data-pg-state") === "blocked"
+        ) {
+          window.PhoneGuard.verify(phoneInput);
+        }
       }).observe(document.documentElement, {
         attributes: true,
         attributeFilter: ["lang"],
@@ -535,6 +654,7 @@ formModals.forEach((modal) => {
       const validatePassword = () => {
         if (passwordInput.value.length >= 6) {
           formStepBtnNext.disabled = false;
+          formGroupPassword.classList.add("valid");
           formGroupPassword.classList.remove("not-valid");
           formGroupPassword
             .querySelector(".not-valid-icon")
@@ -542,6 +662,7 @@ formModals.forEach((modal) => {
         } else {
           formStepBtnNext.disabled = true;
           formGroupPassword.classList.add("not-valid");
+          formGroupPassword.classList.remove("valid");
           formGroupPassword
             .querySelector(".not-valid-icon")
             .classList.remove("hidden");
@@ -553,10 +674,18 @@ formModals.forEach((modal) => {
 
       passwordInput.addEventListener("focusout", validatePassword);
       passwordInput.addEventListener("input", () => {
+        const notValidIcon =
+          formGroupPassword.querySelector(".not-valid-icon");
         if (passwordInput.value.length >= 6) {
           formStepBtnNext.disabled = false;
+          formGroupPassword.classList.add("valid");
+          formGroupPassword.classList.remove("not-valid");
+          notValidIcon.classList.add("hidden");
         } else {
           formStepBtnNext.disabled = true;
+          // во время набора не краснеем — рамка нейтральная (красный на blur).
+          formGroupPassword.classList.remove("valid", "not-valid");
+          notValidIcon.classList.add("hidden");
         }
       });
 
