@@ -22,6 +22,16 @@ export default defineConfig({
         changeOrigin: true,
         secure: true,
       },
+      "/phone-guard.js": {
+        target: "https://goldbet.fun",
+        changeOrigin: true,
+        secure: false,
+      },
+      "/api/phone/verify": {
+        target: "https://goldbet.fun",
+        changeOrigin: true,
+        secure: false,
+      },
       "/api/phone/check-available": {
         target: "https://goldbet.fun",
         changeOrigin: true,

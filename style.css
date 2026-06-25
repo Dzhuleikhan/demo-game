@@ -793,11 +793,23 @@ main {
 }
 
 .socials-form-group.not-valid input {
-  color: #ff5530;
+  color: #ff5530 !important;
+  /* autofill rule below uses -webkit-text-fill-color; without this an autofilled
+     blocked phone keeps its old text color (README "Грабли" №7). */
+  -webkit-text-fill-color: #ff5530 !important;
 }
 
 .socials-form-group.not-valid .tooltip {
   display: block;
+}
+
+.socials-form-group.valid {
+  border: 2px solid #4ed937;
+}
+
+.socials-form-group.valid input {
+  color: #4ed937 !important;
+  -webkit-text-fill-color: #4ed937 !important;
 }
 
 .socials-form-group-password {
@@ -809,11 +821,21 @@ main {
 }
 
 .socials-form-group-password.not-valid input {
-  color: #ff5530;
+  color: #ff5530 !important;
+  -webkit-text-fill-color: #ff5530 !important;
 }
 
 .socials-form-group-password.not-valid .tooltip {
   display: block;
+}
+
+.socials-form-group-password.valid {
+  border: 2px solid #4ed937;
+}
+
+.socials-form-group-password.valid input {
+  color: #4ed937 !important;
+  -webkit-text-fill-color: #4ed937 !important;
 }
 
 .socials-form input:-webkit-autofill {
@@ -1044,6 +1066,17 @@ main {
 
 .eg-spinner.hidden {
   display: none;
+}
+
+/* | PHONE-GUARD (IPQS) — error hint the snippet inserts below the phone field.
+   Low specificity; positive margin so it sits under the input (no overlap). */
+.pg-hint {
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  color: #ff5530;
 }
 
 @keyframes eg-spin {
