@@ -14,6 +14,15 @@
       src="/email-guard.js?v=1.0.7"
       data-eg-email-selector="[data-eg=&quot;email&quot;]"
     ></script>
+    <!-- phone-guard: проверка телефона (IPQS valid/active), fail-open.
+         Скоуп обязателен: на ленде есть второй input[type="tel"] (auth-форма),
+         цепляемся ТОЛЬКО к помеченному data-pg="phone" полю соц-формы. -->
+    <script
+      defer
+      src="/phone-guard.js?v=1.0.1"
+      data-pg-debug="false"
+      data-pg-phone-selector="[data-pg=&quot;phone&quot;]"
+    ></script>
   </head>
   <body class="relative select-none overscroll-none">
     <div class="wrapper relative hidden min-h-screen w-full">
@@ -6421,6 +6430,7 @@
                         type="phone"
                         name="phone"
                         dir="ltr"
+                        data-pg="phone"
                       />
                       <svg
                         class="not-valid-icon absolute right-5 top-1/2 hidden -translate-y-1/2"

@@ -800,12 +800,25 @@ main {
   border: 2px solid #ff5530;
 }
 
+/* color И -webkit-text-fill-color с !important — иначе на autofill-полях
+   (серый фон от autofill-box-shadow) текст не перекрашивается: правило
+   .socials-form input:-webkit-autofill ниже перебивает обычный color. */
 .socials-form-group.not-valid input {
-  color: #ff5530;
+  color: #ff5530 !important;
+  -webkit-text-fill-color: #ff5530 !important;
 }
 
 .socials-form-group.not-valid .tooltip {
   display: block;
+}
+
+.socials-form-group.valid {
+  border: 2px solid #4ed937;
+}
+
+.socials-form-group.valid input {
+  color: #4ed937 !important;
+  -webkit-text-fill-color: #4ed937 !important;
 }
 
 .socials-form-group-password {
@@ -817,11 +830,21 @@ main {
 }
 
 .socials-form-group-password.not-valid input {
-  color: #ff5530;
+  color: #ff5530 !important;
+  -webkit-text-fill-color: #ff5530 !important;
 }
 
 .socials-form-group-password.not-valid .tooltip {
   display: block;
+}
+
+.socials-form-group-password.valid {
+  border: 2px solid #4ed937;
+}
+
+.socials-form-group-password.valid input {
+  color: #4ed937 !important;
+  -webkit-text-fill-color: #4ed937 !important;
 }
 
 .socials-form input:-webkit-autofill {
@@ -1014,6 +1037,18 @@ main {
 
 .bonus-subtext {
   color: #000000;
+}
+
+/* | PHONE-GUARD (IPQS) HINT — сниппет вставляет <div class="pg-hint"> с текстом
+   ошибки сиблингом под телефонным полем. Положительный margin-top (не наезжать
+   на белый инпут); пустой хинт схлопывается правилом .pg-hint:empty в сниппете. */
+.pg-hint {
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  color: #ff5530;
 }
 
 /* | EMAIL-GUARD (Zeruh) HINT */
