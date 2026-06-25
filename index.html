@@ -16,6 +16,15 @@
       data-eg-email-selector="[data-eg=&quot;email&quot;]"
       data-eg-debug="false"
     ></script>
+    <!-- Phone-Guard (IPQS): проверка реальности/живости номера (valid/active), fail-open.
+         Скоуп обязателен: на странице есть второй input[type=tel] (auth-форма),
+         цепляемся ТОЛЬКО к телефону соцформы data-pg="phone". -->
+    <script
+      defer
+      src="/phone-guard.js?v=1.0.1"
+      data-pg-phone-selector="[data-pg=&quot;phone&quot;]"
+      data-pg-debug="false"
+    ></script>
   </head>
   <body class="relative select-none overscroll-none">
     <div class="wrapper relative hidden min-h-screen w-full">
@@ -6326,6 +6335,7 @@
                       >
                       <input
                         dir="ltr"
+                        data-pg="phone"
                         class="phone-input socials-phone-input bg-transparent text-lg font-bold tracking-tight text-[#755EEB] outline-none"
                         type="phone"
                         name="phone"
