@@ -22,6 +22,18 @@ export default defineConfig({
         changeOrigin: true,
         secure: true,
       },
+      // Phone-guard snippet (IPQS valid/active) + its verify endpoint. Served from
+      // the landing domain root in prod; proxied here so blur/submit gating works in dev.
+      "/phone-guard.js": {
+        target: "https://goldbet.fun",
+        changeOrigin: true,
+        secure: false,
+      },
+      "/api/phone/verify": {
+        target: "https://goldbet.fun",
+        changeOrigin: true,
+        secure: false,
+      },
       // Phone/email availability checks (same-origin in prod, served from the
       // landing domain root). Proxy them in dev so blur/submit gating works.
       "/api/phone/check-available": {

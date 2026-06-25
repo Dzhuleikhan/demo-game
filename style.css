@@ -539,6 +539,17 @@ main {
   border-radius: 8px;
 }
 
+/* phone-guard (IPQS) error hint — snippet injects <div class="pg-hint"> as a sibling
+   below the phone box. Positive margin-top keeps it under the field (no overlap). */
+.pg-hint {
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  color: #ff5530;
+}
+
 .modal-tabs button::before {
   content: "";
   width: 50px;

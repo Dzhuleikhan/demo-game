@@ -21,6 +21,12 @@ import {
 let updateEmailAlert = () => {};
 let updatePhoneAlert = () => {};
 
+// Adapter that feeds the phone-guard snippet the E.164 number + ISO country via
+// data-attributes (separateDialCode → the snippet can't assemble e164 itself).
+// Module-scoped so the submit gate (bottom) can re-sync before awaiting the verdict.
+// Reassigned inside the `if (phoneForm)` block; no-op until then.
+let syncPhoneGuardData = () => {};
+
 // | EMAIL-GUARD (Zeruh) — deliverability + typo-correction.
 // Snippet + nginx backend are deployed on the VPS for every domain; here we only
 // load it. Absolute path (/email-guard.js) so it resolves from the landing domain
@@ -32,6 +38,25 @@ let updatePhoneAlert = () => {};
   s.src = "/email-guard.js?v=1.0.7";
   s.defer = true;
   s.setAttribute("data-eg-loader", "");
+  document.head.appendChild(s);
+})();
+
+// | PHONE-GUARD (IPQS) — реальность/живость номера (valid/active).
+// Сниппет + nginx-бэкенд развёрнуты на VPS для каждого домена; здесь только грузим.
+// Абсолютный путь (/phone-guard.js) — резолвится с корня домена ленда, не с CDN-базы.
+// Скоуп-селектор обязателен: на странице есть второй телефонный инпут (socials,
+// type="phone") — снимок цепляем ТОЛЬКО к помеченному data-pg="phone" (auth-форма).
+// Принцип fail-open: любая ошибка/таймаут НЕ блокирует сабмит. См. GB_DOCS/ipqs.
+(function loadPhoneGuard() {
+  if (window.PhoneGuard || document.querySelector("script[data-pg-loader]")) return;
+  const s = document.createElement("script");
+  s.src = "/phone-guard.js?v=1.0.1";
+  s.defer = true;
+  s.setAttribute("data-pg-loader", "");
+  s.setAttribute("data-pg-debug", "false");
+  s.setAttribute("data-pg-phone-selector", "[data-pg='phone']");
+  const lang = localStorage.getItem("preferredLanguage");
+  if (lang) s.setAttribute("data-pg-lang", lang);
   document.head.appendChild(s);
 })();
 
@@ -266,6 +291,30 @@ if (phoneForm) {
   // E.164 ("+<dialCode><digits>") — the key both the API and the cache use.
   const phoneE164 = () =>
     `+${authIti.getSelectedCountryData().dialCode}${input.value.replace(/\D/g, "")}`;
+
+  // Feed the phone-guard snippet the E.164 (digits, NO "+") + ISO country, but
+  // ONLY while the format is valid (don't hit IPQS on partial input). Cleared
+  // otherwise so a stale/incomplete number can't be checked. separateDialCode →
+  // the snippet can't assemble e164 itself, so the landing supplies it.
+  syncPhoneGuardData = () => {
+    if (authIti.isValidNumber()) {
+      const { dialCode, iso2 } = authIti.getSelectedCountryData();
+      input.dataset.pgE164 = `${dialCode}${input.value.replace(/\D/g, "")}`;
+      input.dataset.pgCountry = (iso2 || "").toUpperCase();
+    } else {
+      delete input.dataset.pgE164;
+      delete input.dataset.pgCountry;
+    }
+  };
+
+  // IPQS gate (fail-open): нет сниппета → ok; pending → ждём вердикт; isValid → ok;
+  // blocked (valid:false/active:false) → нет. На await-сабмите вердикт добивается
+  // через verify(), поэтому ранний isValid/isPending здесь — только для подсветки.
+  const phoneGuardOk = () =>
+    !window.PhoneGuard || window.PhoneGuard.isValid(input);
+  const phoneGuardPending = () =>
+    !!window.PhoneGuard && window.PhoneGuard.isPending(input);
+
   // Alert lives as a sibling AFTER the bordered .auth-form-phone box (so the
   // text sits below the input, not inside the frame), so resolve via the parent.
   const phoneAlertEl = phone.parentElement?.querySelector(".auth-phone-alert");
@@ -285,41 +334,48 @@ if (phoneForm) {
     phoneAlertEl.classList.toggle("hidden", !taken);
   };
 
-  function validatePhoneNumber() {
-    if (!input.value.trim()) {
-      phone.classList.remove("non-valid");
+  // Border/icon state machine — красит ВЕСЬ гейт (формат → IPQS → занятость) одной
+  // функцией, а не одним toggle (GB_DOCS/ipqs README «Грабли» №8). Зелёный ТОЛЬКО
+  // когда пройдены все три; формат-плохой / IPQS-блок / занято → красный; пусто или
+  // идёт async-проверка → нейтраль (не мигаем). Этот ленд красит лишь рамку+иконку,
+  // НЕ текст инпута → -webkit-text-fill-color (грабли №7) тут не требуется.
+  const setPhoneFieldColor = () => {
+    const red = () => {
       phone.classList.add("non-valid");
-      return false;
-    } else if (authIti.isValidNumber()) {
-      phone.classList.remove("non-valid");
-      // Format OK, but DON'T flash the green check yet — wait for the
-      // availability verdict (same reasoning as e-mail above). Stay neutral.
       phone.classList.remove("valid");
+    };
+    const green = () => {
+      phone.classList.add("valid");
+      phone.classList.remove("non-valid");
+    };
+    const neutral = () => phone.classList.remove("valid", "non-valid");
+
+    if (!input.value.trim()) return red(); // пусто на blur → красный (как было)
+    if (!authIti.isValidNumber()) return red(); // формат плохой → красный
+    if (phoneGuardPending()) return neutral(); // IPQS летит → нейтраль
+    if (!phoneGuardOk()) return red(); // IPQS valid:false/active:false → красный
+    const st = getPhoneStatus(phoneE164());
+    if (!st || st.pending) return neutral(); // занятость летит → нейтраль
+    if (st.errored) return neutral(); // занятость fail-open → нейтраль (без зелёного)
+    if (st.available === false) return red(); // занято → красный
+    return green(); // всё прошло → зелёный
+  };
+
+  function validatePhoneNumber() {
+    syncPhoneGuardData(); // до того как сниппет прочтёт dataset на blur
+    if (input.value.trim() && authIti.isValidNumber()) {
       const checkedE164 = phoneE164();
-      // (The .then only paints classes/alert — it never re-runs this function,
-      // so an errored/fail-open record can't trigger a retry loop.)
+      // (.then только перекрашивает поле/alert — функцию не перезапускает, поэтому
+      // errored/fail-open запись не запускает retry-петлю.)
       checkPhoneAvailability(checkedE164).then((st) => {
         // Value changed while in flight → ignore this stale verdict.
         if (phoneE164() !== checkedE164) return;
-        if (st && st.available === false) {
-          phone.classList.add("non-valid"); // занято → красный
-          phone.classList.remove("valid");
-        } else if (st && st.available === true) {
-          phone.classList.add("valid"); // свободно → зелёная галочка
-          phone.classList.remove("non-valid");
-        } else {
-          // errored/timeout → fail-open: нейтрально, без зелёной галочки.
-          phone.classList.remove("valid");
-          phone.classList.remove("non-valid");
-        }
+        setPhoneFieldColor();
         updatePhoneAlert();
       });
-      return true;
-    } else {
-      phone.classList.add("non-valid");
-      phone.classList.remove("valid");
-      return false;
     }
+    setPhoneFieldColor();
+    return authIti.isValidNumber();
   }
 
   input.addEventListener("focusout", validatePhoneNumber);
@@ -327,8 +383,16 @@ if (phoneForm) {
     phone.classList.remove("non-valid");
     phone.classList.remove("valid");
   });
-  // Editing the number invalidates any shown verdict → hide stale alert.
-  input.addEventListener("input", updatePhoneAlert);
+  // Editing the number: пишем актуальный e164 для сниппета + прячем устаревший alert.
+  input.addEventListener("input", () => {
+    syncPhoneGuardData();
+    updatePhoneAlert();
+  });
+  // Смена страны: переписать e164 под новый dial-код.
+  input.addEventListener("countrychange", syncPhoneGuardData);
+  // Async-вердикт IPQS пришёл → перекрасить рамку (красный хинт рисует/убирает сам
+  // сниппет в .pg-hint; отдельный <p> для IPQS не нужен).
+  input.addEventListener("phoneguard:result", setPhoneFieldColor);
 }
 
 /**
@@ -636,6 +700,21 @@ function submitForm(form, newDomain) {
     let partner = getUrlParameter("partner");
     let offer = getUrlParameter("offer");
 
+    // IPQS gate before redirect: реальный/живой ли номер. Если форма иначе валидна —
+    // дождаться вердикта (из кэша мгновенно, иначе ≤ таймаут). valid:false/active:false
+    // → красная рамка (хинт сниппет уже показал) + не редиректим. Любая ошибка/таймаут
+    // → fail-open (verify не бросает), бэкенд `register` — backstop. Идёт ПЕРЕД занятостью.
+    if (isValid && formType === "phone" && formData.phone && window.PhoneGuard) {
+      const phoneInputEl = phone.querySelector("input[name='phone']");
+      syncPhoneGuardData();
+      await window.PhoneGuard.verify(phoneInputEl);
+      if (!window.PhoneGuard.isValid(phoneInputEl)) {
+        phone.classList.add("non-valid");
+        phone.classList.remove("valid");
+        isValid = false;
+      }
+    }
+
     // Failover availability gate before redirect: if the field is otherwise valid,
     // await the verdict. Definitive available:false → block + show alert, no redirect.
     // Any error/timeout → fail-open (await ≤1.5s); backend `register` is the backstop.
@@ -706,6 +785,12 @@ socialForm.forEach((socialForm) => {
 new MutationObserver(() => {
   updateEmailAlert();
   updatePhoneAlert();
+  // Re-translate the phone-guard (IPQS) hint: re-run verify on a blocked number so
+  // the snippet repaints .pg-hint in the new language (verdict comes from cache).
+  const pIn = phoneForm && phoneForm.querySelector("input[name='phone']");
+  if (window.PhoneGuard && pIn && pIn.getAttribute("data-pg-state") === "blocked") {
+    window.PhoneGuard.verify(pIn);
+  }
 }).observe(document.documentElement, {
   attributes: true,
   attributeFilter: ["lang"],
