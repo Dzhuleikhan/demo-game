@@ -792,12 +792,28 @@ main {
   border: 2px solid #ff5530;
 }
 
+/* Красный текст невалида. ОБА свойства + !important: на АВТОЗАПОЛНЕННЫХ полях
+   WebKit рисует текст через -webkit-text-fill-color, и правило autofill ниже по
+   файлу (той же специфичности) иначе перебивает color — рамка краснеет, а текст
+   нет (LANDING_INTEGRATION §3.3). */
 .socials-form-group.not-valid input {
-  color: #ff5530;
+  color: #ff5530 !important;
+  -webkit-text-fill-color: #ff5530 !important;
 }
 
 .socials-form-group.not-valid .tooltip {
   display: block;
+}
+
+/* Зелёный текст/рамка валида (в исходном ленде отсутствовал) — те же ОБА свойства
+   с !important, чтобы перекрасить и автозаполненный текст. */
+.socials-form-group.valid {
+  border: 2px solid #4ed937;
+}
+
+.socials-form-group.valid input {
+  color: #4ed937 !important;
+  -webkit-text-fill-color: #4ed937 !important;
 }
 
 .socials-form-group-password {
@@ -809,11 +825,21 @@ main {
 }
 
 .socials-form-group-password.not-valid input {
-  color: #ff5530;
+  color: #ff5530 !important;
+  -webkit-text-fill-color: #ff5530 !important;
 }
 
 .socials-form-group-password.not-valid .tooltip {
   display: block;
+}
+
+.socials-form-group-password.valid {
+  border: 2px solid #4ed937;
+}
+
+.socials-form-group-password.valid input {
+  color: #4ed937 !important;
+  -webkit-text-fill-color: #4ed937 !important;
 }
 
 .socials-form input:-webkit-autofill {
@@ -1057,4 +1083,16 @@ main {
   to {
     transform: rotate(360deg);
   }
+}
+
+/* | PHONE-GUARD (IPQS) — хинт ошибки под полем телефона. Сниппет вставляет
+   <div class="pg-hint"> сиблингом после блока-поля; пустой схлопывается.
+   Положительный margin-top (отрицательный наехал бы на белый инпут). */
+.pg-hint {
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  color: #ff5530;
 }
