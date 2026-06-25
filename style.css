@@ -1023,3 +1023,12 @@ main {
   margin-top: 10px !important;
   text-align: center;
 }
+/* IPQS phone-guard: хинт ошибки сниппет вставляет сиблингом под полем телефона. */
+.pg-hint {
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  color: #ff5530;
+}

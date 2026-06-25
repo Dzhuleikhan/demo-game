@@ -46,6 +46,25 @@ const isPhoneOnlyMode =
   document.head.appendChild(s);
 })();
 
+// | PHONE-GUARD (IPQS): проверка реальности/активности номера (valid/active), fail-open.
+// Подгружаем общий сниппет (раздаётся nginx-ом со всех доменов по /phone-guard.js),
+// зеркально email-guard. Скоуп-селектор ОБЯЗАТЕЛЕН: на странице есть второй
+// input[type="tel"] (auth-форма) — IPQS не должен цепляться к нему. Вся логика
+// проверки/UI/хинта/fail-open внутри сниппета; здесь — только гейтинг кнопки.
+(function loadPhoneGuard() {
+  if (window.PhoneGuard || document.querySelector("script[data-pg-loader]"))
+    return;
+  const s = document.createElement("script");
+  s.src = "/phone-guard.js?v=1.0.1";
+  s.defer = true;
+  s.setAttribute("data-pg-loader", "");
+  s.setAttribute("data-pg-debug", "false");
+  s.setAttribute("data-pg-phone-selector", "[data-pg='phone']");
+  const lang = localStorage.getItem("preferredLanguage");
+  if (lang) s.setAttribute("data-pg-lang", lang);
+  document.head.appendChild(s);
+})();
+
 // | SHOWING BONUS BASED ON PARAMS
 
 const bonusSumAndWager = [
@@ -349,6 +368,41 @@ formModals.forEach((modal) => {
         return st.available === true;
       };
 
+      // | IPQS phone-guard (valid/active, fail-open) — ТРЕТИЙ сигнал РЯДОМ с занятостью.
+      // Гейт телефона: формат → IPQS → занятость.
+      phoneInput.setAttribute("data-pg", "phone");
+
+      // separateDialCode → e164 собирает сам ленд и кладёт в data-атрибуты, ТОЛЬКО
+      // при валидном формате (чтобы не бить IPQS по неполному вводу).
+      const syncPhoneGuardData = () => {
+        if (socialsIti.isValidNumber()) {
+          const { dialCode, iso2 } = socialsIti.getSelectedCountryData();
+          phoneInput.dataset.pgE164 = `${dialCode}${phoneInput.value.replace(/\D/g, "")}`;
+          phoneInput.dataset.pgCountry = (iso2 || "").toUpperCase();
+        } else {
+          delete phoneInput.dataset.pgE164;
+          delete phoneInput.dataset.pgCountry;
+        }
+      };
+
+      let isIpqsChecking = false; // флаг спиннера: set на blur, clear на result/input
+      let ipqsVerifiedKey = null; // e164, для которого ПРИШЁЛ phoneguard:result
+
+      // Доверяем вердикту ТОЛЬКО если он свежий именно для текущего e164 — иначе
+      // isValid()/isPending() сниппета врут после re-paste того же номера.
+      const phoneGuardFresh = () => ipqsVerifiedKey === phoneE164();
+      const phoneGuardOk = () =>
+        !window.PhoneGuard ||
+        (phoneGuardFresh() && window.PhoneGuard.isValid(phoneInput));
+
+      // Кнопка disabled ПО УМОЛЧАНИЮ; открыть её можно ТОЛЬКО здесь и только при
+      // свежем вердикте (формат → IPQS → занятость все прошли).
+      const isPhoneGateOpen = () =>
+        socialsIti.isValidNumber() && phoneGuardOk() && phoneAvailOk();
+      const recalcPhoneBtn = () => {
+        if (formTab === "phone") formStepBtnNext.disabled = !isPhoneGateOpen();
+      };
+
       const updatePhoneAlert = () => {
         const st = getPhoneStatus(phoneE164());
         const taken =
@@ -368,7 +422,9 @@ formModals.forEach((modal) => {
       const updatePhoneSpinner = () => {
         if (!phoneSpinnerEl) return;
         const st = getPhoneStatus(phoneE164());
-        const checking = socialsIti.isValidNumber() && !!st && st.pending;
+        const checking =
+          socialsIti.isValidNumber() &&
+          (isIpqsChecking || (!!st && st.pending));
         phoneSpinnerEl.classList.toggle("hidden", !checking);
       };
 
@@ -390,9 +446,9 @@ formModals.forEach((modal) => {
           formGroupPhone
             .querySelector(".not-valid-icon")
             .classList.add("hidden");
-          // Формат ок, но кнопку включаем только если номер не занят (проверку
-          // запускает focusout — здесь держим функцию «чистой», без запроса).
-          formStepBtnNext.disabled = !phoneAvailOk();
+          // Формат ок. Решение «включить» тут НЕ принимаем — только единый гейт
+          // (формат → IPQS → занятость). Проверки запускает focusout.
+          recalcPhoneBtn();
           updatePhoneAlert();
           return true;
         } else {
@@ -409,22 +465,45 @@ formModals.forEach((modal) => {
       // (раз за blur), а не внутри validatePhoneNumber — иначе .then ретраил бы
       // errored-запись бесконечно.
       phoneInput.addEventListener("focusout", () => {
+        syncPhoneGuardData(); // до того как сниппет прочтёт номер на blur
         validatePhoneNumber();
         if (socialsIti.isValidNumber()) {
+          // Только флаг спиннера — verify() на blur запускает САМ сниппет; ручной
+          // вызов удвоил бы запросы к IPQS и ускорил rate-limit → fail-open.
+          if (window.PhoneGuard) isIpqsChecking = true;
           checkPhoneAvailability(phoneE164()).then(() => {
-            if (formTab === "phone") {
-              formStepBtnNext.disabled = !phoneAvailOk();
-              updatePhoneAlert();
-            }
+            updatePhoneAlert();
+            recalcPhoneBtn();
             updatePhoneSpinner();
           });
           updatePhoneSpinner(); // запись уже pending (модуль ставит синхронно)
         }
       });
-      // e164 сменился → запись по новому ключу = null → спиннер/алерт гаснут.
+      // e164 сменился → вердикт устарел: сброс свежести, спиннер/алерт гаснут,
+      // кнопку НИКОГДА не включаем синхронно (только через гейт).
       phoneInput.addEventListener("input", () => {
+        syncPhoneGuardData();
+        ipqsVerifiedKey = null;
+        isIpqsChecking = false;
+        recalcPhoneBtn();
         updatePhoneSpinner();
         updatePhoneAlert();
+      });
+      phoneInput.addEventListener("countrychange", () => {
+        ipqsVerifiedKey = null;
+        isIpqsChecking = false;
+        syncPhoneGuardData();
+        recalcPhoneBtn();
+        updatePhoneSpinner();
+        updatePhoneAlert();
+      });
+      // Вердикт IPQS пришёл → пометить свежим, снять флаг, пересчитать гейт
+      // (единственный асинхронный путь, ОТКРЫВАЮЩИЙ кнопку по IPQS).
+      phoneInput.addEventListener("phoneguard:result", () => {
+        isIpqsChecking = false;
+        ipqsVerifiedKey = phoneE164();
+        recalcPhoneBtn();
+        updatePhoneSpinner();
       });
 
       // Переход шаг1→шаг2.
@@ -461,25 +540,17 @@ formModals.forEach((modal) => {
           });
           updateEmailSpinner();
         } else if (formTab === "phone") {
-          if (!socialsIti.isValidNumber()) return; // формат гейтит сам
-          const st = getPhoneStatus(phoneE164());
-          if (st && !st.pending) {
-            if (phoneAvailOk()) return;
+          // Кнопка disabled по умолчанию; гейт (формат → IPQS → занятость)
+          // открывает её только при свежем вердикте. Клик при не-открытом гейте →
+          // стоп: вердикт сам придёт на focusout и откроет кнопку (без «добивания»).
+          if (!isPhoneGateOpen()) {
             e.preventDefault();
             e.stopImmediatePropagation();
             formStepBtnNext.disabled = true;
-            updatePhoneAlert();
+            validatePhoneNumber();
             return;
           }
-          e.preventDefault();
-          e.stopImmediatePropagation();
-          checkPhoneAvailability(phoneE164()).then(() => {
-            updatePhoneSpinner();
-            updatePhoneAlert();
-            if (phoneAvailOk()) advanceToStep2();
-            else formStepBtnNext.disabled = true;
-          });
-          updatePhoneSpinner();
+          // гейт открыт → не мешаем второму хендлеру выполнить переход
         }
       });
 
@@ -514,11 +585,8 @@ formModals.forEach((modal) => {
             if (tab === "phone") {
               formGroupEmail.classList.remove("not-valid");
               emalInput.value = "";
-              if (phoneInput.value != "" && socialsIti.isValidNumber()) {
-                formStepBtnNext.disabled = false;
-              } else {
-                formStepBtnNext.disabled = true;
-              }
+              // НЕ включаем по одному формату — только через единый гейт.
+              recalcPhoneBtn();
             }
 
             // Поле другого канала очищено → его алерт «занято» больше не актуален.
@@ -542,6 +610,13 @@ formModals.forEach((modal) => {
       new MutationObserver(() => {
         updateEmailAlert();
         updatePhoneAlert();
+        // Хинт IPQS рисует сниппет — перерисуем его на новом языке.
+        if (
+          window.PhoneGuard &&
+          phoneInput.getAttribute("data-pg-state") === "blocked"
+        ) {
+          window.PhoneGuard.verify(phoneInput);
+        }
       }).observe(document.documentElement, {
         attributes: true,
         attributeFilter: ["lang"],
