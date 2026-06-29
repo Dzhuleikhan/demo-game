@@ -29,7 +29,10 @@ import {
 // disposableEmail.js здесь больше не используется). Принцип fail-open: любая
 // поломка не блокирует отправку формы.
 (function loadEmailGuard() {
-  if (window.EmailGuard || document.querySelector('script[src*="email-guard"]')) {
+  if (
+    window.EmailGuard ||
+    document.querySelector('script[src*="email-guard"]')
+  ) {
     return;
   }
   const s = document.createElement("script");
@@ -69,42 +72,42 @@ const bonusSumAndWager = [
   { currency: "EUR", amount: 10 },
   { currency: "USD", amount: 10 },
   { currency: "CAD", amount: 15 },
-  { currency: "NZD", amount: 20 },
+  { currency: "NZD", amount: 15 },
   { currency: "AUD", amount: 15 },
-  { currency: "ARS", amount: 14000 },
-  { currency: "COP", amount: 36800 },
-  { currency: "CLP", amount: 10000 },
+  { currency: "ARS", amount: 11000 },
+  { currency: "COP", amount: 40000 },
+  { currency: "CLP", amount: 9500 },
   { currency: "MXN", amount: 200 },
-  { currency: "BRL", amount: 60 },
-  { currency: "TRY", amount: 450 },
-  { currency: "INR", amount: 950 },
+  { currency: "BRL", amount: 55 },
+  { currency: "TRY", amount: 400 },
+  { currency: "INR", amount: 850 },
   { currency: "AZN", amount: 20 },
-  { currency: "UZS", amount: 121800 },
-  { currency: "IDR", amount: 169500 },
-  { currency: "UAH", amount: 450 },
-  { currency: "BDT", amount: 1300 },
-  { currency: "KGS", amount: 900 },
-  { currency: "KZT", amount: 4850 },
-  { currency: "HUF", amount: 3500 },
-  { currency: "DKK", amount: 70 },
+  { currency: "UZS", amount: 125000 },
+  { currency: "IDR", amount: 165000 },
+  { currency: "UAH", amount: 500 },
+  { currency: "BDT", amount: 1200 },
+  { currency: "KGS", amount: 875 },
+  { currency: "KZT", amount: 5350 },
+  { currency: "XOF", amount: 1900 },
+  { currency: "HUF", amount: 4000 },
+  { currency: "XAF", amount: 1900 },
+  { currency: "GHS", amount: 55 },
+  { currency: "DKK", amount: 65 },
+  { currency: "EGP", amount: 240 },
+  { currency: "ZMW", amount: 45 },
+  { currency: "KES", amount: 430 },
   { currency: "CHF", amount: 10 },
+  { currency: "MAD", amount: 47 },
+  { currency: "NGN", amount: 12250 },
   { currency: "NOK", amount: 100 },
-  { currency: "PLN", amount: 50 },
+  { currency: "PLN", amount: 35 },
+  { currency: "RWF", amount: 3000 },
   { currency: "RON", amount: 50 },
-  { currency: "CZK", amount: 200 },
+  { currency: "TZS", amount: 5000 },
+  { currency: "UGX", amount: 7400 },
+  { currency: "CZK", amount: 275 },
   { currency: "ZAR", amount: 200 },
-  { currency: "XOF", amount: 6000 },
-  { currency: "XAF", amount: 5700 },
-  { currency: "GHS", amount: 100 },
-  { currency: "EGP", amount: 550 },
-  { currency: "ZMW", amount: 200 },
-  { currency: "KES", amount: 1500 },
-  { currency: "MAD", amount: 100 },
-  { currency: "NGN", amount: 15000 },
-  { currency: "RWF", amount: 15000 },
-  { currency: "TZS", amount: 25000 },
-  { currency: "UGX", amount: 40000 },
-  { currency: "SLL", amount: 250 },
+  { currency: "SLL", amount: 45 },
 ];
 
 function getAmountForCurrency(currencyCode) {
@@ -221,7 +224,10 @@ formModals.forEach((modal) => {
       function emailFormatGuardOk() {
         const v = emalInput.value.trim();
         if (!emailRegEx.test(v)) return false;
-        if (window.EmailGuard && typeof window.EmailGuard.isValid === "function") {
+        if (
+          window.EmailGuard &&
+          typeof window.EmailGuard.isValid === "function"
+        ) {
           return window.EmailGuard.isValid(emalInput);
         }
         return true;
@@ -674,8 +680,7 @@ formModals.forEach((modal) => {
 
       passwordInput.addEventListener("focusout", validatePassword);
       passwordInput.addEventListener("input", () => {
-        const notValidIcon =
-          formGroupPassword.querySelector(".not-valid-icon");
+        const notValidIcon = formGroupPassword.querySelector(".not-valid-icon");
         if (passwordInput.value.length >= 6) {
           formStepBtnNext.disabled = false;
           formGroupPassword.classList.add("valid");
