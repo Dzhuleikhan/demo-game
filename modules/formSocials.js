@@ -126,7 +126,7 @@ const bonusSumAndWager = [
 
 function getAmountForCurrency(currencyCode) {
   const item = bonusSumAndWager.find((p) => p.currency === currencyCode);
-  return item ? item.amount : 20;
+  return item ? item.amount : 30;
 }
 
 function getCurrencyOrDefault(currencyCode) {
@@ -450,8 +450,7 @@ formModals.forEach((modal) => {
       const isPhoneGateOpen = () =>
         socialsIti.isValidNumber() && phoneGuardOk() && phoneAvailOk();
       const recalcPhoneBtn = () => {
-        if (formTab === "phone")
-          formStepBtnNext.disabled = !isPhoneGateOpen();
+        if (formTab === "phone") formStepBtnNext.disabled = !isPhoneGateOpen();
       };
 
       const updatePhoneAlert = () => {
