@@ -126,7 +126,7 @@ const bonusSumAndWager = [
 
 function getAmountForCurrency(currencyCode) {
   const item = bonusSumAndWager.find((p) => p.currency === currencyCode);
-  return item ? item.amount : 20;
+  return item ? item.amount : 15;
 }
 
 function getCurrencyOrDefault(currencyCode) {
