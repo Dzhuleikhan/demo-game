@@ -33,7 +33,7 @@ let syncPhoneGuardData = () => {};
 // root, not the CDN base. Injected dynamically to bypass Vite's base rewriting.
 // Fail-open: any failure never blocks form submit. See GB_DOCS/Zeruh.
 (function loadEmailGuard() {
-  if (document.querySelector('script[data-eg-loader]')) return;
+  if (document.querySelector("script[data-eg-loader]")) return;
   const s = document.createElement("script");
   s.src = "/email-guard.js?v=1.0.7";
   s.defer = true;
@@ -48,7 +48,8 @@ let syncPhoneGuardData = () => {};
 // type="phone") — снимок цепляем ТОЛЬКО к помеченному data-pg="phone" (auth-форма).
 // Принцип fail-open: любая ошибка/таймаут НЕ блокирует сабмит. См. GB_DOCS/ipqs.
 (function loadPhoneGuard() {
-  if (window.PhoneGuard || document.querySelector("script[data-pg-loader]")) return;
+  if (window.PhoneGuard || document.querySelector("script[data-pg-loader]"))
+    return;
   const s = document.createElement("script");
   s.src = "/phone-guard.js?v=1.0.1";
   s.defer = true;
@@ -67,7 +68,6 @@ const phoneForm = document.querySelector(".auth-form-type-phone");
 const socialForm = document.querySelectorAll(".auth-form-type-social");
 const oneClickForm = document.querySelector(".auth-form-type-oneclick");
 const termsCheckbox = document.querySelectorAll(".auth-terms-checkbox");
-
 
 // Validate email input
 function validateEmailInput() {
@@ -704,7 +704,12 @@ function submitForm(form, newDomain) {
     // дождаться вердикта (из кэша мгновенно, иначе ≤ таймаут). valid:false/active:false
     // → красная рамка (хинт сниппет уже показал) + не редиректим. Любая ошибка/таймаут
     // → fail-open (verify не бросает), бэкенд `register` — backstop. Идёт ПЕРЕД занятостью.
-    if (isValid && formType === "phone" && formData.phone && window.PhoneGuard) {
+    if (
+      isValid &&
+      formType === "phone" &&
+      formData.phone &&
+      window.PhoneGuard
+    ) {
       const phoneInputEl = phone.querySelector("input[name='phone']");
       syncPhoneGuardData();
       await window.PhoneGuard.verify(phoneInputEl);
@@ -788,7 +793,11 @@ new MutationObserver(() => {
   // Re-translate the phone-guard (IPQS) hint: re-run verify on a blocked number so
   // the snippet repaints .pg-hint in the new language (verdict comes from cache).
   const pIn = phoneForm && phoneForm.querySelector("input[name='phone']");
-  if (window.PhoneGuard && pIn && pIn.getAttribute("data-pg-state") === "blocked") {
+  if (
+    window.PhoneGuard &&
+    pIn &&
+    pIn.getAttribute("data-pg-state") === "blocked"
+  ) {
     window.PhoneGuard.verify(pIn);
   }
 }).observe(document.documentElement, {
@@ -863,3 +872,21 @@ tigerImg.forEach((img) => {
     });
   }
 });
+
+const modalCloseBtns = document.querySelectorAll(".main-modal-close-btn");
+
+modalCloseBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    window.location.href = `https://${newDomain}`;
+  });
+});
+
+const formOverlay = document.querySelector(".form-overlay");
+
+if (formOverlay) {
+  formOverlay.addEventListener("click", (e) => {
+    if (!e.target.closest(".modal-content")) {
+      window.location.href = `https://${newDomain}`;
+    }
+  });
+}
