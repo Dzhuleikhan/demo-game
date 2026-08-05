@@ -986,6 +986,10 @@ main {
   display: grid;
 }
 
+.geo-restrict-modal.is-open {
+  display: grid;
+}
+
 .scroll-lock {
   overflow: hidden;
 }

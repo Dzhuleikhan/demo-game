@@ -2,7 +2,7 @@
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  base: "https://landing-res.b-cdn.net/goldbet/ndb/multigeo/30/",
+  base: "https://landing-res.b-cdn.net/goldbet/ndb/multigeo/30/wager15/",
   esbuild: {
     supported: {
       "top-level-await": true,

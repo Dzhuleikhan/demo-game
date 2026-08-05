@@ -177,7 +177,7 @@ export function setNewBonusBasedOnParams(currencyCode) {
 
     addUrlParameter("currency", getCurrencyOrDefault(currencyCode));
     addUrlParameter("sumAmount", getAmountForCurrency(currencyCode));
-    addUrlParameter("wager", 20);
+    addUrlParameter("wager", 15);
 
     const bonusSumAmount = document.querySelector(".bonus-sum-amount");
     const bonusSumCurrency = document.querySelector(".bonus-sum-currency");

@@ -3,6 +3,7 @@ import "intl-tel-input/build/css/intlTelInput.css";
 
 import "./modules/disposableEmail";
 import "./modules/geoLocation";
+import "./modules/geoRestrict";
 import "./modules/itiTelInput";
 import "./modules/marquee";
 // import "./modules/hiddenSelect";
