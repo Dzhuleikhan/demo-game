@@ -1,5 +1,6 @@
-import { geoData } from "./geoLocation";
+import { geoData, getSupportedLanguage } from "./geoLocation";
 import { countryFlags } from "../public/data";
+import { translations } from "../public/translations";
 
 const restrictedCountries = ["US"];
 
@@ -22,14 +23,23 @@ function getCountryName(countryCode) {
   return country?.name || "your country";
 }
 
+function getTitle(lang, host, country) {
+  const template =
+    translations[lang]?.geoRestrictTitle || translations.en.geoRestrictTitle;
+
+  return template.replace("{host}", host).replace("{country}", country);
+}
+
 if (geoRestrictModal && isGeoRestricted) {
-  const hostEl = geoRestrictModal.querySelector(".geo-restrict-host");
-  const countryEl = geoRestrictModal.querySelector(".geo-restrict-country");
+  const titleEl = geoRestrictModal.querySelector(".geo-restrict-title");
   const flagEl = geoRestrictModal.querySelector(".geo-restrict-flag");
+
+  const lang = getSupportedLanguage(geoData.countryCode);
   const countryName = getCountryName(geoData.countryCode);
 
-  if (hostEl) hostEl.textContent = window.location.hostname;
-  if (countryEl) countryEl.textContent = countryName;
+  if (titleEl)
+    titleEl.textContent = getTitle(lang, window.location.hostname, countryName);
+
   if (flagEl) {
     flagEl.src = `./img/flags/${geoData.countryCode.toLowerCase()}.svg`;
     flagEl.alt = countryName;

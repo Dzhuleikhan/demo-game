@@ -1,5 +1,6 @@
 export const translations = {
   en: {
+    geoRestrictTitle: `{host} is not available in {country}`,
     termsTitle1: `Terms And Conditions`,
     termsParagraph1: `These terms and conditions and the documents referred to below
                       (the "Terms") apply to the use of the current website (the
@@ -136,6 +137,7 @@ export const translations = {
                       using the Service.`,
   },
   es: {
+    geoRestrictTitle: `{host} no está disponible en {country}`,
     termsTitle1: `Términos y Condiciones`,
     termsParagraph1: `Estos términos y condiciones y los documentos mencionados a
                   continuación (los "Términos") se aplican al uso del sitio web
@@ -272,6 +274,7 @@ export const translations = {
                   Servicio.`,
   },
   fr: {
+    geoRestrictTitle: `{host} n’est pas disponible en {country}`,
     termsTitle1: `Termes et Conditions`,
     termsParagraph1: `Ces termes et conditions et les documents mentionnés ci-dessous
                   (les "Termes") s'appliquent à l'utilisation du site web actuel
@@ -416,6 +419,7 @@ export const translations = {
                   Service.`,
   },
   uk: {
+    geoRestrictTitle: `{host} недоступний у країні {country}`,
     termsTitle1: `Умови та положення`,
     termsParagraph1: `Ці умови та положення та документи, на які є посилання нижче
                   ("Умови"), застосовуються до використання поточного вебсайту
@@ -544,6 +548,7 @@ export const translations = {
                   використання Послуги.`,
   },
   ru: {
+    geoRestrictTitle: `{host} недоступен в стране {country}`,
     termsTitle1: `Условия и положения`,
     termsParagraph1: `Настоящие условия и положения и документы, на которые 
                       здесь ссылаются (далее – "Условия"), применяются к 
@@ -683,6 +688,7 @@ export const translations = {
                       криптовалюту, полученную вами в результате использования Услуги.`,
   },
   pt: {
+    geoRestrictTitle: `{host} não está disponível em {country}`,
     termsTitle1: `Termos e Condições`,
     termsParagraph1: `Estes termos e condições e os documentos mencionados abaixo (os "Termos") aplicam-se ao uso do site atual (o "Site") e seus serviços relacionados ou conectados (coletivamente, o "Serviço"). Você deve ler cuidadosamente estes Termos, pois eles contêm informações importantes sobre seus direitos e obrigações em relação ao uso do Site e formam um contrato legal vinculativo entre você - nosso cliente (o "Cliente"), e nós (o "Site"). Ao usar este Site e/ou acessar o Serviço, você, seja como visitante ou como usuário registrado com uma conta ("Conta"), concorda em estar vinculado por estes Termos, juntamente com quaisquer alterações que possam ser publicadas de tempos em tempos. Se você não aceitar estes Termos, deve deixar de acessar o Serviço e usar o Site.`,
     termsTitle2: `1. Termos Gerais`,
@@ -714,6 +720,7 @@ export const translations = {
                       - Você é o único responsável por quaisquer impostos aplicáveis que possam ser pagos sobre criptomoeda concedida a você por meio do uso do Serviço.`,
   },
   de: {
+    geoRestrictTitle: `{host} ist in {country} nicht verfügbar`,
     termsTitle1: `Allgemeine Geschäftsbedingungen`,
     termsParagraph1: `Diese Allgemeinen Geschäftsbedingungen und die unten genannten Dokumente (die "Bedingungen") gelten für die Nutzung der aktuellen Website (die "Website") und ihrer damit verbundenen oder verknüpften Dienstleistungen (zusammenfassend der "Dienst"). Sie sollten diese Bedingungen sorgfältig durchlesen, da sie wichtige Informationen zu Ihren Rechten und Pflichten hinsichtlich der Nutzung der Website enthalten und eine verbindliche rechtliche Vereinbarung zwischen Ihnen - unserem Kunden (der "Kunde") - und uns (der "Website") bilden. Durch die Nutzung dieser Website und/oder den Zugriff auf den Dienst erklären Sie sich mit diesen Bedingungen sowie allen Änderungen, die von Zeit zu Zeit veröffentlicht werden können, einverstanden. Wenn Sie diese Bedingungen nicht akzeptieren, sollten Sie aufhören, auf den Dienst zuzugreifen und die Website zu nutzen.`,
     termsTitle2: `1. Allgemeine Bedingungen`,
@@ -745,6 +752,7 @@ export const translations = {
                       - Sie allein dafür verantwortlich sind, etwaige Steuern zu zahlen, die auf Kryptowährungen anfallen können, die Ihnen durch die Nutzung des Dienstes zugeteilt wurden.`,
   },
   et: {
+    geoRestrictTitle: `{host} ei ole saadaval riigis {country}`,
     termsTitle1: `Kasutustingimused`,
     termsParagraph1: `Need kasutustingimused ja allpool viidatud dokumendid
                       ("Tingimused") kehtivad selle veebisaidi ("Veebisait") ja sellega seotud või ühendatud teenuste
@@ -779,6 +787,7 @@ export const translations = {
                       - Vastutate täielikult kõigi krüptorahaga seotud maksude eest, mis teile Teenuse kasutamisel makstakse.`,
   },
   lv: {
+    geoRestrictTitle: `{host} nav pieejams valstī {country}`,
     termsTitle1: `Noteikumi un nosacījumi`,
     termsParagraph1: `Šie noteikumi un nosacījumi un zemāk minētie dokumenti
                       ("Noteikumi") attiecas uz pašreizējās tīmekļa vietnes ("Vietne") un ar to saistīto vai savienoto pakalpojumu
@@ -813,6 +822,7 @@ export const translations = {
                       - Esat pilnībā atbildīgs par jebkādiem nodokļiem, kas var būt jāmaksā par kriptovalūtu, kas jums tiek piešķirta, izmantojot Pakalpojuma izmantošanu.`,
   },
   lt: {
+    geoRestrictTitle: `{host} nepasiekiamas šalyje {country}`,
     termsTitle1: `Taisyklės ir sąlygos`,
     termsParagraph1: `Šios taisyklės ir sąlygos bei žemiau nurodyti dokumentai
                       ("Taisyklės") taikomi dabartinės svetainės ("Svetainė") ir susijusių ar prijungtų paslaugų
@@ -847,6 +857,7 @@ export const translations = {
                       - Esate visiškai atsakingi už bet kokius mokesčius, kurie gali būti taikomi už kriptovaliutą, suteiktą naudojantis Paslauga.`,
   },
   hr: {
+    geoRestrictTitle: `{host} nije dostupan u državi {country}`,
     termsTitle1: `Uvjeti i odredbe`,
     termsParagraph1: `Ovi uvjeti i odredbe i dolje navedeni dokumenti
                       ("Uvjeti") primjenjuju se na korištenje trenutne web stranice ("Web stranica") i njenih povezanih ili poveznih usluga
@@ -881,6 +892,7 @@ export const translations = {
                       - Samostalno ste odgovorni za sve poreze koji mogu biti primjenjivi na kriptovalutu dodijeljenu vama putem korištenja Usluge.`,
   },
   da: {
+    geoRestrictTitle: `{host} er ikke tilgængelig i {country}`,
     termsTitle1: `Vilkår og Betingelser`,
     termsParagraph1: `Disse vilkår og betingelser samt de dokumenter, der henvises til nedenfor
                   ("Vilkårene") gælder for brugen af det nuværende websted ("Webstedet")
@@ -929,6 +941,7 @@ export const translations = {
                   - At du selv er ansvarlig for skat på kryptovaluta modtaget gennem tjenesten.`,
   },
   fi: {
+    geoRestrictTitle: `{host} ei ole käytettävissä maassa {country}`,
     termsTitle1: `Ehdot ja säännöt`,
     termsParagraph1: `Nämä ehdot ja alla viitatut asiakirjat ("Ehdot") koskevat tämän verkkosivuston ("Verkkosivusto") 
                   ja siihen liittyvien palveluiden ("Palvelu") käyttöä. Tarkista nämä ehdot huolellisesti, 
@@ -972,6 +985,7 @@ export const translations = {
                   - Olet vastuussa kaikista kryptovaluutoista maksettavista veroista, jotka saat palvelun kautta.`,
   },
   bg: {
+    geoRestrictTitle: `{host} не е достъпен в {country}`,
     termsTitle1: `Правила и условия`,
     termsParagraph1: `Тези правила и условия, както и документите, на които се позовават ("Условия"), 
                   се прилагат за използването на настоящия уебсайт ("Уебсайт") и свързаните с него услуги 
@@ -1019,6 +1033,7 @@ export const translations = {
                   - Вие носите отговорност за данъци върху криптовалути, получени чрез услугата.`,
   },
   pl: {
+    geoRestrictTitle: `{host} nie jest dostępny w kraju {country}`,
     termsTitle1: `Warunki i Zasady`,
     termsParagraph1: `Niniejsze warunki i zasady oraz dokumenty, do których odniesiono się poniżej
                       („Warunki”) mają zastosowanie do korzystania z niniejszej strony internetowej („Strona”)
@@ -1102,6 +1117,7 @@ export const translations = {
                       - ponosisz odpowiedzialność za podatki od kryptowalut.`,
   },
   ro: {
+    geoRestrictTitle: `{host} nu este disponibil în {country}`,
     termsTitle1: `Termeni și Condiții`,
     termsParagraph1: `Acești termeni și condiții și documentele menționate mai jos
                       („Termenii”) se aplică utilizării acestui website („Website-ul”)
@@ -1183,6 +1199,7 @@ export const translations = {
                       - sunteți responsabil pentru taxele pe criptomonede.`,
   },
   hu: {
+    geoRestrictTitle: `A(z) {host} nem érhető el itt: {country}`,
     termsTitle1: `Felhasználási feltételek`,
     termsParagraph1: `Jelen feltételek és az alább hivatkozott dokumentumok
                       („Feltételek”) a jelen weboldal („Weboldal”)
@@ -1265,6 +1282,7 @@ export const translations = {
                       - felelős a kriptovaluták adózásáért.`,
   },
   cs: {
+    geoRestrictTitle: `{host} není dostupný v zemi {country}`,
     termsTitle1: `Podmínky a ustanovení`,
     termsParagraph1: `Tyto podmínky a ustanovení a níže uvedené dokumenty
                       („Podmínky“) se vztahují na používání této webové stránky („Webová stránka“)
@@ -1346,6 +1364,7 @@ export const translations = {
                       - nesete odpovědnost za daně z kryptoměn.`,
   },
   sl: {
+    geoRestrictTitle: `{host} ni na voljo v državi {country}`,
     termsTitle1: `Pogoji in določila`,
     termsParagraph1: `Ti pogoji in določila ter spodaj navedeni dokumenti
                       ("Pogoji") veljajo za uporabo te spletne strani ("Spletna stran")
@@ -1428,6 +1447,7 @@ export const translations = {
                       - ste odgovorni za davke na kriptovalute.`,
   },
   sv: {
+    geoRestrictTitle: `{host} är inte tillgängligt i {country}`,
     termsTitle1: `Villkor och bestämmelser`,
     termsParagraph1: `Dessa villkor och bestämmelser samt de dokument som hänvisas till nedan
                       ("Villkoren") gäller för användningen av denna webbplats ("Webbplatsen")
@@ -1510,6 +1530,7 @@ export const translations = {
                       - du ansvarar för kryptoskatter.`,
   },
   el: {
+    geoRestrictTitle: `Το {host} δεν είναι διαθέσιμο στη χώρα {country}`,
     termsTitle1: `Όροι και Προϋποθέσεις`,
     termsParagraph1: `Οι παρόντες όροι και προϋποθέσεις και τα έγγραφα που αναφέρονται παρακάτω
                       («Όροι») ισχύουν για τη χρήση της παρούσας ιστοσελίδας («Ιστοσελίδα»)
@@ -1591,6 +1612,7 @@ export const translations = {
                       - είστε υπεύθυνοι για φόρους κρυπτονομισμάτων.`,
   },
   ga: {
+    geoRestrictTitle: `Níl {host} ar fáil i {country}`,
     termsTitle1: `Téarmaí agus Coinníollacha`,
     termsParagraph1: `Baineann na téarmaí agus coinníollacha seo agus na doiciméid dá dtagraítear thíos
                       (“Téarmaí”) le húsáid an tsuímh ghréasáin seo (“Suíomh Gréasáin”)
@@ -1670,6 +1692,7 @@ export const translations = {
                       - go bhfuil tú freagrach as cánacha cripte.`,
   },
   it: {
+    geoRestrictTitle: `{host} non è disponibile in {country}`,
     termsTitle1: `Termini e Condizioni`,
     termsParagraph1: `I presenti termini e condizioni e i documenti a cui si fa riferimento di seguito
                       ("Termini") si applicano all'utilizzo di questo sito web ("Sito Web")
@@ -1751,6 +1774,7 @@ export const translations = {
                       - sei responsabile delle tasse sulle criptovalute.`,
   },
   lb: {
+    geoRestrictTitle: `{host} ass net verfügbar an {country}`,
     termsTitle1: `Allgemeng Geschäftsbedéngungen`,
     termsParagraph1: `Dës Allgemeng Geschäftsbedéngungen an d'Dokumenter, op déi hei ënnen verwisen gëtt
                       ("Bedéngungen") gëllen fir d'Benotzung vun dëser Websäit ("Websäit")
@@ -1830,6 +1854,7 @@ export const translations = {
                       - datt Dir fir Krypto-Steieren verantwortlech sidd.`,
   },
   mt: {
+    geoRestrictTitle: `{host} mhuwiex disponibbli fi {country}`,
     termsTitle1: `Termini u Kundizzjonijiet`,
     termsParagraph1: `Dawn it-termini u kundizzjonijiet u d-dokumenti msemmija hawn taħt
                       ("Termini") japplikaw għall-użu ta’ dan il-websajt ("Websajt")
@@ -1908,6 +1933,7 @@ export const translations = {
                       - inti responsabbli għat-taxxi tal-kripto.`,
   },
   nl: {
+    geoRestrictTitle: `{host} is niet beschikbaar in {country}`,
     termsTitle1: `Algemene voorwaarden`,
     termsParagraph1: `Deze algemene voorwaarden en de hieronder vermelde documenten
                       ("Voorwaarden") zijn van toepassing op het gebruik van deze website ("Website")
@@ -1987,6 +2013,7 @@ export const translations = {
                       - u verantwoordelijk bent voor cryptobelastingen.`,
   },
   sk: {
+    geoRestrictTitle: `{host} nie je dostupný v krajine {country}`,
     termsTitle1: `Podmienky a ustanovenia`,
     termsParagraph1: `Tieto podmienky a ustanovenia a dokumenty uvedené nižšie
                       ("Podmienky") sa vzťahujú na používanie tejto webovej stránky ("Webová stránka")
@@ -2066,6 +2093,7 @@ export const translations = {
                       - ste zodpovedný za dane z kryptomien.`,
   },
   ar: {
+    geoRestrictTitle: `{host} غير متاح في {country}`,
     termsTitle1: `الشروط والأحكام`,
     termsParagraph1: `تنطبق هذه الشروط والأحكام والمستندات المشار إليها أدناه
                       ("الشروط") على استخدام هذا الموقع الإلكتروني ("الموقع")
@@ -2144,6 +2172,7 @@ export const translations = {
                       - أنت مسؤول عن ضرائب العملات الرقمية.`,
   },
   zh: {
+    geoRestrictTitle: `{host} 在{country}不可用`,
     termsTitle1: `条款和条件`,
     termsParagraph1: `本条款和条件以及下述所提及的文件
                       （以下简称“条款”）适用于本网站（“网站”）的使用
@@ -2219,6 +2248,7 @@ export const translations = {
                       - 您对加密货币相关税务负责。`,
   },
   sw: {
+    geoRestrictTitle: `{host} haipatikani nchini {country}`,
     termsTitle1: `Sheria na Masharti`,
     termsParagraph1: `Sheria na masharti haya pamoja na nyaraka zilizotajwa hapa chini
                       ("Masharti") yanatumika kwa matumizi ya tovuti hii ("Tovuti")
@@ -2296,6 +2326,7 @@ export const translations = {
                       - unawajibika kwa kodi za crypto.`,
   },
   rw: {
+    geoRestrictTitle: `{host} ntiboneka muri {country}`,
     termsTitle1: `Amategeko n’Amabwiriza`,
     termsParagraph1: `Aya mategeko n’amabwiriza hamwe n’inyandiko zivugwa hepfo
                       ("Amategeko") areba ikoreshwa ry’uru rubuga ("Urubuga")
@@ -2373,6 +2404,7 @@ export const translations = {
                       - ushinzwe imisoro ya crypto.`,
   },
   nb: {
+    geoRestrictTitle: `{host} er ikke tilgjengelig i {country}`,
     termsTitle1: `Vilkår og betingelser`,
     termsParagraph1: `Disse vilkårene og betingelsene og dokumentene som det henvises til nedenfor
                       ("Vilkårene") gjelder for bruken av det nåværende nettstedet ("Nettstedet")
@@ -2456,6 +2488,7 @@ export const translations = {
                       - Du er eneansvarlig for eventuelle skatter som kan påløpe på kryptovaluta du mottar gjennom bruk av Tjenesten.`,
   },
   am: {
+    geoRestrictTitle: `{host} በ{country} አይገኝም`,
     termsTitle1: `ውሎች እና ሁኔታዎች`,
     termsParagraph1: `እነዚህ ውሎች እና ሁኔታዎች እና ከታች የተጠቀሱ ሰነዶች ("ውሎች") በአሁኑ ድረ ገጽ ("ድረ ገጽ") እና ከዚህ ጋር የተያያዙ ወይም የተገናኙ አገልግሎቶች ("አገልግሎት") ላይ ይተገበራሉ። እባክዎ በጥንቃቄ ይመልከቱ። ይህ በእርስዎ እና በእኛ መካከል ሕጋዊ ስምምነት ነው። በመጠቀም እነዚህን ውሎች ትቀበላለህ።`,
 
@@ -2485,6 +2518,7 @@ export const translations = {
 3.19. ሁሉንም ታክስ እርስዎ ብቻ ትከፍላለህ።`,
   },
   lm: {
+    geoRestrictTitle: `{host} tekozesebwa mu {country}`,
     termsTitle1: `Amateeka n’Obukwakkulizo`,
     termsParagraph1: `Amateeka gano gakola ku mukutu guno n’empeereza zonna ezikwatagana nayo. Bw’okozesa omukutu guno okkiriziganya n’amateeka gano.`,
 
@@ -2514,6 +2548,7 @@ export const translations = {
 3.19. Osasula omusolo gwonna ogukwata ku buwanguzi bwo.`,
   },
   ha: {
+    geoRestrictTitle: `{host} ba ya samuwa a {country}`,
     termsTitle1: `Sharuɗɗa Da Yanayi`,
     termsParagraph1: `Waɗannan sharuɗɗa da yanayi da kuma takaddun da aka ambata a ƙasa
                       ("Sharuɗɗa") sun shafi amfani da wannan gidan yanar gizo na yanzu (the
@@ -2635,6 +2670,7 @@ export const translations = {
                       ya shafi cryptocurrency da aka ba ka ta hanyar amfani da Sabis.`,
   },
   yo: {
+    geoRestrictTitle: `{host} kò sí ní {country}`,
     termsTitle1: `Awọn Ofin Ati Ipo`,
     termsParagraph1: `Awọn ofin ati ipo wọnyi ati awọn iwe aṣẹ ti a tọka si ni isalẹ
                       ("Awọn Ofin") waye si lilo oju opo yii ti isiyi (the
@@ -2751,6 +2787,7 @@ export const translations = {
                       sisan lori cryptocurrency ti a fun ọ nipasẹ lilo Iṣẹ.`,
   },
   ig: {
+    geoRestrictTitle: `{host} adịghị arụ ọrụ na {country}`,
     termsTitle1: `Usoro Na Ọnọdụ`,
     termsParagraph1: `Usoro na ọnọdụ ndị a yana akwụkwọ ndị a tọrọ aka n'ime
                       ("Usoro") na-emetụta iji ebe a dị ugbu a (the
@@ -2873,6 +2910,7 @@ export const translations = {
                       ike ịkwụ n'cryptocurrency anyị nyere gị site n'iji Ọrụ.`,
   },
   tw: {
+    geoRestrictTitle: `{host} nni hɔ wɔ {country}`,
     termsTitle1: `Mmara Ne Nneyɛe`,
     termsParagraph1: `Mmara ne nneyɛe yi ne nsɛm nhyehyɛe a wɔka ho asɛm wɔ ase
                       ("Mmara") di kan ma website a ɛwɔ hɔ yi (the
