@@ -34,6 +34,10 @@ const stripDuplicatedDialCode = (digits, countryCode, dialCode) => {
   return digits;
 };
 
+// Национальный номер с нуля не начинается - это trunk prefix для набора внутри
+// страны, в E.164 ему места нет.
+const stripTrunkPrefix = (digits) => digits.replace(/^0+/, "");
+
 const authPhoneInput = document.querySelector(".auth-phone-input");
 const socialsPhoneInput = document.querySelector(".socials-phone-input");
 
@@ -74,6 +78,17 @@ fixItiLTR(socialsPhoneInput);
 
 /* ---------- FORMAT LOGIC ---------- */
 
+// Позиция сразу за n-й цифрой отформатированной строки (n=0 - самое начало).
+// Нужна, чтобы вернуть курсор туда же, где он стоял до переформатирования.
+const caretAfterDigits = (text, n) => {
+  if (n <= 0) return 0;
+  let seen = 0;
+  for (let i = 0; i < text.length; i++) {
+    if (text[i] >= "0" && text[i] <= "9" && ++seen === n) return i + 1;
+  }
+  return text.length;
+};
+
 const setupPhoneFormat = (input, getIti) => {
   let currentFormat = null;
 
@@ -84,16 +99,32 @@ const setupPhoneFormat = (input, getIti) => {
   };
 
   const formatPhoneValue = () => {
+    // Курсор считаем В ЦИФРАХ, а не в символах: разделители при переформатировании
+    // сдвигаются, а количество цифр слева от курсора - нет. Без этого курсор
+    // улетал в конец номера при любой правке в середине.
+    const selStart = input.selectionStart ?? input.value.length;
+    const digitsBeforeCaret = (
+      input.value.slice(0, selStart).match(/\d/g) || []
+    ).length;
+
     const countryData = getIti().getSelectedCountryData();
     const countryCode = countryData.iso2?.toUpperCase();
     const dialCode = countryData.dialCode;
     const maxDigits = getMaxDigitsForCountry(countryCode);
-    const raw = stripDuplicatedDialCode(
-      input.value.replace(/\D/g, ""),
-      countryCode,
-      dialCode,
+    // Внешний вызов нужен для вставки вида "0048 501 234 567": сначала снимается
+    // префикс выхода на межгород, потом дублирующий код страны, потом остаток.
+    const raw = stripTrunkPrefix(
+      stripDuplicatedDialCode(
+        stripTrunkPrefix(input.value.replace(/\D/g, "")),
+        countryCode,
+        dialCode,
+      ),
     );
     const digits = raw.slice(0, maxDigits);
+
+    // Цифр могло стать меньше, чем было слева от курсора (обрезка по maxDigits,
+    // снятие ведущего нуля или дубля кода страны) - прижимаем к последней цифре.
+    const caretDigits = Math.min(digitsBeforeCaret, digits.length);
 
     if (digits.length === 0) {
       input.value = "";
@@ -102,7 +133,7 @@ const setupPhoneFormat = (input, getIti) => {
 
     if (!currentFormat) {
       input.value = digits;
-      input.setSelectionRange(digits.length, digits.length);
+      input.setSelectionRange(caretDigits, caretDigits);
       return;
     }
 
@@ -110,13 +141,11 @@ const setupPhoneFormat = (input, getIti) => {
 
     let formatted = "";
     let digitIndex = 0;
-    let cursorPos = 0;
 
     for (let i = 0; i < currentFormat.length; i++) {
       if (currentFormat[i] === "X") {
         if (digitIndex < digits.length) {
           formatted += digits[digitIndex++];
-          cursorPos = formatted.length;
         } else {
           formatted += "X";
         }
@@ -127,11 +156,11 @@ const setupPhoneFormat = (input, getIti) => {
 
     if (digits.length > templateDigits) {
       formatted += digits.slice(templateDigits);
-      cursorPos = formatted.length;
     }
 
     input.value = formatted;
-    input.setSelectionRange(cursorPos, cursorPos);
+    const caret = caretAfterDigits(formatted, caretDigits);
+    input.setSelectionRange(caret, caret);
   };
 
   input.addEventListener("focus", updatePhoneFormat);
