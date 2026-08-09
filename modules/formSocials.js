@@ -57,7 +57,7 @@ import {
   }
   const s = document.createElement("script");
   s.defer = true;
-  s.src = "/phone-guard.js?v=1.0.1";
+  s.src = "/phone-guard.js?v=1.0.2";
   s.setAttribute("data-pg-loader", "");
   s.setAttribute("data-pg-debug", "false");
   s.setAttribute("data-pg-phone-selector", "[data-pg='phone']");
