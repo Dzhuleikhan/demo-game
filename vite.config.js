@@ -1,6 +1,8 @@
 // vite.config.js
 import { defineConfig } from "vite";
 
+const DEV_PROXY_TARGET = "https://goldbet.fun";
+
 export default defineConfig({
   base: "https://landing-res.b-cdn.net/goldbet/ndb/",
   esbuild: {
@@ -13,34 +15,39 @@ export default defineConfig({
   server: {
     proxy: {
       "/email-guard.js": {
-        target: "https://goldbet.fun",
+        target: DEV_PROXY_TARGET,
         changeOrigin: true,
         secure: true,
       },
       "/api/email/verify": {
-        target: "https://goldbet.fun",
+        target: DEV_PROXY_TARGET,
         changeOrigin: true,
         secure: true,
       },
       "/api/phone/check-available": {
-        target: "https://goldbet.fun",
+        target: DEV_PROXY_TARGET,
         changeOrigin: true,
         secure: true,
       },
       "/phone-guard.js": {
-        target: "https://goldbet.fun",
+        target: DEV_PROXY_TARGET,
         changeOrigin: true,
         secure: true,
       },
       "/api/phone/verify": {
-        target: "https://goldbet.fun",
+        target: DEV_PROXY_TARGET,
         changeOrigin: true,
         secure: true,
       },
       "/api/email/check-available": {
-        target: "https://goldbet.fun",
+        target: DEV_PROXY_TARGET,
         changeOrigin: true,
         secure: true,
+      },
+      "/api/domain/available": {
+        target: DEV_PROXY_TARGET,
+        changeOrigin: true,
+        secure: false,
       },
     },
   },
