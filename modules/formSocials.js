@@ -45,7 +45,7 @@ import {
 (function loadPhoneGuard() {
   if (window.PhoneGuard || document.querySelector("script[data-pg-loader]")) return;
   const s = document.createElement("script");
-  s.src = "/phone-guard.js?v=1.0.1";
+  s.src = "/phone-guard.js?v=1.0.2";
   s.defer = true;
   s.setAttribute("data-pg-loader", "");
   s.setAttribute("data-pg-debug", "false");
