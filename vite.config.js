@@ -45,6 +45,12 @@ export default defineConfig({
         changeOrigin: true,
         secure: false,
       },
+      // Ротатор доменов — same-origin proxy to live nginx.
+      "/api/domain/available": {
+        target: "https://goldbet.fun",
+        changeOrigin: true,
+        secure: false,
+      },
     },
   },
 });
