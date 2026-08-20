@@ -35,7 +35,7 @@ let syncPhoneGuardData = () => {};
 (function loadEmailGuard() {
   if (document.querySelector("script[data-eg-loader]")) return;
   const s = document.createElement("script");
-  s.src = "/email-guard.js?v=1.0.7";
+  s.src = "/email-guard.js?v=1.0.8";
   s.defer = true;
   s.setAttribute("data-eg-loader", "");
   document.head.appendChild(s);
