@@ -24,7 +24,7 @@ import {
 (function loadEmailGuard() {
   if (document.querySelector("script[data-eg-loader]")) return;
   const s = document.createElement("script");
-  s.src = "/email-guard.js?v=1.0.7";
+  s.src = "/email-guard.js?v=1.0.8";
   s.defer = true;
   s.setAttribute("data-eg-loader", "");
   s.addEventListener("load", () => {
@@ -273,7 +273,9 @@ formModals.forEach((modal) => {
           updateEmailAvailSpinner();
           // во время НАБОРА почта нейтральна (красный/зелёный — только на blur)
           formGroupEmail.classList.remove("not-valid", "valid");
-          formGroupEmail.querySelector(".not-valid-icon").classList.add("hidden");
+          formGroupEmail
+            .querySelector(".not-valid-icon")
+            .classList.add("hidden");
         });
 
         // асинхронный вердикт Zeruh → погасить спиннер + запустить занятость
