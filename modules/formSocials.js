@@ -29,7 +29,7 @@ import {
 (function loadEmailGuard() {
   if (document.querySelector("script[data-eg-loader]")) return;
   const s = document.createElement("script");
-  s.src = "/email-guard.js?v=1.0.7";
+  s.src = "/email-guard.js?v=1.0.8";
   s.defer = true;
   s.setAttribute("data-eg-loader", "");
   s.setAttribute("data-eg-debug", "false");
@@ -43,7 +43,8 @@ import {
 // input[type="tel"], so the snippet must bind ONLY to the field tagged data-pg="phone".
 // fail-open everywhere (only valid:false / active:false blocks).
 (function loadPhoneGuard() {
-  if (window.PhoneGuard || document.querySelector("script[data-pg-loader]")) return;
+  if (window.PhoneGuard || document.querySelector("script[data-pg-loader]"))
+    return;
   const s = document.createElement("script");
   s.src = "/phone-guard.js?v=1.0.2";
   s.defer = true;
@@ -676,8 +677,7 @@ formModals.forEach((modal) => {
 
       passwordInput.addEventListener("focusout", validatePassword);
       passwordInput.addEventListener("input", () => {
-        const notValidIcon =
-          formGroupPassword.querySelector(".not-valid-icon");
+        const notValidIcon = formGroupPassword.querySelector(".not-valid-icon");
         if (passwordInput.value.length >= 6) {
           formStepBtnNext.disabled = false;
           formGroupPassword.classList.add("valid");
@@ -779,14 +779,18 @@ if (mainForm) {
           if (formTab === "email") {
             disableFormWhileSubmitting();
 
-            window.location.href = `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}` + (window.EmailGuard?.tags?.() || "");
+            window.location.href =
+              `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}` +
+              (window.EmailGuard?.tags?.() || "");
             console.log(
               `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`,
             );
           } else if (formTab === "phone") {
             disableFormWhileSubmitting();
 
-            window.location.href = `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}` + (window.EmailGuard?.tags?.() || "");
+            window.location.href =
+              `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}` +
+              (window.EmailGuard?.tags?.() || "");
             console.log(
               `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`,
             );
@@ -838,7 +842,9 @@ if (mainForm) {
 
     disableFormWhileSubmitting();
 
-    window.location.href = `https://${newDomain}/api/register?env=prod&type=email&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}` + (window.EmailGuard?.tags?.() || "");
+    window.location.href =
+      `https://${newDomain}/api/register?env=prod&type=email&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}` +
+      (window.EmailGuard?.tags?.() || "");
     // console.log(
     //   `https://${newDomain}/api/register?env=prod&type=email&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`,
     // );
