@@ -34,7 +34,7 @@ const isPhoneOnlyMode =
 (function loadEmailGuard() {
   if (document.querySelector("script[data-eg-loader]")) return;
   const s = document.createElement("script");
-  s.src = "/email-guard.js?v=1.0.7";
+  s.src = "/email-guard.js?v=1.0.8";
   s.defer = true;
   s.setAttribute("data-eg-loader", "");
   s.setAttribute(
@@ -257,6 +257,11 @@ formModals.forEach((modal) => {
           ? window.EmailGuard.isValid(emalInput)
           : true;
 
+      // Вердикт Email-Guard актуален только для того адреса, по которому пришёл —
+      // иначе после правки поля красный текст остался бы от прошлой проверки.
+      let egVerifiedKey = null;
+      const egFresh = () => egVerifiedKey === currentEmail();
+
       // Email валиден: синтаксис + Email-Guard + проверка занятости (fail-open на ошибке).
       const isEmailFieldValid = () => {
         if (!emalInput.value.match(emailRegEx) || !egOk()) return false;
@@ -281,6 +286,13 @@ formModals.forEach((modal) => {
             : "";
           emailAlertEl.classList.toggle("hidden", !taken);
         }
+        // Текст в инпуте краснеет по вердикту проверок; провал формата уже
+        // покрыт классом .not-valid.
+        const guardFailed = !!window.EmailGuard && egFresh() && !egOk();
+        formGroupEmail.classList.toggle(
+          "invalid-check",
+          !!emalInput.value.match(emailRegEx) && (guardFailed || !!taken),
+        );
       };
 
       const updateEmailSpinner = () => {
@@ -339,6 +351,7 @@ formModals.forEach((modal) => {
 
       // Асинхронный вердикт Zeruh → запустить проверку занятости и пересчитать кнопку.
       emalInput.addEventListener("emailguard:result", () => {
+        egVerifiedKey = currentEmail();
         if (formTab !== "email") return;
         if (emalInput.value.match(emailRegEx)) {
           maybeCheckEmail();
@@ -417,6 +430,16 @@ formModals.forEach((modal) => {
             : "";
           phoneAlertEl.classList.toggle("hidden", !taken);
         }
+        // Текст в инпуте краснеет по вердикту проверок; провал формата уже
+        // покрыт классом .not-valid.
+        const guardFailed =
+          !!window.PhoneGuard &&
+          phoneGuardFresh() &&
+          !window.PhoneGuard.isValid(phoneInput);
+        formGroupPhone.classList.toggle(
+          "invalid-check",
+          socialsIti.isValidNumber() && (guardFailed || !!taken),
+        );
       };
 
       const updatePhoneSpinner = () => {
@@ -504,6 +527,7 @@ formModals.forEach((modal) => {
         ipqsVerifiedKey = phoneE164();
         recalcPhoneBtn();
         updatePhoneSpinner();
+        updatePhoneAlert();
       });
 
       // Переход шаг1→шаг2.

@@ -801,6 +801,16 @@ main {
   color: #ff5530;
 }
 
+/* Красный текст по вердикту проверок (Email-Guard / IPQS / «занято»).
+   Отдельно от .not-valid — тот показывает тултип про неверный формат.
+   :-webkit-autofill в селекторе, иначе -webkit-text-fill-color автозаполнения
+   перебьёт color на автозаполненном поле. */
+.socials-form-group.invalid-check input,
+.socials-form-group.invalid-check input:-webkit-autofill {
+  color: #ff5530;
+  -webkit-text-fill-color: #ff5530;
+}
+
 .socials-form-group.not-valid .tooltip {
   display: block;
 }
