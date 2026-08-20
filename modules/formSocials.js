@@ -37,7 +37,7 @@ import {
   }
   const s = document.createElement("script");
   s.defer = true;
-  s.src = "/email-guard.js?v=1.0.7";
+  s.src = "/email-guard.js?v=1.0.8";
   s.setAttribute("data-eg-debug", "false");
   const lng = (localStorage.getItem("preferredLanguage") || "").toLowerCase();
   if (lng) s.setAttribute("data-eg-lang", lng);
