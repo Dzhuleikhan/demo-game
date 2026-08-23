@@ -322,6 +322,17 @@ formModals.forEach((modal) => {
         maybeCheckEmail();
       });
 
+      // Клик по крестику — очистка поля. Сам сброс состояния (рамка, красный
+      // текст, тултип, алерт «почта занята», спиннеры, дизейбл кнопки) уже
+      // делает хендлер `input` выше, поэтому не дублируем его руками: чистим
+      // value и диспатчим bubbling-событие `input`. На него же подписаны и
+      // внешние валидаторы (EmailGuard / Zeruh / проверка занятости).
+      emailNotValidIcon?.addEventListener("click", () => {
+        emalInput.value = "";
+        emalInput.dispatchEvent(new Event("input", { bubbles: true }));
+        emalInput.focus();
+      });
+
       // Phone validation
       const formGroupPhone = formStep1.querySelector(
         ".socials-form-group-phone",
