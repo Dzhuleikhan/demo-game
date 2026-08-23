@@ -357,6 +357,20 @@ formModals.forEach((modal) => {
         updateNextButtonState();
       });
 
+      // Клик по крестику невалидной почты — очистка поля. Сброс состояния
+      // (рамка/цвет текста/тултип/алерт занятости/спиннеры/кнопка «дальше») НЕ
+      // дублируем: чистим value и диспатчим "input" — отрабатывает обработчик
+      // выше, а заодно и внешние валидаторы (EmailGuard/Zeruh, проверка
+      // занятости), подписанные на то же событие. `?.` — иконки может не быть
+      // в разметке (напр. режим без почты).
+      formGroupEmail
+        .querySelector(".not-valid-icon")
+        ?.addEventListener("click", () => {
+          emalInput.value = "";
+          emalInput.dispatchEvent(new Event("input", { bubbles: true }));
+          emalInput.focus();
+        });
+
       // Асинхронный вердикт Zeruh → пересчёт кнопки + синхронизация UI/спиннера.
       // !isPending: не гасим спиннер на промежуточном setState("ok"/"suggest")
       // ДО ответа Zeruh.
