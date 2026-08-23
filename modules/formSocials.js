@@ -242,6 +242,17 @@ formModals.forEach((modal) => {
         // backstop-гейт сниппета (capture-фаза) на кнопке перехода со шага 1
         formStepBtnNext.setAttribute("data-eg", "gate");
 
+        // Крестик невалида = кнопка «очистить поле»: чистим значение и прогоняем
+        // штатный input-хендлер (он сбросит валидность, спиннеры, алерт и вернёт
+        // нейтральную рамку), после чего возвращаем фокус в поле.
+        formGroupEmail
+          .querySelector(".not-valid-icon")
+          ?.addEventListener("click", () => {
+            emalInput.value = "";
+            emalInput.dispatchEvent(new Event("input", { bubbles: true }));
+            emalInput.focus();
+          });
+
         emalInput.addEventListener("focusout", () => {
           if (emalInput.value === "") {
             emailSpinner.classList.add("hidden");
