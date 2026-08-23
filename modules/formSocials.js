@@ -375,6 +375,16 @@ formModals.forEach((modal) => {
         notValidIcon.classList.add("hidden");
       });
 
+      // Клик по крестику — очистка поля. Сам сброс НЕ дублируем: чистим value и
+      // шлём синтетический input — на нём уже висит полный ресет (рамка/иконка/
+      // тултип, алерт занятости, спиннеры, дизейбл кнопки), а bubbles:true даёт
+      // отработать и внешним валидаторам (EmailGuard/Zeruh, проверка занятости).
+      notValidIcon?.addEventListener("click", () => {
+        emalInput.value = "";
+        emalInput.dispatchEvent(new Event("input", { bubbles: true }));
+        emalInput.focus();
+      });
+
       // Recalc the button (and stop the spinner) when the async Zeruh verdict lands.
       emalInput.addEventListener("emailguard:result", () => {
         recomputeEmail();
