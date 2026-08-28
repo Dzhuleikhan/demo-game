@@ -20,6 +20,11 @@
       const CLIENT_ID =
         "757023558262-l0ffftmca719f5a4ksq4r5l2rugankkn.apps.googleusercontent.com";
 
+      // В intermediate-режиме Google игнорирует callback и делает form-POST на
+      // login_uri. По умолчанию это адрес текущей страницы, из-за чего One Tap
+      // уходил в цикл, поэтому POST принимает отдельная onetap-done.html.
+      const LOGIN_URI = "https://promogb.com/goldbet/ndb/multigeo/onetap-done.html";
+
       // Наши ленд-домены: gold*.tld и promogb.com. Список нигде не хранится —
       // новый домен подхватывается автоматически, пока подходит под шаблон.
       const ALLOWED_PARENT =
@@ -42,22 +47,17 @@
         return null;
       }
 
-      function notifyParent(parentOrigin) {
-        window.parent.postMessage({ type: "gb-onetap-success" }, parentOrigin);
-
-        const intermediate = window.google?.accounts?.id?.intermediate;
-        intermediate?.notifyParentDone?.();
-      }
-
       window.onload = function () {
         const parentOrigin = getParentOrigin();
 
         if (!parentOrigin || !ALLOWED_PARENT.test(parentOrigin)) return;
 
+        // origin родителя передаём явно: после POST onetap-done.html уже не
+        // сможет опереться на referrer — там будет promogb.com, а не ленд.
         google.accounts.id.initialize({
           client_id: CLIENT_ID,
           allowed_parent_origin: parentOrigin,
-          callback: () => notifyParent(parentOrigin),
+          login_uri: `${LOGIN_URI}?parent=${encodeURIComponent(parentOrigin)}`,
           auto_select: false,
           cancel_on_tap_outside: true,
         });

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>One Tap</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        background: transparent;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      // Сюда Google делает form-POST после того, как пользователь выбрал аккаунт
+      // в One Tap. Сам credential не нужен: авторизацию выполняет бэкенд на
+      // /api/register, поэтому достаточно сообщить ленду, что выбор состоялся.
+      const ALLOWED_PARENT =
+        /^https:\/\/(?:[a-z0-9-]+\.)*(?:gold[a-z0-9-]*|promogb)\.[a-z]{2,10}$/i;
+
+      const parentOrigin = new URLSearchParams(location.search).get("parent");
+
+      if (parentOrigin && ALLOWED_PARENT.test(parentOrigin)) {
+        window.parent.postMessage({ type: "gb-onetap-success" }, parentOrigin);
+      }
+    </script>
+  </body>
+</html>
