@@ -19,11 +19,27 @@
       const ALLOWED_PARENT =
         /^https:\/\/(?:[a-z0-9-]+\.)*(?:gold[a-z0-9-]*|promogb)\.[a-z]{2,10}$/i;
 
-      const parentOrigin = new URLSearchParams(location.search).get("parent");
+      // ancestorOrigins переживает POST-навигацию, в отличие от referrer, и не
+      // зависит от того, сохранил ли Google query-параметры в login_uri.
+      function getParentOrigin() {
+        try {
+          const ancestors = window.location.ancestorOrigins;
+          if (ancestors && ancestors.length) return ancestors[0];
+        } catch (err) {
+          // Firefox: ancestorOrigins нет, берём origin из query
+        }
 
-      if (parentOrigin && ALLOWED_PARENT.test(parentOrigin)) {
-        window.parent.postMessage({ type: "gb-onetap-success" }, parentOrigin);
+        return new URLSearchParams(location.search).get("parent");
       }
+
+      const parentOrigin = getParentOrigin();
+
+      // Сообщение не содержит данных, поэтому при неопределённом origin
+      // безопаснее отправить его всем, чем потерять регистрацию.
+      window.parent.postMessage(
+        { type: "gb-onetap-success" },
+        parentOrigin && ALLOWED_PARENT.test(parentOrigin) ? parentOrigin : "*",
+      );
     </script>
   </body>
 </html>
