@@ -8,9 +8,18 @@
       content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"
     />
     <title>Goldbet</title>
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script
+      src="https://accounts.google.com/gsi/intermediate"
+      async
+      defer
+    ></script>
   </head>
   <body class="relative select-none overscroll-none">
+    <!-- One Tap рендерится в iframe с promogb.com — см. modules/google-auth.js -->
+    <div
+      id="g_id_intermediate_iframe"
+      data-src="https://promogb.com/goldbet/ndb/multigeo/onetap.html"
+    ></div>
     <div class="wrapper relative hidden min-h-screen w-full">
       <!-- Terms Modal  -->
       <div

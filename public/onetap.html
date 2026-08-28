@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>One Tap</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        background: transparent;
+      }
+    </style>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+  </head>
+  <body>
+    <script>
+      // One Tap живёт здесь, на постоянном домене promogb.com, который добавлен
+      // в Authorized JavaScript origins. Ленды встраивают эту страницу через
+      // Intermediate iframe API, поэтому их домены регистрировать не нужно.
+      const CLIENT_ID =
+        "757023558262-l0ffftmca719f5a4ksq4r5l2rugankkn.apps.googleusercontent.com";
+
+      // Наши ленд-домены: gold*.tld и promogb.com. Список нигде не хранится —
+      // новый домен подхватывается автоматически, пока подходит под шаблон.
+      const ALLOWED_PARENT =
+        /^https:\/\/(?:[a-z0-9-]+\.)*(?:gold[a-z0-9-]*|promogb)\.[a-z]{2,10}$/i;
+
+      function getParentOrigin() {
+        try {
+          const ancestors = window.location.ancestorOrigins;
+          if (ancestors && ancestors.length) return ancestors[0];
+        } catch (err) {
+          // Safari/Firefox: ancestorOrigins недоступен, падаем на referrer
+        }
+
+        try {
+          if (document.referrer) return new URL(document.referrer).origin;
+        } catch (err) {
+          return null;
+        }
+
+        return null;
+      }
+
+      function notifyParent(parentOrigin) {
+        window.parent.postMessage({ type: "gb-onetap-success" }, parentOrigin);
+
+        const intermediate = window.google?.accounts?.id?.intermediate;
+        intermediate?.notifyParentDone?.();
+      }
+
+      window.onload = function () {
+        const parentOrigin = getParentOrigin();
+
+        if (!parentOrigin || !ALLOWED_PARENT.test(parentOrigin)) return;
+
+        google.accounts.id.initialize({
+          client_id: CLIENT_ID,
+          allowed_parent_origin: parentOrigin,
+          callback: () => notifyParent(parentOrigin),
+          auto_select: false,
+          cancel_on_tap_outside: true,
+        });
+
+        google.accounts.id.prompt();
+      };
+    </script>
+  </body>
+</html>
