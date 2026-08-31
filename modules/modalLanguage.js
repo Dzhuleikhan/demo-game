@@ -51,7 +51,9 @@ async function setModalLanguage() {
     const countryCode = location.countryCode.toUpperCase();
 
     if (countryCode === "NG") {
-      const browserLang = (navigator.language || "en").split("-")[0].toLowerCase();
+      const browserLang = (navigator.language || "en")
+        .split("-")[0]
+        .toLowerCase();
       const nigeriaLangs = ["ha", "yo", "ig"];
       updateContent(nigeriaLangs.includes(browserLang) ? browserLang : "ha");
     } else if (countryCode === "GH") {
