@@ -783,20 +783,12 @@ formModals.forEach((modal) => {
         });
       }
 
-      const validatePassword = () => {
-        if (passwordInput.value.length >= 6) {
-          formStepBtnNext.disabled = false;
-          formGroupPassword.classList.remove("not-valid");
-          formGroupPassword
-            .querySelector(".not-valid-icon")
-            .classList.add("hidden");
-        } else {
-          formStepBtnNext.disabled = true;
-          formGroupPassword.classList.add("not-valid");
-          formGroupPassword
-            .querySelector(".not-valid-icon")
-            .classList.remove("hidden");
-        }
+      const passwordErrorIcon =
+        formGroupPassword.querySelector(".not-valid-icon");
+
+      const setPasswordError = (on) => {
+        formGroupPassword.classList.toggle("not-valid", on);
+        passwordErrorIcon.classList.toggle("hidden", !on);
       };
 
       // CHECKBOX VALIDATION
@@ -817,8 +809,27 @@ formModals.forEach((modal) => {
         formStepBtnNext.disabled = !isStep2Valid();
       };
 
+      // Пустое поле — это ещё НЕ ошибка: пользователь ничего не вводил.
+      // Иначе на шаге 2 подсветка вылезала сразу при переходе: focusFirstField
+      // ставит курсор в пароль, а на iOS фокус тут же отскакивает (панель
+      // автозаполнения/клавиатура), пустое поле получает focusout — и красится.
+      // Ошибку показываем только когда ВВЕДЁННЫЙ пароль не прошёл проверку.
+      const validatePassword = () => {
+        const { value } = passwordInput;
+        setPasswordError(value.length > 0 && value.length < 6);
+        // Состояние кнопки считает только recalcStep2Btn. Раньше validatePassword
+        // сам ставил disabled = false по одной длине пароля, и focusout включал
+        // кнопку в обход снятого согласия.
+        recalcStep2Btn();
+      };
+
       passwordInput.addEventListener("focusout", validatePassword);
-      passwordInput.addEventListener("input", recalcStep2Btn);
+      passwordInput.addEventListener("input", () => {
+        // Во время набора ошибку только СНИМАЕМ, но не ставим: краснеть на
+        // втором введённом символе — шум. Поставится на focusout, если надо.
+        if (passwordInput.value.length >= 6) setPasswordError(false);
+        recalcStep2Btn();
+      });
       checkboxInput.addEventListener("change", recalcStep2Btn);
     }
   }
