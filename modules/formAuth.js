@@ -4,7 +4,6 @@ import { hiddenSelect } from "./hiddenSelect";
 import { getUrlParameter, updateUrl } from "./params";
 import { newDomain } from "./fetchingDomain";
 import { checkTir1CurrencyMatch } from "./modalCurrency";
-import { getSupportedLanguage } from "./geoLocation";
 import { isDisposableEmail } from "./disposableEmail";
 
 // | AUTH FORM VALIDATION AND SUBMITTING
@@ -524,9 +523,9 @@ function submitForm(form, newDomain) {
 
     formData.bonus = checkTir1CurrencyMatch(formData.currency, formData.bonus);
 
-    let lang = getSupportedLanguage(
-      localStorage.getItem("preferredLanguage").toUpperCase(),
-    );
+    // См. комментарий в formSocials.js: обратная конвертация язык→страна→язык
+    // ломала 18 языков из 37. preferredLanguage уже хранит код языка.
+    let lang = localStorage.getItem("preferredLanguage");
 
     let cid = getUrlParameter("cid");
     let partner = getUrlParameter("partner");
