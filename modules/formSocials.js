@@ -30,7 +30,7 @@ import {
   if (window.EmailGuard || document.querySelector("script[data-eg-loader]"))
     return;
   const s = document.createElement("script");
-  s.src = "/email-guard.js?v=1.0.8";
+  s.src = "/email-guard.js?v=1.0.9";
   s.defer = true;
   s.setAttribute("data-eg-loader", "");
   const lang = localStorage.getItem("preferredLanguage");
