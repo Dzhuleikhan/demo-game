@@ -10,7 +10,6 @@ import {
 import { hiddenSelect } from "./hiddenSelect.js";
 import { newDomain } from "./fetchingDomain.js";
 import { checkTir1CurrencyMatch } from "./modalCurrency.js";
-import { getSupportedLanguage } from "./geoLocation.js";
 import {
   checkPhoneAvailability,
   getPhoneStatus,
@@ -132,6 +131,34 @@ export function setNewBonusBasedOnParams(currencyCode) {
 export let formStepCount = 1;
 const formSteps = document.querySelectorAll(".socials-form-step");
 
+// Курсор ставим в первое НЕзаполненное поле открытого шага, иначе игрок
+// сначала целится в инпут и только потом печатает.
+// Что пропускаем:
+//   hidden — так лежит валюта на шаге 2 (<input type="hidden">);
+//   radio/checkbox/disabled/readonly — печатать там нечего;
+//   .iti__search-input — поиск стран у телефона (intl-tel-input, countrySearch):
+//   в DOM он идёт РАНЬШЕ самого телефона, но полем формы не является;
+//   невидимые (offsetParent === null) — закрытые шаги и НЕактивная вкладка
+//   (у .socials-form-group без .active стоит display: none), поэтому один и тот
+//   же хелпер обслуживает и смену шага, и переключение email/phone;
+//   заполненные — иначе по «Назад» фокус вставал бы в уже введённые данные и
+//   без нужды поднимал клавиатуру. Телефон читается как пустой корректно:
+//   при separateDialCode код страны живёт вне value.
+// Все поля шага заполнены — не фокусируем ничего.
+const focusFirstField = (step) => {
+  const stepEl = document.querySelector(`.socials-form-step-${step}`);
+
+  const field = [
+    ...(stepEl?.querySelectorAll(
+      "input:not([type='hidden']):not([type='radio']):not([type='checkbox']):not([disabled]):not([readonly]):not(.iti__search-input)",
+    ) || []),
+  ].find((el) => el.offsetParent !== null && el.value.trim() === "");
+
+  // без rAF намеренно: changingFormSteps зовётся из обработчика клика, и на
+  // iOS Safari клавиатура поднимается только внутри пользовательского жеста
+  field?.focus({ preventScroll: true });
+};
+
 const changingFormSteps = (stepCount) => {
   formSteps.forEach((step) => {
     if (step) {
@@ -143,8 +170,37 @@ const changingFormSteps = (stepCount) => {
         .classList.remove("hidden");
     }
   });
+
+  focusFirstField(stepCount);
 };
 changingFormSteps(formStepCount);
+
+// Стартовый фокус ставим не по событию документа, а когда поле РЕАЛЬНО стало
+// видимым, иначе focusFirstField отрабатывает вхолостую. Порядок на загрузке:
+//   • params.js вешает .active на модалку — он статическая ЗАВИСИМОСТЬ этого
+//     модуля (см. import выше), поэтому к моменту тела formSocials модалка
+//     уже открыта;
+//   • но вся страница .wrapper лежит под display:none, пока language.js
+//     (импортируется в main.js ПОЗЖЕ) не снимет с неё hidden в initLanguage() —
+//     до этого ни одно поле не фокусируемо, offsetParent у всех null;
+//   • на DOMContentLoaded вешаться бесполезно: в geoLocation.js стоит top-level
+//     await на запрос гео, а модуль с TLA по спеке НЕ задерживает DCL — весь
+//     бандл отрабатывает уже после него.
+// Итог: ждём снятия hidden с .wrapper и фокусим ровно один раз.
+const pageWrapper = document.querySelector(".wrapper");
+if (pageWrapper && pageWrapper.classList.contains("hidden")) {
+  const wrapperShownObserver = new MutationObserver(() => {
+    if (pageWrapper.classList.contains("hidden")) return;
+    wrapperShownObserver.disconnect(); // фокусим только первый показ
+    focusFirstField(formStepCount);
+  });
+  wrapperShownObserver.observe(pageWrapper, {
+    attributes: true,
+    attributeFilter: ["class"],
+  });
+} else {
+  focusFirstField(formStepCount);
+}
 
 const formModals = document.querySelectorAll(".form-modal-socials");
 
@@ -602,53 +658,54 @@ formModals.forEach((modal) => {
         });
       }
 
-      const validatePassword = () => {
-        if (passwordInput.value.length >= 6) {
-          formStepBtnNext.disabled = false;
-          formGroupPassword.classList.remove("not-valid");
-          formGroupPassword
-            .querySelector(".not-valid-icon")
-            .classList.add("hidden");
-        } else {
-          formStepBtnNext.disabled = true;
-          formGroupPassword.classList.add("not-valid");
-          formGroupPassword
-            .querySelector(".not-valid-icon")
-            .classList.remove("hidden");
-        }
+      const passwordErrorIcon =
+        formGroupPassword.querySelector(".not-valid-icon");
+
+      const setPasswordError = (on) => {
+        formGroupPassword.classList.toggle("not-valid", on);
+        passwordErrorIcon.classList.toggle("hidden", !on);
       };
 
       // CHECKBOX VALIDATION
       const checkboxInput = formStep2.querySelector(".checkbox-input");
 
+      // Единая точка расчёта состояния кнопки шага 2. Раньше условия жили в двух
+      // независимых обработчиках: input по паролю смотрел ТОЛЬКО его длину и
+      // включал кнопку при снятом согласии, а change по чекбоксу — только галочку.
+      // Из-за этого форма уходила без согласия: достаточно было снять галочку и
+      // дописать любой символ в пароль. Теперь оба события зовут один пересчёт.
+      // Правило одно для обеих вкладок: согласие + пароль от 6 символов. Раньше
+      // на вкладке phone пароль не гейтил кнопку вовсе, хотя поле показывается и
+      // его значение уходит в /api/register — то есть могла уйти пустая строка.
+      const isStep2Valid = () =>
+        checkboxInput.checked && passwordInput.value.length >= 6;
+
+      const recalcStep2Btn = () => {
+        formStepBtnNext.disabled = !isStep2Valid();
+      };
+
+      // Пустое поле — это ещё НЕ ошибка: пользователь ничего не вводил.
+      // Иначе на шаге 2 подсветка вылезала сразу при переходе: focusFirstField
+      // ставит курсор в пароль, а на iOS фокус тут же отскакивает (панель
+      // автозаполнения/клавиатура), пустое поле получает focusout — и красится.
+      // Ошибку показываем только когда ВВЕДЁННЫЙ пароль не прошёл проверку.
+      const validatePassword = () => {
+        const { value } = passwordInput;
+        setPasswordError(value.length > 0 && value.length < 6);
+        // Состояние кнопки считает только recalcStep2Btn. Раньше validatePassword
+        // сам ставил disabled = false по одной длине пароля, и focusout включал
+        // кнопку в обход снятого согласия.
+        recalcStep2Btn();
+      };
+
       passwordInput.addEventListener("focusout", validatePassword);
       passwordInput.addEventListener("input", () => {
-        if (passwordInput.value.length >= 6) {
-          formStepBtnNext.disabled = false;
-        } else {
-          formStepBtnNext.disabled = true;
-        }
+        // Во время набора ошибку только СНИМАЕМ, но не ставим: краснеть на
+        // втором введённом символе — шум. Поставится на focusout, если надо.
+        if (passwordInput.value.length >= 6) setPasswordError(false);
+        recalcStep2Btn();
       });
-
-      checkboxInput.addEventListener("change", () => {
-        if (formTab === "email") {
-          if (
-            checkboxInput.checked === true &&
-            passwordInput.value.length >= 6
-          ) {
-            formStepBtnNext.disabled = false;
-          } else {
-            formStepBtnNext.disabled = true;
-          }
-        }
-        if (formTab === "phone") {
-          if (checkboxInput.checked === true) {
-            formStepBtnNext.disabled = false;
-          } else {
-            formStepBtnNext.disabled = true;
-          }
-        }
-      });
+      checkboxInput.addEventListener("change", recalcStep2Btn);
     }
   }
 });

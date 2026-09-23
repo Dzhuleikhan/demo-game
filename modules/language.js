@@ -1,5 +1,6 @@
 import { translations } from "/public/translations";
 import gsap from "gsap";
+import { getInitialLanguage } from "./geoLocation";
 import { setNewBonusBasedOnParams } from "./formSocials";
 
 function applyDirection(lang) {
@@ -152,8 +153,8 @@ export const countryLangMap = {
 };
 
 function determineLanguage() {
-  const browserLang = (navigator.language || "en").split("-")[0].toLowerCase();
-  return availableLang.includes(browserLang) ? browserLang : "en";
+  // язык браузера (алиасы no/nn → nb), не поддерживаем — en; гео не влияет
+  return getInitialLanguage();
 }
 
 function mainFunction() {
