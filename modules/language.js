@@ -1,7 +1,7 @@
 import { translations } from "/public/translations";
 import gsap from "gsap";
 import { setNewBonusBasedOnParams } from "./formSocials";
-import { geoData } from "./geoLocation";
+import { geoData, getInitialLanguage } from "./geoLocation";
 
 function applyDirection(lang) {
   const dir = lang === "ar" ? "rtl" : "ltr";
@@ -157,11 +157,8 @@ export const countryLangMap = {
 const NIGERIA_LANGS = ["ha", "yo", "ig"];
 
 function determineLanguage() {
-  const browserLang = (navigator.language || "en").split("-")[0].toLowerCase();
-  if (geoData?.countryCode === "NG") {
-    return NIGERIA_LANGS.includes(browserLang) ? browserLang : "ha";
-  }
-  return availableLang.includes(browserLang) ? browserLang : "en";
+  // язык браузера (алиасы no/nn → nb), не поддерживаем — en; гео не влияет
+  return getInitialLanguage();
 }
 
 function mainFunction() {

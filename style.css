@@ -314,6 +314,14 @@ main {
   overflow-y: auto;
 }
 
+/* Раскрытие вверх, когда под кнопкой не хватает места (см. fitDropdown в
+   modules/modalCurrency.js). Двух классов достаточно, чтобы перебить
+   тейлвиндовский top-[105%] из разметки. */
+.form-currency-dropdown.drop-up {
+  top: auto;
+  bottom: 105%;
+}
+
 /* | AUTH FORM STYLES */
 
 .auth-form input:-webkit-autofill {
@@ -777,11 +785,22 @@ main {
   transition: 0.3s;
 }
 
+/* Пока поле почты пустое, лейбл стоит на месте значения и работает как
+   плейсхолдер, поэтому тёмный #585858 из разметки читался как уже введённый
+   текст. Красим его в тот же серый, что и штатные ::placeholder формы
+   (#9ca3af у телефонного поля). */
+.socials-form-group-email label {
+  color: #9ca3af;
+}
+
 /* .form-group-email input:focus, */
 .socials-form-group-email input:focus+label,
 .socials-form-group-email input:not(:placeholder-shown)+label {
   font-size: 12px;
   transform: translateY(-14px);
+  /* Лейбл уехал наверх и стал подписью — возвращаем тёмный, чтобы он читался
+     так же, как подписи телефона и пароля, стоящие в том же ряду. */
+  color: #585858;
 }
 
 .form-step-btn:disabled {
@@ -832,6 +851,20 @@ main {
 
 .socials-form-group-password.not-valid .tooltip {
   display: block;
+}
+
+/* Звёздочка обязательного поля у почты, телефона и пароля. Ставим через ::after,
+   а не в разметке: подписи телефона и пароля переводятся присвоением innerHTML
+   (data-modal-translate), поэтому вложенная в разметку звёздочка стиралась бы
+   при каждой смене языка. margin-inline-start — чтобы отступ оставался между
+   текстом и звёздочкой и в RTL (арабский), где ::after визуально уходит влево. */
+.socials-form-group-email label::after,
+.socials-form-group-phone [data-modal-translate="phoneNumber"]::after,
+.socials-form-group-password
+  [data-modal-translate="passwordPlaceholder"]::after {
+  content: "*";
+  color: #ff5530;
+  margin-inline-start: 2px;
 }
 
 .socials-form-group-password.valid {
@@ -1037,17 +1070,39 @@ main {
 }
 
 /* | EMAIL-GUARD (Zeruh) — хинт под email-полем + спиннер проверки */
-.eg-hint {
-  font-size: 14px;
+/* Все тексты ошибок под полями почты и телефона — одним правилом. Пишут их
+   четыре источника: .eg-hint (сниппет Email-Guard), .pg-hint (сниппет
+   Phone-Guard), .socials-email-alert и .socials-phone-alert («занято», наша
+   разметка). Раньше хинт почты был обычным начертанием, а хинт телефона —
+   жирным, с разными отступами; на лендах, где почта и телефон стоят на одном
+   шаге, это бросалось в глаза. Жирный 12px — как у алертов в формах 100FS.
+   !important: сниппеты инжектят свои стили в <head> уже после нашей сборки,
+   а text-xs у алертов — тейлвиндовская утилита той же специфичности. */
+.eg-hint,
+.pg-hint,
+.socials-email-alert,
+.socials-phone-alert {
+  margin: 10px 0 !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
   text-align: center;
+  color: #ff5530;
+}
+
+/* Здесь почта и телефон лежат в гриде .form-tab-content с gap 15px, и хинт —
+   такой же элемент грида: к gap добавлялся его margin 10px (в гриде margin'ы не
+   схлопываются), и текст ошибки отъезжал от поля на 25px. Подтягиваем к полю
+   на 10px, как в лендах с вкладками; снизу остаётся gap до следующего поля. */
+.form-tab-content.grid > .eg-hint,
+.form-tab-content.grid > .pg-hint,
+.form-tab-content.grid > .socials-email-alert,
+.form-tab-content.grid > .socials-phone-alert {
+  margin: -5px 0 0 !important;
 }
 
 .eg-hint[data-eg-state="suggest"] {
   color: #ffffff;
-}
-
-.eg-hint[data-eg-state="error"] {
-  color: #ff3b3b;
 }
 
 /* Спиннер проверки email внутри инпута (крутится, пока идёт проверка Zeruh) */
@@ -1075,15 +1130,3 @@ main {
   }
 }
 
-/* | PHONE-GUARD (IPQS) — хинт ошибки под телефонным полем.
-   Сниппет вставляет <div class="pg-hint"> сиблингом под группой (вне .iti).
-   Положительный margin-top, по центру, красный (НЕ отрицательный — наедет на инпут).
-   Пустой хинт схлопывается правилом, вшитым в сам сниппет. */
-.pg-hint {
-  margin-top: 6px;
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 1.2;
-  text-align: center;
-  color: #ff5530;
-}
