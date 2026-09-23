@@ -1,4 +1,4 @@
-import { geoData, getSupportedLanguage } from "./geoLocation";
+import { geoData, getInitialLanguage } from "./geoLocation";
 import { translations } from "/public/translations";
 import { modalTranslations } from "../public/modalTranslations";
 import gsap from "gsap";
@@ -80,7 +80,7 @@ function changeLanguage(lang) {
 }
 
 function determineLanguage() {
-  return getSupportedLanguage(geoData.countryCode);
+  return getInitialLanguage();
 }
 
 async function initLanguage() {
