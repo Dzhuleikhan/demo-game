@@ -1,16 +1,16 @@
 export const modalTranslations = {
   en: {
     // ? AUTH
-    mainModalTitle: "sign up",
-    tabEmail: "E-mail",
+    mainModalTitle: "Sign up",
+    tabEmail: "Email",
     tabPhone: "Phone",
     tabSocial: "Social",
     tabOneClick: "1-click",
     yourCurrency: "Your currency",
-    yourWelcomeBonus: "Your welcome bonus",
-    havePromoCode: "I have a promo-code",
+    yourWelcomeBonus: "Your Welcome Bonus",
+    havePromoCode: "I have a promo code",
     signUpBtn: "Sign Up",
-    chooseSocialBtn: "Choose a social",
+    chooseSocialBtn: "Choose a social network",
     terms: `I agree to the <a href="https://dev1.goldbet.io/terms-and-conditions" class="text-white underline underline-offset-4" >Terms and Conditions</a></span>`,
     wrongEmail: "Wrong e-mail",
     wrongPassword: "At least 6 characters",
@@ -19,33 +19,33 @@ export const modalTranslations = {
     activated: "Activated",
     quickReg: "Quick registration",
     regWithEmail: "Register with email",
-    yourWinning: "Your winning",
+    yourWinning: "Your winnings",
     signUpToClaim: "Sign up to claim your prize",
     passwordPlaceholder: "Password",
     promocodePlaceholder: "Promo-Code",
     depositBonus: `Welcome bonus <span class="bonus-value"></span> <span class="bonus-currency"></span> + <span class="bonus-spins"></span>`,
     // ? SOCIALS
-    signUpEasySteps: "Sign Up in 3 Easy Steps",
+    signUpEasySteps: "Sign Up in 2 Easy Steps",
     completeToClaimGift: "Complete them to claim your gift.",
     signUpWithGoogle: "Sign Up with Google",
     signUpWithFacebook: "Sign Up with Facebook",
     phone: "Phone",
-    wrongEmail: "Wrong email",
-    wrongNumber: "Wrong number",
+    wrongEmail: "Invalid email address",
+    wrongNumber: "Invalid phone number",
     signUpBtn: "Sign up",
     promoApplied: "Bonus applied",
     bonusName: "WELCOME CASINO BONUS",
     depositBonus: `bonus up to <span class="bonus-value"></span> <span class="bonus-currency"></span> + <span class="bonus-spins"></span>`,
-    depositBonus2: "400% on Deposit up to 6000",
+    depositBonus2: "400% on Deposit up to €6,000",
     phoneNumber: "Phone Number",
     password: "Password",
-    minSymbols: "Minimum 6 symbols",
+    minSymbols: "Minimum 6 characters",
     atLeast6Chars: "At least 6 characters",
     currency: "Currency",
     terms: `I agree to the <a href="https://dev1.goldbet.io/terms-and-conditions" class="text-white underline underline-offset-4" >Terms and Conditions</a></span>`,
     startPlaying: "Start playing",
     areYouSure: `Are You Sure? <br /> Your Progress Will Be Lost`,
-    keepRegistering: "Keep registering",
+    keepRegistering: "Continue Registration",
     returnToWebsite: "Return to website",
     step2Title: `One Last Step <br /> to Claim Your Bonus`,
     step2Subtitle: `Create a password and select <br /> your account currency.`,
@@ -106,7 +106,7 @@ export const modalTranslations = {
   es: {
     // ? AUTH
     mainModalTitle: "Registrarse",
-    tabEmail: "E-mail",
+    tabEmail: "Email",
     tabPhone: "Teléfono",
     tabSocial: "Social",
     tabOneClick: "1-clic",
@@ -158,7 +158,7 @@ export const modalTranslations = {
   pt: {
     // ? AUTH
     mainModalTitle: "Cadastre-se",
-    tabEmail: "E-mail",
+    tabEmail: "Email",
     tabPhone: "Telefone",
     tabSocial: "Social",
     tabOneClick: "1-clique",
@@ -186,7 +186,7 @@ export const modalTranslations = {
     signUpWithGoogle: "Cadastre-se com Google",
     signUpWithFacebook: "Cadastre-se com Facebook",
     phone: "Telefone",
-    wrongEmail: "E-mail incorreto",
+    wrongEmail: "Email incorreto",
     wrongNumber: "Número incorreto",
     signUpBtn: "Cadastre-se",
     promoApplied: "Bônus aplicado",
@@ -210,7 +210,7 @@ export const modalTranslations = {
   fr: {
     // ? AUTH
     mainModalTitle: "Inscription",
-    tabEmail: "E-mail",
+    tabEmail: "Email",
     tabPhone: "Téléphone",
     tabSocial: "Social",
     tabOneClick: "1-clic",
@@ -264,13 +264,13 @@ export const modalTranslations = {
     mainModalTitle: "Registrieren",
     tabEmail: "E-Mail",
     tabPhone: "Telefon",
-    tabSocial: "Sozial",
+    tabSocial: "Soziale Netzwerke",
     tabOneClick: "1-Klick",
     yourCurrency: "Ihre Währung",
     yourWelcomeBonus: "Ihr Willkommensbonus",
     havePromoCode: "Ich habe einen Promo-Code",
     signUpBtn: "Registrieren",
-    chooseSocialBtn: "Wähle sozial",
+    chooseSocialBtn: "Wählen Sie ein soziales Netzwerk",
     terms:
       'Ich stimme den <a href="https://dev1.goldbet.io/terms-and-conditions" class="text-white underline underline-offset-4" >AGB</a> zu</span>',
     wrongEmail: "Falsche E-Mail",
@@ -281,23 +281,23 @@ export const modalTranslations = {
     quickReg: "Schnelle Registrierung",
     regWithEmail: "Mit E-Mail registrieren",
     yourWinning: "Ihr Gewinn",
-    signUpToClaim: "Registrieren Sie sich, um Ihren Preis zu holen",
+    signUpToClaim: "Registrieren Sie sich und sichern Sie sich Ihren Preis",
     passwordPlaceholder: "Passwort",
     promocodePlaceholder: "Promo-Code",
     depositBonus: `Welcome bonus <span class="bonus-value"></span> <span class="bonus-currency"></span> + <span class="bonus-spins"></span>`,
     // ? SOCIALS
-    signUpEasySteps: "Registrieren Sie sich in 3 einfachen Schritten",
+    signUpEasySteps: "Registrieren Sie sich in 2 einfachen Schritten",
     completeToClaimGift: "Schließen Sie sie ab, um Ihr Geschenk zu erhalten.",
     signUpWithGoogle: "Mit Google registrieren",
     signUpWithFacebook: "Mit Facebook registrieren",
     phone: "Telefon",
-    wrongEmail: "Falsche E-Mail",
-    wrongNumber: "Falsche Nummer",
+    wrongEmail: "Ungültige E-Mail-Adresse",
+    wrongNumber: "Ungültige Telefonnummer",
     signUpBtn: "Registrieren",
     promoApplied: "Bonus angewendet",
-    bonusName: "Willkommensbonus im Casino",
+    bonusName: "CASINO-WILLKOMMENSBONUS",
     depositBonus: `Bonus bis zu <span class="bonus-value"></span> <span class="bonus-currency"></span> + <span class="bonus-spins"></span>`,
-    depositBonus2: "400% auf Einzahlung bis zu 6000",
+    depositBonus2: "400 % auf Einzahlung bis zu 6.000 €",
     phoneNumber: "Telefonnummer",
     password: "Passwort",
     minSymbols: "Mindestens 6 Zeichen",
@@ -305,11 +305,11 @@ export const modalTranslations = {
     currency: "Währung",
     terms:
       'Ich stimme den <a href="https://dev1.goldbet.io/terms-and-conditions" class="text-white underline underline-offset-4" >AGB</a> zu</span>',
-    startPlaying: "Spielen starten",
+    startPlaying: "Jetzt spielen",
     areYouSure: `Sind Sie sicher? <br /> Ihr Fortschritt geht verloren`,
     keepRegistering: "Registrierung fortsetzen",
     returnToWebsite: "Zurück zur Website",
-    step2Title: `Ein letzter Schritt, um Ihren Bonus zu erhalten`,
+    step2Title: `Nur noch ein Schritt, um Ihren Bonus zu erhalten`,
     step2Subtitle: `Erstellen Sie ein Passwort und wählen Sie die Währung Ihres Kontos.`,
     passwordPlaceholder: "Passwort",
   },
@@ -576,7 +576,7 @@ export const modalTranslations = {
   da: {
     // ? AUTH
     mainModalTitle: "Tilmeld",
-    tabEmail: "E-mail",
+    tabEmail: "Email",
     tabPhone: "Telefon",
     tabSocial: "Social",
     tabOneClick: "1-klik",
@@ -729,7 +729,7 @@ export const modalTranslations = {
   pl: {
     // ? AUTH
     mainModalTitle: "zarejestruj się",
-    tabEmail: "E-mail",
+    tabEmail: "Email",
     tabPhone: "Telefon",
     tabSocial: "Sieci",
     tabOneClick: "1-klik",
@@ -781,7 +781,7 @@ export const modalTranslations = {
   ro: {
     // ? AUTH
     mainModalTitle: "înregistrează-te",
-    tabEmail: "E-mail",
+    tabEmail: "Email",
     tabPhone: "Telefon",
     tabSocial: "Social",
     tabOneClick: "1-clic",
@@ -809,7 +809,7 @@ export const modalTranslations = {
     signUpWithGoogle: "Înregistrează-te cu Google",
     signUpWithFacebook: "Înregistrează-te cu Facebook",
     phone: "Telefon",
-    wrongEmail: "E-mail incorect",
+    wrongEmail: "Email incorect",
     wrongNumber: "Număr incorect",
     signUpBtn: "Înregistrează-te",
     promoApplied: "Bonus aplicat",
@@ -833,7 +833,7 @@ export const modalTranslations = {
   hu: {
     // ? AUTH
     mainModalTitle: "regisztráció",
-    tabEmail: "E-mail",
+    tabEmail: "Email",
     tabPhone: "Telefon",
     tabSocial: "Közösségi",
     tabOneClick: "1 katt",
@@ -885,7 +885,7 @@ export const modalTranslations = {
   cs: {
     // ? AUTH
     mainModalTitle: "registrace",
-    tabEmail: "E-mail",
+    tabEmail: "Email",
     tabPhone: "Telefon",
     tabSocial: "Sítě",
     tabOneClick: "1 klik",
@@ -1041,7 +1041,7 @@ export const modalTranslations = {
   el: {
     // ? AUTH
     mainModalTitle: "εγγραφή",
-    tabEmail: "E-mail",
+    tabEmail: "Email",
     tabPhone: "Τηλέφωνο",
     tabSocial: "Δίκτυα",
     tabOneClick: "1 κλικ",
@@ -1145,7 +1145,7 @@ export const modalTranslations = {
   it: {
     // ? AUTH
     mainModalTitle: "registrati",
-    tabEmail: "E-mail",
+    tabEmail: "Email",
     tabPhone: "Telefono",
     tabSocial: "Social",
     tabOneClick: "1 clic",
@@ -1173,7 +1173,7 @@ export const modalTranslations = {
     signUpWithGoogle: "Registrati con Google",
     signUpWithFacebook: "Registrati con Facebook",
     phone: "Telefono",
-    wrongEmail: "E-mail non valida",
+    wrongEmail: "Email non valida",
     wrongNumber: "Numero non valido",
     signUpBtn: "Registrati",
     promoApplied: "Bonus applicato",
@@ -1199,7 +1199,7 @@ export const modalTranslations = {
     mainModalTitle: "registréieren",
     tabEmail: "E-Mail",
     tabPhone: "Telefon",
-    tabSocial: "Sozial",
+    tabSocial: "Soziale Netzwerke",
     tabOneClick: "1 Klick",
     yourCurrency: "Är Währung",
     yourWelcomeBonus: "Äre Wëllkommensbonus",
@@ -1249,7 +1249,7 @@ export const modalTranslations = {
   mt: {
     // ? AUTH
     mainModalTitle: "irreġistra",
-    tabEmail: "E-mail",
+    tabEmail: "Email",
     tabPhone: "Telefon",
     tabSocial: "Soċjali",
     tabOneClick: "1 klikk",
@@ -1277,7 +1277,7 @@ export const modalTranslations = {
     signUpWithGoogle: "Irreġistra ma’ Google",
     signUpWithFacebook: "Irreġistra ma’ Facebook",
     phone: "Telefon",
-    wrongEmail: "E-mail ħażin",
+    wrongEmail: "Email ħażin",
     wrongNumber: "Numru ħażin",
     signUpBtn: "Irreġistra",
     promoApplied: "Bonus applikat",
@@ -1301,7 +1301,7 @@ export const modalTranslations = {
   nl: {
     // ? AUTH
     mainModalTitle: "registreren",
-    tabEmail: "E-mail",
+    tabEmail: "Email",
     tabPhone: "Telefoon",
     tabSocial: "Sociaal",
     tabOneClick: "1 klik",
@@ -1353,7 +1353,7 @@ export const modalTranslations = {
   sk: {
     // ? AUTH
     mainModalTitle: "registrácia",
-    tabEmail: "E-mail",
+    tabEmail: "Email",
     tabPhone: "Telefón",
     tabSocial: "Siete",
     tabOneClick: "1 klik",
@@ -1675,7 +1675,7 @@ export const modalTranslations = {
   lm: {
     // ? AUTH
     mainModalTitle: "Wewandiisa",
-    tabEmail: "E-mail",
+    tabEmail: "Email",
     tabPhone: "Essimu",
     tabSocial: "Social",
     tabOneClick: "1-click",
@@ -1737,7 +1737,7 @@ export const modalTranslations = {
   ha: {
     // ? AUTH
     mainModalTitle: "Yi Rajista",
-    tabEmail: "E-mail",
+    tabEmail: "Email",
     tabPhone: "Waya",
     tabSocial: "Social",
     tabOneClick: "Danna 1",
@@ -1788,7 +1788,7 @@ export const modalTranslations = {
   yo: {
     // ? AUTH
     mainModalTitle: "Forúkọ sílẹ̀",
-    tabEmail: "E-mail",
+    tabEmail: "Email",
     tabPhone: "Fóònù",
     tabSocial: "Social",
     tabOneClick: "Tẹ 1",
@@ -1839,7 +1839,7 @@ export const modalTranslations = {
   ig: {
     // ? AUTH
     mainModalTitle: "Debanye aha",
-    tabEmail: "E-mail",
+    tabEmail: "Email",
     tabPhone: "Fọn",
     tabSocial: "Social",
     tabOneClick: "Pịa 1",
@@ -1890,7 +1890,7 @@ export const modalTranslations = {
   tw: {
     // ? AUTH
     mainModalTitle: "Kyerɛw wo din",
-    tabEmail: "E-mail",
+    tabEmail: "Email",
     tabPhone: "Fóòn",
     tabSocial: "Social",
     tabOneClick: "Klik 1",
