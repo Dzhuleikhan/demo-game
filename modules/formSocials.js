@@ -6,7 +6,6 @@ import { getUrlParameter, removeUrlParameter } from "./params.js";
 import { hiddenSelect } from "./hiddenSelect.js";
 import { newDomain } from "./fetchingDomain.js";
 import { checkTir1CurrencyMatch } from "./modalCurrency.js";
-import { getSupportedLanguage } from "./geoLocation.js";
 import {
   checkPhoneAvailability,
   getPhoneStatus,
@@ -992,9 +991,7 @@ formSocialLinks.forEach((link) => {
         .querySelector(".bonus-input")
         .getAttribute("data-bonus");
 
-      const lang = getSupportedLanguage(
-        localStorage.getItem("preferredLanguage").toUpperCase(),
-      );
+      const lang = localStorage.getItem("preferredLanguage");
 
       let currencyStoredData = localStorage.getItem("currencyData");
       let currencyData = JSON.parse(currencyStoredData);
