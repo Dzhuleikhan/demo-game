@@ -792,11 +792,22 @@ main {
   transition: 0.3s;
 }
 
+/* Пока поле почты пустое, лейбл стоит на месте значения и работает как
+   плейсхолдер, поэтому тёмный #585858 из разметки читался как уже введённый
+   текст. Красим его в тот же серый, что и штатные ::placeholder формы
+   (#9ca3af у телефонного поля). */
+.socials-form-group-email label {
+  color: #9ca3af;
+}
+
 /* .form-group-email input:focus, */
 .socials-form-group-email input:focus + label,
 .socials-form-group-email input:not(:placeholder-shown) + label {
   font-size: 12px;
   transform: translateY(-14px);
+  /* Лейбл уехал наверх и стал подписью — возвращаем тёмный, чтобы он читался
+     так же, как подписи телефона и пароля, стоящие в том же ряду. */
+  color: #585858;
 }
 
 .form-step-btn:disabled {

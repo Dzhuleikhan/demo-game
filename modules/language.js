@@ -1,4 +1,4 @@
-import { geoData } from "./geoLocation";
+import { geoData, getInitialLanguage } from "./geoLocation";
 import { translations } from "/public/translations";
 import gsap from "gsap";
 import { setNewBonusBasedOnParams } from "./formSocials";
@@ -37,8 +37,8 @@ function changeLanguage(lang) {
 }
 
 function determineLanguage() {
-  const browserLang = (navigator.language || "en").split("-")[0].toLowerCase();
-  return SupportedLanguages.includes(browserLang) ? browserLang : "en";
+  // язык браузера (алиасы no/nn → nb), не поддерживаем — en; гео не влияет
+  return getInitialLanguage();
 }
 
 async function initLanguage() {
