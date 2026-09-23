@@ -1,4 +1,4 @@
-import { geoData, getSupportedLanguage } from "./geoLocation";
+import { geoData, getInitialLanguage } from "./geoLocation";
 import { translations } from "/public/translations";
 import { modalTranslations } from "../public/modalTranslations";
 import { SupportedLanguages } from "../public/data";
@@ -79,14 +79,14 @@ function changeLanguage(lang) {
 }
 
 function determineLanguage() {
-  const browserLang = (navigator.language || "en").split("-")[0].toLowerCase();
-  return SupportedLanguages.includes(browserLang) ? browserLang : "en";
+  // язык браузера (алиасы no/nn → nb), не поддерживаем — en; гео не влияет
+  return getInitialLanguage();
 }
 
 async function initLanguage() {
   try {
-    const geoLang = getSupportedLanguage(geoData.countryCode);
-    const lang = geoLang !== null ? geoLang : determineLanguage();
+    // язык — по браузеру, гео на выбор языка не влияет
+    const lang = determineLanguage();
     localStorage.setItem("preferredLanguage", lang);
     changeLanguage(lang);
 
