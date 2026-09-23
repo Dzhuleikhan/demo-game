@@ -316,6 +316,14 @@ main {
   overflow-y: auto;
 }
 
+/* Раскрытие вверх, когда под кнопкой не хватает места (см. fitDropdown в
+   modules/modalCurrency.js). Двух классов достаточно, чтобы перебить
+   тейлвиндовский top-[105%] из разметки. */
+.form-currency-dropdown.drop-up {
+  top: auto;
+  bottom: 105%;
+}
+
 /* | AUTH FORM STYLES */
 
 .auth-form input:-webkit-autofill {
@@ -849,6 +857,20 @@ main {
   display: block;
 }
 
+/* Звёздочка обязательного поля у почты, телефона и пароля. Ставим через ::after,
+   а не в разметке: подписи телефона и пароля переводятся присвоением innerHTML
+   (data-modal-translate), поэтому вложенная в разметку звёздочка стиралась бы
+   при каждой смене языка. margin-inline-start — чтобы отступ оставался между
+   текстом и звёздочкой и в RTL (арабский), где ::after визуально уходит влево. */
+.socials-form-group-email label::after,
+.socials-form-group-phone [data-modal-translate="phoneNumber"]::after,
+.socials-form-group-password
+  [data-modal-translate="passwordPlaceholder"]::after {
+  content: "*";
+  color: #ff5530;
+  margin-inline-start: 2px;
+}
+
 .socials-form-group-password.valid {
   border: 2px solid #4ed937;
 }
@@ -1079,17 +1101,26 @@ main {
 }
 
 /* | EMAIL-GUARD (Zeruh) HINT */
-.eg-hint {
-  font-size: 14px;
+/* Под полем почты в одно и то же место (сразу под обёрткой инпута) пишут два
+   разных источника: .eg-hint рисует сниппет Email-Guard своим CSS (13px/1.3),
+   а .socials-email-alert — наша разметка (text-xs = 12px). Из-за этого
+   сообщения отличались размером и интерлиньяжем. Держим оба одним правилом;
+   размер берём 12px — как у соседнего .pg-hint под телефоном.
+   !important обязателен с обеих сторон: сниппет инжектит свои стили в <head>
+   уже после нашей сборки, а text-xs — тейлвиндовская утилита той же
+   специфичности, и итог решался бы порядком в файле. */
+.eg-hint,
+.socials-email-alert {
+  margin: 10px 0 !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  line-height: 1.3 !important;
   text-align: center;
+  color: #ff5530;
 }
 
 .eg-hint[data-eg-state="suggest"] {
   color: #ffffff;
-}
-
-.eg-hint[data-eg-state="error"] {
-  color: #ff3b3b;
 }
 
 .eg-suggest-link {
