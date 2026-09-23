@@ -122,9 +122,55 @@ formCurrency.forEach((cur) => {
       currencyDropdownList.classList.remove("active");
     }
 
+    // Модалка стоит с overflow: hidden, а список раскрывается вниз с фиксированной
+    // max-height: 225px из style.css. На невысоких экранах (Android, где адресная
+    // строка съедает часть вьюпорта) свободного места под кнопкой столько нет, и
+    // список обрезало нижним краем модалки. Поэтому перед показом подгоняем его
+    // под реально доступную высоту, а если снизу теснее, чем сверху, —
+    // раскрываем вверх.
+    const DROPDOWN_MAX_HEIGHT = 225; // синхронно с .form-currency-dropdown в style.css
+    const DROPDOWN_GAP = 8; // чтобы список не упирался в край модалки
+    // Ниже этого раскрываться вниз уже бессмысленно — влезает меньше трёх строк
+    // (строка списка ≈ 48px). Порог держим низким намеренно: на десктопе под
+    // кнопкой ровно 217px, и без него список без нужды прыгал бы вверх.
+    const DROPDOWN_MIN_USEFUL = 160;
+
+    const fitDropdown = () => {
+      const clipper =
+        currencyDropdownList.closest(".modal-content") ||
+        document.documentElement;
+      const clipRect = clipper.getBoundingClientRect();
+      const btnRect = currencyDropdownBtn.getBoundingClientRect();
+
+      // Обрезать может и модалка (overflow: hidden), и сам вьюпорт, если модалка
+      // выше экрана и скроллится оверлеем, — берём то, что ближе.
+      const bottomLimit = Math.min(clipRect.bottom, window.innerHeight);
+      const topLimit = Math.max(clipRect.top, 0);
+
+      const spaceBelow = bottomLimit - btnRect.bottom - DROPDOWN_GAP;
+      const spaceAbove = btnRect.top - topLimit - DROPDOWN_GAP;
+      // Обрезание снимает уже сам max-height, поэтому вверх уходим только когда
+      // снизу совсем тесно, а сверху заметно просторнее.
+      const openUp = spaceBelow < DROPDOWN_MIN_USEFUL && spaceAbove > spaceBelow;
+
+      currencyDropdownList.classList.toggle("drop-up", openUp);
+      currencyDropdownList.style.maxHeight = `${Math.max(
+        0,
+        Math.min(DROPDOWN_MAX_HEIGHT, openUp ? spaceAbove : spaceBelow),
+      )}px`;
+    };
+
     currencyDropdownBtn.addEventListener("click", () => {
+      // Считаем ДО показа, иначе список успевает мигнуть в неверном месте.
+      if (!currencyDropdownList.classList.contains("active")) fitDropdown();
       currencyDropdownBtn.classList.toggle("active");
       currencyDropdownList.classList.toggle("active");
+    });
+
+    // Поворот экрана и всплывающая клавиатура меняют высоту вьюпорта — если
+    // список в этот момент открыт, пересчитываем.
+    window.addEventListener("resize", () => {
+      if (currencyDropdownList.classList.contains("active")) fitDropdown();
     });
 
     const currencyListItems = currencyDropdownList.querySelectorAll("li");
