@@ -435,6 +435,11 @@ main {
   right: 0;
 }
 
+/* Terms not accepted → "I agree to the" in red (all tabs/forms, any state source) */
+.checkbox-input:not(:checked) + .checkbox-content {
+  color: #ff5530;
+}
+
 .socials-item {
   box-shadow: inset 0 2px 3px 0 rgba(255, 255, 255, 0.25);
   background: #253265;
@@ -511,6 +516,32 @@ main {
   left: 50%;
   top: 100%;
   transform: translateX(-50%);
+}
+
+/* Подсказка над ✗: раньше её центрировали подбором -right-[55px]/-right-[42px]
+   под ширину английского текста, и стрелка уезжала мимо иконки (другая длина
+   текста, другой язык, мобилка). Теперь правый край подсказки привязан к ✗
+   (она крайняя справа в .validation-cta, 24px), а стрелка стоит на центре ✗:
+   12px от края блока + 12px половина иконки = 24px от правого края подсказки. */
+.validation-cta .error-alert {
+  left: auto;
+  right: -12px;
+}
+
+.validation-cta .error-alert::before {
+  left: auto;
+  right: 16px; /* 24px (центр ✗) - 8px (половина стрелки) */
+  transform: none;
+}
+
+[dir="rtl"] .validation-cta .error-alert {
+  right: auto;
+  left: -12px;
+}
+
+[dir="rtl"] .validation-cta .error-alert::before {
+  right: auto;
+  left: 16px;
 }
 
 .terms-input.non-valid+span::before {
@@ -667,6 +698,29 @@ main {
 .submit-disabled {
   opacity: 0.4;
   pointer-events: none;
+}
+
+.form-yellow-btn:disabled:not(.loading) {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.form-yellow-btn:disabled::before {
+  display: none;
+}
+
+/* Lets JS notice browser autofill (animationstart) */
+@keyframes autofill-detect {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.auth-form input:autofill {
+  animation: autofill-detect 1ms;
 }
 
 .form-yellow-btn svg {
@@ -997,6 +1051,19 @@ main {
   display: none;
 }
 
+/* Select arrows: flip when the dropdown is open */
+.form-currency-btn > svg:last-child,
+.form-currency-btn > div:last-child > svg,
+.form-bonus-btn .bonus-btn-arrow {
+  transition: transform 0.2s ease;
+}
+
+.form-currency-btn.active > svg:last-child,
+.form-currency-btn.active > div:last-child > svg,
+.form-bonus-btn.active .bonus-btn-arrow {
+  transform: rotate(180deg);
+}
+
 .payments-list-modal li {
   max-width: 60px;
 }
@@ -1007,7 +1074,8 @@ main {
   }
 
   .modal-tabs button {
-    font-size: 10px;
+    /* было 10px — нечитаемо на мобилке; длинные переводы режет .truncate */
+    font-size: 14px;
     padding-left: 2px;
     padding-right: 2px;
     flex: 1 1 0;
@@ -1021,11 +1089,47 @@ main {
 }
 
 
+/* Фолбэк до расчёта в itiTelInput.js (там padding-left ставится inline по
+   реальной ширине «флаг + код» + 12px). */
 .auth-form .iti__tel-input {
-  padding-left: 100px !important;
+  padding-left: 100px;
+}
+
+/* Код страны и номер — на одной линии по центру поля */
+.auth-form .iti__selected-country,
+.auth-form .iti__selected-country-primary {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.auth-form .iti__selected-dial-code,
+.auth-form .iti .phone-input {
+  font-size: 16px;
+  line-height: 24px;
 }
 
 /* Email-Guard (Zeruh): center the typo-suggest hint and error text */
 .eg-hint {
   text-align: center;
+}
+/* Название бонуса с заглавной буквы (переводы depositBonus начинаются со
+   строчной: "bonus up to …"). В выпадающем списке <p> — блок, ::first-letter работает. */
+.main-bonus-name::first-letter,
+.bonus-item-name::first-letter {
+  text-transform: uppercase;
+}
+
+/* Невалидное поле: текст ввода красный, как рамка (email, телефон, пароль,
+   промокод). text-fill-color перебивает цвет автозаполнения Chrome. */
+.auth-form .non-valid input {
+  color: #ff5530;
+  -webkit-text-fill-color: #ff5530;
+}
+
+/* отдельным правилом: неподдержанный псевдокласс не должен ронять основное */
+.auth-form .non-valid input:-webkit-autofill,
+.auth-form .non-valid input:-webkit-autofill:hover,
+.auth-form .non-valid input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #ff5530;
 }

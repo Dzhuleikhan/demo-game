@@ -70,11 +70,46 @@ const fixItiLTR = (input) => {
   }
 };
 
+// Отступ текста номера от кода страны. Раньше был фиксированный padding-left:
+// 100px в CSS — при длинном коде (+380, +1 868) или другом шрифте текст
+// налезал на код/прилипал к нему. Считаем от реальной ширины блока «флаг+код»
+// + постоянный зазор; ResizeObserver пересчитывает при смене страны, показе
+// вкладки (display:none → блок), догрузке шрифта и ресайзе.
+const DIAL_CODE_GAP = 12;
+const dialPaddingObservers = new WeakMap();
+
+const syncDialPadding = (input) => {
+  const iti = input.closest(".iti");
+  const selected = iti?.querySelector(".iti__selected-country");
+  if (!selected || !selected.offsetWidth) return; // скрыто — пересчитаем при показе
+  const pad = selected.offsetLeft + selected.offsetWidth + DIAL_CODE_GAP;
+  input.style.setProperty("padding-left", `${pad}px`, "important");
+};
+
+const watchDialPadding = (input) => {
+  if (!input || typeof ResizeObserver === "undefined") return;
+  dialPaddingObservers.get(input)?.disconnect();
+  const selected = input
+    .closest(".iti")
+    ?.querySelector(".iti__selected-country");
+  if (!selected) return;
+  const ro = new ResizeObserver(() => syncDialPadding(input));
+  ro.observe(selected);
+  dialPaddingObservers.set(input, ro);
+  syncDialPadding(input);
+};
+
 export let authIti = intlTelInput(authPhoneInput, baseOptions);
 export let socialsIti = intlTelInput(socialsPhoneInput, baseOptions);
 
 fixItiLTR(authPhoneInput);
 fixItiLTR(socialsPhoneInput);
+watchDialPadding(authPhoneInput);
+
+[authPhoneInput].forEach((input) => {
+  input?.addEventListener("countrychange", () => syncDialPadding(input));
+});
+document.fonts?.ready?.then(() => syncDialPadding(authPhoneInput));
 
 /* ---------- FORMAT LOGIC ---------- */
 
@@ -185,6 +220,7 @@ window.addEventListener("geoReady", (e) => {
   authIti.destroy();
   authIti = intlTelInput(authPhoneInput, { ...baseOptions, initialCountry: countryCode });
   fixItiLTR(authPhoneInput);
+  watchDialPadding(authPhoneInput);
   resetAuthFormat();
 
   socialsIti.destroy();

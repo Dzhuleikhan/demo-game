@@ -44,11 +44,15 @@ function setCurrency(abbr, name, icon) {
       ".form-currency-dropdown ul li",
     );
 
+    // Выбранной должна быть ровно одна валюта во ВСЕХ списках (у каждой
+    // вкладки свой dropdown). Раньше active только добавлялся — старый выбор
+    // оставался подсвеченным, и при переключении вкладок в списке горело
+    // несколько валют.
     currencyListItem.forEach((item) => {
-      const itemAbbr = item.querySelector(".currency-item-abbr").textContent;
-      if (itemAbbr.includes(abbr)) {
-        item.classList.add("active");
-      }
+      const itemAbbr = item
+        .querySelector(".currency-item-abbr")
+        .textContent.trim();
+      item.classList.toggle("active", itemAbbr === String(abbr).trim());
     });
   });
 }
@@ -131,10 +135,7 @@ formCurrency.forEach((cur) => {
 
     currencyListItems.forEach((item) => {
       item.addEventListener("click", () => {
-        currencyListItems.forEach((el) => {
-          el.classList.remove("active");
-        });
-        item.classList.add("active");
+        // active во всех списках выставляет setCurrency ниже
         hideDropdown();
 
         // Taking currency value from item

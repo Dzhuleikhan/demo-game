@@ -200,53 +200,50 @@ formModals.forEach((modal) => {
         });
       }
 
-      const validatePassword = () => {
-        if (passwordInput.value.length >= 6) {
-          formStepBtnNext.disabled = false;
-          formGroupPassword.classList.remove("not-valid");
-          formGroupPassword
-            .querySelector(".not-valid-icon")
-            .classList.add("hidden");
-        } else {
-          formStepBtnNext.disabled = true;
-          formGroupPassword.classList.add("not-valid");
-          formGroupPassword
-            .querySelector(".not-valid-icon")
-            .classList.remove("hidden");
-        }
-      };
-
       // CHECKBOX VALIDATION
       const checkboxInput = formStep2.querySelector(".checkbox-input");
 
+      // Единая точка расчёта состояния кнопки шага 2: согласие + пароль от 6
+      // символов (на вкладке phone пароль тоже уходит в /api/register).
+      // Раньше ввод/blur пароля смотрели только длину и включали кнопку при
+      // снятом согласии, а change чекбокса считался отдельно.
+      const isStep2Valid = () =>
+        checkboxInput.checked && passwordInput.value.length >= 6;
+
+      const recalcStep2Btn = () => {
+        formStepBtnNext.disabled = !isStep2Valid();
+      };
+
+      // Пустое поле — ещё не ошибка: пользователь ничего не вводил.
+      const validatePassword = () => {
+        const icon = formGroupPassword.querySelector(".not-valid-icon");
+        const { length } = passwordInput.value;
+
+        if (length === 0) {
+          formGroupPassword.classList.remove("not-valid", "valid");
+          icon.classList.add("hidden");
+        } else if (length >= 6) {
+          formGroupPassword.classList.add("valid");
+          formGroupPassword.classList.remove("not-valid");
+          icon.classList.add("hidden");
+        } else {
+          formGroupPassword.classList.add("not-valid");
+          formGroupPassword.classList.remove("valid");
+          icon.classList.remove("hidden");
+        }
+
+        recalcStep2Btn();
+      };
+
       passwordInput.addEventListener("focusout", validatePassword);
       passwordInput.addEventListener("input", () => {
-        if (passwordInput.value.length >= 6) {
-          formStepBtnNext.disabled = false;
-        } else {
-          formStepBtnNext.disabled = true;
-        }
+        // во время набора — нейтрально (красный/зелёный только на blur)
+        formGroupPassword.classList.remove("not-valid", "valid");
+        formGroupPassword.querySelector(".not-valid-icon").classList.add("hidden");
+        recalcStep2Btn();
       });
 
-      checkboxInput.addEventListener("change", () => {
-        if (formTab === "email") {
-          if (
-            checkboxInput.checked === true &&
-            passwordInput.value.length >= 6
-          ) {
-            formStepBtnNext.disabled = false;
-          } else {
-            formStepBtnNext.disabled = true;
-          }
-        }
-        if (formTab === "phone") {
-          if (checkboxInput.checked === true) {
-            formStepBtnNext.disabled = false;
-          } else {
-            formStepBtnNext.disabled = true;
-          }
-        }
-      });
+      checkboxInput.addEventListener("change", recalcStep2Btn);
     }
   }
 });

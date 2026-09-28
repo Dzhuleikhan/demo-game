@@ -14,6 +14,95 @@ import {
   getEmailStatus,
   emailTakenMessage,
 } from "./emailAvailability";
+import {
+  checkPromocode,
+  getPromocodeStatus,
+  promocodeInvalidMessage,
+} from "./promocodeCheck";
+import { modalTranslations } from "../public/modalTranslations";
+
+// | FIELD ERROR TEXT (red message under a field)
+// Текст хранится ключом в data-error-key, чтобы при смене языка его можно было
+// перевести заново (см. MutationObserver на <html lang> внизу файла).
+const currentLang = () => document.documentElement.lang || "en";
+const translateModal = (key) =>
+  modalTranslations[currentLang()]?.[key] || modalTranslations.en?.[key] || "";
+
+// Создаёт <p> для ошибки сразу ПОСЛЕ блока поля (внутри grid-формы).
+function ensureFieldAlert(fieldBox, className) {
+  let el = fieldBox.nextElementSibling;
+  if (el && el.classList.contains(className)) return el;
+  el = document.createElement("p");
+  el.className = `${className} field-alert mt-1 hidden text-center text-xs text-[#FF5530]`;
+  fieldBox.insertAdjacentElement("afterend", el);
+  return el;
+}
+
+// Показ/скрытие текста ошибки сдвигает всё, что ниже поля. Ошибка появляется на
+// blur, а blur случается на mousedown по СЛЕДУЮЩЕМУ элементу («I have a promo
+// code», «Sign up», вкладки…): элемент уезжает вниз до mouseup — и клик теряется.
+// Поэтому на время жеста (pointerdown … click) смену раскладки откладываем до
+// конца клика. На тач-устройствах blur приходит уже ПОСЛЕ pointerup (с
+// эмулированным mousedown), поэтому жест считается законченным только на click
+// (или по таймауту, если клика не будет — например, скролл пальцем).
+let pointerIsDown = false;
+let gestureTimer = null;
+const deferredLayout = [];
+const endGesture = () => {
+  clearTimeout(gestureTimer);
+  pointerIsDown = false;
+  setTimeout(() => {
+    while (deferredLayout.length) deferredLayout.shift()();
+  }, 0);
+};
+document.addEventListener(
+  "pointerdown",
+  () => {
+    clearTimeout(gestureTimer);
+    pointerIsDown = true;
+  },
+  true,
+);
+["pointerup", "pointercancel"].forEach((type) =>
+  document.addEventListener(
+    type,
+    () => {
+      clearTimeout(gestureTimer);
+      gestureTimer = setTimeout(endGesture, 500);
+    },
+    true,
+  ),
+);
+document.addEventListener("click", endGesture, true);
+
+function setAlertText(el, text) {
+  if (!el) return;
+  // Последнее желаемое состояние: отложенный apply применит именно его, а не
+  // устаревший текст, если между ними поле успели перепроверить.
+  el._alertText = text || "";
+  const apply = () => {
+    el._alertQueued = false;
+    el.textContent = el._alertText;
+    el.classList.toggle("hidden", !el._alertText);
+  };
+  // Текст уже виден и лишь меняется (например, перевод) — раскладка не прыгает.
+  const layoutChanges = el.classList.contains("hidden") === !!text;
+  if (layoutChanges && pointerIsDown) {
+    if (!el._alertQueued) {
+      el._alertQueued = true;
+      deferredLayout.push(apply);
+    }
+  } else {
+    apply();
+  }
+}
+
+// key — ключ из modalTranslations; null — скрыть.
+function setFieldAlert(el, key) {
+  if (!el) return;
+  el.dataset.errorKey = key || "";
+  setAlertText(el, key ? translateModal(key) : "");
+}
 
 // Availability ("занятость") alert updaters. Declared at module scope so a single
 // <html lang> MutationObserver (bottom of file) can re-translate BOTH alerts on
@@ -67,7 +156,6 @@ const emailForm = document.querySelector(".auth-form-type-email");
 const phoneForm = document.querySelector(".auth-form-type-phone");
 const socialForm = document.querySelectorAll(".auth-form-type-social");
 const oneClickForm = document.querySelector(".auth-form-type-oneclick");
-const termsCheckbox = document.querySelectorAll(".auth-terms-checkbox");
 
 // Validate email input
 function validateEmailInput() {
@@ -81,8 +169,27 @@ function validateEmailInput() {
     // box (a <p> inside the flex row would render inline), so resolve via the parent.
     const emailAlertEl =
       formEmail.parentElement?.querySelector(".auth-email-alert");
-    // Show the "email is taken" message only on a definitive available:false
-    // (format must pass; pending/errored/free → hidden, fail-open).
+
+    // Zeruh (email-guard): состояние поля пишет сам сниппет в data-eg-state.
+    // blocked — недоставляемый/одноразовый адрес (domain.com и т.п.), invalid — синтаксис.
+    // Нет сниппета / нет вердикта → не мешаем (fail-open).
+    const emailGuardState = () => formEmailInput.getAttribute("data-eg-state");
+    const emailGuardBlocked = () =>
+      ["blocked", "invalid"].includes(emailGuardState());
+    const emailGuardPending = () =>
+      !!window.EmailGuard?.isPending?.(formEmailInput);
+    // Свой хинт сниппет рисует в .eg-hint — если он уже что-то пишет, наш текст
+    // формата не дублируем.
+    const emailGuardHintShown = () => {
+      const hint = formEmail.parentElement?.querySelector(".eg-hint");
+      return !!hint && hint.textContent.trim() !== "";
+    };
+
+    // Ошибка формата показывается после blur и сбрасывается при правке.
+    let emailFormatError = false;
+
+    // Под полем: «неверный формат» или «почта занята» (только при однозначном
+    // available:false; pending/errored/free → скрыто, fail-open).
     updateEmailAlert = () => {
       if (!emailAlertEl) return;
       const v = formEmailInput.value.trim();
@@ -90,14 +197,19 @@ function validateEmailInput() {
       const taken =
         !!v &&
         emailRegEx.test(v) &&
+        !emailGuardBlocked() &&
         st &&
         !st.pending &&
         !st.errored &&
         st.available === false;
-      emailAlertEl.textContent = taken
-        ? emailTakenMessage(document.documentElement.lang || "en")
-        : "";
-      emailAlertEl.classList.toggle("hidden", !taken);
+
+      let text = "";
+      if (emailFormatError && !!v && !emailGuardHintShown()) {
+        text = translateModal("wrongEmail");
+      } else if (taken) {
+        text = emailTakenMessage(currentLang());
+      }
+      setAlertText(emailAlertEl, text);
     };
 
     // formEmailInput.addEventListener("input", () => {
@@ -108,8 +220,12 @@ function validateEmailInput() {
         formEmail.classList.remove("non-valid");
       } else {
         formEmail.querySelector(".validation-cta").classList.remove("hidden");
-        if (inputValue.match(emailRegEx)) {
-          console.log("valid");
+        emailFormatError = !inputValue.match(emailRegEx);
+        if (inputValue.match(emailRegEx) && emailGuardBlocked()) {
+          // Zeruh: адрес недоставляемый/одноразовый (хинт рисует сниппет) → красный.
+          formEmail.classList.remove("valid");
+          formEmail.classList.add("non-valid");
+        } else if (inputValue.match(emailRegEx)) {
           formEmail.classList.remove("non-valid");
           // Format OK, but DON'T flash the green check yet — wait for the
           // availability verdict. Otherwise a taken e-mail keeps a green tick
@@ -119,9 +235,16 @@ function validateEmailInput() {
           checkEmailAvailability(checkedEmail).then((st) => {
             // Value changed while in flight → ignore this stale verdict.
             if (formEmailInput.value !== checkedEmail) return;
-            if (st && st.available === false) {
+            if (emailGuardBlocked()) {
+              formEmail.classList.add("non-valid"); // Zeruh заблокировал → красный
+              formEmail.classList.remove("valid");
+            } else if (st && st.available === false) {
               formEmail.classList.add("non-valid"); // занято → красный
               formEmail.classList.remove("valid");
+            } else if (emailGuardPending()) {
+              // Zeruh ещё думает → нейтраль; перекрасим на emailguard:result.
+              formEmail.classList.remove("valid");
+              formEmail.classList.remove("non-valid");
             } else if (st && st.available === true) {
               formEmail.classList.add("valid"); // свободно → зелёная галочка
               formEmail.classList.remove("non-valid");
@@ -134,11 +257,11 @@ function validateEmailInput() {
             updateEmailAlert();
           });
         } else {
-          console.log("not valid");
           formEmail.classList.remove("valid");
           formEmail.classList.add("non-valid");
         }
       }
+      if (inputValue === "") emailFormatError = false;
       updateEmailAlert();
     }
     // });
@@ -149,7 +272,10 @@ function validateEmailInput() {
       formEmail.classList.remove("non-valid");
     });
     // Editing the address invalidates any shown verdict → hide stale alert.
-    formEmailInput.addEventListener("input", updateEmailAlert);
+    formEmailInput.addEventListener("input", () => {
+      emailFormatError = false;
+      updateEmailAlert();
+    });
     // Email-Guard (Zeruh) typo-correction rewrites the value programmatically
     // (e.g. gmial.com → gmail.com) WITHOUT a blur, so emailInputValidate never
     // re-runs and the field keeps the stale green tick from the old address.
@@ -168,21 +294,26 @@ function validatePasswordInput() {
     if (formPassword) {
       const formPasswordInput = formPassword.querySelector("input");
       const showPasswordBtn = formPassword.querySelector(".show-password");
+      const passwordAlertEl = ensureFieldAlert(
+        formPassword,
+        "auth-password-alert",
+      );
 
       function passwordInputValidation() {
         let inputValue = formPasswordInput.value;
         if (inputValue === "") {
           formPassword.classList.remove("valid");
           formPassword.classList.remove("non-valid");
-          showPasswordBtn.classList.add("hidden");
+          setFieldAlert(passwordAlertEl, null);
         } else {
-          showPasswordBtn.classList.remove("hidden");
           if (inputValue.length >= 6) {
             formPassword.classList.remove("non-valid");
             formPassword.classList.add("valid");
+            setFieldAlert(passwordAlertEl, null);
           } else {
             formPassword.classList.add("non-valid");
             formPassword.classList.remove("valid");
+            setFieldAlert(passwordAlertEl, "wrongPassword");
           }
         }
       }
@@ -192,19 +323,25 @@ function validatePasswordInput() {
         formPassword.classList.remove("non-valid");
         formPassword.classList.remove("valid");
       });
+      formPasswordInput.addEventListener("input", () =>
+        setFieldAlert(passwordAlertEl, null),
+      );
 
-      // Toggle password visibility
-
+      // Toggle password visibility (eye is always visible; icon reflects state)
       if (showPasswordBtn) {
+        const eyeOpen = showPasswordBtn.querySelector(".eye-open");
+        const eyeClosed = showPasswordBtn.querySelector(".eye-closed");
+
+        // Keep focus in the input: otherwise mousedown blurs it, focusout
+        // validation shows ✗/✓ and shifts the eye, so the click misses it.
+        showPasswordBtn.addEventListener("mousedown", (e) => e.preventDefault());
+
         showPasswordBtn.addEventListener("click", (e) => {
           e.preventDefault();
-          console.log(formPasswordInput.type);
-
-          if (formPasswordInput.type === "password") {
-            formPasswordInput.type = "text";
-          } else {
-            formPasswordInput.type = "password";
-          }
+          const isHidden = formPasswordInput.type === "password";
+          formPasswordInput.type = isHidden ? "text" : "password";
+          eyeOpen?.classList.toggle("hidden", isHidden);
+          eyeClosed?.classList.toggle("hidden", !isHidden);
         });
       }
     }
@@ -260,25 +397,10 @@ socialForm.forEach((socialForm) => {
 
     inputs.forEach((inp) => {
       inp.addEventListener("input", () => {
-        submitBtn.disabled = false;
+        // enabled/disabled state is handled by updateSubmitState (terms + choice)
         btnText1.style.display = "none";
         btnText2.style.display = "block";
       });
-    });
-  }
-});
-
-// Terms validation
-termsCheckbox.forEach((el) => {
-  if (el) {
-    const input = el.querySelector("input");
-    input.addEventListener("input", () => {
-      const text = el.querySelector("span");
-      if (input.checked) {
-        text.style.color = "#8A95C1";
-      } else {
-        text.style.color = "#FF5530";
-      }
     });
   }
 });
@@ -318,7 +440,11 @@ if (phoneForm) {
   // Alert lives as a sibling AFTER the bordered .auth-form-phone box (so the
   // text sits below the input, not inside the frame), so resolve via the parent.
   const phoneAlertEl = phone.parentElement?.querySelector(".auth-phone-alert");
-  // Show the "number is taken" message only on a definitive available:false.
+  // Ошибка формата показывается после blur и сбрасывается при правке.
+  let phoneFormatError = false;
+
+  // Под полем: «неверный номер» (формат) или «номер занят» (только при
+  // однозначном available:false). IPQS-хинт рисует сам сниппет в .pg-hint.
   updatePhoneAlert = () => {
     if (!phoneAlertEl) return;
     const st = getPhoneStatus(phoneE164());
@@ -328,10 +454,10 @@ if (phoneForm) {
       !st.pending &&
       !st.errored &&
       st.available === false;
-    phoneAlertEl.textContent = taken
-      ? phoneTakenMessage(document.documentElement.lang || "en")
-      : "";
-    phoneAlertEl.classList.toggle("hidden", !taken);
+    let text = "";
+    if (phoneFormatError) text = translateModal("wrongNumber");
+    else if (taken) text = phoneTakenMessage(currentLang());
+    setAlertText(phoneAlertEl, text);
   };
 
   // Border/icon state machine — красит ВЕСЬ гейт (формат → IPQS → занятость) одной
@@ -363,6 +489,8 @@ if (phoneForm) {
 
   function validatePhoneNumber() {
     syncPhoneGuardData(); // до того как сниппет прочтёт dataset на blur
+    phoneFormatError = !authIti.isValidNumber();
+    updatePhoneAlert();
     if (input.value.trim() && authIti.isValidNumber()) {
       const checkedE164 = phoneE164();
       // (.then только перекрашивает поле/alert — функцию не перезапускает, поэтому
@@ -386,6 +514,7 @@ if (phoneForm) {
   // Editing the number: пишем актуальный e164 для сниппета + прячем устаревший alert.
   input.addEventListener("input", () => {
     syncPhoneGuardData();
+    phoneFormatError = false;
     updatePhoneAlert();
   });
   // Смена страны: переписать e164 под новый dial-код.
@@ -400,6 +529,11 @@ if (phoneForm) {
  */
 const promocodeWrapper = document.querySelectorAll(".auth-promocode-wrapper");
 
+// Промокод проверяется по API (/api/v2/promocode/check-available) на blur и
+// перед сабмитом. Зелёный — только при available:true; available:false → красная
+// рамка + текст под полем, форма не уходит. Ошибка API → нейтраль (fail-open).
+const promoAlertUpdaters = [];
+
 promocodeWrapper.forEach((promo) => {
   if (promo) {
     const promocodeBtn = promo.querySelector(".promocode-btn");
@@ -407,19 +541,56 @@ promocodeWrapper.forEach((promo) => {
     const iconValid = promo.querySelector(".icon-valid");
     const iconInvalidalid = promo.querySelector(".icon-invalid");
     const promocodeInput = promo.querySelector("input");
+    const promoAlertEl = ensureFieldAlert(promocodeBox, "auth-promocode-alert");
 
-    promocodeInput.addEventListener("focusout", () => {
-      if (promocodeInput.value.length >= 1) {
+    const setNeutral = () => {
+      promocodeBox.classList.remove("non-valid", "valid");
+      iconValid.classList.add("hidden");
+      iconInvalidalid.classList.remove("hidden");
+    };
+
+    const paint = () => {
+      const code = promocodeInput.value.trim();
+      const st = getPromocodeStatus(code);
+      const invalid = !!code && st && !st.pending && st.available === false;
+      const ok = !!code && st && !st.pending && st.available === true;
+
+      if (ok) {
         promocodeBox.classList.add("valid");
         promocodeBox.classList.remove("non-valid");
         iconValid.classList.remove("hidden");
         iconInvalidalid.classList.add("hidden");
-      } else {
-        promocodeBox.classList.remove("non-valid");
+      } else if (invalid) {
+        // Серая «галочка» при ошибке сбивает с толку — прячем обе иконки,
+        // остаются красная рамка и текст под полем.
+        promocodeBox.classList.add("non-valid");
         promocodeBox.classList.remove("valid");
         iconValid.classList.add("hidden");
-        iconInvalidalid.classList.remove("hidden");
+        iconInvalidalid.classList.add("hidden");
+      } else {
+        setNeutral();
       }
+
+      setAlertText(
+        promoAlertEl,
+        invalid ? promocodeInvalidMessage(currentLang()) : "",
+      );
+    };
+    promoAlertUpdaters.push(paint);
+
+    promocodeInput.addEventListener("focusout", () => {
+      const code = promocodeInput.value.trim();
+      if (!code) return paint();
+      checkPromocode(code).then(() => {
+        if (promocodeInput.value.trim() !== code) return; // устаревший ответ
+        paint();
+      });
+      paint();
+    });
+
+    promocodeInput.addEventListener("input", () => {
+      setNeutral();
+      setAlertText(promoAlertEl, "");
     });
 
     promocodeBtn.addEventListener("click", () => {
@@ -581,6 +752,7 @@ function submitForm(form, newDomain) {
       if (input.value === "" || !authIti.isValidNumber()) {
         phone.classList.add("non-valid");
         isValid = false;
+        input.dispatchEvent(new Event("focusout")); // текст ошибки под полем
       } else {
         if (code && phoneNumber) {
           let sanitizedPhoneNumber = phoneNumber.replace(/\D/g, "");
@@ -608,6 +780,7 @@ function submitForm(form, newDomain) {
       } else {
         email.classList.add("non-valid");
         isValid = false;
+        input.dispatchEvent(new Event("focusout")); // текст ошибки под полем
       }
     }
 
@@ -620,6 +793,7 @@ function submitForm(form, newDomain) {
       } else {
         password.classList.add("non-valid");
         isValid = false;
+        input.dispatchEvent(new Event("focusout")); // текст ошибки под полем
       }
     }
 
@@ -630,12 +804,12 @@ function submitForm(form, newDomain) {
     }
 
     // Checking Promocode
+    let promoInputEl = null;
     if (promoCode) {
-      let input = promoCode.querySelector("input");
-      let icon = promoCode.querySelector(".promocode-check-icon");
+      promoInputEl = promoCode.querySelector("input");
 
-      if (input.value.length >= 1) {
-        formData.promocode = input.value;
+      if (promoInputEl.value.trim().length >= 1) {
+        formData.promocode = promoInputEl.value.trim();
       }
     }
 
@@ -732,12 +906,45 @@ function submitForm(form, newDomain) {
         return;
       }
     }
+    // Zeruh gate: дождаться вердикта доставляемости (verify не бросает, по
+    // таймауту — fail-open). blocked/invalid (domain.com, одноразовые, опечатки
+    // домена) → красная рамка, хинт рисует сниппет, редиректа нет.
+    if (isValid && formType === "email" && formData.email && window.EmailGuard) {
+      const emailInputEl = email.querySelector("input");
+      try {
+        await window.EmailGuard.verify(emailInputEl);
+      } catch {
+        /* fail-open */
+      }
+      if (
+        ["blocked", "invalid"].includes(
+          emailInputEl.getAttribute("data-eg-state"),
+        )
+      ) {
+        email.classList.add("non-valid");
+        email.classList.remove("valid");
+        updateEmailAlert();
+        return;
+      }
+    }
+
     if (isValid && formType === "email" && formData.email) {
       const st = await checkEmailAvailability(formData.email);
       if (st && st.available === false) {
         email.classList.add("non-valid");
         email.classList.remove("valid");
         updateEmailAlert();
+        return;
+      }
+    }
+
+    // Promocode gate: однозначный available:false → не регистрируем, показываем
+    // ошибку под полем. Ошибка/таймаут API → fail-open, код уходит как есть.
+    if (isValid && formData.promocode) {
+      const st = await checkPromocode(formData.promocode);
+      promoAlertUpdaters.forEach((fn) => fn());
+      if (st && st.available === false) {
+        promoInputEl?.focus();
         return;
       }
     }
@@ -784,12 +991,76 @@ socialForm.forEach((socialForm) => {
   submitForm(socialForm, newDomain);
 });
 
+// | SUBMIT BUTTON STATE
+// Sign up is disabled until the required fields have data and terms are
+// accepted. Format/availability errors are still shown by the submit handler.
+const isFilled = (input) => {
+  if (!input) return false;
+  if (input.value.trim() !== "") return true;
+  // Chrome hides autofilled values from JS until the first user gesture.
+  try {
+    return input.matches(":autofill");
+  } catch {
+    try {
+      return input.matches(":-webkit-autofill");
+    } catch {
+      return false;
+    }
+  }
+};
+
+function updateSubmitState(form) {
+  if (!form) return;
+  const btn = form.querySelector(".form-yellow-btn");
+  if (!btn || btn.classList.contains("loading")) return;
+
+  const terms = form.querySelector(".checkbox input[type='checkbox']");
+  let ready = !terms || terms.checked;
+
+  switch (form.getAttribute("data-from-type")) {
+    case "email":
+      ready =
+        ready &&
+        isFilled(form.querySelector(".auth-form-email input")) &&
+        isFilled(form.querySelector(".auth-form-password input"));
+      break;
+    case "phone":
+      ready =
+        ready &&
+        isFilled(form.querySelector(".auth-form-phone input[name='phone']")) &&
+        isFilled(form.querySelector(".auth-form-password input"));
+      break;
+    case "social":
+      ready =
+        ready && !!form.querySelector("input[name='social-variant']:checked");
+      break;
+  }
+
+  btn.disabled = !ready;
+}
+
+[emailForm, phoneForm, oneClickForm, ...socialForm].forEach((form) => {
+  if (!form) return;
+  const update = () => updateSubmitState(form);
+  form.addEventListener("input", update);
+  form.addEventListener("change", update);
+  // Programmatic value changes (Zeruh typo-fix) and browser autofill.
+  form.addEventListener("emailguard:result", update, true);
+  form.addEventListener("animationstart", update, true);
+  update();
+  setTimeout(update, 500);
+});
+
 // Re-translate the availability alerts on language change. One observer drives
 // BOTH updaters — the alert text has no data-translate, so the regular i18n
 // pass never touches it (see LANDING_INTERGARION.md §4).
 new MutationObserver(() => {
   updateEmailAlert();
   updatePhoneAlert();
+  promoAlertUpdaters.forEach((fn) => fn());
+  document.querySelectorAll(".field-alert[data-error-key]").forEach((el) => {
+    if (el.dataset.errorKey) el.textContent = translateModal(el.dataset.errorKey);
+  });
   // Re-translate the phone-guard (IPQS) hint: re-run verify on a blocked number so
   // the snippet repaints .pg-hint in the new language (verdict comes from cache).
   const pIn = phoneForm && phoneForm.querySelector("input[name='phone']");
