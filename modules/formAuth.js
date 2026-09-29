@@ -458,6 +458,9 @@ if (phoneForm) {
     if (phoneFormatError) text = translateModal("wrongNumber");
     else if (taken) text = phoneTakenMessage(currentLang());
     setAlertText(phoneAlertEl, text);
+    // Одна ошибка за раз: пока видна наша (формат/занято), IPQS-хинт .pg-hint
+    // (сосед того же родителя, рисует сниппет) прячем через CSS.
+    phoneAlertEl.parentElement?.classList.toggle("pg-hint-suppressed", !!text);
   };
 
   // Border/icon state machine — красит ВЕСЬ гейт (формат → IPQS → занятость) одной

@@ -585,6 +585,11 @@ main {
   color: #ff5530;
 }
 
+/* Our own phone alert is shown → hide the IPQS hint (no double error). */
+.pg-hint-suppressed .pg-hint {
+  display: none;
+}
+
 .modal-tabs button::before {
   content: "";
   width: 50px;
