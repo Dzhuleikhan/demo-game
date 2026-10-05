@@ -1,5 +1,6 @@
 import { newDomain } from "./fetchingDomain";
-import { getUrlParameter } from "./params";
+import { getUrlParameter, getTestUserParams } from "./params";
+import { goToRegister, addRegTestAction } from "./regTest";
 
 // One-tap google auth
 let currencyStoredData = localStorage.getItem("currencyData");
@@ -23,5 +24,7 @@ window.onload = function () {
 };
 
 function handleCredentialResponse() {
-  window.location.href = `https://${newDomain}/api/register?env=prod&type=google&currency=${currency}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
+  goToRegister(`https://${newDomain}/api/register?env=prod&type=google&currency=${currency}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}${getTestUserParams()}`);
 }
+
+addRegTestAction("Google", handleCredentialResponse);
