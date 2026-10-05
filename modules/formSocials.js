@@ -2,7 +2,8 @@ import gsap from "gsap";
 import horizontalLoop from "./marquee";
 import { Power1 } from "gsap";
 import { socialsIti } from "./itiTelInput.js";
-import { getUrlParameter, removeUrlParameter } from "./params.js";
+import { getUrlParameter, removeUrlParameter, getTestUserParams } from "./params.js";
+import { goToRegister } from "./regTest.js";
 import { hiddenSelect } from "./hiddenSelect.js";
 import { newDomain } from "./fetchingDomain.js";
 import { checkTir1CurrencyMatch } from "./modalCurrency.js";
@@ -772,18 +773,22 @@ if (mainForm) {
           if (formTab === "email") {
             disableFormWhileSubmitting();
 
-            window.location.href =
+            goToRegister(
               `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}` +
-              (window.EmailGuard?.tags?.() || "");
+              (window.EmailGuard?.tags?.() || "") +
+              getTestUserParams(),
+            );
             console.log(
               `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`,
             );
           } else if (formTab === "phone") {
             disableFormWhileSubmitting();
 
-            window.location.href =
+            goToRegister(
               `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}` +
-              (window.EmailGuard?.tags?.() || "");
+              (window.EmailGuard?.tags?.() || "") +
+              getTestUserParams(),
+            );
             console.log(
               `https://${newDomain}/api/register?env=prod&type=${formTab}&currency=${formData.currency}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`,
             );
@@ -839,7 +844,7 @@ if (mainForm) {
       ? `https://${newDomain}/api/register?env=prod&type=phone&currency=${formData.currency}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`
       : `https://${newDomain}/api/register?env=prod&type=email&currency=${formData.currency}&email=${encodeURIComponent(formData.email)}&phone=${formData.phone}&password=${encodeURIComponent(formData.password)}${promocode ? "&promocode=" + promocode : ""}&lang=${lang}${cid ? "&cid=" + cid : ""}${partner ? "&partner=" + partner : ""}${offer ? "&offer=" + offer : ""}`;
 
-    window.location.href = registerUrl + (window.EmailGuard?.tags?.() || "");
+    goToRegister(registerUrl + (window.EmailGuard?.tags?.() || "") + getTestUserParams());
     console.log(registerUrl);
   });
 }
