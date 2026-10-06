@@ -19,6 +19,10 @@ const getMaxDigitsForCountry = (countryCode) => {
   return lengths ? Math.max(...lengths) : 15;
 };
 
+// Национальный номер с нуля не начинается - это trunk prefix для набора внутри
+// страны, в E.164 ему места нет.
+const stripTrunkPrefix = (digits) => digits.replace(/^0+/, "");
+
 const stripDuplicatedDialCode = (digits, countryCode, dialCode) => {
   if (!dialCode || !digits.startsWith(dialCode)) return digits;
   const rest = digits.slice(dialCode.length);
@@ -88,10 +92,14 @@ const setupPhoneFormat = (input, iti) => {
     const countryCode = countryData.iso2?.toUpperCase();
     const dialCode = countryData.dialCode;
     const maxDigits = getMaxDigitsForCountry(countryCode);
-    const raw = stripDuplicatedDialCode(
-      input.value.replace(/\D/g, ""),
-      countryCode,
-      dialCode,
+    // Внешний вызов нужен для вставки вида "0048 501 234 567": сначала снимается
+    // префикс выхода на межгород, потом дублирующий код страны, потом остаток.
+    const raw = stripTrunkPrefix(
+      stripDuplicatedDialCode(
+        stripTrunkPrefix(input.value.replace(/\D/g, "")),
+        countryCode,
+        dialCode,
+      ),
     );
     const digits = raw.slice(0, maxDigits);
 
