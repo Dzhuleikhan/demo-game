@@ -46,6 +46,7 @@ export const availableLang = [
   "yo",
   "ig",
   "tw",
+  "is",
 ];
 
 function applyDirection(lang) {
