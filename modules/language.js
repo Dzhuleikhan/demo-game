@@ -59,6 +59,7 @@ export const availableLang = [
   "yo",
   "ig",
   "tw",
+  "is",
 ];
 
 function determineLanguage() {
