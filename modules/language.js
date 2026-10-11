@@ -60,6 +60,7 @@ export const availableLang = [
   "yo",
   "ig",
   "ak",
+  "is",
 ];
 
 export const countryLangMap = {
@@ -152,6 +153,7 @@ export const countryLangMap = {
   RW: "rw",
   NG: "ha",
   GH: "ak",
+  IS: "is",
 };
 
 const NIGERIA_LANGS = ["ha", "yo", "ig"];
