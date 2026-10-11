@@ -100,6 +100,7 @@ const bonusSumAndWager = [
   { currency: "CZK", amount: 45 },
   { currency: "ZAR", amount: 35 },
   { currency: "SLL", amount: 50 },
+  { currency: "ISK", amount: 300 },
 ];
 
 function getAmountForCurrency(currencyCode) {
