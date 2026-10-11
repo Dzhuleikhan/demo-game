@@ -310,7 +310,6 @@ export const countryCurrencyData = [
       "VA",
       "BG",
       "HR",
-      "IS",
       "AL",
       "BA",
       "MD",
@@ -531,6 +530,16 @@ export const countryCurrencyData = [
     highrollerAmount: "2.200",
   },
   {
+    countries: ["IS"],
+    countryCurrency: "ISK",
+    countryCurrencySymbol: "kr",
+    countryCurrencyFullName: "Icelandic krona",
+    countryCurrencyIcon: "https://3344112-img.b-cdn.net/currency_icons/ISK.svg",
+    amount: "1.500.000",
+    spins: "200 FS",
+    highrollerAmount: "25.000",
+  },
+  {
     countries: ["ZA", "NA", "LS", "SZ", "BW", "MZ", "AO", "MW", "ZM"],
     countryCurrency: "ZAR",
     countryCurrencySymbol: "R",
@@ -707,6 +716,7 @@ export const countryLanguagesMap = {
   UG: ["lm"],
   NG: ["ha", "yo", "ig"],
   GH: ["tw"],
+  IS: ["is"],
 };
 
 export const SupportedLanguages = [
@@ -748,4 +758,5 @@ export const SupportedLanguages = [
   "yo",
   "ig",
   "tw",
+  "is",
 ];
