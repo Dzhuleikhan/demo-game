@@ -30,6 +30,96 @@ function getCountryCurrencyIcon(inputCountry) {
   return CDN + "/currency_icons/USD.svg"; // or some default value if country is not found
 }
 
+// Названия валют в данных и в разметке — английские («Icelandic krona»).
+// Показываем их на языке модалки через Intl («Íslensk króna», «Złoty polski»);
+// если браузер не знает такой язык или валюту — остаётся английское.
+let currencyLang = "en";
+
+// Chrome собран без данных Intl для части языков (исландский в их числе) и
+// для них отдаёт английское название — такие языки держим своим словарём.
+const CURRENCY_NAMES = {
+  is: {
+    ARS: "Argentínskur pesi",
+    AUD: "Ástralskur dalur",
+    AZN: "Aserskt manat",
+    BDT: "Bangladessk taka",
+    BRL: "Brasilískt ríal",
+    CAD: "Kanadadalur",
+    CHF: "Svissneskur franki",
+    CLP: "Síleskur pesi",
+    COP: "Kólumbískur pesi",
+    CZK: "Tékknesk króna",
+    DKK: "Dönsk króna",
+    EUR: "Evra",
+    GHS: "Ganverskur sedi",
+    HUF: "Ungversk fórinta",
+    IDR: "Indónesísk rúpía",
+    INR: "Indversk rúpía",
+    ISK: "Íslensk króna",
+    KES: "Kenískur skildingur",
+    KGS: "Kirgiskt som",
+    KZT: "Kasakst tengi",
+    MXN: "Mexíkóskur pesi",
+    NGN: "Nígerísk næra",
+    NOK: "Norsk króna",
+    NZD: "Nýsjálenskur dalur",
+    PLN: "Pólskt slot",
+    RON: "Rúmenskt lei",
+    RUB: "Rússnesk rúbla",
+    SLL: "Síerraleónsk ljóna",
+    THB: "Taílenskt bat",
+    TRY: "Tyrknesk líra",
+    TZS: "Tansanískur skildingur",
+    UAH: "Úkraínsk hrinja",
+    UGX: "Úgandskur skildingur",
+    USD: "Bandaríkjadalur",
+    UZS: "Úsbekskt súm",
+    XAF: "Miðafrískur franki",
+    XOF: "Vesturafrískur franki",
+    ZAR: "Suðurafrískt rand",
+    ZMW: "Sambísk kvaka",
+  },
+};
+
+const localizeCurrencyName = (abbr, fallback) => {
+  // Английские названия из данных оставляем как есть
+  if (currencyLang === "en") return fallback;
+  const own = CURRENCY_NAMES[currencyLang]?.[String(abbr).trim()];
+  if (own) return own;
+  try {
+    const name = new Intl.DisplayNames([currencyLang], { type: "currency" }).of(
+      String(abbr).trim(),
+    );
+    if (!name || name === String(abbr).trim()) return fallback;
+    return name.charAt(0).toLocaleUpperCase(currencyLang) + name.slice(1);
+  } catch {
+    return fallback;
+  }
+};
+
+// Вызывается из modalLanguage, когда выбран язык модалки
+export function localizeCurrencyNames(lang) {
+  currencyLang = lang || "en";
+
+  document.querySelectorAll(".currency-item-name").forEach((nameEl) => {
+    const abbr = nameEl
+      .closest("li")
+      ?.querySelector(".currency-item-abbr")
+      ?.textContent.trim();
+    if (!abbr) return;
+    nameEl.dataset.enName ??= nameEl.textContent.trim();
+    nameEl.textContent = localizeCurrencyName(abbr, nameEl.dataset.enName);
+  });
+
+  document.querySelectorAll(".form-currency").forEach((cur) => {
+    const abbr = cur.querySelector("input")?.value;
+    const nameEl = cur.querySelector(".main-currency-name");
+    if (!abbr || !nameEl) return;
+    nameEl.dataset.enName ??= nameEl.textContent.trim();
+    nameEl.textContent = localizeCurrencyName(abbr, nameEl.dataset.enName);
+  });
+}
+
 function setCurrency(abbr, name, icon) {
   const formCurrency = document.querySelectorAll(".form-currency");
   formCurrency.forEach((cur) => {
@@ -37,7 +127,8 @@ function setCurrency(abbr, name, icon) {
     let currencyName = cur.querySelector(".main-currency-name");
     let currencyIcon = cur.querySelector(".main-currency-icon");
     input.value = abbr;
-    currencyName.textContent = name;
+    currencyName.dataset.enName = name;
+    currencyName.textContent = localizeCurrencyName(abbr, name);
     currencyIcon.src = icon;
 
     const currencyListItem = cur.querySelectorAll(

@@ -4,6 +4,7 @@ import { paymentCountries } from "../public/payments";
 import { geoData } from "./geoLocation";
 import { availableLang } from "./language";
 import { settingBonusValueAndAmount } from "./settingBonusValue";
+import { localizeCurrencyNames } from "./modalCurrency";
 
 function applyDirection(lang) {
   document.documentElement.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
@@ -21,6 +22,7 @@ function updateContent(lang) {
     element.innerHTML =
       modalTranslations[lang][key] || modalTranslations["en"][key];
   });
+  localizeCurrencyNames(lang);
 }
 
 const preferredLanguage = localStorage.getItem("preferredLanguage");
