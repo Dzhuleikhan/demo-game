@@ -103,4 +103,10 @@ async function initLanguage() {
 }
 initLanguage();
 
-gsap.to(".preloader", { opacity: 0, duration: 0.5, delay: 1.5 });
+// Было delay 1.5 с. 0.6 с хватает, чтобы перекрыть подстановку бонусов (setTimeout 500 мс выше)
+gsap.to(".preloader", {
+  opacity: 0,
+  duration: 0.3,
+  delay: 0.6,
+  onComplete: () => document.querySelector(".preloader")?.remove(),
+});
