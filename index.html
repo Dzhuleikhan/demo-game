@@ -2,13 +2,35 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./img/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/img/favicon.svg" />
     <meta
       name="viewport"
       content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"
     />
+    <!-- CSS/JS сборки (Vite ставит crossorigin) и картинки с CDN -->
+    <link rel="preconnect" href="https://landing-res.b-cdn.net" crossorigin />
+    <link rel="preconnect" href="https://landing-res.b-cdn.net" />
     <title>Goldbet</title>
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <!-- Гео-запрос стартует сразу, параллельно с загрузкой бандла; geoLocation.js забирает этот промис -->
+    <script>
+      window.__geoPromise = (function () {
+        var controller = new AbortController();
+        var timer = setTimeout(function () {
+          controller.abort();
+        }, 2500);
+        return fetch(
+          "https://" +
+            location.host +
+            "/geo-api/api/check?accessKey=0439ba6e-6092-46c2-9aeb-8662065bc43c",
+          { signal: controller.signal },
+        ).then(function (response) {
+          clearTimeout(timer);
+          if (!response.ok) throw new Error("Bad API response");
+          return response.json();
+        });
+      })();
+      window.__geoPromise.catch(function () {});
+    </script>
     <!-- Email-Guard (Zeruh): typo-correction + deliverability check, fail-open -->
     <script defer src="/email-guard.js?v=1.0.8" data-eg-debug="false"></script>
     <!-- phone-guard: проверка телефона (IPQS valid/active), fail-open. Скоуп-
@@ -239,7 +261,7 @@
               class="relative z-[2] mx-auto"
               width="75"
               height="75"
-              src="./img/authFormImg/modal-bg-logo.svg"
+              src="/img/authFormImg/modal-bg-logo.svg"
               alt="Goldbet"
             />
             <!-- images -->
@@ -248,28 +270,28 @@
                 class="shine-img absolute -right-9 top-5 z-[5]"
                 width="154"
                 height="154"
-                src="./img/authFormImg/shine.webp"
+                src="/img/authFormImg/shine.webp"
                 alt="Shine star"
               />
               <img
                 class="shine-img absolute -left-9 bottom-5 z-[5]"
                 width="154"
                 height="154"
-                src="./img/authFormImg/shine.webp"
+                src="/img/authFormImg/shine.webp"
                 alt="Shine star"
               />
               <img
                 class="shine-img absolute bottom-[10px] right-[10px] z-[5]"
                 width="54"
                 height="54"
-                src="./img/authFormImg/shine-circle.webp"
+                src="/img/authFormImg/shine-circle.webp"
                 alt="Shine circle"
               />
               <img
                 class="modal-tiger-img absolute -left-[100px] bottom-0 min-w-[583px] will-change-transform"
                 width="618"
                 height="562"
-                src="./img/authFormImg/modal-tiger.webp"
+                src="/img/authFormImg/modal-tiger.webp"
                 alt="Tiger"
               />
             </div>
@@ -324,14 +346,14 @@
                 class="absolute -bottom-[15px] -left-5"
                 width="63"
                 height="63"
-                src="./img/deposit-box.svg"
+                src="/img/deposit-box.svg"
                 alt="Gift box"
               />
               <img
                 class="absolute -right-5 -top-[15px]"
                 width="54"
                 height="54"
-                src="./img/dollar-coin.svg"
+                src="/img/dollar-coin.svg"
                 alt="Coin"
               />
               <p
@@ -346,7 +368,7 @@
                 <img
                   width="24"
                   height="24"
-                  src="./img/activated-icon.svg"
+                  src="/img/activated-icon.svg"
                   alt="Icon"
                 />
                 <span class="banner-big-text" data-modal-translate="activated"
@@ -361,14 +383,14 @@
                 class="absolute -bottom-[15px] -left-5"
                 width="63"
                 height="63"
-                src="./img/box-cup.svg"
+                src="/img/box-cup.svg"
                 alt="Gift box"
               />
               <img
                 class="absolute -right-5 -top-[15px]"
                 width="54"
                 height="54"
-                src="./img/percent-badge.svg"
+                src="/img/percent-badge.svg"
                 alt="Coin"
               />
               <p
@@ -383,7 +405,7 @@
                 <img
                   width="24"
                   height="24"
-                  src="./img/activated-icon.svg"
+                  src="/img/activated-icon.svg"
                   alt="Icon"
                 />
                 <span class="banner-big-text">200% + 75 FS</span>
@@ -516,7 +538,7 @@
                           class="main-currency-icon"
                           width="24"
                           height="24"
-                          src="./img/currencies/usd.svg"
+                          src="/img/currencies/usd.svg"
                           alt="USD"
                         />
                         <div class="space-y-1">
@@ -558,7 +580,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/eur.svg"
+                              src="/img/currencies/eur.svg"
                               alt="EUR"
                             />
                             <span class="currency-item-name">Euro</span>
@@ -575,7 +597,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/usd.svg"
+                              src="/img/currencies/usd.svg"
                               alt="USD"
                             />
                             <span class="currency-item-name">US Dollar</span>
@@ -592,7 +614,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/kzt.svg"
+                              src="/img/currencies/kzt.svg"
                               alt="KZT"
                             />
                             <span class="currency-item-name"
@@ -611,7 +633,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/try.svg"
+                              src="/img/currencies/try.svg"
                               alt="TRY"
                             />
                             <span class="currency-item-name">Turkish Lira</span>
@@ -628,7 +650,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/azn.svg"
+                              src="/img/currencies/azn.svg"
                               alt="AZN"
                             />
                             <span class="currency-item-name"
@@ -647,7 +669,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/uzs.svg"
+                              src="/img/currencies/uzs.svg"
                               alt="UZS"
                             />
                             <span class="currency-item-name"
@@ -666,7 +688,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/uah.svg"
+                              src="/img/currencies/uah.svg"
                               alt="UAH"
                             />
                             <span class="currency-item-name"
@@ -685,7 +707,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/kgs.svg"
+                              src="/img/currencies/kgs.svg"
                               alt="KGS"
                             />
                             <span class="currency-item-name"
@@ -704,7 +726,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/brl.svg"
+                              src="/img/currencies/brl.svg"
                               alt="BRL"
                             />
                             <span class="currency-item-name"
@@ -723,7 +745,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/ars.svg"
+                              src="/img/currencies/ars.svg"
                               alt="ARS"
                             />
                             <span class="currency-item-name"
@@ -742,7 +764,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/aud.svg"
+                              src="/img/currencies/aud.svg"
                               alt="AUD"
                             />
                             <span class="currency-item-name"
@@ -761,7 +783,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/bdt.svg"
+                              src="/img/currencies/bdt.svg"
                               alt="BDT"
                             />
                             <span class="currency-item-name"
@@ -780,7 +802,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/cad.svg"
+                              src="/img/currencies/cad.svg"
                               alt="CAD"
                             />
                             <span class="currency-item-name"
@@ -799,7 +821,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/inr.svg"
+                              src="/img/currencies/inr.svg"
                               alt="INR"
                             />
                             <span class="currency-item-name">Indian Rupee</span>
@@ -816,7 +838,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/nzd.svg"
+                              src="/img/currencies/nzd.svg"
                               alt="NZD"
                             />
                             <span class="currency-item-name"
@@ -835,7 +857,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/ron.svg"
+                              src="/img/currencies/ron.svg"
                               alt="RON"
                             />
                             <span class="currency-item-name">Romanian Leu</span>
@@ -852,7 +874,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/dkk.svg"
+                              src="/img/currencies/dkk.svg"
                               alt="DKK"
                             />
                             <span class="currency-item-name">Danish Krone</span>
@@ -869,7 +891,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/huf.svg"
+                              src="/img/currencies/huf.svg"
                               alt="HUF"
                             />
                             <span class="currency-item-name"
@@ -888,7 +910,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/czk.svg"
+                              src="/img/currencies/czk.svg"
                               alt="CZK"
                             />
                             <span class="currency-item-name">Czech Koruna</span>
@@ -905,7 +927,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/chf.svg"
+                              src="/img/currencies/chf.svg"
                               alt="CHF"
                             />
                             <span class="currency-item-name">Swiss Franc</span>
@@ -922,7 +944,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/pln.svg"
+                              src="/img/currencies/pln.svg"
                               alt="PLN"
                             />
                             <span class="currency-item-name">Polish Zloty</span>
@@ -939,7 +961,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/nok.svg"
+                              src="/img/currencies/nok.svg"
                               alt="NOK"
                             />
                             <span class="currency-item-name"
@@ -958,7 +980,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/nok.svg"
+                              src="/img/currencies/nok.svg"
                               alt="ISK"
                             />
                             <span class="currency-item-name"
@@ -977,7 +999,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/zar.svg"
+                              src="/img/currencies/zar.svg"
                               alt="ZAR"
                             />
                             <span class="currency-item-name"
@@ -1164,7 +1186,7 @@
                           class="main-bonus-icon"
                           width="24"
                           height="24"
-                          src="./img/bonus-icon1.svg"
+                          src="/img/bonus-icon1.svg"
                           alt="Icon"
                         />
                         <div class="space-y-1">
@@ -1222,7 +1244,7 @@
                               class="bonus-item-icon"
                               width="24"
                               height="24"
-                              src="./img/bonus-icon3.svg"
+                              src="/img/bonus-icon3.svg"
                               alt="Icon"
                             />
                             <p
@@ -1239,7 +1261,7 @@
                               class="bonus-item-icon"
                               width="24"
                               height="24"
-                              src="./img/bonus-icon1.svg"
+                              src="/img/bonus-icon1.svg"
                               alt="Icon"
                             />
                             <span class="bonus-item-name"
@@ -1254,7 +1276,7 @@
                               class="bonus-item-icon"
                               width="24"
                               height="24"
-                              src="./img/bonus-icon2.svg"
+                              src="/img/bonus-icon2.svg"
                               alt="Icon"
                             />
                             <span class="bonus-item-name"
@@ -1269,7 +1291,7 @@
                               class="bonus-item-icon"
                               width="24"
                               height="24"
-                              src="./img/bonus-icon4.svg"
+                              src="/img/bonus-icon4.svg"
                               alt="Icon"
                             />
                             <span class="bonus-item-name">Without Bonus</span>
@@ -1468,7 +1490,7 @@
                           class="main-currency-icon"
                           width="24"
                           height="24"
-                          src="./img/currencies/usd.svg"
+                          src="/img/currencies/usd.svg"
                           alt="USD"
                         />
                         <div class="space-y-1">
@@ -1510,7 +1532,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/eur.svg"
+                              src="/img/currencies/eur.svg"
                               alt="EUR"
                             />
                             <span class="currency-item-name">Euro</span>
@@ -1527,7 +1549,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/usd.svg"
+                              src="/img/currencies/usd.svg"
                               alt="USD"
                             />
                             <span class="currency-item-name">US Dollar</span>
@@ -1544,7 +1566,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/kzt.svg"
+                              src="/img/currencies/kzt.svg"
                               alt="KZT"
                             />
                             <span class="currency-item-name"
@@ -1563,7 +1585,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/try.svg"
+                              src="/img/currencies/try.svg"
                               alt="TRY"
                             />
                             <span class="currency-item-name">Turkish Lira</span>
@@ -1580,7 +1602,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/azn.svg"
+                              src="/img/currencies/azn.svg"
                               alt="AZN"
                             />
                             <span class="currency-item-name"
@@ -1599,7 +1621,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/uzs.svg"
+                              src="/img/currencies/uzs.svg"
                               alt="UZS"
                             />
                             <span class="currency-item-name"
@@ -1618,7 +1640,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/uah.svg"
+                              src="/img/currencies/uah.svg"
                               alt="UAH"
                             />
                             <span class="currency-item-name"
@@ -1637,7 +1659,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/kgs.svg"
+                              src="/img/currencies/kgs.svg"
                               alt="KGS"
                             />
                             <span class="currency-item-name"
@@ -1656,7 +1678,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/brl.svg"
+                              src="/img/currencies/brl.svg"
                               alt="BRL"
                             />
                             <span class="currency-item-name"
@@ -1675,7 +1697,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/ars.svg"
+                              src="/img/currencies/ars.svg"
                               alt="ARS"
                             />
                             <span class="currency-item-name"
@@ -1694,7 +1716,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/aud.svg"
+                              src="/img/currencies/aud.svg"
                               alt="AUD"
                             />
                             <span class="currency-item-name"
@@ -1713,7 +1735,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/bdt.svg"
+                              src="/img/currencies/bdt.svg"
                               alt="BDT"
                             />
                             <span class="currency-item-name"
@@ -1732,7 +1754,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/cad.svg"
+                              src="/img/currencies/cad.svg"
                               alt="CAD"
                             />
                             <span class="currency-item-name"
@@ -1751,7 +1773,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/inr.svg"
+                              src="/img/currencies/inr.svg"
                               alt="INR"
                             />
                             <span class="currency-item-name">Indian Rupee</span>
@@ -1768,7 +1790,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/nzd.svg"
+                              src="/img/currencies/nzd.svg"
                               alt="NZD"
                             />
                             <span class="currency-item-name"
@@ -1787,7 +1809,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/ron.svg"
+                              src="/img/currencies/ron.svg"
                               alt="RON"
                             />
                             <span class="currency-item-name">Romanian Leu</span>
@@ -1804,7 +1826,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/dkk.svg"
+                              src="/img/currencies/dkk.svg"
                               alt="DKK"
                             />
                             <span class="currency-item-name">Danish Krone</span>
@@ -1821,7 +1843,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/huf.svg"
+                              src="/img/currencies/huf.svg"
                               alt="HUF"
                             />
                             <span class="currency-item-name"
@@ -1840,7 +1862,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/czk.svg"
+                              src="/img/currencies/czk.svg"
                               alt="CZK"
                             />
                             <span class="currency-item-name">Czech Koruna</span>
@@ -1857,7 +1879,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/chf.svg"
+                              src="/img/currencies/chf.svg"
                               alt="CHF"
                             />
                             <span class="currency-item-name">Swiss Franc</span>
@@ -1874,7 +1896,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/pln.svg"
+                              src="/img/currencies/pln.svg"
                               alt="PLN"
                             />
                             <span class="currency-item-name">Polish Zloty</span>
@@ -1891,7 +1913,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/nok.svg"
+                              src="/img/currencies/nok.svg"
                               alt="NOK"
                             />
                             <span class="currency-item-name"
@@ -1910,7 +1932,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/nok.svg"
+                              src="/img/currencies/nok.svg"
                               alt="ISK"
                             />
                             <span class="currency-item-name"
@@ -1929,7 +1951,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/zar.svg"
+                              src="/img/currencies/zar.svg"
                               alt="ZAR"
                             />
                             <span class="currency-item-name"
@@ -2100,7 +2122,7 @@
                           class="main-bonus-icon"
                           width="24"
                           height="24"
-                          src="./img/bonus-icon1.svg"
+                          src="/img/bonus-icon1.svg"
                           alt="Icon"
                         />
                         <div class="space-y-1">
@@ -2158,7 +2180,7 @@
                               class="bonus-item-icon"
                               width="24"
                               height="24"
-                              src="./img/bonus-icon3.svg"
+                              src="/img/bonus-icon3.svg"
                               alt="Icon"
                             />
                             <p
@@ -2175,7 +2197,7 @@
                               class="bonus-item-icon"
                               width="24"
                               height="24"
-                              src="./img/bonus-icon1.svg"
+                              src="/img/bonus-icon1.svg"
                               alt="Icon"
                             />
                             <span class="bonus-item-name"
@@ -2190,7 +2212,7 @@
                               class="bonus-item-icon"
                               width="24"
                               height="24"
-                              src="./img/bonus-icon2.svg"
+                              src="/img/bonus-icon2.svg"
                               alt="Icon"
                             />
                             <span class="bonus-item-name"
@@ -2205,7 +2227,7 @@
                               class="bonus-item-icon"
                               width="24"
                               height="24"
-                              src="./img/bonus-icon4.svg"
+                              src="/img/bonus-icon4.svg"
                               alt="Icon"
                             />
                             <span class="bonus-item-name">Without Bonus</span>
@@ -2456,7 +2478,7 @@
                           <img
                             width="36"
                             height="36"
-                            src="./img/socials/facebook.svg"
+                            src="/img/socials/facebook.svg"
                             alt="Facebook"
                           />
                         </span>
@@ -2475,7 +2497,7 @@
                           <img
                             width="36"
                             height="36"
-                            src="./img/socials/google.svg"
+                            src="/img/socials/google.svg"
                             alt="Google"
                           />
                         </span>
@@ -2494,7 +2516,7 @@
                           <img
                             width="36"
                             height="36"
-                            src="./img/socials/microsoft.svg"
+                            src="/img/socials/microsoft.svg"
                             alt="microsoft"
                           />
                         </span>
@@ -2513,7 +2535,7 @@
                           <img
                             width="36"
                             height="36"
-                            src="./img/socials/telegram.svg"
+                            src="/img/socials/telegram.svg"
                             alt="Telegram"
                           />
                         </span>
@@ -2534,7 +2556,7 @@
                           class="main-currency-icon"
                           width="24"
                           height="24"
-                          src="./img/currencies/usd.svg"
+                          src="/img/currencies/usd.svg"
                           alt="USD"
                         />
                         <div class="space-y-1">
@@ -2576,7 +2598,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/eur.svg"
+                              src="/img/currencies/eur.svg"
                               alt="EUR"
                             />
                             <span class="currency-item-name">Euro</span>
@@ -2593,7 +2615,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/usd.svg"
+                              src="/img/currencies/usd.svg"
                               alt="USD"
                             />
                             <span class="currency-item-name">US Dollar</span>
@@ -2610,7 +2632,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/kzt.svg"
+                              src="/img/currencies/kzt.svg"
                               alt="KZT"
                             />
                             <span class="currency-item-name"
@@ -2629,7 +2651,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/try.svg"
+                              src="/img/currencies/try.svg"
                               alt="TRY"
                             />
                             <span class="currency-item-name">Turkish Lira</span>
@@ -2646,7 +2668,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/azn.svg"
+                              src="/img/currencies/azn.svg"
                               alt="AZN"
                             />
                             <span class="currency-item-name"
@@ -2665,7 +2687,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/uzs.svg"
+                              src="/img/currencies/uzs.svg"
                               alt="UZS"
                             />
                             <span class="currency-item-name"
@@ -2684,7 +2706,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/uah.svg"
+                              src="/img/currencies/uah.svg"
                               alt="UAH"
                             />
                             <span class="currency-item-name"
@@ -2703,7 +2725,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/kgs.svg"
+                              src="/img/currencies/kgs.svg"
                               alt="KGS"
                             />
                             <span class="currency-item-name"
@@ -2722,7 +2744,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/brl.svg"
+                              src="/img/currencies/brl.svg"
                               alt="BRL"
                             />
                             <span class="currency-item-name"
@@ -2741,7 +2763,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/ars.svg"
+                              src="/img/currencies/ars.svg"
                               alt="ARS"
                             />
                             <span class="currency-item-name"
@@ -2760,7 +2782,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/aud.svg"
+                              src="/img/currencies/aud.svg"
                               alt="AUD"
                             />
                             <span class="currency-item-name"
@@ -2779,7 +2801,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/bdt.svg"
+                              src="/img/currencies/bdt.svg"
                               alt="BDT"
                             />
                             <span class="currency-item-name"
@@ -2798,7 +2820,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/cad.svg"
+                              src="/img/currencies/cad.svg"
                               alt="CAD"
                             />
                             <span class="currency-item-name"
@@ -2817,7 +2839,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/inr.svg"
+                              src="/img/currencies/inr.svg"
                               alt="INR"
                             />
                             <span class="currency-item-name">Indian Rupee</span>
@@ -2834,7 +2856,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/nzd.svg"
+                              src="/img/currencies/nzd.svg"
                               alt="NZD"
                             />
                             <span class="currency-item-name"
@@ -2853,7 +2875,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/ron.svg"
+                              src="/img/currencies/ron.svg"
                               alt="RON"
                             />
                             <span class="currency-item-name">Romanian Leu</span>
@@ -2870,7 +2892,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/dkk.svg"
+                              src="/img/currencies/dkk.svg"
                               alt="DKK"
                             />
                             <span class="currency-item-name">Danish Krone</span>
@@ -2887,7 +2909,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/huf.svg"
+                              src="/img/currencies/huf.svg"
                               alt="HUF"
                             />
                             <span class="currency-item-name"
@@ -2906,7 +2928,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/czk.svg"
+                              src="/img/currencies/czk.svg"
                               alt="CZK"
                             />
                             <span class="currency-item-name">Czech Koruna</span>
@@ -2923,7 +2945,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/chf.svg"
+                              src="/img/currencies/chf.svg"
                               alt="CHF"
                             />
                             <span class="currency-item-name">Swiss Franc</span>
@@ -2940,7 +2962,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/pln.svg"
+                              src="/img/currencies/pln.svg"
                               alt="PLN"
                             />
                             <span class="currency-item-name">Polish Zloty</span>
@@ -2957,7 +2979,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/zar.svg"
+                              src="/img/currencies/zar.svg"
                               alt="ZAR"
                             />
                             <span class="currency-item-name"
@@ -2987,7 +3009,7 @@
                           class="main-bonus-icon"
                           width="24"
                           height="24"
-                          src="./img/bonus-icon1.svg"
+                          src="/img/bonus-icon1.svg"
                           alt="Icon"
                         />
                         <div class="space-y-1">
@@ -3045,7 +3067,7 @@
                               class="bonus-item-icon"
                               width="24"
                               height="24"
-                              src="./img/bonus-icon3.svg"
+                              src="/img/bonus-icon3.svg"
                               alt="Icon"
                             />
                             <p
@@ -3062,7 +3084,7 @@
                               class="bonus-item-icon"
                               width="24"
                               height="24"
-                              src="./img/bonus-icon1.svg"
+                              src="/img/bonus-icon1.svg"
                               alt="Icon"
                             />
                             <span class="bonus-item-name"
@@ -3077,7 +3099,7 @@
                               class="bonus-item-icon"
                               width="24"
                               height="24"
-                              src="./img/bonus-icon2.svg"
+                              src="/img/bonus-icon2.svg"
                               alt="Icon"
                             />
                             <span class="bonus-item-name"
@@ -3092,7 +3114,7 @@
                               class="bonus-item-icon"
                               width="24"
                               height="24"
-                              src="./img/bonus-icon4.svg"
+                              src="/img/bonus-icon4.svg"
                               alt="Icon"
                             />
                             <span class="bonus-item-name">Without Bonus</span>
@@ -3298,7 +3320,7 @@
                           class="main-currency-icon"
                           width="24"
                           height="24"
-                          src="./img/currencies/usd.svg"
+                          src="/img/currencies/usd.svg"
                           alt="USD"
                         />
                         <div class="space-y-1">
@@ -3340,7 +3362,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/eur.svg"
+                              src="/img/currencies/eur.svg"
                               alt="EUR"
                             />
                             <span class="currency-item-name">Euro</span>
@@ -3357,7 +3379,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/usd.svg"
+                              src="/img/currencies/usd.svg"
                               alt="USD"
                             />
                             <span class="currency-item-name">US Dollar</span>
@@ -3374,7 +3396,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/kzt.svg"
+                              src="/img/currencies/kzt.svg"
                               alt="KZT"
                             />
                             <span class="currency-item-name"
@@ -3393,7 +3415,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/try.svg"
+                              src="/img/currencies/try.svg"
                               alt="TRY"
                             />
                             <span class="currency-item-name">Turkish Lira</span>
@@ -3410,7 +3432,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/azn.svg"
+                              src="/img/currencies/azn.svg"
                               alt="AZN"
                             />
                             <span class="currency-item-name"
@@ -3429,7 +3451,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/uzs.svg"
+                              src="/img/currencies/uzs.svg"
                               alt="UZS"
                             />
                             <span class="currency-item-name"
@@ -3448,7 +3470,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/uah.svg"
+                              src="/img/currencies/uah.svg"
                               alt="UAH"
                             />
                             <span class="currency-item-name"
@@ -3467,7 +3489,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/kgs.svg"
+                              src="/img/currencies/kgs.svg"
                               alt="KGS"
                             />
                             <span class="currency-item-name"
@@ -3486,7 +3508,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/brl.svg"
+                              src="/img/currencies/brl.svg"
                               alt="BRL"
                             />
                             <span class="currency-item-name"
@@ -3505,7 +3527,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/ars.svg"
+                              src="/img/currencies/ars.svg"
                               alt="ARS"
                             />
                             <span class="currency-item-name"
@@ -3524,7 +3546,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/aud.svg"
+                              src="/img/currencies/aud.svg"
                               alt="AUD"
                             />
                             <span class="currency-item-name"
@@ -3543,7 +3565,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/bdt.svg"
+                              src="/img/currencies/bdt.svg"
                               alt="BDT"
                             />
                             <span class="currency-item-name"
@@ -3562,7 +3584,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/cad.svg"
+                              src="/img/currencies/cad.svg"
                               alt="CAD"
                             />
                             <span class="currency-item-name"
@@ -3581,7 +3603,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/inr.svg"
+                              src="/img/currencies/inr.svg"
                               alt="INR"
                             />
                             <span class="currency-item-name">Indian Rupee</span>
@@ -3598,7 +3620,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/nzd.svg"
+                              src="/img/currencies/nzd.svg"
                               alt="NZD"
                             />
                             <span class="currency-item-name"
@@ -3617,7 +3639,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/ron.svg"
+                              src="/img/currencies/ron.svg"
                               alt="RON"
                             />
                             <span class="currency-item-name">Romanian Leu</span>
@@ -3634,7 +3656,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/dkk.svg"
+                              src="/img/currencies/dkk.svg"
                               alt="DKK"
                             />
                             <span class="currency-item-name">Danish Krone</span>
@@ -3651,7 +3673,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/huf.svg"
+                              src="/img/currencies/huf.svg"
                               alt="HUF"
                             />
                             <span class="currency-item-name"
@@ -3670,7 +3692,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/czk.svg"
+                              src="/img/currencies/czk.svg"
                               alt="CZK"
                             />
                             <span class="currency-item-name">Czech Koruna</span>
@@ -3687,7 +3709,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/chf.svg"
+                              src="/img/currencies/chf.svg"
                               alt="CHF"
                             />
                             <span class="currency-item-name">Swiss Franc</span>
@@ -3704,7 +3726,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/pln.svg"
+                              src="/img/currencies/pln.svg"
                               alt="PLN"
                             />
                             <span class="currency-item-name">Polish Zloty</span>
@@ -3721,7 +3743,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/nok.svg"
+                              src="/img/currencies/nok.svg"
                               alt="NOK"
                             />
                             <span class="currency-item-name"
@@ -3740,7 +3762,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/nok.svg"
+                              src="/img/currencies/nok.svg"
                               alt="ISK"
                             />
                             <span class="currency-item-name"
@@ -3759,7 +3781,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/zar.svg"
+                              src="/img/currencies/zar.svg"
                               alt="ZAR"
                             />
                             <span class="currency-item-name"
@@ -3789,7 +3811,7 @@
                           class="main-bonus-icon"
                           width="24"
                           height="24"
-                          src="./img/bonus-icon1.svg"
+                          src="/img/bonus-icon1.svg"
                           alt="Icon"
                         />
                         <div class="space-y-1">
@@ -3847,7 +3869,7 @@
                               class="bonus-item-icon"
                               width="24"
                               height="24"
-                              src="./img/bonus-icon3.svg"
+                              src="/img/bonus-icon3.svg"
                               alt="Icon"
                             />
                             <p
@@ -3864,7 +3886,7 @@
                               class="bonus-item-icon"
                               width="24"
                               height="24"
-                              src="./img/bonus-icon1.svg"
+                              src="/img/bonus-icon1.svg"
                               alt="Icon"
                             />
                             <span class="bonus-item-name"
@@ -3879,7 +3901,7 @@
                               class="bonus-item-icon"
                               width="24"
                               height="24"
-                              src="./img/bonus-icon2.svg"
+                              src="/img/bonus-icon2.svg"
                               alt="Icon"
                             />
                             <span class="bonus-item-name"
@@ -3894,7 +3916,7 @@
                               class="bonus-item-icon"
                               width="24"
                               height="24"
-                              src="./img/bonus-icon4.svg"
+                              src="/img/bonus-icon4.svg"
                               alt="Icon"
                             />
                             <span class="bonus-item-name">Without Bonus</span>
@@ -4093,7 +4115,7 @@
               class="relative z-[2] mx-auto"
               width="75"
               height="75"
-              src="./img/authFormImg/modal-bg-logo.svg"
+              src="/img/authFormImg/modal-bg-logo.svg"
               alt="Goldbet"
             />
             <!-- images -->
@@ -4102,28 +4124,28 @@
                 class="shine-img absolute -right-9 top-5 z-[5]"
                 width="154"
                 height="154"
-                src="./img/authFormImg/shine.webp"
+                src="/img/authFormImg/shine.webp"
                 alt="Shine star"
               />
               <img
                 class="shine-img absolute -left-9 bottom-5 z-[5]"
                 width="154"
                 height="154"
-                src="./img/authFormImg/shine.webp"
+                src="/img/authFormImg/shine.webp"
                 alt="Shine star"
               />
               <img
                 class="shine-img absolute bottom-[10px] right-[10px] z-[5]"
                 width="54"
                 height="54"
-                src="./img/authFormImg/shine-circle.webp"
+                src="/img/authFormImg/shine-circle.webp"
                 alt="Shine circle"
               />
               <img
                 class="modal-tiger-img absolute -left-[100px] bottom-0 min-w-[583px] will-change-transform"
                 width="618"
                 height="562"
-                src="./img/authFormImg/modal-tiger.webp"
+                src="/img/authFormImg/modal-tiger.webp"
                 alt="Tiger"
               />
             </div>
@@ -4177,14 +4199,14 @@
                   class="absolute -bottom-[15px] -left-5"
                   width="63"
                   height="63"
-                  src="./img/deposit-box.svg"
+                  src="/img/deposit-box.svg"
                   alt="Gift box"
                 />
                 <img
                   class="absolute -right-5 -top-[15px]"
                   width="54"
                   height="54"
-                  src="./img/dollar-coin.svg"
+                  src="/img/dollar-coin.svg"
                   alt="Coin"
                 />
                 <p
@@ -4199,7 +4221,7 @@
                   <img
                     width="24"
                     height="24"
-                    src="./img/activated-icon.svg"
+                    src="/img/activated-icon.svg"
                     alt="Icon"
                   />
                   <span data-modal-translate="activated" class="banner-big-text"
@@ -4214,14 +4236,14 @@
                   class="absolute -bottom-[15px] -left-5"
                   width="63"
                   height="63"
-                  src="./img/box-cup.svg"
+                  src="/img/box-cup.svg"
                   alt="Gift box"
                 />
                 <img
                   class="absolute -right-5 -top-[15px]"
                   width="54"
                   height="54"
-                  src="./img/percent-badge.svg"
+                  src="/img/percent-badge.svg"
                   alt="Coin"
                 />
                 <p
@@ -4236,7 +4258,7 @@
                   <img
                     width="24"
                     height="24"
-                    src="./img/activated-icon.svg"
+                    src="/img/activated-icon.svg"
                     alt="Icon"
                   />
                   <span class="banner-big-text">200% + 75 FS</span>
@@ -4320,7 +4342,7 @@
                           <img
                             width="36"
                             height="36"
-                            src="./img/socials/facebook.svg"
+                            src="/img/socials/facebook.svg"
                             alt="Facebook"
                           />
                         </span>
@@ -4339,7 +4361,7 @@
                           <img
                             width="36"
                             height="36"
-                            src="./img/socials/google.svg"
+                            src="/img/socials/google.svg"
                             alt="Google"
                           />
                         </span>
@@ -4358,7 +4380,7 @@
                           <img
                             width="36"
                             height="36"
-                            src="./img/socials/microsoft.svg"
+                            src="/img/socials/microsoft.svg"
                             alt="microsoft"
                           />
                         </span>
@@ -4377,7 +4399,7 @@
                           <img
                             width="36"
                             height="36"
-                            src="./img/socials/telegram.svg"
+                            src="/img/socials/telegram.svg"
                             alt="Telegram"
                           />
                         </span>
@@ -4398,7 +4420,7 @@
                           class="main-currency-icon"
                           width="24"
                           height="24"
-                          src="./img/currencies/usd.svg"
+                          src="/img/currencies/usd.svg"
                           alt="USD"
                         />
                         <div class="space-y-1">
@@ -4440,7 +4462,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/eur.svg"
+                              src="/img/currencies/eur.svg"
                               alt="EUR"
                             />
                             <span class="currency-item-name">Euro</span>
@@ -4457,7 +4479,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/usd.svg"
+                              src="/img/currencies/usd.svg"
                               alt="USD"
                             />
                             <span class="currency-item-name">US Dollar</span>
@@ -4474,7 +4496,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/kzt.svg"
+                              src="/img/currencies/kzt.svg"
                               alt="KZT"
                             />
                             <span class="currency-item-name"
@@ -4493,7 +4515,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/try.svg"
+                              src="/img/currencies/try.svg"
                               alt="TRY"
                             />
                             <span class="currency-item-name">Turkish Lira</span>
@@ -4510,7 +4532,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/azn.svg"
+                              src="/img/currencies/azn.svg"
                               alt="AZN"
                             />
                             <span class="currency-item-name"
@@ -4529,7 +4551,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/uzs.svg"
+                              src="/img/currencies/uzs.svg"
                               alt="UZS"
                             />
                             <span class="currency-item-name"
@@ -4548,7 +4570,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/uah.svg"
+                              src="/img/currencies/uah.svg"
                               alt="UAH"
                             />
                             <span class="currency-item-name"
@@ -4567,7 +4589,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/kgs.svg"
+                              src="/img/currencies/kgs.svg"
                               alt="KGS"
                             />
                             <span class="currency-item-name"
@@ -4586,7 +4608,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/brl.svg"
+                              src="/img/currencies/brl.svg"
                               alt="BRL"
                             />
                             <span class="currency-item-name"
@@ -4605,7 +4627,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/ars.svg"
+                              src="/img/currencies/ars.svg"
                               alt="ARS"
                             />
                             <span class="currency-item-name"
@@ -4624,7 +4646,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/aud.svg"
+                              src="/img/currencies/aud.svg"
                               alt="AUD"
                             />
                             <span class="currency-item-name"
@@ -4643,7 +4665,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/bdt.svg"
+                              src="/img/currencies/bdt.svg"
                               alt="BDT"
                             />
                             <span class="currency-item-name"
@@ -4662,7 +4684,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/cad.svg"
+                              src="/img/currencies/cad.svg"
                               alt="CAD"
                             />
                             <span class="currency-item-name"
@@ -4681,7 +4703,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/inr.svg"
+                              src="/img/currencies/inr.svg"
                               alt="INR"
                             />
                             <span class="currency-item-name">Indian Rupee</span>
@@ -4698,7 +4720,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/nzd.svg"
+                              src="/img/currencies/nzd.svg"
                               alt="NZD"
                             />
                             <span class="currency-item-name"
@@ -4717,7 +4739,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/ron.svg"
+                              src="/img/currencies/ron.svg"
                               alt="RON"
                             />
                             <span class="currency-item-name">Romanian Leu</span>
@@ -4734,7 +4756,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/dkk.svg"
+                              src="/img/currencies/dkk.svg"
                               alt="DKK"
                             />
                             <span class="currency-item-name">Danish Krone</span>
@@ -4751,7 +4773,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/huf.svg"
+                              src="/img/currencies/huf.svg"
                               alt="HUF"
                             />
                             <span class="currency-item-name"
@@ -4770,7 +4792,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/czk.svg"
+                              src="/img/currencies/czk.svg"
                               alt="CZK"
                             />
                             <span class="currency-item-name">Czech Koruna</span>
@@ -4787,7 +4809,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/chf.svg"
+                              src="/img/currencies/chf.svg"
                               alt="CHF"
                             />
                             <span class="currency-item-name">Swiss Franc</span>
@@ -4804,7 +4826,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/pln.svg"
+                              src="/img/currencies/pln.svg"
                               alt="PLN"
                             />
                             <span class="currency-item-name">Polish Zloty</span>
@@ -4821,7 +4843,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/nok.svg"
+                              src="/img/currencies/nok.svg"
                               alt="Nok"
                             />
                             <span class="currency-item-name"
@@ -4840,7 +4862,7 @@
                               class="currency-item-icon"
                               width="24"
                               height="24"
-                              src="./img/currencies/zar.svg"
+                              src="/img/currencies/zar.svg"
                               alt="ZAR"
                             />
                             <span class="currency-item-name"
@@ -4870,7 +4892,7 @@
                           class="main-bonus-icon"
                           width="24"
                           height="24"
-                          src="./img/bonus-icon1.svg"
+                          src="/img/bonus-icon1.svg"
                           alt="Icon"
                         />
                         <div class="space-y-1">
@@ -4928,7 +4950,7 @@
                               class="bonus-item-icon"
                               width="24"
                               height="24"
-                              src="./img/bonus-icon3.svg"
+                              src="/img/bonus-icon3.svg"
                               alt="Icon"
                             />
                             <p
@@ -4945,7 +4967,7 @@
                               class="bonus-item-icon"
                               width="24"
                               height="24"
-                              src="./img/bonus-icon1.svg"
+                              src="/img/bonus-icon1.svg"
                               alt="Icon"
                             />
                             <span class="bonus-item-name"
@@ -4960,7 +4982,7 @@
                               class="bonus-item-icon"
                               width="24"
                               height="24"
-                              src="./img/bonus-icon2.svg"
+                              src="/img/bonus-icon2.svg"
                               alt="Icon"
                             />
                             <span class="bonus-item-name"
@@ -4975,7 +4997,7 @@
                               class="bonus-item-icon"
                               width="24"
                               height="24"
-                              src="./img/bonus-icon4.svg"
+                              src="/img/bonus-icon4.svg"
                               alt="Icon"
                             />
                             <span class="bonus-item-name">Without Bonus</span>
@@ -5192,7 +5214,7 @@
               class="lion-image relative z-10 h-full w-full object-cover will-change-transform"
               width="750"
               height="1032"
-              src="./img/socialsFormImg/form-lion.webp"
+              src="/img/socialsFormImg/form-lion.webp"
               alt="Lion"
             />
             <div
@@ -5254,7 +5276,7 @@
                 class="wallet-image absolute will-change-transform"
                 width="185"
                 height="185"
-                src="./img/socialsFormImg/wallet-img.webp"
+                src="/img/socialsFormImg/wallet-img.webp"
                 alt="Wallet image"
               />
             </div>
@@ -5456,7 +5478,7 @@
                         class="pointer-events-none"
                         width="32"
                         height="32"
-                        src="./img/facebook-logo.svg"
+                        src="/img/facebook-logo.svg"
                         alt="Facebook logo"
                       />
                       <span
@@ -5474,7 +5496,7 @@
                         class="pointer-events-none"
                         width="32"
                         height="32"
-                        src="./img/google.svg"
+                        src="/img/google.svg"
                         alt="Google icon"
                       />
                       <span
@@ -5730,7 +5752,7 @@
                       class="show-password-btn absolute right-5 top-1/2 -translate-y-1/2 cursor-pointer rtl:left-5 rtl:right-auto"
                       width="32"
                       height="32"
-                      src="./img/password-invisible.svg"
+                      src="/img/password-invisible.svg"
                       alt="Password icon"
                     />
                     <div
@@ -5763,7 +5785,7 @@
                             class="main-currency-icon"
                             width="24"
                             height="24"
-                            src="./img/currencies/usd.svg"
+                            src="/img/currencies/usd.svg"
                             alt="USD"
                           />
                           <span
@@ -5803,7 +5825,7 @@
                             class="currency-item-icon"
                             width="24"
                             height="24"
-                            src="./img/currencies/eur.svg"
+                            src="/img/currencies/eur.svg"
                             alt="EUR"
                           />
                           <span class="currency-item-name">Euro</span>
@@ -5820,7 +5842,7 @@
                             class="currency-item-icon"
                             width="24"
                             height="24"
-                            src="./img/currencies/usd.svg"
+                            src="/img/currencies/usd.svg"
                             alt="USD"
                           />
                           <span class="currency-item-name">US Dollar</span>
@@ -5837,7 +5859,7 @@
                             class="currency-item-icon"
                             width="24"
                             height="24"
-                            src="./img/currencies/kzt.svg"
+                            src="/img/currencies/kzt.svg"
                             alt="KZT"
                           />
                           <span class="currency-item-name"
@@ -5856,7 +5878,7 @@
                             class="currency-item-icon"
                             width="24"
                             height="24"
-                            src="./img/currencies/try.svg"
+                            src="/img/currencies/try.svg"
                             alt="TRY"
                           />
                           <span class="currency-item-name">Turkish Lira</span>
@@ -5873,7 +5895,7 @@
                             class="currency-item-icon"
                             width="24"
                             height="24"
-                            src="./img/currencies/azn.svg"
+                            src="/img/currencies/azn.svg"
                             alt="AZN"
                           />
                           <span class="currency-item-name"
@@ -5892,7 +5914,7 @@
                             class="currency-item-icon"
                             width="24"
                             height="24"
-                            src="./img/currencies/uzs.svg"
+                            src="/img/currencies/uzs.svg"
                             alt="UZS"
                           />
                           <span class="currency-item-name"
@@ -5911,7 +5933,7 @@
                             class="currency-item-icon"
                             width="24"
                             height="24"
-                            src="./img/currencies/uah.svg"
+                            src="/img/currencies/uah.svg"
                             alt="UAH"
                           />
                           <span class="currency-item-name"
@@ -5930,7 +5952,7 @@
                             class="currency-item-icon"
                             width="24"
                             height="24"
-                            src="./img/currencies/kgs.svg"
+                            src="/img/currencies/kgs.svg"
                             alt="KGS"
                           />
                           <span class="currency-item-name"
@@ -5949,7 +5971,7 @@
                             class="currency-item-icon"
                             width="24"
                             height="24"
-                            src="./img/currencies/brl.svg"
+                            src="/img/currencies/brl.svg"
                             alt="BRL"
                           />
                           <span class="currency-item-name">Brazilian real</span>
@@ -5966,7 +5988,7 @@
                             class="currency-item-icon"
                             width="24"
                             height="24"
-                            src="./img/currencies/ars.svg"
+                            src="/img/currencies/ars.svg"
                             alt="ARS"
                           />
                           <span class="currency-item-name">Argentine Peso</span>
@@ -5983,7 +6005,7 @@
                             class="currency-item-icon"
                             width="24"
                             height="24"
-                            src="./img/currencies/aud.svg"
+                            src="/img/currencies/aud.svg"
                             alt="AUD"
                           />
                           <span class="currency-item-name"
@@ -6002,7 +6024,7 @@
                             class="currency-item-icon"
                             width="24"
                             height="24"
-                            src="./img/currencies/bdt.svg"
+                            src="/img/currencies/bdt.svg"
                             alt="BDT"
                           />
                           <span class="currency-item-name"
@@ -6021,7 +6043,7 @@
                             class="currency-item-icon"
                             width="24"
                             height="24"
-                            src="./img/currencies/cad.svg"
+                            src="/img/currencies/cad.svg"
                             alt="CAD"
                           />
                           <span class="currency-item-name"
@@ -6040,7 +6062,7 @@
                             class="currency-item-icon"
                             width="24"
                             height="24"
-                            src="./img/currencies/inr.svg"
+                            src="/img/currencies/inr.svg"
                             alt="INR"
                           />
                           <span class="currency-item-name">Indian Rupee</span>
@@ -6057,7 +6079,7 @@
                             class="currency-item-icon"
                             width="24"
                             height="24"
-                            src="./img/currencies/nzd.svg"
+                            src="/img/currencies/nzd.svg"
                             alt="NZD"
                           />
                           <span class="currency-item-name"
@@ -6076,7 +6098,7 @@
                             class="currency-item-icon"
                             width="24"
                             height="24"
-                            src="./img/currencies/ron.svg"
+                            src="/img/currencies/ron.svg"
                             alt="RON"
                           />
                           <span class="currency-item-name">Romanian Leu</span>
@@ -6093,7 +6115,7 @@
                             class="currency-item-icon"
                             width="24"
                             height="24"
-                            src="./img/currencies/dkk.svg"
+                            src="/img/currencies/dkk.svg"
                             alt="DKK"
                           />
                           <span class="currency-item-name">Danish Krone</span>
@@ -6110,7 +6132,7 @@
                             class="currency-item-icon"
                             width="24"
                             height="24"
-                            src="./img/currencies/huf.svg"
+                            src="/img/currencies/huf.svg"
                             alt="HUF"
                           />
                           <span class="currency-item-name"
@@ -6129,7 +6151,7 @@
                             class="currency-item-icon"
                             width="24"
                             height="24"
-                            src="./img/currencies/czk.svg"
+                            src="/img/currencies/czk.svg"
                             alt="CZK"
                           />
                           <span class="currency-item-name">Czech Koruna</span>
@@ -6146,7 +6168,7 @@
                             class="currency-item-icon"
                             width="24"
                             height="24"
-                            src="./img/currencies/chf.svg"
+                            src="/img/currencies/chf.svg"
                             alt="CHF"
                           />
                           <span class="currency-item-name">Swiss Franc</span>
@@ -6163,7 +6185,7 @@
                             class="currency-item-icon"
                             width="24"
                             height="24"
-                            src="./img/currencies/pln.svg"
+                            src="/img/currencies/pln.svg"
                             alt="PLN"
                           />
                           <span class="currency-item-name">Polish Zloty</span>
@@ -6180,7 +6202,7 @@
                             class="currency-item-icon"
                             width="24"
                             height="24"
-                            src="./img/currencies/zar.svg"
+                            src="/img/currencies/zar.svg"
                             alt="ZAR"
                           />
                           <span class="currency-item-name"
