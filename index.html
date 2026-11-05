@@ -7,8 +7,30 @@
       name="viewport"
       content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"
     />
+    <!-- CSS/JS сборки (Vite ставит crossorigin) и картинки с CDN -->
+    <link rel="preconnect" href="https://landing-res.b-cdn.net" crossorigin />
+    <link rel="preconnect" href="https://landing-res.b-cdn.net" />
     <title>Goldbet</title>
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <!-- Гео-запрос стартует сразу, параллельно с загрузкой бандла; geoLocation.js забирает этот промис -->
+    <script>
+      window.__geoPromise = (function () {
+        var controller = new AbortController();
+        var timer = setTimeout(function () {
+          controller.abort();
+        }, 2500);
+        return fetch(
+          "https://" +
+            location.host +
+            "/geo-api/api/check?accessKey=0439ba6e-6092-46c2-9aeb-8662065bc43c",
+          { signal: controller.signal },
+        ).then(function (response) {
+          clearTimeout(timer);
+          if (!response.ok) throw new Error("Bad API response");
+          return response.json();
+        });
+      })();
+      window.__geoPromise.catch(function () {});
+    </script>
     <!-- Email-Guard (Zeruh): typo-correction + deliverability. Scoped to socials form via data-eg="email". -->
     <script
       defer

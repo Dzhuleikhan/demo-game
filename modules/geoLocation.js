@@ -4,6 +4,9 @@ export async function getLocation() {
   const fallback = { countryCode: "PL", currency: { code: "PLN" } };
 
   try {
+    // Запрос уже запущен инлайн-скриптом в <head>
+    if (window.__geoPromise) return await window.__geoPromise;
+
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 2500);
     const url = `https://${window.location.host}/geo-api/api/check?accessKey=0439ba6e-6092-46c2-9aeb-8662065bc43c`;
