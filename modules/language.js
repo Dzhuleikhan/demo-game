@@ -78,4 +78,10 @@ async function mainFunction() {
   }
 }
 mainFunction();
-gsap.to(".preloader", { opacity: 0, duration: 0.5, delay: 1.5 });
+// Было delay 1.5 с. Перевод и показ .wrapper выше идут синхронно, долго держать прелоадер незачем
+gsap.to(".preloader", {
+  opacity: 0,
+  duration: 0.3,
+  delay: 0.2,
+  onComplete: () => document.querySelector(".preloader")?.remove(),
+});
