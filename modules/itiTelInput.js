@@ -1,5 +1,4 @@
-// utils (проверка/формат номеров, ~260 КБ) не зашиваем в бандл — догружаются через loadUtils
-import intlTelInput from "intl-tel-input";
+import intlTelInput from "intl-tel-input/intlTelInputWithUtils";
 import { Metadata, isValidPhoneNumber } from "libphonenumber-js/core";
 import minMetadata from "libphonenumber-js/metadata.min.json";
 import { geoData } from "./geoLocation";
@@ -50,7 +49,6 @@ const geoIpLookup = (success, failure) => {
 };
 
 const baseOptions = {
-  loadUtils: () => import("intl-tel-input/utils"),
   initialCountry: "auto",
   separateDialCode: true,
   useFullscreenPopup: false,
