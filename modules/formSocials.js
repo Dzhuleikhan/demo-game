@@ -268,6 +268,15 @@ const changingFormSteps = (stepCount) => {
     }
   });
 
+  // Кнопка «Log In» и подпись над ней — только на первом шаге
+  const isFirstStep = stepCount === 1;
+  document
+    .querySelector(".login-btn")
+    ?.classList.toggle("hidden", !isFirstStep);
+  document
+    .querySelector('[data-modal-translate="alreadyHaveAnAccount"]')
+    ?.classList.toggle("hidden", !isFirstStep);
+
   focusFirstField(stepCount);
 };
 changingFormSteps(formStepCount);
@@ -822,6 +831,25 @@ let promocode = getUrlParameter("promocode");
 // if (landType) {
 //   promocode = getUrlParameter("promocode");
 // }
+
+const loginBtn = document.querySelector(".login-btn");
+if (loginBtn) {
+  loginBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    loginBtn.classList.add("loading");
+    // URL собираем в момент клика: newDomain приходит из API асинхронно
+    const loginPromocode = getUrlParameter("promocode");
+    const url = new URL(`https://${newDomain}/bonuses`);
+    if (loginPromocode) url.searchParams.set("promocode", loginPromocode);
+    url.searchParams.set("modal", "auth");
+    url.searchParams.set("mode", "sign-in");
+    window.location.href = url.toString();
+  });
+  // возврат «назад» из bfcache — снимаем вечный лоадер
+  window.addEventListener("pageshow", () => {
+    loginBtn.classList.remove("loading");
+  });
+}
 
 if (mainForm) {
   mainForm.addEventListener("keydown", (e) => {
