@@ -1,5 +1,7 @@
 export const modalTranslations = {
   en: {
+    loginBtn: "Log In",
+    alreadyHaveAnAccount: "Already have an account?",
     // ? AUTH
     mainModalTitle: "Sign up",
     tabEmail: "Email",
@@ -55,6 +57,8 @@ export const modalTranslations = {
     passwordPlaceholder: "Password",
   },
   ru: {
+    loginBtn: "Войти",
+    alreadyHaveAnAccount: "Уже есть аккаунт?",
     // ? AUTH
     mainModalTitle: "регистрация",
     tabEmail: "Почта",
@@ -110,6 +114,8 @@ export const modalTranslations = {
     passwordPlaceholder: "Пароль",
   },
   es: {
+    loginBtn: "Iniciar sesión",
+    alreadyHaveAnAccount: "¿Ya tienes una cuenta?",
     // ? AUTH
     mainModalTitle: "Registrarse",
     tabEmail: "Email",
@@ -165,6 +171,8 @@ export const modalTranslations = {
     passwordPlaceholder: "Contraseña",
   },
   pt: {
+    loginBtn: "Entrar",
+    alreadyHaveAnAccount: "Já tens uma conta?",
     // ? AUTH
     mainModalTitle: "Cadastre-se",
     tabEmail: "Email",
@@ -220,6 +228,8 @@ export const modalTranslations = {
     passwordPlaceholder: "Senha",
   },
   fr: {
+    loginBtn: "Se connecter",
+    alreadyHaveAnAccount: "Déjà un compte ?",
     // ? AUTH
     mainModalTitle: "Inscription",
     tabEmail: "Email",
@@ -275,6 +285,8 @@ export const modalTranslations = {
     passwordPlaceholder: "Mot de passe",
   },
   de: {
+    loginBtn: "Anmelden",
+    alreadyHaveAnAccount: "Bereits ein Konto?",
     // ? AUTH
     mainModalTitle: "Registrieren",
     tabEmail: "E-Mail",
@@ -332,6 +344,8 @@ export const modalTranslations = {
     passwordPlaceholder: "Passwort",
   },
   uk: {
+    loginBtn: "Увійти",
+    alreadyHaveAnAccount: "Вже є акаунт?",
     // ? AUTH
     mainModalTitle: "реєстрація",
     tabEmail: "Пошта",
@@ -387,6 +401,8 @@ export const modalTranslations = {
     passwordPlaceholder: "Пароль",
   },
   it: {
+    loginBtn: "Accedi",
+    alreadyHaveAnAccount: "Hai già un account?",
     // ? AUTH
     mainModalTitle: "registrati",
     tabEmail: "Email",
@@ -442,6 +458,8 @@ export const modalTranslations = {
     passwordPlaceholder: "Password",
   },
   hu: {
+    loginBtn: "Bejelentkezés",
+    alreadyHaveAnAccount: "Már van fiókod?",
     // ? AUTH
     mainModalTitle: "regisztráció",
     tabEmail: "Email",
@@ -497,6 +515,8 @@ export const modalTranslations = {
     passwordPlaceholder: "Jelszó",
   },
   ro: {
+    loginBtn: "Autentificare",
+    alreadyHaveAnAccount: "Ai deja un cont?",
     // ? AUTH
     mainModalTitle: "înregistrează-te",
     tabEmail: "Email",
@@ -552,6 +572,8 @@ export const modalTranslations = {
     passwordPlaceholder: "Parolă",
   },
   pl: {
+    loginBtn: "Zaloguj się",
+    alreadyHaveAnAccount: "Masz już konto?",
     // ? AUTH
     mainModalTitle: "zarejestruj się",
     tabEmail: "Email",
@@ -607,6 +629,8 @@ export const modalTranslations = {
     passwordPlaceholder: "Hasło",
   },
   cs: {
+    loginBtn: "Přihlásit se",
+    alreadyHaveAnAccount: "Již máš účet?",
     // ? AUTH
     mainModalTitle: "zaregistrovat se",
     tabEmail: "Email",
@@ -662,6 +686,8 @@ export const modalTranslations = {
     passwordPlaceholder: "Heslo",
   },
   et: {
+    loginBtn: "Logi sisse",
+    alreadyHaveAnAccount: "Kas sul on juba konto?",
     // ? AUTH
     mainModalTitle: "registreeru",
     tabEmail: "E-post",
@@ -717,6 +743,8 @@ export const modalTranslations = {
     passwordPlaceholder: "Parool",
   },
   lv: {
+    loginBtn: "Pieteikties",
+    alreadyHaveAnAccount: "Jau ir konts?",
     // ? AUTH
     mainModalTitle: "reģistrēties",
     tabEmail: "E-pasts",
@@ -772,6 +800,8 @@ export const modalTranslations = {
     passwordPlaceholder: "Parole",
   },
   lt: {
+    loginBtn: "Prisijungti",
+    alreadyHaveAnAccount: "Jau turi paskyrą?",
     // ? AUTH
     mainModalTitle: "užsiregistruoti",
     tabEmail: "El. paštas",
@@ -827,6 +857,8 @@ export const modalTranslations = {
     passwordPlaceholder: "Slaptažodis",
   },
   hr: {
+    loginBtn: "Prijava",
+    alreadyHaveAnAccount: "Već imaš račun?",
     // ? AUTH
     mainModalTitle: "prijava",
     tabEmail: "E-pošta",
@@ -882,6 +914,8 @@ export const modalTranslations = {
     passwordPlaceholder: "Lozinka",
   },
   da: {
+    loginBtn: "Log ind",
+    alreadyHaveAnAccount: "Har du allerede en konto?",
     // ? AUTH
     mainModalTitle: "Tilmeld",
     tabEmail: "Email",
@@ -936,6 +970,8 @@ export const modalTranslations = {
     passwordPlaceholder: "Adgangskode",
   },
   fi: {
+    loginBtn: "Kirjaudu sisään",
+    alreadyHaveAnAccount: "Onko sinulla jo tili?",
     // ? AUTH
     mainModalTitle: "Rekisteröidy",
     tabEmail: "Sähköposti",
@@ -990,6 +1026,8 @@ export const modalTranslations = {
     passwordPlaceholder: "Salasana",
   },
   bg: {
+    loginBtn: "Влезте",
+    alreadyHaveAnAccount: "Вече имаш акаунт?",
     // ? AUTH
     mainModalTitle: "Регистрация",
     tabEmail: "Имейл",
@@ -1044,6 +1082,8 @@ export const modalTranslations = {
     passwordPlaceholder: "Парола",
   },
   sw: {
+    loginBtn: "Ingia",
+    alreadyHaveAnAccount: "Una akaunti tayari?",
     // ? AUTH
     mainModalTitle: "jisajili",
     tabEmail: "Barua pepe",
@@ -1099,6 +1139,8 @@ export const modalTranslations = {
     passwordPlaceholder: "Nenosiri",
   },
   rw: {
+    loginBtn: "Injira",
+    alreadyHaveAnAccount: "Ufite konti?",
     // ? AUTH
     mainModalTitle: "iyandikishe",
     tabEmail: "Imeyili",
@@ -1154,6 +1196,8 @@ export const modalTranslations = {
     passwordPlaceholder: "Ijambo ry'ibanga",
   },
   ar: {
+    loginBtn: "تسجيل الدخول",
+    alreadyHaveAnAccount: "هل لديك حساب بالفعل؟",
     // ? AUTH
     mainModalTitle: "إنشاء حساب",
     tabEmail: "البريد",
@@ -1209,6 +1253,8 @@ export const modalTranslations = {
     passwordPlaceholder: "كلمة المرور",
   },
   el: {
+    loginBtn: "Σύνδεση",
+    alreadyHaveAnAccount: "Έχεις ήδη λογαριασμό;",
     // ? AUTH
     mainModalTitle: "Εγγραφή",
     tabEmail: "Email",
@@ -1264,6 +1310,8 @@ export const modalTranslations = {
     passwordPlaceholder: "Κωδικός πρόσβασης",
   },
   ga: {
+    loginBtn: "Logáil isteach",
+    alreadyHaveAnAccount: "An bhfuil cuntas agat cheana féin?",
     // ? AUTH
     mainModalTitle: "Cláraigh",
     tabEmail: "Ríomhphost",
@@ -1319,6 +1367,8 @@ export const modalTranslations = {
     passwordPlaceholder: "Pasfhocal",
   },
   lb: {
+    loginBtn: "Aloggen",
+    alreadyHaveAnAccount: "Hutt Dir schonn e Kont?",
     // ? AUTH
     mainModalTitle: "Umellen",
     tabEmail: "E-Mail",
@@ -1374,6 +1424,8 @@ export const modalTranslations = {
     passwordPlaceholder: "Passwuert",
   },
   mt: {
+    loginBtn: "Idħol",
+    alreadyHaveAnAccount: "Diġà għandek kont?",
     // ? AUTH
     mainModalTitle: "Irreġistra",
     tabEmail: "Email",
@@ -1429,6 +1481,8 @@ export const modalTranslations = {
     passwordPlaceholder: "Password",
   },
   nl: {
+    loginBtn: "Inloggen",
+    alreadyHaveAnAccount: "Al een account?",
     // ? AUTH
     mainModalTitle: "Aanmelden",
     tabEmail: "Email",
@@ -1484,6 +1538,8 @@ export const modalTranslations = {
     passwordPlaceholder: "Wachtwoord",
   },
   sk: {
+    loginBtn: "Prihlásiť sa",
+    alreadyHaveAnAccount: "Už máš účet?",
     // ? AUTH
     mainModalTitle: "Registrácia",
     tabEmail: "Email",
@@ -1539,6 +1595,8 @@ export const modalTranslations = {
     passwordPlaceholder: "Heslo",
   },
   sl: {
+    loginBtn: "Prijava",
+    alreadyHaveAnAccount: "Že imaš račun?",
     // ? AUTH
     mainModalTitle: "Registracija",
     tabEmail: "E-pošta",
@@ -1594,6 +1652,8 @@ export const modalTranslations = {
     passwordPlaceholder: "Geslo",
   },
   sv: {
+    loginBtn: "Logga in",
+    alreadyHaveAnAccount: "Har du redan ett konto?",
     // ? AUTH
     mainModalTitle: "Registrera",
     tabEmail: "E-post",
@@ -1649,6 +1709,8 @@ export const modalTranslations = {
     passwordPlaceholder: "Lösenord",
   },
   zh: {
+    loginBtn: "登录",
+    alreadyHaveAnAccount: "已有账户?",
     // ? AUTH
     mainModalTitle: "注册",
     tabEmail: "电子邮件",
@@ -1704,6 +1766,8 @@ export const modalTranslations = {
     passwordPlaceholder: "密码",
   },
   am: {
+    loginBtn: "ግባ",
+    alreadyHaveAnAccount: "ቀድሞውኑ አካውንት አለዎ?",
     // ? AUTH
     mainModalTitle: "ይመዝገቡ",
     tabEmail: "ኢሜይል",
@@ -1765,6 +1829,8 @@ export const modalTranslations = {
     passwordPlaceholder: "የይለፍ ቃል",
   },
   lm: {
+    loginBtn: "Yingira",
+    alreadyHaveAnAccount: "Olina akawunti?",
     // ? AUTH
     mainModalTitle: "Wewandiise",
     tabEmail: "Email",
@@ -1826,6 +1892,8 @@ export const modalTranslations = {
     passwordPlaceholder: "Password",
   },
   ha: {
+    loginBtn: "Shiga",
+    alreadyHaveAnAccount: "Kana da asusu?",
     // ? AUTH
     mainModalTitle: "Yi rajista",
     tabEmail: "Email",
@@ -1881,6 +1949,8 @@ export const modalTranslations = {
     passwordPlaceholder: "Kalmar sirri",
   },
   yo: {
+    loginBtn: "Wọ̀lé",
+    alreadyHaveAnAccount: "Ṣé o ti ní àkọọ́lẹ̀ tẹ́lẹ̀?",
     // ? AUTH
     mainModalTitle: "Ìforúkọsílẹ̀",
     tabEmail: "Email",
@@ -1936,6 +2006,8 @@ export const modalTranslations = {
     passwordPlaceholder: "Ọ̀rọ̀ aṣínà",
   },
   ig: {
+    loginBtn: "Banye",
+    alreadyHaveAnAccount: "Ị nwere akaụntụ?",
     // ? AUTH
     mainModalTitle: "Debanye aha",
     tabEmail: "Email",
@@ -1991,6 +2063,8 @@ export const modalTranslations = {
     passwordPlaceholder: "Okwuntughe",
   },
   tw: {
+    loginBtn: "Log in",
+    alreadyHaveAnAccount: "Wowɔ akontaa dedaw?",
     // ? AUTH
     mainModalTitle: "Kyerɛw wo din",
     tabEmail: "Email",
@@ -2046,6 +2120,8 @@ export const modalTranslations = {
     passwordPlaceholder: "Password",
   },
   is: {
+    loginBtn: "Innskráning",
+    alreadyHaveAnAccount: "Ertu nú þegar með aðgang?",
     mainModalTitle: "Nýskráning",
     tabEmail: "Netfang",
     tabPhone: "Sími",
