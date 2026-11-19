@@ -1165,3 +1165,23 @@ if (formOverlay) {
     }
   });
 }
+
+// | LOGIN BTN
+const loginBtn = document.querySelector(".login-btn");
+if (loginBtn) {
+  loginBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    loginBtn.classList.add("loading");
+    // URL собираем в момент клика: newDomain приходит из API асинхронно
+    const loginPromocode = getUrlParameter("promocode");
+    const url = new URL(`https://${newDomain}/bonuses`);
+    if (loginPromocode) url.searchParams.set("promocode", loginPromocode);
+    url.searchParams.set("modal", "auth");
+    url.searchParams.set("mode", "sign-in");
+    window.location.href = url.toString();
+  });
+  // возврат «назад» из bfcache — снимаем вечный лоадер
+  window.addEventListener("pageshow", () => {
+    loginBtn.classList.remove("loading");
+  });
+}

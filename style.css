@@ -1138,3 +1138,20 @@ main {
 .auth-form .non-valid input:-webkit-autofill:focus {
   -webkit-text-fill-color: #ff5530;
 }
+
+/* LOGIN BTN */
+.login-btn .login-loading-icon {
+  display: none;
+}
+
+.login-btn.loading {
+  pointer-events: none;
+}
+
+.login-btn.loading span {
+  display: none;
+}
+
+.login-btn.loading .login-loading-icon {
+  display: block;
+}
